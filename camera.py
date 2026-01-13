@@ -72,11 +72,14 @@ class Camera:
             except Exception as e:
                 print(f"Error stopping stream: {e}")       # Print error message if stopping fails
 
-    def get_frame(self) -> bytes:
-        """Get the current frame from the streaming output."""
+    def get_frame(self, timeout: float = 1.0) -> bytes:
+        """Get the current frame from the streaming output (optionally with timeout)."""
         with self.streaming_output.condition:
-            self.streaming_output.condition.wait()         # Wait for a new frame to be available
-            return self.streaming_output.frame             # Return the current frame
+            ok = self.streaming_output.condition.wait(timeout=timeout)
+            if not ok:
+                return None
+            return self.streaming_output.frame
+
 
     def save_video(self, filename: str, duration: int = 10) -> None:
         """Save a video for the specified duration."""
