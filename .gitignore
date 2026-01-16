@@ -5,3 +5,7 @@ __pycache__/
 *.jpg
 *.png
 *.json
+
+.venv
+
+.env

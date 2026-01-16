@@ -268,7 +268,7 @@ class Car:
 
         self.start()
 
-                # --- Head control (pan/tilt) ---
+        # --- Head control (pan/tilt) ---
         self.head_lock = threading.Lock()
         self.PAN_CH = "0"
         self.TILT_CH = "1"
@@ -278,6 +278,11 @@ class Car:
         self.TILT_UP = 85
         self.TILT_DOWN = 155
 
+
+        # Track where the head is (so other code can know if sonar is "forward")
+        self.current_pan = 90
+        self.current_tilt = self.TILT_CENTER
+
     def is_commanding_forward(self, min_pwm: int = 200) -> bool:
         """True if current commanded motor PWM looks like forward motion."""
         fl, bl, fr, br = self._last_cmd  # these are the scaled commands you store
@@ -285,16 +290,32 @@ class Car:
 
     
     def set_head_pose(self, pan: int = None, tilt: int = None, settle: float = 0.02):
-        """Safely move head (pan/tilt) without fighting the vision thread."""
+        """Safely move head (pan/tilt) without fighting other threads."""
         if self.servo is None:
             return
         with self.head_lock:
             if tilt is not None:
-                self.servo.set_servo_pwm(self.TILT_CH, int(tilt))
+                self.current_tilt = int(tilt)
+                self.servo.set_servo_pwm(self.TILT_CH, self.current_tilt)
             if pan is not None:
-                self.servo.set_servo_pwm(self.PAN_CH, int(pan))
+                self.current_pan = int(pan)
+                self.servo.set_servo_pwm(self.PAN_CH, self.current_pan)
         if settle:
             time.sleep(settle)
+
+    def get_distance_current_direction(self, ensure_tilt_center: bool = True, settle: float = 0.01):
+        """
+        Read ultrasonic distance WITHOUT forcing pan to 90.
+        Useful while camera/head is scanning.
+        """
+        with self.head_lock:
+            if ensure_tilt_center:
+                self.servo.set_servo_pwm(self.TILT_CH, self.TILT_CENTER)
+                self.current_tilt = self.TILT_CENTER
+                if settle:
+                    time.sleep(settle)
+            return self.sonic.get_distance()
+
 
     def park_head_for_drive(self):
         # neutral + compact
