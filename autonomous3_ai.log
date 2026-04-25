@@ -1,12 +1,10 @@
-10:19:51.175 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
-10:19:51.175 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
-10:19:51.175 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=False
-10:19:51.215 [INFO] [BOOT] brain=SERVER  url=http://192.168.1.149:3000
-10:19:51.333 [INFO] [BATT] unknown
-10:19:51.935 [WARNING] [AI][REFLEX] avoid zone ahead=44.1cm -> avoid
-10:19:52.966 [INFO] [AI][STEP] -> bat=7.30V ahead=300.0cm ir=0 light=(1.86,2.45) scan=(NA,NA,NA) stuck=False
-10:19:53.825 [WARNING] [AI][REFLEX] avoid zone ahead=41.5cm -> avoid
-10:19:56.077 [ERROR] [AI][STEP] request exception
+10:24:43.686 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+10:24:43.687 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+10:24:43.687 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=False
+10:24:43.720 [INFO] [BOOT] brain=SERVER  url=http://192.168.1.149:3000
+10:24:43.831 [INFO] [BATT] unknown
+10:24:44.724 [INFO] [AI][STEP] -> bat=6.12V ahead=226.6cm ir=0 light=(3.51,3.43) scan=(NA,NA,NA) stuck=False
+10:24:47.819 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -32,10 +30,10 @@ OSError: [Errno 113] No route to host
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 685, in _run
     data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 661, in _http_post_json
     with urllib.request.urlopen(req, timeout=timeout_s) as resp:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
@@ -57,9 +55,8 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-10:19:56.718 [INFO] [AI][STEP] -> bat=7.26V ahead=300.0cm ir=0 light=(1.20,2.04) scan=(300,300,149) stuck=False
-10:19:57.572 [WARNING] [AI][STUCK] detected -> escape
-10:19:59.779 [ERROR] [AI][STEP] request exception
+10:24:47.863 [INFO] [AI][STEP] -> bat=7.30V ahead=181.6cm ir=0 light=(3.10,3.00) scan=(NA,NA,NA) stuck=False
+10:24:50.916 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -85,10 +82,10 @@ OSError: [Errno 113] No route to host
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 685, in _run
     data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 661, in _http_post_json
     with urllib.request.urlopen(req, timeout=timeout_s) as resp:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
@@ -110,9 +107,10 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-10:20:00.655 [INFO] [AI][STEP] -> bat=7.34V ahead=300.0cm ir=0 light=(2.90,2.24) scan=(70,300,300) stuck=False
-10:20:01.959 [WARNING] [AI][STUCK] detected -> escape
-10:20:03.719 [ERROR] [AI][STEP] request exception
+10:24:51.057 [INFO] [AI][STEP] -> bat=6.44V ahead=97.6cm ir=0 light=(2.32,2.18) scan=(NA,NA,NA) stuck=False
+10:24:51.668 [WARNING] [AI][REFLEX] avoid zone ahead=64.3cm -> avoid
+10:24:53.163 [WARNING] [AI][REFLEX] avoid zone ahead=48.8cm -> avoid
+10:24:54.119 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -138,10 +136,10 @@ OSError: [Errno 113] No route to host
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 685, in _run
     data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 661, in _http_post_json
     with urllib.request.urlopen(req, timeout=timeout_s) as resp:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
@@ -163,8 +161,16 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-10:20:04.095 [INFO] [AI][STEP] -> bat=7.34V ahead=92.6cm ir=0 light=(2.81,2.10) scan=(70,300,300) stuck=True
-10:20:07.171 [ERROR] [AI][STEP] request exception
+10:24:54.439 [WARNING] [AI][REFLEX] avoid zone ahead=49.0cm -> avoid
+10:24:55.933 [WARNING] [AI][REFLEX] avoid zone ahead=37.1cm -> avoid
+10:24:57.079 [WARNING] [AI][REFLEX] avoid zone ahead=35.2cm -> avoid
+10:24:58.440 [WARNING] [AI][REFLEX] avoid zone ahead=34.6cm -> avoid
+10:24:59.570 [WARNING] [AI][REFLEX] avoid zone ahead=35.1cm -> avoid
+10:25:00.933 [WARNING] [AI][REFLEX] avoid zone ahead=34.3cm -> avoid
+10:25:02.071 [WARNING] [AI][REFLEX] avoid zone ahead=36.3cm -> avoid
+10:25:04.102 [INFO] [AI][STEP] -> bat=7.22V ahead=300.0cm ir=0 light=(2.43,2.22) scan=(74,74,74) stuck=False
+10:25:05.871 [WARNING] [AI][REFLEX] avoid zone ahead=62.9cm -> avoid
+10:25:07.184 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -190,10 +196,10 @@ OSError: [Errno 113] No route to host
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 685, in _run
     data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 661, in _http_post_json
     with urllib.request.urlopen(req, timeout=timeout_s) as resp:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
@@ -215,10 +221,9 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-10:20:07.207 [INFO] [AI][STEP] -> bat=7.34V ahead=59.7cm ir=0 light=(2.77,2.06) scan=(92,92,92) stuck=False
-10:20:08.336 [WARNING] [AI][REFLEX] avoid zone ahead=44.0cm -> avoid
-10:20:09.366 [WARNING] [AI][REFLEX] avoid zone ahead=37.7cm -> avoid
-10:20:10.275 [ERROR] [AI][STEP] request exception
+10:25:07.916 [INFO] [AI][STEP] -> bat=7.30V ahead=300.0cm ir=0 light=(2.75,2.49) scan=(300,300,300) stuck=False
+10:25:09.440 [WARNING] [AI][STUCK] detected -> escape
+10:25:10.983 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -244,10 +249,10 @@ OSError: [Errno 113] No route to host
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 685, in _run
     data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 661, in _http_post_json
     with urllib.request.urlopen(req, timeout=timeout_s) as resp:
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
@@ -269,715 +274,40 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-10:20:10.405 [WARNING] [AI] server unreachable (5 consecutive failures) — switching to local brain
-10:20:10.986 [INFO] [PET] CURIOUS → SLEEP  energy=0.73  battery=9%
-10:20:11.131 [INFO] [PET] fear triggered — obstacle count=3, ahead=4.1 cm
-10:20:11.221 [INFO] [PET] fear triggered — obstacle count=4, ahead=4.1 cm
-10:20:11.373 [INFO] [PET] fear triggered — obstacle count=5, ahead=4.1 cm
-10:20:11.463 [INFO] [PET] fear triggered — obstacle count=6, ahead=4.1 cm
-10:20:11.589 [INFO] [PET] fear triggered — obstacle count=7, ahead=4.1 cm
-10:20:11.653 [INFO] [PET] fear triggered — obstacle count=8, ahead=4.1 cm
-10:20:11.770 [INFO] [PET] fear triggered — obstacle count=9, ahead=4.1 cm
-10:20:11.832 [INFO] [PET] fear triggered — obstacle count=10, ahead=4.1 cm
-10:20:11.960 [INFO] [PET] fear triggered — obstacle count=11, ahead=4.1 cm
-10:20:12.024 [INFO] [PET] fear triggered — obstacle count=12, ahead=4.1 cm
-10:20:12.144 [INFO] [PET] fear triggered — obstacle count=13, ahead=4.1 cm
-10:20:12.209 [INFO] [PET] fear triggered — obstacle count=14, ahead=4.1 cm
-10:20:12.272 [INFO] [PET] fear triggered — obstacle count=15, ahead=4.1 cm
-10:20:12.391 [INFO] [PET] fear triggered — obstacle count=16, ahead=4.1 cm
-10:20:12.453 [INFO] [PET] fear triggered — obstacle count=17, ahead=4.1 cm
-10:20:12.577 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.1 cm
-10:20:12.640 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.1 cm
-10:20:12.701 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.1 cm
-10:20:12.818 [INFO] [PET] fear triggered — obstacle count=21, ahead=4.1 cm
-10:20:12.881 [INFO] [PET] fear triggered — obstacle count=22, ahead=4.1 cm
-10:20:13.002 [INFO] [PET] fear triggered — obstacle count=23, ahead=4.1 cm
-10:20:13.069 [INFO] [PET] fear triggered — obstacle count=24, ahead=4.1 cm
-10:20:13.183 [INFO] [PET] fear triggered — obstacle count=25, ahead=4.1 cm
-10:20:13.247 [INFO] [PET] fear triggered — obstacle count=26, ahead=4.1 cm
-10:20:13.365 [INFO] [PET] fear triggered — obstacle count=27, ahead=4.1 cm
-10:20:13.431 [INFO] [PET] fear triggered — obstacle count=28, ahead=4.1 cm
-10:20:13.554 [INFO] [PET] fear triggered — obstacle count=29, ahead=4.1 cm
-10:20:13.616 [INFO] [PET] fear triggered — obstacle count=30, ahead=4.1 cm
-10:20:13.678 [INFO] [PET] fear triggered — obstacle count=31, ahead=4.1 cm
-10:20:13.794 [INFO] [PET] fear triggered — obstacle count=32, ahead=4.1 cm
-10:20:13.858 [INFO] [PET] fear triggered — obstacle count=33, ahead=4.1 cm
-10:20:13.920 [INFO] [PET] fear triggered — obstacle count=34, ahead=4.1 cm
-10:20:14.035 [INFO] [PET] fear triggered — obstacle count=35, ahead=4.1 cm
-10:20:14.102 [INFO] [PET] fear triggered — obstacle count=36, ahead=4.1 cm
-10:20:14.222 [INFO] [PET] fear triggered — obstacle count=37, ahead=4.1 cm
-10:20:14.285 [INFO] [PET] fear triggered — obstacle count=38, ahead=4.1 cm
-10:20:14.404 [INFO] [PET] fear triggered — obstacle count=39, ahead=4.1 cm
-10:20:14.471 [INFO] [PET] fear triggered — obstacle count=40, ahead=4.1 cm
-10:20:14.588 [INFO] [PET] fear triggered — obstacle count=41, ahead=4.1 cm
-10:20:14.654 [INFO] [PET] fear triggered — obstacle count=42, ahead=4.1 cm
-10:20:14.770 [INFO] [PET] fear triggered — obstacle count=43, ahead=4.1 cm
-10:20:14.833 [INFO] [PET] fear triggered — obstacle count=44, ahead=4.1 cm
-10:20:14.951 [INFO] [PET] fear triggered — obstacle count=45, ahead=4.1 cm
-10:20:15.017 [INFO] [PET] fear triggered — obstacle count=46, ahead=4.1 cm
-10:20:15.133 [INFO] [PET] fear triggered — obstacle count=47, ahead=4.1 cm
-10:20:15.196 [INFO] [PET] fear triggered — obstacle count=48, ahead=4.1 cm
-10:20:15.318 [INFO] [PET] fear triggered — obstacle count=49, ahead=4.1 cm
-10:20:15.381 [INFO] [PET] fear triggered — obstacle count=50, ahead=4.1 cm
-10:20:15.443 [INFO] [PET] fear triggered — obstacle count=51, ahead=4.1 cm
-10:20:15.560 [INFO] [PET] fear triggered — obstacle count=52, ahead=4.1 cm
-10:20:15.624 [INFO] [PET] fear triggered — obstacle count=53, ahead=4.1 cm
-10:20:15.740 [INFO] [PET] fear triggered — obstacle count=54, ahead=4.1 cm
-10:20:15.803 [INFO] [PET] fear triggered — obstacle count=55, ahead=4.1 cm
-10:20:15.866 [INFO] [PET] fear triggered — obstacle count=56, ahead=4.1 cm
-10:20:15.982 [INFO] [PET] fear triggered — obstacle count=57, ahead=4.1 cm
-10:20:16.047 [INFO] [PET] fear triggered — obstacle count=58, ahead=4.1 cm
-10:20:16.164 [INFO] [PET] fear triggered — obstacle count=59, ahead=4.1 cm
-10:20:16.228 [INFO] [PET] fear triggered — obstacle count=60, ahead=4.1 cm
-10:20:16.353 [INFO] [PET] fear triggered — obstacle count=61, ahead=2.1 cm
-10:20:16.417 [INFO] [PET] fear triggered — obstacle count=62, ahead=2.1 cm
-10:20:16.535 [INFO] [PET] fear triggered — obstacle count=63, ahead=2.1 cm
-10:20:16.598 [INFO] [PET] fear triggered — obstacle count=64, ahead=2.1 cm
-10:20:16.724 [INFO] [PET] fear triggered — obstacle count=65, ahead=2.1 cm
-10:20:16.789 [INFO] [PET] fear triggered — obstacle count=66, ahead=2.1 cm
-10:20:17.028 [INFO] [PET] fear triggered — obstacle count=3, ahead=4.0 cm
-10:20:17.093 [INFO] [PET] fear triggered — obstacle count=4, ahead=4.0 cm
-10:20:17.209 [INFO] [PET] fear triggered — obstacle count=5, ahead=4.1 cm
-10:20:17.272 [INFO] [PET] fear triggered — obstacle count=6, ahead=4.1 cm
-10:20:17.337 [INFO] [PET] fear triggered — obstacle count=7, ahead=4.1 cm
-10:20:17.452 [INFO] [PET] fear triggered — obstacle count=8, ahead=4.1 cm
-10:20:17.514 [INFO] [PET] fear triggered — obstacle count=9, ahead=4.1 cm
-10:20:17.577 [INFO] [PET] fear triggered — obstacle count=10, ahead=4.1 cm
-10:20:17.696 [INFO] [PET] fear triggered — obstacle count=11, ahead=4.1 cm
-10:20:17.758 [INFO] [PET] fear triggered — obstacle count=12, ahead=4.1 cm
-10:20:17.820 [INFO] [PET] fear triggered — obstacle count=13, ahead=4.1 cm
-10:20:17.938 [INFO] [PET] fear triggered — obstacle count=14, ahead=4.1 cm
-10:20:18.001 [INFO] [PET] fear triggered — obstacle count=15, ahead=4.1 cm
-10:20:18.116 [INFO] [PET] fear triggered — obstacle count=16, ahead=4.1 cm
-10:20:18.178 [INFO] [PET] fear triggered — obstacle count=17, ahead=4.1 cm
-10:20:18.240 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.1 cm
-10:20:18.356 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.1 cm
-10:20:18.419 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.1 cm
-10:20:18.481 [INFO] [PET] fear triggered — obstacle count=21, ahead=4.1 cm
-10:20:18.598 [INFO] [PET] fear triggered — obstacle count=22, ahead=4.1 cm
-10:20:18.660 [INFO] [PET] fear triggered — obstacle count=23, ahead=4.1 cm
-10:20:18.723 [INFO] [PET] fear triggered — obstacle count=24, ahead=4.1 cm
-10:20:18.852 [INFO] [PET] fear triggered — obstacle count=25, ahead=4.0 cm
-10:20:18.915 [INFO] [PET] fear triggered — obstacle count=26, ahead=4.0 cm
-10:20:18.980 [INFO] [PET] fear triggered — obstacle count=27, ahead=4.0 cm
-10:20:19.094 [INFO] [PET] fear triggered — obstacle count=28, ahead=4.0 cm
-10:20:19.170 [INFO] [PET] fear triggered — obstacle count=29, ahead=4.0 cm
-10:20:19.286 [INFO] [PET] fear triggered — obstacle count=30, ahead=2.1 cm
-10:20:19.350 [INFO] [PET] fear triggered — obstacle count=31, ahead=2.1 cm
-10:20:19.471 [INFO] [PET] fear triggered — obstacle count=32, ahead=2.1 cm
-10:20:19.535 [INFO] [PET] fear triggered — obstacle count=33, ahead=2.1 cm
-10:20:19.653 [INFO] [PET] fear triggered — obstacle count=34, ahead=2.1 cm
-10:20:19.714 [INFO] [PET] fear triggered — obstacle count=35, ahead=2.1 cm
-10:20:19.778 [INFO] [PET] fear triggered — obstacle count=36, ahead=2.1 cm
-10:20:19.893 [INFO] [PET] fear triggered — obstacle count=37, ahead=4.1 cm
-10:20:19.960 [INFO] [PET] fear triggered — obstacle count=38, ahead=4.1 cm
-10:20:20.080 [INFO] [PET] fear triggered — obstacle count=39, ahead=4.1 cm
-10:20:20.144 [INFO] [PET] fear triggered — obstacle count=40, ahead=4.1 cm
-10:20:20.205 [INFO] [PET] fear triggered — obstacle count=41, ahead=4.1 cm
-10:20:20.330 [INFO] [PET] fear triggered — obstacle count=42, ahead=4.0 cm
-10:20:20.393 [INFO] [PET] fear triggered — obstacle count=43, ahead=4.0 cm
-10:20:20.512 [INFO] [PET] fear triggered — obstacle count=44, ahead=4.0 cm
-10:20:20.575 [INFO] [PET] fear triggered — obstacle count=45, ahead=4.0 cm
-10:20:20.695 [INFO] [PET] fear triggered — obstacle count=46, ahead=4.1 cm
-10:20:20.758 [INFO] [PET] fear triggered — obstacle count=47, ahead=4.1 cm
-10:20:20.881 [INFO] [PET] fear triggered — obstacle count=48, ahead=4.1 cm
-10:20:20.945 [INFO] [PET] fear triggered — obstacle count=49, ahead=4.1 cm
-10:20:21.065 [INFO] [PET] fear triggered — obstacle count=50, ahead=4.1 cm
-10:20:21.128 [INFO] [PET] fear triggered — obstacle count=51, ahead=4.1 cm
-10:20:21.247 [INFO] [PET] fear triggered — obstacle count=52, ahead=4.1 cm
-10:20:21.314 [INFO] [PET] fear triggered — obstacle count=53, ahead=4.1 cm
-10:20:21.430 [INFO] [PET] fear triggered — obstacle count=54, ahead=4.1 cm
-10:20:21.497 [INFO] [PET] fear triggered — obstacle count=55, ahead=4.1 cm
-10:20:21.613 [INFO] [PET] fear triggered — obstacle count=56, ahead=4.1 cm
-10:20:21.677 [INFO] [PET] fear triggered — obstacle count=57, ahead=4.1 cm
-10:20:21.795 [INFO] [PET] fear triggered — obstacle count=58, ahead=4.0 cm
-10:20:21.859 [INFO] [PET] fear triggered — obstacle count=59, ahead=4.0 cm
-10:20:21.982 [INFO] [PET] fear triggered — obstacle count=60, ahead=4.1 cm
-10:20:22.049 [INFO] [PET] fear triggered — obstacle count=61, ahead=4.1 cm
-10:20:22.165 [INFO] [PET] fear triggered — obstacle count=62, ahead=4.1 cm
-10:20:22.229 [INFO] [PET] fear triggered — obstacle count=63, ahead=4.1 cm
-10:20:22.349 [INFO] [PET] fear triggered — obstacle count=64, ahead=4.1 cm
-10:20:22.414 [INFO] [PET] fear triggered — obstacle count=65, ahead=4.1 cm
-10:20:22.531 [INFO] [PET] fear triggered — obstacle count=66, ahead=4.1 cm
-10:20:22.593 [INFO] [PET] fear triggered — obstacle count=67, ahead=4.1 cm
-10:20:22.711 [INFO] [PET] fear triggered — obstacle count=68, ahead=4.1 cm
-10:20:22.776 [INFO] [PET] fear triggered — obstacle count=69, ahead=4.1 cm
-10:20:22.893 [INFO] [PET] fear triggered — obstacle count=70, ahead=4.1 cm
-10:20:23.147 [INFO] [PET] fear triggered — obstacle count=3, ahead=4.1 cm
-10:20:23.208 [INFO] [PET] fear triggered — obstacle count=4, ahead=4.1 cm
-10:20:23.335 [INFO] [PET] fear triggered — obstacle count=5, ahead=4.1 cm
-10:20:23.399 [INFO] [PET] fear triggered — obstacle count=6, ahead=4.1 cm
-10:20:23.462 [INFO] [PET] fear triggered — obstacle count=7, ahead=4.1 cm
-10:20:23.584 [INFO] [PET] fear triggered — obstacle count=8, ahead=4.1 cm
-10:20:23.650 [INFO] [PET] fear triggered — obstacle count=9, ahead=4.1 cm
-10:20:23.771 [INFO] [PET] fear triggered — obstacle count=10, ahead=4.1 cm
-10:20:23.833 [INFO] [PET] fear triggered — obstacle count=11, ahead=4.1 cm
-10:20:23.952 [INFO] [PET] fear triggered — obstacle count=12, ahead=4.1 cm
-10:20:24.015 [INFO] [PET] fear triggered — obstacle count=13, ahead=4.1 cm
-10:20:24.137 [INFO] [PET] fear triggered — obstacle count=14, ahead=4.1 cm
-10:20:24.199 [INFO] [PET] fear triggered — obstacle count=15, ahead=4.1 cm
-10:20:24.320 [INFO] [PET] fear triggered — obstacle count=16, ahead=4.1 cm
-10:20:24.384 [INFO] [PET] fear triggered — obstacle count=17, ahead=4.1 cm
-10:20:24.507 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.1 cm
-10:20:24.572 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.1 cm
-10:20:24.700 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.1 cm
-10:20:24.769 [INFO] [PET] fear triggered — obstacle count=21, ahead=4.1 cm
-10:20:24.885 [INFO] [PET] fear triggered — obstacle count=22, ahead=4.1 cm
-10:20:24.948 [INFO] [PET] fear triggered — obstacle count=23, ahead=4.1 cm
-10:20:25.011 [INFO] [PET] fear triggered — obstacle count=24, ahead=4.1 cm
-10:20:25.128 [INFO] [PET] fear triggered — obstacle count=25, ahead=4.1 cm
-10:20:25.190 [INFO] [PET] fear triggered — obstacle count=26, ahead=4.1 cm
-10:20:25.251 [INFO] [PET] fear triggered — obstacle count=27, ahead=4.1 cm
-10:20:25.367 [INFO] [PET] fear triggered — obstacle count=28, ahead=4.1 cm
-10:20:25.429 [INFO] [PET] fear triggered — obstacle count=29, ahead=4.1 cm
-10:20:25.492 [INFO] [PET] fear triggered — obstacle count=30, ahead=4.1 cm
-10:20:25.609 [INFO] [PET] fear triggered — obstacle count=31, ahead=4.1 cm
-10:20:25.673 [INFO] [PET] fear triggered — obstacle count=32, ahead=4.1 cm
-10:20:25.788 [INFO] [PET] fear triggered — obstacle count=33, ahead=4.1 cm
-10:20:25.851 [INFO] [PET] fear triggered — obstacle count=34, ahead=4.1 cm
-10:20:25.970 [INFO] [PET] fear triggered — obstacle count=35, ahead=4.1 cm
-10:20:26.033 [INFO] [PET] fear triggered — obstacle count=36, ahead=4.1 cm
-10:20:26.096 [INFO] [PET] fear triggered — obstacle count=37, ahead=4.1 cm
-10:20:26.211 [INFO] [PET] fear triggered — obstacle count=38, ahead=4.1 cm
-10:20:26.275 [INFO] [PET] fear triggered — obstacle count=39, ahead=4.1 cm
-10:20:26.338 [INFO] [PET] fear triggered — obstacle count=40, ahead=4.1 cm
-10:20:26.453 [INFO] [PET] fear triggered — obstacle count=41, ahead=4.1 cm
-10:20:26.522 [INFO] [PET] fear triggered — obstacle count=42, ahead=4.1 cm
-10:20:26.639 [INFO] [PET] fear triggered — obstacle count=43, ahead=4.0 cm
-10:20:26.702 [INFO] [PET] fear triggered — obstacle count=44, ahead=4.0 cm
-10:20:26.766 [INFO] [PET] fear triggered — obstacle count=45, ahead=4.0 cm
-10:20:26.883 [INFO] [PET] fear triggered — obstacle count=46, ahead=4.1 cm
-10:20:26.946 [INFO] [PET] fear triggered — obstacle count=47, ahead=4.1 cm
-10:20:27.065 [INFO] [PET] fear triggered — obstacle count=48, ahead=4.0 cm
-10:20:27.127 [INFO] [PET] fear triggered — obstacle count=49, ahead=4.0 cm
-10:20:27.190 [INFO] [PET] fear triggered — obstacle count=50, ahead=4.0 cm
-10:20:27.306 [INFO] [PET] fear triggered — obstacle count=51, ahead=4.1 cm
-10:20:27.383 [INFO] [PET] fear triggered — obstacle count=52, ahead=4.1 cm
-10:20:27.504 [INFO] [PET] fear triggered — obstacle count=53, ahead=4.1 cm
-10:20:27.565 [INFO] [PET] fear triggered — obstacle count=54, ahead=4.1 cm
-10:20:27.628 [INFO] [PET] fear triggered — obstacle count=55, ahead=4.1 cm
-10:20:27.744 [INFO] [PET] fear triggered — obstacle count=56, ahead=4.1 cm
-10:20:27.811 [INFO] [PET] fear triggered — obstacle count=57, ahead=4.1 cm
-10:20:27.926 [INFO] [PET] fear triggered — obstacle count=58, ahead=4.1 cm
-10:20:27.992 [INFO] [PET] fear triggered — obstacle count=59, ahead=4.1 cm
-10:20:28.107 [INFO] [PET] fear triggered — obstacle count=60, ahead=4.1 cm
-10:20:28.168 [INFO] [PET] fear triggered — obstacle count=61, ahead=4.1 cm
-10:20:28.230 [INFO] [PET] fear triggered — obstacle count=62, ahead=4.1 cm
-10:20:28.345 [INFO] [PET] fear triggered — obstacle count=63, ahead=4.1 cm
-10:20:28.408 [INFO] [PET] fear triggered — obstacle count=64, ahead=4.1 cm
-10:20:28.470 [INFO] [PET] fear triggered — obstacle count=65, ahead=4.1 cm
-10:20:28.587 [INFO] [PET] fear triggered — obstacle count=66, ahead=4.1 cm
-10:20:28.655 [INFO] [PET] fear triggered — obstacle count=67, ahead=4.1 cm
-10:20:28.773 [INFO] [PET] fear triggered — obstacle count=68, ahead=4.1 cm
-10:20:28.836 [INFO] [PET] fear triggered — obstacle count=69, ahead=4.1 cm
-10:20:28.900 [INFO] [PET] fear triggered — obstacle count=70, ahead=4.1 cm
-10:20:29.146 [INFO] [PET] fear triggered — obstacle count=3, ahead=4.1 cm
-10:20:29.260 [INFO] [PET] fear triggered — obstacle count=4, ahead=4.0 cm
-10:20:29.323 [INFO] [PET] fear triggered — obstacle count=5, ahead=4.0 cm
-10:20:29.386 [INFO] [PET] fear triggered — obstacle count=6, ahead=4.0 cm
-10:20:29.503 [INFO] [PET] fear triggered — obstacle count=7, ahead=4.1 cm
-10:20:29.566 [INFO] [PET] fear triggered — obstacle count=8, ahead=4.1 cm
-10:20:29.684 [INFO] [PET] fear triggered — obstacle count=9, ahead=4.1 cm
-10:20:29.747 [INFO] [PET] fear triggered — obstacle count=10, ahead=4.1 cm
-10:20:29.809 [INFO] [PET] fear triggered — obstacle count=11, ahead=4.1 cm
-10:20:29.925 [INFO] [PET] fear triggered — obstacle count=12, ahead=4.1 cm
-10:20:29.989 [INFO] [PET] fear triggered — obstacle count=13, ahead=4.1 cm
-10:20:30.107 [INFO] [PET] fear triggered — obstacle count=14, ahead=4.1 cm
-10:20:30.172 [INFO] [PET] fear triggered — obstacle count=15, ahead=4.1 cm
-10:20:30.290 [INFO] [PET] fear triggered — obstacle count=16, ahead=4.1 cm
-10:20:30.353 [INFO] [PET] fear triggered — obstacle count=17, ahead=4.1 cm
-10:20:30.479 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.1 cm
-10:20:30.541 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.1 cm
-10:20:30.605 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.1 cm
-10:20:30.724 [INFO] [PET] fear triggered — obstacle count=21, ahead=4.1 cm
-10:20:30.791 [INFO] [PET] fear triggered — obstacle count=22, ahead=4.1 cm
-10:20:30.939 [INFO] [PET] fear triggered — obstacle count=23, ahead=4.1 cm
-10:20:31.018 [INFO] [PET] fear triggered — obstacle count=24, ahead=4.1 cm
-10:20:31.145 [INFO] [PET] fear triggered — obstacle count=25, ahead=4.1 cm
-10:20:31.209 [INFO] [PET] fear triggered — obstacle count=26, ahead=4.1 cm
-10:20:31.326 [INFO] [PET] fear triggered — obstacle count=27, ahead=4.1 cm
-10:20:31.393 [INFO] [PET] fear triggered — obstacle count=28, ahead=4.1 cm
-10:20:31.513 [INFO] [PET] fear triggered — obstacle count=29, ahead=4.1 cm
-10:20:31.575 [INFO] [PET] fear triggered — obstacle count=30, ahead=4.1 cm
-10:20:31.700 [INFO] [PET] fear triggered — obstacle count=31, ahead=4.1 cm
-10:20:31.762 [INFO] [PET] fear triggered — obstacle count=32, ahead=4.1 cm
-10:20:31.879 [INFO] [PET] fear triggered — obstacle count=33, ahead=4.1 cm
-10:20:31.944 [INFO] [PET] fear triggered — obstacle count=34, ahead=4.1 cm
-10:20:32.062 [INFO] [PET] fear triggered — obstacle count=35, ahead=4.1 cm
-10:20:32.125 [INFO] [PET] fear triggered — obstacle count=36, ahead=4.1 cm
-10:20:32.188 [INFO] [PET] fear triggered — obstacle count=37, ahead=4.1 cm
-10:20:32.303 [INFO] [PET] fear triggered — obstacle count=38, ahead=4.1 cm
-10:20:32.365 [INFO] [PET] fear triggered — obstacle count=39, ahead=4.1 cm
-10:20:32.431 [INFO] [PET] fear triggered — obstacle count=40, ahead=4.1 cm
-10:20:32.548 [INFO] [PET] fear triggered — obstacle count=41, ahead=4.1 cm
-10:20:32.610 [INFO] [PET] fear triggered — obstacle count=42, ahead=4.1 cm
-10:20:32.727 [INFO] [PET] fear triggered — obstacle count=43, ahead=4.1 cm
-10:20:32.789 [INFO] [PET] fear triggered — obstacle count=44, ahead=4.1 cm
-10:20:32.852 [INFO] [PET] fear triggered — obstacle count=45, ahead=4.1 cm
-10:20:32.968 [INFO] [PET] fear triggered — obstacle count=46, ahead=4.1 cm
-10:20:33.035 [INFO] [PET] fear triggered — obstacle count=47, ahead=4.1 cm
-10:20:33.151 [INFO] [PET] fear triggered — obstacle count=48, ahead=4.1 cm
-10:20:33.213 [INFO] [PET] fear triggered — obstacle count=49, ahead=4.1 cm
-10:20:33.276 [INFO] [PET] fear triggered — obstacle count=50, ahead=4.1 cm
-10:20:33.397 [INFO] [PET] fear triggered — obstacle count=51, ahead=4.1 cm
-10:20:33.461 [INFO] [PET] fear triggered — obstacle count=52, ahead=4.1 cm
-10:20:33.578 [INFO] [PET] fear triggered — obstacle count=53, ahead=4.1 cm
-10:20:33.643 [INFO] [PET] fear triggered — obstacle count=54, ahead=4.1 cm
-10:20:33.761 [INFO] [PET] fear triggered — obstacle count=55, ahead=4.1 cm
-10:20:33.824 [INFO] [PET] fear triggered — obstacle count=56, ahead=4.1 cm
-10:20:33.942 [INFO] [PET] fear triggered — obstacle count=57, ahead=4.1 cm
-10:20:34.006 [INFO] [PET] fear triggered — obstacle count=58, ahead=4.1 cm
-10:20:34.130 [INFO] [PET] fear triggered — obstacle count=59, ahead=4.1 cm
-10:20:34.202 [INFO] [PET] fear triggered — obstacle count=60, ahead=4.1 cm
-10:20:34.319 [INFO] [PET] fear triggered — obstacle count=61, ahead=4.1 cm
-10:20:34.380 [INFO] [PET] fear triggered — obstacle count=62, ahead=4.1 cm
-10:20:34.444 [INFO] [PET] fear triggered — obstacle count=63, ahead=4.1 cm
-10:20:34.558 [INFO] [PET] fear triggered — obstacle count=64, ahead=2.1 cm
-10:20:34.622 [INFO] [PET] fear triggered — obstacle count=65, ahead=2.1 cm
-10:20:34.742 [INFO] [PET] fear triggered — obstacle count=66, ahead=4.1 cm
-10:20:34.806 [INFO] [PET] fear triggered — obstacle count=67, ahead=4.1 cm
-10:20:34.928 [INFO] [PET] fear triggered — obstacle count=68, ahead=4.1 cm
-10:20:35.176 [INFO] [PET] fear triggered — obstacle count=3, ahead=4.1 cm
-10:20:35.237 [INFO] [PET] fear triggered — obstacle count=4, ahead=4.1 cm
-10:20:35.357 [INFO] [PET] fear triggered — obstacle count=5, ahead=4.1 cm
-10:20:35.426 [INFO] [PET] fear triggered — obstacle count=6, ahead=4.1 cm
-10:20:35.544 [INFO] [PET] fear triggered — obstacle count=7, ahead=4.1 cm
-10:20:35.607 [INFO] [PET] fear triggered — obstacle count=8, ahead=4.1 cm
-10:20:35.728 [INFO] [PET] fear triggered — obstacle count=9, ahead=4.1 cm
-10:20:35.791 [INFO] [PET] fear triggered — obstacle count=10, ahead=4.1 cm
-10:20:35.908 [INFO] [PET] fear triggered — obstacle count=11, ahead=4.1 cm
-10:20:35.975 [INFO] [PET] fear triggered — obstacle count=12, ahead=4.1 cm
-10:20:36.091 [INFO] [PET] fear triggered — obstacle count=13, ahead=4.1 cm
-10:20:36.155 [INFO] [PET] fear triggered — obstacle count=14, ahead=4.1 cm
-10:20:36.218 [INFO] [PET] fear triggered — obstacle count=15, ahead=4.1 cm
-10:20:36.333 [INFO] [PET] fear triggered — obstacle count=16, ahead=4.0 cm
-10:20:36.397 [INFO] [PET] fear triggered — obstacle count=17, ahead=4.0 cm
-10:20:36.516 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.1 cm
-10:20:36.581 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.1 cm
-10:20:36.699 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.1 cm
-10:20:36.761 [INFO] [PET] fear triggered — obstacle count=21, ahead=4.1 cm
-10:20:36.823 [INFO] [PET] fear triggered — obstacle count=22, ahead=4.1 cm
-10:20:36.940 [INFO] [PET] fear triggered — obstacle count=23, ahead=4.1 cm
-10:20:37.007 [INFO] [PET] fear triggered — obstacle count=24, ahead=4.1 cm
-10:20:37.122 [INFO] [PET] fear triggered — obstacle count=25, ahead=4.1 cm
-10:20:37.186 [INFO] [PET] fear triggered — obstacle count=26, ahead=4.1 cm
-10:20:37.306 [INFO] [PET] fear triggered — obstacle count=27, ahead=4.1 cm
-10:20:37.369 [INFO] [PET] fear triggered — obstacle count=28, ahead=4.1 cm
-10:20:37.490 [INFO] [PET] fear triggered — obstacle count=29, ahead=4.1 cm
-10:20:37.553 [INFO] [PET] fear triggered — obstacle count=30, ahead=4.1 cm
-10:20:37.685 [INFO] [PET] fear triggered — obstacle count=31, ahead=4.0 cm
-10:20:37.748 [INFO] [PET] fear triggered — obstacle count=32, ahead=4.0 cm
-10:20:37.871 [INFO] [PET] fear triggered — obstacle count=33, ahead=4.0 cm
-10:20:37.933 [INFO] [PET] fear triggered — obstacle count=34, ahead=4.0 cm
-10:20:38.062 [INFO] [PET] fear triggered — obstacle count=35, ahead=4.0 cm
-10:20:38.124 [INFO] [PET] fear triggered — obstacle count=36, ahead=4.0 cm
-10:20:38.247 [INFO] [PET] fear triggered — obstacle count=37, ahead=4.1 cm
-10:20:38.311 [INFO] [PET] fear triggered — obstacle count=38, ahead=4.1 cm
-10:20:38.427 [INFO] [PET] fear triggered — obstacle count=39, ahead=4.1 cm
-10:20:38.490 [INFO] [PET] fear triggered — obstacle count=40, ahead=4.1 cm
-10:20:38.553 [INFO] [PET] fear triggered — obstacle count=41, ahead=4.1 cm
-10:20:38.668 [INFO] [PET] fear triggered — obstacle count=42, ahead=4.1 cm
-10:20:38.734 [INFO] [PET] fear triggered — obstacle count=43, ahead=4.1 cm
-10:20:38.858 [INFO] [PET] fear triggered — obstacle count=44, ahead=4.1 cm
-10:20:38.936 [INFO] [PET] fear triggered — obstacle count=45, ahead=4.1 cm
-10:20:39.054 [INFO] [PET] fear triggered — obstacle count=46, ahead=4.1 cm
-10:20:39.117 [INFO] [PET] fear triggered — obstacle count=47, ahead=4.1 cm
-10:20:39.239 [INFO] [PET] fear triggered — obstacle count=48, ahead=4.0 cm
-10:20:39.302 [INFO] [PET] fear triggered — obstacle count=49, ahead=4.0 cm
-10:20:39.423 [INFO] [PET] fear triggered — obstacle count=50, ahead=2.1 cm
-10:20:39.488 [INFO] [PET] fear triggered — obstacle count=51, ahead=2.1 cm
-10:20:39.613 [INFO] [PET] fear triggered — obstacle count=52, ahead=4.1 cm
-10:20:39.675 [INFO] [PET] fear triggered — obstacle count=53, ahead=4.1 cm
-10:20:39.739 [INFO] [PET] fear triggered — obstacle count=54, ahead=4.1 cm
-10:20:39.856 [INFO] [PET] fear triggered — obstacle count=55, ahead=4.1 cm
-10:20:39.922 [INFO] [PET] fear triggered — obstacle count=56, ahead=4.1 cm
-10:20:40.044 [INFO] [PET] fear triggered — obstacle count=57, ahead=4.1 cm
-10:20:40.111 [INFO] [PET] fear triggered — obstacle count=58, ahead=4.1 cm
-10:20:40.241 [INFO] [PET] fear triggered — obstacle count=59, ahead=4.1 cm
-10:20:40.308 [INFO] [PET] fear triggered — obstacle count=60, ahead=4.1 cm
-10:20:40.426 [INFO] [PET] fear triggered — obstacle count=61, ahead=4.1 cm
-10:20:40.492 [INFO] [PET] fear triggered — obstacle count=62, ahead=4.1 cm
-10:20:40.609 [INFO] [PET] fear triggered — obstacle count=63, ahead=4.0 cm
-10:20:40.671 [INFO] [PET] fear triggered — obstacle count=64, ahead=4.0 cm
-10:20:40.734 [INFO] [PET] fear triggered — obstacle count=65, ahead=4.0 cm
-10:20:40.849 [INFO] [PET] fear triggered — obstacle count=66, ahead=4.1 cm
-10:20:40.914 [INFO] [PET] fear triggered — obstacle count=67, ahead=4.1 cm
-10:20:41.046 [INFO] [PET] fear triggered — obstacle count=68, ahead=4.1 cm
-10:20:41.312 [INFO] [PET] fear triggered — obstacle count=3, ahead=4.1 cm
-10:20:41.429 [INFO] [PET] fear triggered — obstacle count=4, ahead=4.0 cm
-10:20:41.495 [INFO] [PET] fear triggered — obstacle count=5, ahead=4.0 cm
-10:20:41.612 [INFO] [PET] fear triggered — obstacle count=6, ahead=4.0 cm
-10:20:41.678 [INFO] [PET] fear triggered — obstacle count=7, ahead=4.0 cm
-10:20:41.797 [INFO] [PET] fear triggered — obstacle count=8, ahead=4.0 cm
-10:20:41.866 [INFO] [PET] fear triggered — obstacle count=9, ahead=4.0 cm
-10:20:41.987 [INFO] [PET] fear triggered — obstacle count=10, ahead=4.0 cm
-10:20:42.061 [INFO] [PET] fear triggered — obstacle count=11, ahead=4.0 cm
-10:20:42.180 [INFO] [PET] fear triggered — obstacle count=12, ahead=4.0 cm
-10:20:42.246 [INFO] [PET] fear triggered — obstacle count=13, ahead=4.0 cm
-10:20:42.362 [INFO] [PET] fear triggered — obstacle count=14, ahead=4.0 cm
-10:20:42.426 [INFO] [PET] fear triggered — obstacle count=15, ahead=4.0 cm
-10:20:42.548 [INFO] [PET] fear triggered — obstacle count=16, ahead=4.1 cm
-10:20:42.611 [INFO] [PET] fear triggered — obstacle count=17, ahead=4.1 cm
-10:20:42.674 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.1 cm
-10:20:42.794 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.0 cm
-10:20:42.861 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.0 cm
-10:20:42.981 [INFO] [PET] fear triggered — obstacle count=21, ahead=4.0 cm
-10:20:43.053 [INFO] [PET] fear triggered — obstacle count=22, ahead=4.0 cm
-10:20:43.169 [INFO] [PET] fear triggered — obstacle count=23, ahead=4.0 cm
-10:20:43.238 [INFO] [PET] fear triggered — obstacle count=24, ahead=4.0 cm
-10:20:43.354 [INFO] [PET] fear triggered — obstacle count=25, ahead=2.1 cm
-10:20:43.419 [INFO] [PET] fear triggered — obstacle count=26, ahead=2.1 cm
-10:20:43.534 [INFO] [PET] fear triggered — obstacle count=27, ahead=2.1 cm
-10:20:43.596 [INFO] [PET] fear triggered — obstacle count=28, ahead=2.1 cm
-10:20:43.716 [INFO] [PET] fear triggered — obstacle count=29, ahead=2.1 cm
-10:20:43.780 [INFO] [PET] fear triggered — obstacle count=30, ahead=2.1 cm
-10:20:43.898 [INFO] [PET] fear triggered — obstacle count=31, ahead=4.1 cm
-10:20:43.963 [INFO] [PET] fear triggered — obstacle count=32, ahead=4.1 cm
-10:20:44.085 [INFO] [PET] fear triggered — obstacle count=33, ahead=4.1 cm
-10:20:44.148 [INFO] [PET] fear triggered — obstacle count=34, ahead=4.1 cm
-10:20:44.266 [INFO] [PET] fear triggered — obstacle count=35, ahead=4.0 cm
-10:20:44.332 [INFO] [PET] fear triggered — obstacle count=36, ahead=4.0 cm
-10:20:44.457 [INFO] [PET] fear triggered — obstacle count=37, ahead=4.0 cm
-10:20:44.521 [INFO] [PET] fear triggered — obstacle count=38, ahead=4.0 cm
-10:20:44.638 [INFO] [PET] fear triggered — obstacle count=39, ahead=2.0 cm
-10:20:44.702 [INFO] [PET] fear triggered — obstacle count=40, ahead=2.0 cm
-10:20:44.826 [INFO] [PET] fear triggered — obstacle count=41, ahead=4.0 cm
-10:20:44.893 [INFO] [PET] fear triggered — obstacle count=42, ahead=4.0 cm
-10:20:45.015 [INFO] [PET] fear triggered — obstacle count=43, ahead=4.0 cm
-10:20:45.080 [INFO] [PET] fear triggered — obstacle count=44, ahead=4.0 cm
-10:20:45.196 [INFO] [PET] fear triggered — obstacle count=45, ahead=2.1 cm
-10:20:45.260 [INFO] [PET] fear triggered — obstacle count=46, ahead=2.1 cm
-10:20:45.384 [INFO] [PET] fear triggered — obstacle count=47, ahead=2.1 cm
-10:20:45.448 [INFO] [PET] fear triggered — obstacle count=48, ahead=2.1 cm
-10:20:45.567 [INFO] [PET] fear triggered — obstacle count=49, ahead=2.1 cm
-10:20:45.634 [INFO] [PET] fear triggered — obstacle count=50, ahead=2.1 cm
-10:20:45.754 [INFO] [PET] fear triggered — obstacle count=51, ahead=2.1 cm
-10:20:45.820 [INFO] [PET] fear triggered — obstacle count=52, ahead=2.1 cm
-10:20:45.935 [INFO] [PET] fear triggered — obstacle count=53, ahead=4.1 cm
-10:20:45.998 [INFO] [PET] fear triggered — obstacle count=54, ahead=4.1 cm
-10:20:46.115 [INFO] [PET] fear triggered — obstacle count=55, ahead=2.1 cm
-10:20:46.191 [INFO] [PET] fear triggered — obstacle count=56, ahead=2.1 cm
-10:20:46.320 [INFO] [PET] fear triggered — obstacle count=57, ahead=4.0 cm
-10:20:46.410 [INFO] [PET] fear triggered — obstacle count=58, ahead=4.0 cm
-10:20:46.543 [INFO] [PET] fear triggered — obstacle count=59, ahead=4.0 cm
-10:20:46.614 [INFO] [PET] fear triggered — obstacle count=60, ahead=4.0 cm
-10:20:46.735 [INFO] [PET] fear triggered — obstacle count=61, ahead=4.0 cm
-10:20:46.801 [INFO] [PET] fear triggered — obstacle count=62, ahead=4.0 cm
-10:20:46.925 [INFO] [PET] fear triggered — obstacle count=63, ahead=4.0 cm
-10:20:46.996 [INFO] [PET] fear triggered — obstacle count=64, ahead=4.0 cm
-10:20:47.111 [INFO] [PET] fear triggered — obstacle count=65, ahead=4.0 cm
-10:20:47.361 [INFO] [PET] fear triggered — obstacle count=3, ahead=4.0 cm
-10:20:47.423 [INFO] [PET] fear triggered — obstacle count=4, ahead=4.0 cm
-10:20:47.541 [INFO] [PET] fear triggered — obstacle count=5, ahead=4.0 cm
-10:20:47.603 [INFO] [PET] fear triggered — obstacle count=6, ahead=4.0 cm
-10:20:47.726 [INFO] [PET] fear triggered — obstacle count=7, ahead=4.0 cm
-10:20:47.789 [INFO] [PET] fear triggered — obstacle count=8, ahead=4.0 cm
-10:20:47.909 [INFO] [PET] fear triggered — obstacle count=9, ahead=4.0 cm
-10:20:47.973 [INFO] [PET] fear triggered — obstacle count=10, ahead=4.0 cm
-10:20:48.091 [INFO] [PET] fear triggered — obstacle count=11, ahead=4.0 cm
-10:20:48.155 [INFO] [PET] fear triggered — obstacle count=12, ahead=4.0 cm
-10:20:48.273 [INFO] [PET] fear triggered — obstacle count=13, ahead=2.1 cm
-10:20:48.342 [INFO] [PET] fear triggered — obstacle count=14, ahead=2.1 cm
-10:20:48.478 [INFO] [PET] fear triggered — obstacle count=15, ahead=4.0 cm
-10:20:48.544 [INFO] [PET] fear triggered — obstacle count=16, ahead=4.0 cm
-10:20:48.661 [INFO] [PET] fear triggered — obstacle count=17, ahead=4.0 cm
-10:20:48.726 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.0 cm
-10:20:48.841 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.1 cm
-10:20:48.905 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.1 cm
-10:20:49.027 [INFO] [PET] fear triggered — obstacle count=21, ahead=2.0 cm
-10:20:49.092 [INFO] [PET] fear triggered — obstacle count=22, ahead=2.0 cm
-10:20:49.214 [INFO] [PET] fear triggered — obstacle count=23, ahead=2.1 cm
-10:20:49.278 [INFO] [PET] fear triggered — obstacle count=24, ahead=2.1 cm
-10:20:49.339 [INFO] [PET] fear triggered — obstacle count=25, ahead=2.1 cm
-10:20:49.454 [INFO] [PET] fear triggered — obstacle count=26, ahead=2.1 cm
-10:20:49.524 [INFO] [PET] fear triggered — obstacle count=27, ahead=2.1 cm
-10:20:49.641 [INFO] [PET] fear triggered — obstacle count=28, ahead=4.1 cm
-10:20:49.705 [INFO] [PET] fear triggered — obstacle count=29, ahead=4.1 cm
-10:20:49.767 [INFO] [PET] fear triggered — obstacle count=30, ahead=4.1 cm
-10:20:49.885 [INFO] [PET] fear triggered — obstacle count=31, ahead=4.0 cm
-10:20:49.946 [INFO] [PET] fear triggered — obstacle count=32, ahead=4.0 cm
-10:20:50.064 [INFO] [PET] fear triggered — obstacle count=33, ahead=4.0 cm
-10:20:50.130 [INFO] [PET] fear triggered — obstacle count=34, ahead=4.0 cm
-10:20:50.249 [INFO] [PET] fear triggered — obstacle count=35, ahead=4.0 cm
-10:20:50.321 [INFO] [PET] fear triggered — obstacle count=36, ahead=4.0 cm
-10:20:50.437 [INFO] [PET] fear triggered — obstacle count=37, ahead=4.1 cm
-10:20:50.502 [INFO] [PET] fear triggered — obstacle count=38, ahead=4.1 cm
-10:20:50.621 [INFO] [PET] fear triggered — obstacle count=39, ahead=4.1 cm
-10:20:50.669 [INFO] [SHUTDOWN] Ctrl+C received
-10:20:50.719 [INFO] [SHUTDOWN] cleaned up
-10:21:00.522 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
-10:21:00.523 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
-10:21:00.523 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=False
-10:21:00.552 [INFO] [BOOT] brain=SERVER  url=http://192.168.1.149:3000
-10:21:00.663 [INFO] [BATT] unknown
-10:21:01.123 [WARNING] [AI][REFLEX] HARD_STOP ahead=4.1cm -> avoid
-10:21:03.381 [INFO] [AI][STEP] -> bat=7.10V ahead=50.2cm ir=0 light=(2.71,2.22) scan=(NA,NA,NA) stuck=False
-10:21:06.476 [ERROR] [AI][STEP] request exception
-Traceback (most recent call last):
-  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
-    h.request(req.get_method(), req.selector, req.data, headers,
-  File "/usr/lib/python3.11/http/client.py", line 1282, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
-    self.send(msg)
-  File "/usr/lib/python3.11/http/client.py", line 975, in send
-    self.connect()
-  File "/usr/lib/python3.11/http/client.py", line 941, in connect
-    self.sock = self._create_connection(
-                ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
-    raise exceptions[0]
-  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
-    sock.connect(sa)
-OSError: [Errno 113] No route to host
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
-    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
-    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 113] No route to host>
-
-10:21:06.558 [INFO] [AI][STEP] -> bat=7.26V ahead=72.8cm ir=0 light=(2.85,2.35) scan=(49,49,49) stuck=False
-10:21:08.037 [WARNING] [AI][REFLEX] HARD_STOP ahead=14.6cm -> avoid
-10:21:09.635 [ERROR] [AI][STEP] request exception
-Traceback (most recent call last):
-  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
-    h.request(req.get_method(), req.selector, req.data, headers,
-  File "/usr/lib/python3.11/http/client.py", line 1282, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
-    self.send(msg)
-  File "/usr/lib/python3.11/http/client.py", line 975, in send
-    self.connect()
-  File "/usr/lib/python3.11/http/client.py", line 941, in connect
-    self.sock = self._create_connection(
-                ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
-    raise exceptions[0]
-  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
-    sock.connect(sa)
-OSError: [Errno 113] No route to host
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
-    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
-    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 113] No route to host>
-
-10:21:10.298 [INFO] [AI][STEP] -> bat=7.30V ahead=300.0cm ir=0 light=(2.04,2.32) scan=(49,49,49) stuck=False
-10:21:12.391 [WARNING] [AI][STUCK] detected -> escape
-10:21:13.379 [ERROR] [AI][STEP] request exception
-Traceback (most recent call last):
-  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
-    h.request(req.get_method(), req.selector, req.data, headers,
-  File "/usr/lib/python3.11/http/client.py", line 1282, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
-    self.send(msg)
-  File "/usr/lib/python3.11/http/client.py", line 975, in send
-    self.connect()
-  File "/usr/lib/python3.11/http/client.py", line 941, in connect
-    self.sock = self._create_connection(
-                ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
-    raise exceptions[0]
-  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
-    sock.connect(sa)
-OSError: [Errno 113] No route to host
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
-    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
-    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 113] No route to host>
-
-10:21:14.523 [INFO] [AI][STEP] -> bat=7.34V ahead=300.0cm ir=0 light=(2.59,3.51) scan=(300,300,300) stuck=True
-10:21:14.835 [WARNING] [AI][STUCK] detected -> escape
-10:21:17.607 [ERROR] [AI][STEP] request exception
-Traceback (most recent call last):
-  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
-    h.request(req.get_method(), req.selector, req.data, headers,
-  File "/usr/lib/python3.11/http/client.py", line 1282, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
-    self.send(msg)
-  File "/usr/lib/python3.11/http/client.py", line 975, in send
-    self.connect()
-  File "/usr/lib/python3.11/http/client.py", line 941, in connect
-    self.sock = self._create_connection(
-                ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
-    raise exceptions[0]
-  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
-    sock.connect(sa)
-OSError: [Errno 113] No route to host
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
-    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
-    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 113] No route to host>
-
-10:21:17.921 [INFO] [AI][STEP] -> bat=7.38V ahead=93.7cm ir=0 light=(3.79,3.47) scan=(103,112,112) stuck=False
-10:21:19.847 [WARNING] [AI][REFLEX] avoid zone ahead=41.2cm -> avoid
-10:21:20.999 [ERROR] [AI][STEP] request exception
-Traceback (most recent call last):
-  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
-    h.request(req.get_method(), req.selector, req.data, headers,
-  File "/usr/lib/python3.11/http/client.py", line 1282, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
-    self.send(msg)
-  File "/usr/lib/python3.11/http/client.py", line 975, in send
-    self.connect()
-  File "/usr/lib/python3.11/http/client.py", line 941, in connect
-    self.sock = self._create_connection(
-                ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
-    raise exceptions[0]
-  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
-    sock.connect(sa)
-OSError: [Errno 113] No route to host
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 684, in _run
-    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 660, in _http_post_json
-    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-             ^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 113] No route to host>
-
-10:21:22.099 [WARNING] [AI] server unreachable (5 consecutive failures) — switching to local brain
-10:21:23.367 [INFO] [PET] CURIOUS → BORED  energy=0.72  battery=28%
-10:21:24.044 [INFO] [PET] BORED → CURIOUS  energy=0.72  battery=62%
-10:21:24.753 [INFO] [PET] CURIOUS → SLEEP  energy=0.71  battery=17%
-10:22:06.164 [INFO] [SHUTDOWN] Ctrl+C received
-10:22:06.206 [INFO] [SHUTDOWN] cleaned up
+10:25:11.582 [WARNING] [AI] server unreachable (5 consecutive failures) — switching to local brain
+10:25:12.172 [INFO] [PET] CURIOUS → BORED  energy=0.68  battery=38%
+10:25:13.230 [INFO] [PET] BORED → CURIOUS  energy=0.68  battery=62%
+10:25:13.650 [WARNING] [AI][STUCK] detected -> escape
+10:25:16.457 [INFO] [PET] CURIOUS → BORED  energy=0.66  battery=30%
+10:25:17.129 [INFO] [PET] BORED → CURIOUS  energy=0.66  battery=61%
+10:25:19.135 [WARNING] [AI][STUCK] detected -> escape
+10:25:21.970 [INFO] [PET] CURIOUS → BORED  energy=0.64  battery=38%
+10:25:23.097 [INFO] [PET] BORED → CURIOUS  energy=0.63  battery=59%
+10:25:25.023 [INFO] [PET] CURIOUS → SLEEP  energy=0.62  battery=17%
+10:25:25.291 [WARNING] [AI][STUCK] detected -> escape
+10:26:00.072 [INFO] [PET] fear triggered — obstacle count=3, ahead=13.6 cm
+10:26:00.191 [INFO] [PET] fear triggered — obstacle count=4, ahead=1.4 cm
+10:26:00.259 [INFO] [PET] fear triggered — obstacle count=5, ahead=1.4 cm
+10:26:00.378 [INFO] [PET] fear triggered — obstacle count=6, ahead=1.4 cm
+10:26:00.445 [INFO] [PET] fear triggered — obstacle count=7, ahead=1.4 cm
+10:26:00.565 [INFO] [PET] fear triggered — obstacle count=8, ahead=1.2 cm
+10:26:00.628 [INFO] [PET] fear triggered — obstacle count=9, ahead=1.2 cm
+10:26:00.745 [INFO] [PET] fear triggered — obstacle count=10, ahead=1.7 cm
+10:26:00.813 [INFO] [PET] fear triggered — obstacle count=11, ahead=1.7 cm
+10:26:00.937 [INFO] [PET] fear triggered — obstacle count=12, ahead=1.7 cm
+10:26:01.003 [INFO] [PET] fear triggered — obstacle count=13, ahead=1.7 cm
+10:26:01.124 [INFO] [PET] fear triggered — obstacle count=14, ahead=2.0 cm
+10:26:01.191 [INFO] [PET] fear triggered — obstacle count=15, ahead=2.0 cm
+10:26:01.307 [INFO] [PET] fear triggered — obstacle count=16, ahead=2.3 cm
+10:26:01.370 [INFO] [PET] fear triggered — obstacle count=17, ahead=2.3 cm
+10:26:01.488 [INFO] [PET] fear triggered — obstacle count=18, ahead=4.1 cm
+10:26:01.550 [INFO] [PET] fear triggered — obstacle count=19, ahead=4.1 cm
+10:26:01.669 [INFO] [PET] fear triggered — obstacle count=20, ahead=4.1 cm
+10:26:01.732 [INFO] [PET] fear triggered — obstacle count=21, ahead=4.1 cm
+10:26:01.794 [INFO] [PET] fear triggered — obstacle count=22, ahead=4.1 cm
+10:26:01.915 [INFO] [PET] fear triggered — obstacle count=23, ahead=6.4 cm
+10:26:01.986 [INFO] [PET] fear triggered — obstacle count=24, ahead=6.4 cm
+10:26:02.112 [INFO] [PET] fear triggered — obstacle count=25, ahead=5.6 cm
+10:26:02.178 [INFO] [PET] fear triggered — obstacle count=26, ahead=5.6 cm
+10:26:15.180 [INFO] [SHUTDOWN] Ctrl+C received
+10:26:15.219 [INFO] [SHUTDOWN] cleaned up
