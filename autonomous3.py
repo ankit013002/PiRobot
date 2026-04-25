@@ -627,6 +627,7 @@ class ServerStepWorker:
         self.latest: Optional[dict] = None
         self.latest_ts: float = 0.0
         self.busy: bool = False
+        self.consecutive_failures: int = 0  # reset on each success
 
         self._t = threading.Thread(target=self._run, daemon=True)
         self._t.start()
@@ -686,6 +687,7 @@ class ServerStepWorker:
                 if isinstance(data, dict) and data.get("ok") is True:
                     self.latest = data
                     self.latest_ts = time.time()
+                    self.consecutive_failures = 0
                     log.info(
                         "[AI][STEP] <- plan in %.2fs src=%s server_ms=%s mode=%s act=%s dur=%.2f spd=%s head=%s chirp=%s seq=%s",
                         dt,
@@ -701,8 +703,10 @@ class ServerStepWorker:
                     )
                 else:
                     log.warning("[AI][STEP] <- non-ok in %.2fs: %s", dt, data)
+                    self.consecutive_failures += 1
             except Exception:
                 log_exc("[AI][STEP] request exception")
+                self.consecutive_failures += 1
             finally:
                 self.busy = False
 
@@ -711,6 +715,9 @@ class ServerStepWorker:
 # Server-driven brain
 # ============================================================
 class ServerPetBrain:
+    # Fall back to local brain after this many consecutive server failures
+    _SERVER_FALLBACK_THRESHOLD = 5
+
     def __init__(self, sensors: SensorHub):
         self.sensors = sensors
 
@@ -737,6 +744,10 @@ class ServerPetBrain:
 
         self._wander_next_drift = 0.0
         self._wander_bias = 0
+
+        # Local fallback brain — instantiated lazily when server goes offline
+        self._local_brain = None
+        self._using_local = False
 
         self._last_plan_head_ts = 0.0
 
@@ -970,8 +981,23 @@ class ServerPetBrain:
         if action not in ALLOWED_ACTIONS:
             action = "wander"
 
-        dur_s = clamp_float(duration, 0.2, 3.0, 1.0)
         spd_pwm = clamp_int(plan.get("speed_pwm", self.speed_pwm), 800, 1400, self.speed_pwm)
+
+        # When the server says SLEEP, hold it locally for a long time so we
+        # don't re-request every 2 seconds all night (keeps WiFi radio quiet).
+        if mode == MODE_SLEEP:
+            bpct = self.sensors.battery_pct()
+            if bpct is None or bpct > 0.70:
+                sleep_hold = 45.0
+            elif bpct > 0.40:
+                sleep_hold = 120.0
+            elif bpct > 0.20:
+                sleep_hold = 300.0
+            else:
+                sleep_hold = 600.0
+            dur_s = sleep_hold
+        else:
+            dur_s = clamp_float(duration, 0.2, 3.0, 1.0)
 
         # extra local safety
         ahead_cm = self.sensors.s.ahead_cm
@@ -993,7 +1019,8 @@ class ServerPetBrain:
             self._safe_set_head(car, pan=pan, tilt=getattr(car, "TILT_CENTER", None))
             self._last_plan_head_ts = now
 
-        chirps = clamp_int(plan.get("chirp", 0), 0, 2, 0)
+        # Never buzz during SLEEP — the server can't know the robot is in the dark
+        chirps = 0 if mode == MODE_SLEEP else clamp_int(plan.get("chirp", 0), 0, 2, 0)
         if chirps > 0:
             chirp(buzzer, n=chirps)
 
@@ -1020,6 +1047,27 @@ class ServerPetBrain:
         self.sensors.update_light(now)
         self.sensors.update_pose(now)
         self.sensors.update_target(now)
+
+        # If the server has been consistently unreachable, fall back to local brain
+        failures = self.step_worker.consecutive_failures
+        if failures >= self._SERVER_FALLBACK_THRESHOLD:
+            if not self._using_local:
+                log.warning(
+                    "[AI] server unreachable (%d consecutive failures) — switching to local brain",
+                    failures,
+                )
+                self._using_local = True
+                if self._local_brain is None:
+                    from pet_brain_local import LocalPetBrain
+                    self._local_brain = LocalPetBrain(self.sensors)
+                    self._local_brain.energy = self.energy
+            self._local_brain.stuck_recent = self.stuck_recent
+            self._local_brain.tick(car, led, buzzer, now, dt)
+            self.energy = self._local_brain.energy
+            return
+        elif self._using_local and failures == 0:
+            log.info("[AI] server back online — resuming server brain")
+            self._using_local = False
 
         # Reflex safety
         if self._reflex_layer(car, now, battery_v, ahead_cm, self.sensors.s.ir_bits):
