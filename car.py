@@ -1,95 +1,92 @@
-from ultrasonic import Ultrasonic
-from motor import Ordinary_Car
-from servo import Servo
-from infrared import Infrared
-from adc import ADC
 import time
 import math
 import threading
 from collections import deque
 
-# -----------------------------
-# "Virtual map" + memory helpers
-# -----------------------------
+from motor import MotorController
+from servo import Servo
+from infrared import Infrared
+from adc import ADC
+from ultrasonic import Ultrasonic
+
+
+# ── Maths helpers ─────────────────────────────────────────────────────────────
 
 def _wrap_deg(a: float) -> float:
-    a = (a + 180.0) % 360.0 - 180.0
-    return a
+    return (a + 180.0) % 360.0 - 180.0
 
 def _deg2rad(d: float) -> float:
     return d * math.pi / 180.0
 
+
+# ── Dead-reckoning pose ───────────────────────────────────────────────────────
+
 class PoseEstimator:
     """
-    Dead-reckoning from motor commands (no encoders).
-    It's approximate but good enough to avoid immediate re-trapping.
+    Approximate pose from motor commands (no encoders).
+    Calibration: 25 cm/s at PWM 600; 220 °/s at PWM 1500.
     """
-    def __init__(self,
-                 cm_per_sec_at_600: float = 25.0,
-                 deg_per_sec_at_1500: float = 220.0):
-        self.x_cm = 0.0
-        self.y_cm = 0.0
-        self.th_deg = 0.0  # heading; 0 means +X in our virtual frame
-        self.cm_per_sec_at_600 = cm_per_sec_at_600
-        self.deg_per_sec_at_1500 = deg_per_sec_at_1500
 
-    def integrate(self, cmd, dt: float):
+    def __init__(self,
+                 cm_per_sec_at_600:  float = 25.0,
+                 deg_per_sec_at_1500: float = 220.0):
+        self.x_cm   = 0.0
+        self.y_cm   = 0.0
+        self.th_deg = 0.0
+        self._cms   = cm_per_sec_at_600
+        self._dps   = deg_per_sec_at_1500
+
+    def integrate(self, cmd: tuple, dt: float) -> None:
         if dt <= 0:
             return
-
         fl, bl, fr, br = cmd
-
-        # detect "forward-ish": all wheels same sign, similar magnitude
         mags = [abs(fl), abs(bl), abs(fr), abs(br)]
-        avg = sum(mags) / 4.0
+        avg  = sum(mags) / 4.0
         if avg < 50:
             return
 
-        same_sign = (fl >= 0 and bl >= 0 and fr >= 0 and br >= 0) or (fl <= 0 and bl <= 0 and fr <= 0 and br <= 0)
-        forward_like = same_sign and (max(mags) - min(mags) < 250)
+        same_sign = all(v >= 0 for v in cmd) or all(v <= 0 for v in cmd)
+        forward_like = same_sign and (max(mags) - min(mags)) < 250
 
-        # detect "rotate-ish": left ~ -right
-        left_avg = (fl + bl) / 2.0
+        left_avg  = (fl + bl) / 2.0
         right_avg = (fr + br) / 2.0
-        rotate_like = (abs(abs(left_avg) - abs(right_avg)) < 300) and (left_avg * right_avg < 0)
+        rotate_like = (abs(abs(left_avg) - abs(right_avg)) < 300
+                       and left_avg * right_avg < 0)
 
         if forward_like:
-            # scale speed
-            sign = 1.0 if (fl + bl + fr + br) > 0 else -1.0
-            v = self.cm_per_sec_at_600 * (avg / 600.0) * sign
-            dist = v * dt
-            th = _deg2rad(self.th_deg)
+            sign = 1.0 if sum(cmd) > 0 else -1.0
+            dist = self._cms * (avg / 600.0) * sign * dt
+            th   = _deg2rad(self.th_deg)
             self.x_cm += dist * math.cos(th)
             self.y_cm += dist * math.sin(th)
-
         elif rotate_like:
-            # If left wheels forward and right wheels backward => typically clockwise (right turn)
-            # We'll treat CCW as +th, so clockwise is negative.
-            # If your car turns the opposite way, flip the sign logic below.
             direction = -1.0 if left_avg > 0 and right_avg < 0 else 1.0
-            omega = self.deg_per_sec_at_1500 * (avg / 1500.0) * direction
+            omega = self._dps * (avg / 1500.0) * direction
             self.th_deg = _wrap_deg(self.th_deg + omega * dt)
+
+
+# ── Occupancy memory ──────────────────────────────────────────────────────────
 
 class OccupancyMemory:
     """
-    Very lightweight occupancy + visited memory on a coarse grid.
-    Stored as dicts so it won't blow up RAM.
+    Lightweight log-odds occupancy grid and visit counter on a coarse dict-based grid.
+    10 cm cells keep RAM usage negligible on Raspberry Pi.
     """
+
+    LO_OCC  =  0.85
+    LO_FREE = -0.35
+    LO_MIN  = -4.0
+    LO_MAX  =  4.0
+
     def __init__(self, cell_cm: float = 10.0):
         self.cell_cm = cell_cm
-        self.logodds = {}   # (ix, iy) -> logodds
-        self.visited = {}   # (ix, iy) -> count
+        self.logodds: dict = {}
+        self.visited: dict = {}
 
-        # log-odds tuning
-        self.LO_OCC = 0.85
-        self.LO_FREE = -0.35
-        self.LO_MIN = -4.0
-        self.LO_MAX = 4.0
-
-    def _cell(self, x_cm: float, y_cm: float):
+    def _cell(self, x_cm: float, y_cm: float) -> tuple:
         return (int(round(x_cm / self.cell_cm)), int(round(y_cm / self.cell_cm)))
 
-    def mark_visited(self, x_cm: float, y_cm: float):
+    def mark_visited(self, x_cm: float, y_cm: float) -> None:
         c = self._cell(x_cm, y_cm)
         self.visited[c] = self.visited.get(c, 0) + 1
 
@@ -98,19 +95,19 @@ class OccupancyMemory:
 
     def occ_prob_at(self, x_cm: float, y_cm: float) -> float:
         lo = self.logodds.get(self._cell(x_cm, y_cm), 0.0)
-        # sigmoid
         return 1.0 / (1.0 + math.exp(-lo))
 
-    def _add_lo(self, cell, delta):
+    def _add_lo(self, cell: tuple, delta: float) -> None:
         lo = self.logodds.get(cell, 0.0) + delta
-        lo = max(self.LO_MIN, min(self.LO_MAX, lo))
-        self.logodds[cell] = lo
+        self.logodds[cell] = max(self.LO_MIN, min(self.LO_MAX, lo))
 
-    def update_from_scan(self, pose: PoseEstimator, servo_angles_deg, distances_cm, max_range_cm: float = 180.0):
+    def update_from_scan(self, pose: PoseEstimator,
+                         servo_angles_deg, distances_cm,
+                         max_range_cm: float = 180.0) -> None:
         """
-        servo_angles_deg: e.g. [30, 90, 150]
-        distances_cm: same length, values can be None
-        Assumes servo 90 is forward; 30 is right; 150 is left.
+        Ray-cast scan results into the grid.
+        servo_angles_deg: [30, 90, 150] → right, center, left.
+        90° = forward; distance None = ignore.
         """
         rx, ry, rth = pose.x_cm, pose.y_cm, pose.th_deg
         self.mark_visited(rx, ry)
@@ -118,42 +115,38 @@ class OccupancyMemory:
         for ang, dist in zip(servo_angles_deg, distances_cm):
             if dist is None:
                 continue
+            dist    = max(0.0, min(float(dist), max_range_cm))
+            bearing = _deg2rad(_wrap_deg(rth + (ang - 90.0)))
 
-            dist = max(0.0, min(float(dist), max_range_cm))
-            bearing = _wrap_deg(rth + (ang - 90.0))
-            br = _deg2rad(bearing)
-
-            # Raycast: mark freespace along the beam
+            # Mark free space along the beam
             step = self.cell_cm * 0.7
-            t = 0.0
+            t    = 0.0
             while t < dist:
-                px = rx + t * math.cos(br)
-                py = ry + t * math.sin(br)
-                self._add_lo(self._cell(px, py), self.LO_FREE)
+                self._add_lo(self._cell(rx + t * math.cos(bearing),
+                                        ry + t * math.sin(bearing)), self.LO_FREE)
                 t += step
 
-            # Mark obstacle at end if it's not "far away"
-            if dist < max_range_cm * 0.95 and dist > self.cell_cm:
-                ox = rx + dist * math.cos(br)
-                oy = ry + dist * math.sin(br)
-                self._add_lo(self._cell(ox, oy), self.LO_OCC)
+            # Mark obstacle at endpoint
+            if self.cell_cm < dist < max_range_cm * 0.95:
+                self._add_lo(self._cell(rx + dist * math.cos(bearing),
+                                        ry + dist * math.sin(bearing)), self.LO_OCC)
+
+
+# ── Memory navigator ──────────────────────────────────────────────────────────
 
 class MemoryNavigator:
     """
-    Chooses turns using:
-    - current scan clearance
-    - visited penalty (don't go where you just were)
-    - oscillation detection (L/R ping-pong)
-    - optional occupancy check
+    Choose a turn direction using clearance, visit history, and occupancy.
+    Detects L/R oscillation and local looping and escapes with stronger manoeuvres.
     """
-    def __init__(self, pose: PoseEstimator, mem: OccupancyMemory):
-        self.pose = pose
-        self.mem = mem
-        self.actions = deque(maxlen=14)   # 'L','R','B','U','F'
-        self.cells = deque(maxlen=20)     # recent visited cells (coarse)
-        self.last_decision_ts = time.time()
 
-    def _record(self, act: str):
+    def __init__(self, pose: PoseEstimator, mem: OccupancyMemory):
+        self.pose    = pose
+        self.mem     = mem
+        self.actions: deque = deque(maxlen=14)
+        self.cells:   deque = deque(maxlen=20)
+
+    def _record(self, act: str) -> None:
         self.actions.append(act)
         self.cells.append(self.mem._cell(self.pose.x_cm, self.pose.y_cm))
 
@@ -166,584 +159,386 @@ class MemoryNavigator:
     def stuck_in_same_area(self) -> bool:
         if len(self.cells) < 12:
             return False
-        # if most of the last 12 samples are in <=2 cells, you're basically looping in a corner
-        unique = len(set(list(self.cells)[-12:]))
-        return unique <= 2
+        return len(set(list(self.cells)[-12:])) <= 2
 
-    def score_direction(self, heading_offset_deg: float, clearance_cm: float):
-        """
-        heading_offset_deg: -60 for right, 0 forward, +60 left (relative to current heading)
-        """
-        # predict a point 35cm in that direction
+    def score_direction(self, heading_offset_deg: float, clearance_cm: float) -> float:
         th = _deg2rad(_wrap_deg(self.pose.th_deg + heading_offset_deg))
         px = self.pose.x_cm + 35.0 * math.cos(th)
         py = self.pose.y_cm + 35.0 * math.sin(th)
 
         visited = self.mem.visited_count_at(px, py)
-        occ_p = self.mem.occ_prob_at(px, py)
+        occ_p   = self.mem.occ_prob_at(px, py)
 
-        s = min(clearance_cm, 160.0)
-
-        # Avoid re-visiting
-        s -= min(visited, 6) * 18.0
-
-        # Avoid likely-occupied
+        score  = min(clearance_cm, 160.0)
+        score -= min(visited, 6) * 18.0
         if occ_p > 0.62:
-            s -= 80.0
-
-        # Exploration bonus: unknown cells (occ_p ~ 0.5) are valuable
-        # uncertainty in [0..1], max at 0.5
+            score -= 80.0
         uncertainty = 1.0 - min(1.0, abs(occ_p - 0.5) * 2.0)
-        s += uncertainty * 22.0
+        score += uncertainty * 22.0
+        return score
 
-        return s
-
-
-    def choose_action(self, left_cm, center_cm, right_cm):
-        # handle None as "far"
-        l = 180.0 if left_cm is None else float(left_cm)
+    def choose_action(self, left_cm, center_cm, right_cm) -> str:
+        l = 180.0 if left_cm   is None else float(left_cm)
         c = 180.0 if center_cm is None else float(center_cm)
-        r = 180.0 if right_cm is None else float(right_cm)
+        r = 180.0 if right_cm  is None else float(right_cm)
 
-        # dead-end / corner: everything close
         if c < 25 and l < 28 and r < 28:
-            return "U"  # U-turn escape
+            return "U"
 
-        # oscillation or local looping: do stronger escape
         if self.oscillating() or self.stuck_in_same_area():
-            return "S"  # spin escape (NO reverse)
-        
-        # Otherwise choose best turn direction (left/right) with memory scoring.
-        # Note: servo angles: 150=left(+60), 90=center(0), 30=right(-60)
-        left_score = self.score_direction(+60.0, l)
+            return "S"
+
+        left_score  = self.score_direction(+60.0, l)
         right_score = self.score_direction(-60.0, r)
 
-        # slight preference to not repeat same turn forever
-        if len(self.actions) > 0:
+        if self.actions:
             if self.actions[-1] == "L":
-                left_score -= 12.0
+                left_score  -= 12.0
             elif self.actions[-1] == "R":
                 right_score -= 12.0
 
-        if left_score >= right_score:
-            return "L"
-        else:
-            return "R"
+        return "L" if left_score >= right_score else "R"
 
-# -----------------------------
-# Car class
-# -----------------------------
+
+# ── Car ───────────────────────────────────────────────────────────────────────
 
 class Car:
+    """
+    Top-level robot controller.
+
+    Motor convention (positive = forward):
+        set_motors(front_left, back_left, front_right, back_right)
+
+    Head: pan channel 0 (0=right, 90=forward, 150=left),
+          tilt channel 1 (85=up, 120=neutral, 155=down).
+    """
+
+    SPEED_SCALE     = 0.65
+    MIN_EFFECTIVE   = 260    # PWM below this stalls motors
+    TILT_CENTER     = 120
+    TILT_UP         =  85
+    TILT_DOWN       = 155
+
     def __init__(self):
-        self.servo = None
-        self.sonic = None
-        self.motor = None
-        self.infrared = None
-        self.adc = None
+        self.servo    = Servo()
+        self.sonic    = Ultrasonic()
+        self.motor    = MotorController()
+        self.infrared = Infrared()
+        self.adc      = ADC()
 
-        self.car_record_time = time.time()
-        self.car_sonic_servo_angle = 30
-        self.car_sonic_servo_dir = 1
-        self.car_sonic_distance = [30, 30, 30]
-        self.time_compensate = 3
-
-        self.speed_scale = 0.65
-        self.min_effective_pwm = 260
-
-        self.last_forward_distance = None
-        self.stuck_start_time = None
-
-        # --- Memory / map ---
-        self.pose = PoseEstimator(
-            cm_per_sec_at_600=25.0,     # <<< calibrate if you want
-            deg_per_sec_at_1500=220.0   # <<< calibrate if you want
-        )
-        self.mem = OccupancyMemory(cell_cm=10.0)
-        self.nav = MemoryNavigator(self.pose, self.mem)
-
-        # Track motor command for odometry integration
-        self._last_cmd = (0, 0, 0, 0)
-        self._last_cmd_ts = time.time()
-
-        self.start()
-
-        # --- Head control (pan/tilt) ---
-        self.head_lock = threading.Lock()
-        self.PAN_CH = "0"
-        self.TILT_CH = "1"
-
-        # Your kit seems to like ~120 as "neutral"
-        self.TILT_CENTER = 120
-        self.TILT_UP = 85
-        self.TILT_DOWN = 155
-
-
-        # Track where the head is (so other code can know if sonar is "forward")
-        self.current_pan = 90
+        self.head_lock    = threading.Lock()
+        self.current_pan  = 90
         self.current_tilt = self.TILT_CENTER
 
-    def is_commanding_forward(self, min_pwm: int = 200) -> bool:
-        """True if current commanded motor PWM looks like forward motion."""
-        fl, bl, fr, br = self._last_cmd  # these are the scaled commands you store
-        return fl > min_pwm and bl > min_pwm and fr > min_pwm and br > min_pwm
+        self.pose = PoseEstimator()
+        self.mem  = OccupancyMemory(cell_cm=10.0)
+        self.nav  = MemoryNavigator(self.pose, self.mem)
 
-    
-    def set_head_pose(self, pan: int = None, tilt: int = None, settle: float = 0.02):
-        """Safely move head (pan/tilt) without fighting other threads."""
-        if self.servo is None:
-            return
+        self._last_cmd:    tuple = (0, 0, 0, 0)
+        self._last_cmd_ts: float = time.time()
+
+        # Stuck detection state
+        self._last_fwd_dist: float | None = None
+        self._stuck_since:   float | None = None
+
+        # Ultrasonic scan rotation state (legacy mode_ultrasonic)
+        self._sonic_angle = 30
+        self._sonic_dir   = 1
+        self._sonic_dists = [30, 30, 30]
+        self._mode_ts     = time.time()
+
+    # ── Head ─────────────────────────────────────────────────────────────────
+
+    def set_head_pose(self, pan: int = None, tilt: int = None,
+                      settle: float = 0.02) -> None:
+        """Thread-safe head positioning."""
         with self.head_lock:
             if tilt is not None:
                 self.current_tilt = int(tilt)
-                self.servo.set_servo_pwm(self.TILT_CH, self.current_tilt)
+                self.servo.set_servo_pwm('1', self.current_tilt)
             if pan is not None:
                 self.current_pan = int(pan)
-                self.servo.set_servo_pwm(self.PAN_CH, self.current_pan)
+                self.servo.set_servo_pwm('0', self.current_pan)
         if settle:
             time.sleep(settle)
 
-    def get_distance_current_direction(self, ensure_tilt_center: bool = True, settle: float = 0.01):
-        """
-        Read ultrasonic distance WITHOUT forcing pan to 90.
-        Useful while camera/head is scanning.
-        """
-        with self.head_lock:
-            if ensure_tilt_center:
-                self.servo.set_servo_pwm(self.TILT_CH, self.TILT_CENTER)
-                self.current_tilt = self.TILT_CENTER
-                if settle:
-                    time.sleep(settle)
-            return self.sonic.get_distance()
-
-
-    def park_head_for_drive(self):
-        # neutral + compact
+    def park_head_for_drive(self) -> None:
         self.set_head_pose(pan=90, tilt=self.TILT_CENTER, settle=0.02)
 
-    def park_head_for_reverse(self):
-        # tilt down to reduce “snag” risk (best you can do w/ current hardware)
+    def park_head_for_reverse(self) -> None:
         self.set_head_pose(pan=90, tilt=self.TILT_DOWN, settle=0.03)
 
+    # ── Motor wrapper ─────────────────────────────────────────────────────────
 
-    def pose_string(self):
-        return f"x={self.pose.x_cm:.0f}cm y={self.pose.y_cm:.0f}cm th={self.pose.th_deg:.0f}deg"
-
-    def start(self):
-        if self.servo is None:
-            self.servo = Servo()
-        if self.sonic is None:
-            self.sonic = Ultrasonic()
-        if self.motor is None:
-            self.motor = Ordinary_Car()
-        if self.infrared is None:
-            self.infrared = Infrared()
-        if self.adc is None:
-            self.adc = ADC()
-
-    def close(self):
-        self.set_motors(0, 0, 0, 0)
-        self.sonic.close()
-        self.motor.close()
-        self.infrared.close()
-        self.adc.close_i2c()
-        self.servo = None
-        self.sonic = None
-        self.motor = None
-        self.infrared = None
-        self.adc = None
-
-    # -----------------------------
-    # Motor wrapper (CRITICAL for memory/map)
-    # -----------------------------
-    def _scale_pwm(self, v: int) -> int:
-        """Scale motor command while preserving sign; clamp and avoid tiny stall values."""
-        v = int(round(v * self.speed_scale))
-
-        # clamp to motor limits
-        if v > 4095: v = 4095
-        if v < -4095: v = -4095
-
-        # deadband: if it's non-zero but too small to move, bump it to min
-        if v != 0 and abs(v) < self.min_effective_pwm:
-            v = self.min_effective_pwm if v > 0 else -self.min_effective_pwm
-
+    def _scale(self, v: int) -> int:
+        v = int(round(v * self.SPEED_SCALE))
+        v = max(-4095, min(4095, v))
+        if v != 0 and abs(v) < self.MIN_EFFECTIVE:
+            v = self.MIN_EFFECTIVE if v > 0 else -self.MIN_EFFECTIVE
         return v
 
-    def set_motors(self, fl, bl, fr, br):
+    def set_motors(self, fl: int, bl: int, fr: int, br: int) -> None:
+        """Apply global speed scale, deadband, update odometry, then drive."""
         now = time.time()
-        dt = now - self._last_cmd_ts
-
-        # integrate last motion before changing command
+        dt  = now - self._last_cmd_ts
         try:
             self.pose.integrate(self._last_cmd, dt)
             self.mem.mark_visited(self.pose.x_cm, self.pose.y_cm)
         except Exception:
             pass
 
-        # APPLY GLOBAL SPEED SCALE HERE
-        sfl = self._scale_pwm(int(fl))
-        sbl = self._scale_pwm(int(bl))
-        sfr = self._scale_pwm(int(fr))
-        sbr = self._scale_pwm(int(br))
-
+        sfl, sbl, sfr, sbr = self._scale(fl), self._scale(bl), self._scale(fr), self._scale(br)
         self.motor.set_motor_model(sfl, sbl, sfr, sbr)
-
-        # store the *scaled* command (so odometry matches what you actually did)
-        self._last_cmd = (sfl, sbl, sfr, sbr)
+        self._last_cmd    = (sfl, sbl, sfr, sbr)
         self._last_cmd_ts = now
 
+    def is_commanding_forward(self, min_pwm: int = 200) -> bool:
+        return all(v > min_pwm for v in self._last_cmd)
 
-    # -----------------------------
-    # Base behavior (kept, but uses set_motors)
-    # -----------------------------
-    def run_motor_ultrasonic(self, distance):
-        # distance = [right, center, left] in YOUR original code style
-        # We'll keep behavior but call set_motors so odometry updates.
-        if (distance[0] < 50 and distance[1] < 50 and distance[2] < 50) or distance[1] < 50:
-            self.set_motors(-1450, -1450, -1450, -1450)
-            time.sleep(0.1)
-            if distance[0] < distance[2]:
-                self.set_motors(1450, 1450, -1450, -1450)
-            else:
-                self.set_motors(-1450, -1450, 1450, 1450)
-        elif distance[0] < 30 and distance[1] < 30:
-            self.set_motors(1500, 1500, -1500, -1500)
-        elif distance[2] < 30 and distance[1] < 30:
-            self.set_motors(-1500, -1500, 1500, 1500)
-        elif distance[0] < 20:
-            self.set_motors(2000, 2000, -500, -500)
-            if distance[0] < 10:
-                self.set_motors(1500, 1500, -1000, -1000)
-        elif distance[2] < 20:
-            self.set_motors(-500, -500, 2000, 2000)
-            if distance[2] < 10:
-                self.set_motors(-1500, -1500, 1500, 1500)
-        else:
-            self.set_motors(600, 600, 600, 600)
+    # ── Distance reading ──────────────────────────────────────────────────────
 
-    def get_forward_distance(self):
+    def get_forward_distance(self) -> float | None:
+        """Park head forward, read ultrasonic, return distance in cm."""
         with self.head_lock:
-            # keep tilt neutral so ultrasonic isn't pointing at floor/ceiling
-            self.servo.set_servo_pwm(self.TILT_CH, self.TILT_CENTER)
-            self.servo.set_servo_pwm(self.PAN_CH, 90)
+            self.servo.set_servo_pwm('1', self.TILT_CENTER)
+            self.servo.set_servo_pwm('0', 90)
             time.sleep(0.05)
             return self.sonic.get_distance()
 
-
-    # -----------------------------
-    # Scan helpers
-    # -----------------------------
-    def scan_distances(self, angles=(30, 90, 150), settle=0.08, samples=1):
-        distances = []
-        angles_list = list(angles)
-
+    def get_distance_current_direction(self, ensure_tilt_center: bool = True,
+                                       settle: float = 0.01) -> float | None:
         with self.head_lock:
-            # lock tilt at center during ultrasonic scan
-            self.servo.set_servo_pwm(self.TILT_CH, self.TILT_CENTER)
+            if ensure_tilt_center:
+                self.servo.set_servo_pwm('1', self.TILT_CENTER)
+                self.current_tilt = self.TILT_CENTER
+                if settle:
+                    time.sleep(settle)
+            return self.sonic.get_distance()
+
+    def scan_distances(self, angles=(30, 90, 150), settle=0.08,
+                       samples=1) -> tuple[list, list]:
+        """Sweep head to each angle and return (angles, distances_cm)."""
+        angles_list = list(angles)
+        distances   = []
+        with self.head_lock:
+            self.servo.set_servo_pwm('1', self.TILT_CENTER)
             time.sleep(0.04)
-
             for ang in angles_list:
-                self.servo.set_servo_pwm(self.PAN_CH, ang)
+                self.servo.set_servo_pwm('0', ang)
                 time.sleep(settle)
-
                 if samples <= 1:
                     d = self.sonic.get_distance()
                 else:
-                    vals = []
-                    for _ in range(samples):
-                        dd = self.sonic.get_distance()
-                        if dd is not None:
-                            vals.append(dd)
-                        time.sleep(0.02)
-                    d = (sum(vals) / len(vals)) if vals else None
-
+                    vals = [v for _ in range(samples)
+                            if (v := self.sonic.get_distance()) is not None]
+                    d = sum(vals) / len(vals) if vals else None
                 distances.append(d)
-
         return angles_list, distances
 
+    def pose_string(self) -> str:
+        return f"x={self.pose.x_cm:.0f} y={self.pose.y_cm:.0f} th={self.pose.th_deg:.0f}°"
 
-    # -----------------------------
-    # NEW: memory-based avoid
-    # -----------------------------
-    def scan_and_avoid_with_memory(self):
+    # ── Obstacle avoidance ────────────────────────────────────────────────────
+
+    def _run_avoidance(self, right_cm, center_cm, left_cm) -> None:
+        """Reactive avoidance without memory (used as fallback only)."""
+        r = right_cm  or 180
+        c = center_cm or 180
+        l = left_cm   or 180
+        if (r < 50 and c < 50 and l < 50) or c < 50:
+            self.set_motors(-1450, -1450, -1450, -1450)
+            time.sleep(0.1)
+            if r < l:
+                self.set_motors(1450, 1450, -1450, -1450)
+            else:
+                self.set_motors(-1450, -1450, 1450, 1450)
+        elif r < 30 and c < 30:
+            self.set_motors(1500, 1500, -1500, -1500)
+        elif l < 30 and c < 30:
+            self.set_motors(-1500, -1500, 1500, 1500)
+        elif r < 20:
+            self.set_motors(1500 if r < 10 else 2000, 1500 if r < 10 else 2000, -1000, -1000)
+        elif l < 20:
+            self.set_motors(-1000, -1000, 1500 if l < 10 else 2000, 1500 if l < 10 else 2000)
+        else:
+            self.set_motors(600, 600, 600, 600)
+
+    def scan_and_avoid_with_memory(self) -> None:
+        """Scan left/center/right and execute a memory-guided evasion."""
         angles, dists = self.scan_distances(samples=2)
-
-        # angles: [30, 90, 150] => right, center, left
         right_cm, center_cm, left_cm = dists[0], dists[1], dists[2]
-
-        # update "virtual map"
         self.mem.update_from_scan(self.pose, angles, dists)
 
-        act = self.nav.choose_action(left_cm=left_cm, center_cm=center_cm, right_cm=right_cm)
+        act = self.nav.choose_action(left_cm, center_cm, right_cm)
 
-        # Motor commands for turns
-        # If your car turns the wrong direction, swap these two.
-                # Motor commands for turns
-        TURN_RIGHT = (1500, 1500, -1500, -1500)
-        TURN_LEFT  = (-1500, -1500, 1500, 1500)
-
-        NUDGE_PWM = 850
-        NUDGE_TIME = 0.28
-        CLEAR_OK = 35  # cm
+        TURN_R = ( 1500,  1500, -1500, -1500)
+        TURN_L = (-1500, -1500,  1500,  1500)
+        NUDGE  = 850
+        NUDGE_T = 0.28
+        CLEAR  = 35.0
 
         if act == "L":
             self.nav._record("L")
-            self.set_motors(*TURN_LEFT)
-            time.sleep(0.28)
-            self.set_motors(0, 0, 0, 0)
-            time.sleep(0.03)
-
-            # After turning left, your NEW forward roughly corresponds to previous left_cm
-            if left_cm is None or float(left_cm) > CLEAR_OK:
-                self.set_motors(NUDGE_PWM, NUDGE_PWM, NUDGE_PWM, NUDGE_PWM)
-                time.sleep(NUDGE_TIME)
+            self.set_motors(*TURN_L); time.sleep(0.28)
+            self.set_motors(0, 0, 0, 0); time.sleep(0.03)
+            if left_cm is None or float(left_cm) > CLEAR:
+                self.set_motors(NUDGE, NUDGE, NUDGE, NUDGE); time.sleep(NUDGE_T)
                 self.set_motors(0, 0, 0, 0)
 
         elif act == "R":
             self.nav._record("R")
-            self.set_motors(*TURN_RIGHT)
-            time.sleep(0.28)
-            self.set_motors(0, 0, 0, 0)
-            time.sleep(0.03)
-
-            # After turning right, your NEW forward roughly corresponds to previous right_cm
-            if right_cm is None or float(right_cm) > CLEAR_OK:
-                self.set_motors(NUDGE_PWM, NUDGE_PWM, NUDGE_PWM, NUDGE_PWM)
-                time.sleep(NUDGE_TIME)
+            self.set_motors(*TURN_R); time.sleep(0.28)
+            self.set_motors(0, 0, 0, 0); time.sleep(0.03)
+            if right_cm is None or float(right_cm) > CLEAR:
+                self.set_motors(NUDGE, NUDGE, NUDGE, NUDGE); time.sleep(NUDGE_T)
                 self.set_motors(0, 0, 0, 0)
-
 
         elif act == "U":
             self.nav._record("U")
-
-            TURN_RIGHT = (1500, 1500, -1500, -1500)
-            TURN_LEFT  = (-1500, -1500, 1500, 1500)
-
-            ls = 180 if left_cm is None else float(left_cm)
-            rs = 180 if right_cm is None else float(right_cm)
-            cmd = TURN_LEFT if ls >= rs else TURN_RIGHT
-
-            # Only reverse if it’s REALLY tight in front.
+            ls  = 180 if left_cm  is None else float(left_cm)
+            rs  = 180 if right_cm is None else float(right_cm)
+            cmd = TURN_L if ls >= rs else TURN_R
             if center_cm is not None and float(center_cm) < 18:
                 self.park_head_for_reverse()
-                self.set_motors(-1200, -1200, -1200, -1200)
-                time.sleep(0.25)  # SHORT reverse only
-                self.set_motors(0,0,0,0)
-                time.sleep(0.03)
-
+                self.set_motors(-1200, -1200, -1200, -1200); time.sleep(0.25)
+                self.set_motors(0, 0, 0, 0); time.sleep(0.03)
             self.park_head_for_drive()
-            self.set_motors(*cmd)
-            time.sleep(0.90)      # stronger turn instead of backing deeper
-            self.set_motors(0,0,0,0)
-            time.sleep(0.05)
-
-            self.set_motors(850, 850, 850, 850)
-            time.sleep(0.50)
-            self.set_motors(0,0,0,0)
-
+            self.set_motors(*cmd); time.sleep(0.90)
+            self.set_motors(0, 0, 0, 0); time.sleep(0.05)
+            self.set_motors(850, 850, 850, 850); time.sleep(0.50)
+            self.set_motors(0, 0, 0, 0)
 
         elif act == "B":
-            # oscillation escape: back up + 120-ish degree turn
             self.nav._record("B")
-            self.set_motors(-1200, -1200, -1200, -1200)
-            time.sleep(0.60)
-
-            # Do a longer turn opposite of what we've been doing
+            self.set_motors(-1200, -1200, -1200, -1200); time.sleep(0.60)
             last = self.nav.actions[-1] if self.nav.actions else None
-            cmd = TURN_LEFT
-            if last == "L":
-                cmd = TURN_RIGHT
-            elif last == "R":
-                cmd = TURN_LEFT
-
-            self.set_motors(*cmd)
-            time.sleep(0.85)
+            cmd  = TURN_R if last == "L" else TURN_L
+            self.set_motors(*cmd); time.sleep(0.85)
+            self.set_motors(0, 0, 0, 0); time.sleep(0.05)
+            self.set_motors(750, 750, 750, 750); time.sleep(0.45)
             self.set_motors(0, 0, 0, 0)
-            time.sleep(0.05)
 
-            self.set_motors(750, 750, 750, 750)
-            time.sleep(0.45)
-            self.set_motors(0, 0, 0, 0)
-        
         elif act == "S":
             self.nav._record("S")
-
-            TURN_RIGHT = (1500, 1500, -1500, -1500)
-            TURN_LEFT  = (-1500, -1500, 1500, 1500)
-
-            # Spin opposite your last turn bias to break ping-pong
             last = self.nav.actions[-2] if len(self.nav.actions) >= 2 else None
-            cmd = TURN_LEFT
-            if last == "L":
-                cmd = TURN_RIGHT
-            elif last == "R":
-                cmd = TURN_LEFT
-
+            cmd  = TURN_R if last == "L" else TURN_L
             self.park_head_for_drive()
-            self.set_motors(*cmd)
-            time.sleep(0.95)          # longer spin to actually “reset”
-            self.set_motors(0,0,0,0)
-            time.sleep(0.05)
-
-            self.set_motors(850, 850, 850, 850)   # forward push to exit the trap zone
-            time.sleep(0.55)
-            self.set_motors(0,0,0,0)
-
+            self.set_motors(*cmd); time.sleep(0.95)
+            self.set_motors(0, 0, 0, 0); time.sleep(0.05)
+            self.set_motors(850, 850, 850, 850); time.sleep(0.55)
+            self.set_motors(0, 0, 0, 0)
 
         else:
-            # fallback: old logic
-            self.run_motor_ultrasonic([right_cm or 180, center_cm or 180, left_cm or 180])
+            self._run_avoidance(right_cm, center_cm, left_cm)
 
-    # -----------------------------
-    # Stuck detection (your original)
-    # -----------------------------
-    def detect_stuck(self, current_distance, moving_forward,
-                    min_delta=2.0, timeout=1.0):
+    # ── Stuck detection & escape ──────────────────────────────────────────────
+
+    def detect_stuck(self, current_distance: float | None,
+                     moving_forward: bool,
+                     min_delta: float = 2.0,
+                     timeout: float   = 1.0) -> bool:
         now = time.time()
-
         if not moving_forward or current_distance is None:
-            self.stuck_start_time = None
-            self.last_forward_distance = current_distance
+            self._stuck_since    = None
+            self._last_fwd_dist  = current_distance
             return False
-
-        if self.last_forward_distance is None:
-            self.last_forward_distance = current_distance
+        if self._last_fwd_dist is None:
+            self._last_fwd_dist = current_distance
             return False
-
-        distance_change = abs(current_distance - self.last_forward_distance)
-
-        if distance_change < min_delta:
-            if self.stuck_start_time is None:
-                self.stuck_start_time = now
-            elif now - self.stuck_start_time > timeout:
+        if abs(current_distance - self._last_fwd_dist) < min_delta:
+            if self._stuck_since is None:
+                self._stuck_since = now
+            elif now - self._stuck_since > timeout:
                 return True
         else:
-            self.stuck_start_time = None
-
-        self.last_forward_distance = current_distance
+            self._stuck_since = None
+        self._last_fwd_dist = current_distance
         return False
 
-    # -----------------------------
-    # NEW: memory-based stuck escape
-    # -----------------------------
-    def escape_stuck_with_memory(self):
-        # quick scan before escaping to bias direction
+    def escape_stuck_with_memory(self) -> None:
         angles, dists = self.scan_distances(samples=2)
         self.mem.update_from_scan(self.pose, angles, dists)
+        ls = 180 if dists[2] is None else dists[2]
+        rs = 180 if dists[0] is None else dists[0]
 
-        right_cm, center_cm, left_cm = dists[0], dists[1], dists[2]
-        ls = 180 if left_cm is None else left_cm
-        rs = 180 if right_cm is None else right_cm
-
-        TURN_RIGHT = (1500, 1500, -1500, -1500)
-        TURN_LEFT  = (-1500, -1500, 1500, 1500)
-
-        # reverse longer
         self.park_head_for_reverse()
-        self.set_motors(-1300, -1300, -1300, -1300)
-        time.sleep(0.40)
-        self.set_motors(0,0,0,0)
-        time.sleep(0.03)
-
+        self.set_motors(-1300, -1300, -1300, -1300); time.sleep(0.40)
+        self.set_motors(0, 0, 0, 0); time.sleep(0.03)
         self.park_head_for_drive()
 
-        # choose turn toward "more open" and less visited
-        cmd = TURN_LEFT if ls >= rs else TURN_RIGHT
-        self.set_motors(*cmd)
-        time.sleep(0.75)
-
-        # nudge forward so we don't re-stick immediately
-        self.set_motors(800, 800, 800, 800)
-        time.sleep(0.45)
-
+        cmd = (-1500, -1500, 1500, 1500) if ls >= rs else (1500, 1500, -1500, -1500)
+        self.set_motors(*cmd); time.sleep(0.75)
+        self.set_motors(800, 800, 800, 800); time.sleep(0.45)
         self.set_motors(0, 0, 0, 0)
-        time.sleep(0.05)
 
-    # -----------------------------
-    # (Kept) your original scan-and-avoid (no memory)
-    # -----------------------------
-    def scan_and_avoid(self):
-        distances = [0, 0, 0]
-        angles = [30, 90, 150]
-        for i, angle in enumerate(angles):
-            self.servo.set_servo_pwm('0', angle)
-            time.sleep(0.08)
-            distances[i] = self.sonic.get_distance()
-        self.run_motor_ultrasonic(distances)
+    # ── Autonomous sub-modes (used by main.py remote control server) ──────────
 
-    # -----------------------------
-    # Other modes (kept, but make sure they use set_motors if you want mapping there too)
-    # -----------------------------
-    def mode_ultrasonic(self):
-        print("Ultrasonic Mode Running")
+    def mode_ultrasonic(self) -> None:
+        self.servo.set_servo_pwm('0', self._sonic_angle)
+        if   self._sonic_angle == 30:  self._sonic_dists[0] = self.sonic.get_distance()
+        elif self._sonic_angle == 90:  self._sonic_dists[1] = self.sonic.get_distance()
+        elif self._sonic_angle == 150: self._sonic_dists[2] = self.sonic.get_distance()
 
-        self.servo.set_servo_pwm('0', self.car_sonic_servo_angle)
+        self._run_avoidance(*self._sonic_dists)
 
-        if self.car_sonic_servo_angle == 30:
-            self.car_sonic_distance[0] = self.sonic.get_distance()
-        elif self.car_sonic_servo_angle == 90:
-            self.car_sonic_distance[1] = self.sonic.get_distance()
-        elif self.car_sonic_servo_angle == 150:
-            self.car_sonic_distance[2] = self.sonic.get_distance()
+        if   self._sonic_angle <= 30:  self._sonic_dir = 1
+        elif self._sonic_angle >= 150: self._sonic_dir = 0
+        self._sonic_angle += 60 if self._sonic_dir == 1 else -60
 
-        self.run_motor_ultrasonic(self.car_sonic_distance)
+    def mode_infrared(self) -> None:
+        if (time.time() - self._mode_ts) < 0.2:
+            return
+        self._mode_ts = time.time()
+        v = self.infrared.read_all_infrared()
+        cmds = {
+            2: (800, 800, 800, 800),
+            4: (-1500, -1500, 2500, 2500),
+            6: (-2000, -2000, 4000, 4000),
+            1: (2500, 2500, -1500, -1500),
+            3: (4000, 4000, -2000, -2000),
+            7: (0, 0, 0, 0),
+        }
+        if v in cmds:
+            self.set_motors(*cmds[v])
 
-        if self.car_sonic_servo_angle <= 30:
-            self.car_sonic_servo_dir = 1
-        elif self.car_sonic_servo_angle >= 150:
-            self.car_sonic_servo_dir = 0
-
-        if self.car_sonic_servo_dir == 1:
-            self.car_sonic_servo_angle += 60
-        else:
-            self.car_sonic_servo_angle -= 60
-
-    def mode_infrared(self):
-        if (time.time() - self.car_record_time) > 0.2:
-            self.car_record_time = time.time()
-            infrared_value = self.infrared.read_all_infrared()
-            if infrared_value == 2:
-                self.set_motors(800, 800, 800, 800)
-            elif infrared_value == 4:
-                self.set_motors(-1500, -1500, 2500, 2500)
-            elif infrared_value == 6:
-                self.set_motors(-2000, -2000, 4000, 4000)
-            elif infrared_value == 1:
-                self.set_motors(2500, 2500, -1500, -1500)
-            elif infrared_value == 3:
-                self.set_motors(4000, 4000, -2000, -2000)
-            elif infrared_value == 7:
-                self.set_motors(0, 0, 0, 0)
-
-    def mode_light(self):
-        if (time.time() - self.car_record_time) > 0.2:
-            self.car_record_time = time.time()
+    def mode_light(self) -> None:
+        if (time.time() - self._mode_ts) < 0.2:
+            return
+        self._mode_ts = time.time()
+        L = self.adc.read_adc(0)
+        R = self.adc.read_adc(1)
+        if L < 2.99 and R < 2.99:
+            self.set_motors(600, 600, 600, 600)
+        elif abs(L - R) < 0.15:
             self.set_motors(0, 0, 0, 0)
-            L = self.adc.read_adc(0)
-            R = self.adc.read_adc(1)
-            if L < 2.99 and R < 2.99:
-                self.set_motors(600, 600, 600, 600)
-            elif abs(L - R) < 0.15:
-                self.set_motors(0, 0, 0, 0)
-            elif L > 3 or R > 3:
-                if L > R:
-                    self.set_motors(-1200, -1200, 1400, 1400)
-                elif R > L:
-                    self.set_motors(1400, 1400, -1200, -1200)
+        elif L > R:
+            self.set_motors(-1200, -1200, 1400, 1400)
+        else:
+            self.set_motors(1400, 1400, -1200, -1200)
 
-    def mode_rotate(self, n):
-        angle = n
-        bat_compensate = 7.5 / (self.adc.read_adc(2) * (3 if self.adc.pcb_version == 1 else 2))
-        while True:
-            W = 2000
-            VY = int(2000 * math.cos(math.radians(angle)))
-            VX = -int(2000 * math.sin(math.radians(angle)))
-            FR = VY - VX + W
-            FL = VY + VX - W
-            BL = VY - VX - W
-            BR = VY + VX + W
-            print("rotating")
-            self.set_motors(FL, BL, FR, BR)
-            time.sleep(5 * self.time_compensate * bat_compensate / 1000)
-            angle -= 5
+    def mode_rotate(self, angle: int, stop_event: threading.Event = None) -> None:
+        """
+        Continuous rotation command, used by remote-control server.
+        Pass a threading.Event to stop_event for clean shutdown.
+        """
+        bat_v        = max(self.adc.read_adc(2) * (3 if self.adc.pcb_version == 1 else 2), 0.1)
+        bat_factor   = 7.5 / bat_v
+        step_delay   = 5 * 3 * bat_factor / 1000  # 3 = time_compensate constant
+
+        a = float(angle)
+        while stop_event is None or not stop_event.is_set():
+            W  = 2000
+            VY = int(2000 * math.cos(math.radians(a)))
+            VX = -int(2000 * math.sin(math.radians(a)))
+            self.set_motors(VY + VX - W, VY - VX - W, VY - VX + W, VY + VX + W)
+            time.sleep(step_delay)
+            a -= 5
+
+    # ── Lifecycle ─────────────────────────────────────────────────────────────
+
+    def close(self) -> None:
+        self.set_motors(0, 0, 0, 0)
+        self.sonic.close()
+        self.motor.close()
+        self.infrared.close()
+        self.adc.close_i2c()

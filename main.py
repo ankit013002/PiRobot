@@ -2,459 +2,436 @@ import sys
 import argparse
 import struct
 import time
-import signal
 import math
-from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5.QtCore import QTimer
-from server_ui import Ui_server_ui
-from server import Server
+import signal
 import threading
 import multiprocessing
-from message import Message_Parse
-from command import Command
+from threading import Thread
+from typing import Optional
+
+from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtCore import QTimer
+
+from server_ui import Ui_server_ui
+from server import Server
+from message import MessageParser
+import command as CMD
 from led import Led
 from camera import Camera
 from car import Car
 from buzzer import Buzzer
-from Thread import stop_thread
-from threading import Thread
 
-class mywindow(QMainWindow, Ui_server_ui):
+
+class RobotServer(QMainWindow, Ui_server_ui):
+    """
+    GUI server window for the Freenove 4WD Smart Car.
+
+    Manages five concurrent workers:
+      cmd_thread   — receives and dispatches TCP commands
+      video_thread — streams JPEG frames to video client
+      car_thread   — runs autonomous sub-modes
+      led_process  — runs LED animations in a separate process
+    """
+
     def __init__(self):
-        self.app = QApplication(sys.argv)
-        super(mywindow, self).__init__()
+        # Use an existing QApplication if one was already created (headless case)
+        self.app = QApplication.instance() or QApplication(sys.argv)
+        super().__init__()
         self.setupUi(self)
-        self.ui_button_state = True
-        self.config_task()
-        self.Button_Server.clicked.connect(self.on_pushButton_handle)
-        if self.ui_button_state:
-            self.on_pushButton_handle()
+
+        self._init_hardware()
+        self._init_threads()
+
+        self.Button_Server.clicked.connect(self._toggle_server)
         self.app.lastWindowClosed.connect(self.close_application)
-        signal.signal(signal.SIGINT, self.signal_handler)
+        signal.signal(signal.SIGINT, self._signal_handler)
 
-        self.timer = QTimer(self)
-        self.timer.timeout.connect(self.check_signals)
-        self.timer.start(100)
-        self.time_record = time.time()
+        self._timer = QTimer(self)
+        self._timer.timeout.connect(self._check_signals)
+        self._timer.start(100)
 
-    def config_task(self):
+        if self._auto_start:
+            self._toggle_server()
+
+    def _init_hardware(self) -> None:
         self.tcp_server = Server()
-        self.command = Command()
-        self.led = Led()
-        self.car = Car()
-        self.buzzer = Buzzer()
-        self.camera = Camera(stream_size=(400, 300))
-        self.queue_cmd = multiprocessing.Queue()
-        self.cmd_parse = Message_Parse()
-        self.queue_led = multiprocessing.Queue()
-        self.led_parse = Message_Parse()
+        self.led        = Led()
+        self.car        = Car()
+        self.buzzer     = Buzzer()
+        self.camera     = Camera(stream_size=(400, 300))
+        self._cmd_parse = MessageParser()
+        self._led_parse = MessageParser()
+        self._auto_start = True
 
-        self.cmd_thread = None
-        self.video_thread = None
-        self.car_thread = None
-        self.led_process = None
-        self.action_process = None
-        self.cmd_thread_is_running = False
-        self.video_thread_is_running = False
-        self.car_thread_is_running = False
-        self.led_process_is_running = False
-        self.action_process_is_running = False
-        self.car_mode = 1
-        self.rotation_flag = False
-        self.send_sonic_data_time = time.time()
-        self.send_light_data_time = time.time()
-        self.send_line_data_time = time.time()
-        self.led_mode = 0
+    def _init_threads(self) -> None:
+        self._queue_cmd = multiprocessing.Queue()
+        self._queue_led = multiprocessing.Queue()
 
-    def stop_car(self):
-        self.led.colorBlink(0)
-        self.camera.stop_stream()
-        self.camera.close()
-        self.car.close()
+        self._cmd_thread:   Optional[Thread]              = None
+        self._video_thread: Optional[Thread]              = None
+        self._car_thread:   Optional[Thread]              = None
+        self._led_proc:     Optional[multiprocessing.Process] = None
 
-    def on_pushButton_handle(self):
+        self._cmd_running   = False
+        self._video_running = False
+        self._car_running   = False
+        self._led_running   = False
+
+        self._car_mode    = 1   # 1=manual 2=light 3=infrared 4=ultrasonic
+        self._led_mode    = 0
+
+        # Rotation thread management
+        self._rotate_thread: Optional[Thread]           = None
+        self._rotate_stop   = threading.Event()
+        self._rotation_active = False
+
+        # Telemetry rate-limiters
+        self._t_sonic = time.time()
+        self._t_light = time.time()
+        self._t_line  = time.time()
+
+    # ── Server on/off ─────────────────────────────────────────────────────────
+
+    def _toggle_server(self) -> None:
         if self.label.text() == "Server Off":
             self.label.setText("Server On")
             self.Button_Server.setText("Off")
             self.tcp_server.start_tcp_servers()
-            self.set_threading_cmd_receive(True)
-            self.set_threading_video_send(True)
-            self.set_threading_car_task(True)
-            self.set_process_led_running(True)
-        elif self.label.text() == 'Server On':
+            self._set_cmd_thread(True)
+            self._set_video_thread(True)
+            self._set_car_thread(True)
+            self._set_led_process(True)
+        else:
             self.label.setText("Server Off")
             self.Button_Server.setText("On")
             self.tcp_server.stop_tcp_servers()
-            self.set_threading_cmd_receive(False)
-            self.set_threading_video_send(False)
-            self.set_threading_car_task(False)
-            self.set_process_led_running(False)
+            self._set_cmd_thread(False)
+            self._set_video_thread(False)
+            self._set_car_thread(False)
+            self._set_led_process(False)
             self.tcp_server = Server()
 
-    def send_sonic_data(self):
-        if time.time() - self.send_sonic_data_time > 0.5:
-            self.send_sonic_data_time = time.time()
-            if self.tcp_server.get_command_server_busy() == False:
-                distance = self.car.sonic.get_distance()
-                cmd = self.command.CMD_MODE + "#3#{:.2f}".format(distance) + "\n"
-                self.tcp_server.send_data_to_command_client(cmd)
-                #print(cmd)
+    # ── Telemetry senders ─────────────────────────────────────────────────────
 
-    def send_light_data(self):
-        if time.time() - self.send_light_data_time > 0.3:
-            self.send_light_data_time = time.time()
-            if self.tcp_server.get_command_server_busy() == False:
-                adc_light_1 = self.car.adc.read_adc(0)
-                adc_light_2 = self.car.adc.read_adc(1)
-                cmd = self.command.CMD_MODE + "#2#{:.2f}#{:.2f}".format(adc_light_1, adc_light_2) + "\n" 
-                self.tcp_server.send_data_to_command_client(cmd)
-                #print(cmd)
-    def send_line_data(self):
-        if time.time() - self.send_line_data_time > 0.3:
-            self.send_line_data_time = time.time()
-            if self.tcp_server.get_command_server_busy() == False:
-                ir_value_1 = self.car.infrared.read_one_infrared(1)
-                ir_value_2 = self.car.infrared.read_one_infrared(2)
-                ir_value_3 = self.car.infrared.read_one_infrared(3)
-                cmd = self.command.CMD_MODE + "#4#{:.2f}#{:.2f}#{:.2f}".format(ir_value_1, ir_value_2, ir_value_3) + "\n"
-                self.tcp_server.send_data_to_command_client(cmd)
-                #print(cmd)
-    def send_power_data(self):
-        if self.tcp_server.get_command_server_busy() == False:
-            power = self.car.adc.read_adc(2) * (3 if self.car.adc.pcb_version == 1 else 2)
-            cmd = self.command.CMD_POWER + "#" + str(power) + "\n"
-            self.tcp_server.send_data_to_command_client(cmd)
-            #print(cmd)
+    def _send_sonic(self) -> None:
+        if time.time() - self._t_sonic < 0.5:
+            return
+        self._t_sonic = time.time()
+        if not self.tcp_server.get_command_server_busy():
+            d = self.car.sonic.get_distance()
+            self.tcp_server.send_data_to_command_client(
+                f"{CMD.CMD_MODE}#3#{d:.2f}\n")
 
-    def set_threading_cmd_receive(self, state, close_time=0.3):
-        if self.cmd_thread is None:
-            buf_state = False
+    def _send_light(self) -> None:
+        if time.time() - self._t_light < 0.3:
+            return
+        self._t_light = time.time()
+        if not self.tcp_server.get_command_server_busy():
+            l = self.car.adc.read_adc(0)
+            r = self.car.adc.read_adc(1)
+            self.tcp_server.send_data_to_command_client(
+                f"{CMD.CMD_MODE}#2#{l:.2f}#{r:.2f}\n")
+
+    def _send_line(self) -> None:
+        if time.time() - self._t_line < 0.3:
+            return
+        self._t_line = time.time()
+        if not self.tcp_server.get_command_server_busy():
+            v1 = self.car.infrared.read_one_infrared(1)
+            v2 = self.car.infrared.read_one_infrared(2)
+            v3 = self.car.infrared.read_one_infrared(3)
+            self.tcp_server.send_data_to_command_client(
+                f"{CMD.CMD_MODE}#4#{v1:.2f}#{v2:.2f}#{v3:.2f}\n")
+
+    def _send_power(self) -> None:
+        if not self.tcp_server.get_command_server_busy():
+            batt = self.car.adc.read_adc(2) * (3 if self.car.adc.pcb_version == 1 else 2)
+            self.tcp_server.send_data_to_command_client(
+                f"{CMD.CMD_POWER}#{batt}\n")
+
+    # ── Command thread ────────────────────────────────────────────────────────
+
+    def _set_cmd_thread(self, run: bool, join_t: float = 0.3) -> None:
+        alive = self._cmd_thread is not None and self._cmd_thread.is_alive()
+        if run == alive:
+            return
+        if run:
+            self._cmd_running = True
+            self._cmd_thread  = Thread(target=self._cmd_loop, daemon=True)
+            self._cmd_thread.start()
         else:
-            buf_state = self.cmd_thread.is_alive()
-        if state != buf_state:
-            if state:
-                self.cmd_thread_is_running = True
-                self.cmd_thread = threading.Thread(target=self.threading_cmd_receive)
-                self.cmd_thread.start()
-            else:
-                self.cmd_thread_is_running = False
-                if self.cmd_thread is not None:
-                    self.cmd_thread.join(close_time)
-                    self.cmd_thread = None
+            self._cmd_running = False
+            if self._cmd_thread:
+                self._cmd_thread.join(join_t)
+                self._cmd_thread = None
 
-    def threading_cmd_receive(self):
-        while self.cmd_thread_is_running:
-            cmd_queue = self.tcp_server.read_data_from_command_server()
-            if cmd_queue.qsize() > 0:
-                client_address, all_message = cmd_queue.get()
-                main_message = all_message.strip()
-                if "\n" in main_message:
-                    for msg in main_message.split("\n"):
-                        self.queue_cmd.put(msg)
-                else:
-                    self.queue_cmd.put(main_message)
-            while not self.queue_cmd.empty():
-                msg = self.queue_cmd.get()
-                self.cmd_parse.clear_parameters()
-                self.cmd_parse.parse(msg)
-                print("{}".format(self.cmd_parse.input_string))
-                if self.cmd_parse.command_string == self.command.CMD_LED:
-                    self.queue_led.put(msg)
-                elif self.cmd_parse.command_string == self.command.CMD_LED_MOD:
-                    self.queue_led.put(msg)
-                else:
-                    if self.cmd_parse.command_string == self.command.CMD_SONIC:
-                        self.send_sonic_data()
-                    elif self.cmd_parse.command_string == self.command.CMD_LIGHT:
-                        self.send_light_data()
-                    elif self.cmd_parse.command_string == self.command.CMD_LINE:
-                        self.send_line_data()
-                    elif self.cmd_parse.command_string == self.command.CMD_POWER:
-                        self.send_power_data()
-                    elif self.cmd_parse.command_string == self.command.CMD_BUZZER:
-                        self.buzzer.set_state(self.cmd_parse.int_parameter[0])
-                    elif self.cmd_parse.command_string == self.command.CMD_SERVO:
-                        try:
-                            print(len(self.cmd_parse.int_parameter))
-                            data1 = str(self.cmd_parse.int_parameter[0])
-                            data2 = int(self.cmd_parse.int_parameter[1])
-                            print(data1, data2)
-                            if data1 == None or data2 == None:
-                                continue
-                            self.car.servo.set_servo_pwm(data1, data2)
-                        except Exception as e:
-                            print(e)
-                    elif self.cmd_parse.command_string == self.command.CMD_MOTOR:
-                        self.car_mode = 1
-                        try:
-                            duty = [int(self.cmd_parse.int_parameter[i]) for i in range(4)]
-                            if duty[0] == None or duty[1]== None or duty[2] == None or duty[3] == None:
-                                continue
-                            scale_factor = 0.8
-                            scaled_duty = [int(round(d * scale_factor)) for d in duty]
-                            self.car.motor.set_motor_model(scaled_duty[0], scaled_duty[1], scaled_duty[2], scaled_duty[3])
-                        except:
-                            pass
-                    elif self.cmd_parse.command_string == self.command.CMD_M_MOTOR:
-                        self.car_mode = 1
-                        duty = [int(self.cmd_parse.int_parameter[i]) for i in range(4)]
-                        LX = -int((duty[1] * math.sin(math.radians(duty[0]))))
-                        LY = int(duty[1] * math.cos(math.radians(duty[0])))
-                        RX = int(duty[3] * math.sin(math.radians(duty[2])))
-                        RY = int(duty[3] * math.cos(math.radians(duty[2])))
-                        FR = LY - LX + RX
-                        FL = LY + LX - RX
-                        BL = LY - LX - RX
-                        BR = LY + LX + RX
-                        if duty[0] == None or duty[1]== None or duty[2] == None or duty[3] == None:
-                            continue
-                        self.car.motor.set_motor_model(FL, BL, FR, BR)
-                    elif self.cmd_parse.command_string == self.command.CMD_CAR_ROTATE:
-                        try:
-                            self.car_mode = 1
-                            duty = [int(self.cmd_parse.int_parameter[i]) for i in range(4)]
-                            if duty[3] == 0:
-                                try:
-                                    stop_thread(Rotate_Mode)
-                                    self.rotation_flag = False
-                                except:
-                                    pass
-                                LX = -int((duty[1] * math.sin(math.radians(duty[0]))))
-                                LY = int(duty[1] * math.cos(math.radians(duty[0])))
-                                RX = int(duty[3] * math.sin(math.radians(duty[2])))
-                                RY = int(duty[3] * math.cos(math.radians(duty[2])))
-                                FR = LY - LX + RX
-                                FL = LY + LX - RX
-                                BL = LY - LX - RX
-                                BR = LY + LX + RX
-                                if duty[0] == None or duty[1]== None or duty[2] == None:
-                                    continue
-                                self.car.motor.set_motor_model(FL, BL, FR, BR)
-                            elif self.rotation_flag == False:
-                                try:
-                                    stop_thread(self.Rotate_Mode)
-                                except:
-                                    pass
-                                self.rotation_flag = True
-                                Rotate_Mode = Thread(target=self.car.mode_rotate, args=(duty[2],))
-                                Rotate_Mode.start()
-                        except Exception as e:
-                            print(e)
-                    elif self.cmd_parse.command_string == self.command.CMD_MODE:
-                        if self.cmd_parse.int_parameter[0] == 0:
-                            self.car_mode = 1
-                            self.car.motor.set_motor_model(0, 0, 0, 0)
-                            print("Car Mode: Manual Car")
-                        elif self.cmd_parse.int_parameter[0] == 1:
-                            self.car_mode = 2
-                            print("Car Mode: Light Car")
-                        elif self.cmd_parse.int_parameter[0] == 2:
-                            self.car_mode = 3
-                            print("Car Mode: Infrared Car")
-                        elif self.cmd_parse.int_parameter[0] == 3:
-                            self.car_mode = 4
-                            print("Car Mode: Ultrasonic Car")
-                    
-            if self.queue_cmd.empty():
+    def _cmd_loop(self) -> None:
+        while self._cmd_running:
+            q = self.tcp_server.read_data_from_command_server()
+            if q.qsize() > 0:
+                _, raw = q.get()
+                for msg in raw.strip().split("\n"):
+                    self._queue_cmd.put(msg)
+
+            while not self._queue_cmd.empty():
+                msg = self._queue_cmd.get()
+                self._dispatch(msg)
+
+            if self._queue_cmd.empty():
                 time.sleep(0.001)
 
-    def set_threading_car_task(self, state, close_time=0.3):
-        if self.car_thread is None:
-            buf_state = False
-        else:
-            buf_state = self.car_thread.is_alive()
-        if state != buf_state:
-            if state:
-                self.car_thread_is_running = True
-                self.car_thread = threading.Thread(target=self.threading_car_task)
-                self.car_thread.start()
-            else:
-                self.car_thread_is_running = False
-                if self.car_thread is not None:
-                    self.car_thread.join(close_time)
-                    self.car_thread = None
+    def _dispatch(self, msg: str) -> None:
+        p = self._cmd_parse
+        if not p.parse(msg):
+            return
 
-    def threading_car_task(self):
-        while self.car_thread_is_running:
-            if self.car_mode == 1:
+        cmd = p.command
+
+        # LED commands go to the LED process
+        if cmd in (CMD.CMD_LED, CMD.CMD_LED_MOD):
+            self._queue_led.put(msg)
+            return
+
+        if cmd == CMD.CMD_SONIC:
+            self._send_sonic()
+        elif cmd == CMD.CMD_LIGHT:
+            self._send_light()
+        elif cmd == CMD.CMD_LINE:
+            self._send_line()
+        elif cmd == CMD.CMD_POWER:
+            self._send_power()
+        elif cmd == CMD.CMD_BUZZER:
+            self.buzzer.set_state(bool(p.params[0]))
+        elif cmd == CMD.CMD_SERVO:
+            try:
+                self.car.servo.set_servo_pwm(str(p.params[0]), int(p.params[1]))
+            except Exception as e:
+                print(f"[SERVO] {e}")
+        elif cmd == CMD.CMD_MOTOR:
+            self._car_mode = 1
+            try:
+                fl, bl, fr, br = (int(round(v * 0.8)) for v in p.params[:4])
+                self.car.motor.set_motor_model(fl, bl, fr, br)
+            except Exception:
                 pass
-            elif self.car_mode == 2:
-                self.car.mode_light()
-                self.send_light_data()
-            elif self.car_mode == 3:
-                self.car.mode_infrared()
-            elif self.car_mode == 4:
-                self.car.mode_ultrasonic()
-                self.send_sonic_data()
+        elif cmd == CMD.CMD_M_MOTOR:
+            self._car_mode = 1
+            try:
+                angle1, speed1, angle2, speed2 = p.params[:4]
+                LX = -int(speed1 * math.sin(math.radians(angle1)))
+                LY =  int(speed1 * math.cos(math.radians(angle1)))
+                RX =  int(speed2 * math.sin(math.radians(angle2)))
+                FL = LY + LX - RX
+                BL = LY - LX - RX
+                FR = LY - LX + RX
+                BR = LY + LX + RX
+                self.car.motor.set_motor_model(FL, BL, FR, BR)
+            except Exception:
+                pass
+        elif cmd == CMD.CMD_CAR_ROTATE:
+            self._handle_rotate(p.params)
+        elif cmd == CMD.CMD_MODE:
+            mode_map = {0: 1, 1: 2, 2: 3, 3: 4}
+            self._car_mode = mode_map.get(p.params[0], 1)
+            if p.params[0] == 0:
+                self.car.motor.set_motor_model(0, 0, 0, 0)
+
+    def _handle_rotate(self, duty: list) -> None:
+        self._car_mode = 1
+        try:
+            if duty[3] == 0:
+                # Stop rotation and apply a standard mecanum command
+                self._rotate_stop.set()
+                if self._rotate_thread and self._rotate_thread.is_alive():
+                    self._rotate_thread.join(0.4)
+                self._rotate_thread   = None
+                self._rotation_active = False
+                self._rotate_stop.clear()
+
+                angle1, speed1, angle2, speed2 = duty[:4]
+                LX = -int(speed1 * math.sin(math.radians(angle1)))
+                LY =  int(speed1 * math.cos(math.radians(angle1)))
+                RX =  int(speed2 * math.sin(math.radians(angle2)))
+                self.car.motor.set_motor_model(
+                    LY + LX - RX, LY - LX - RX, LY - LX + RX, LY + LX + RX)
+
+            elif not self._rotation_active:
+                self._rotate_stop.clear()
+                self._rotation_active = True
+                self._rotate_thread = Thread(
+                    target=self.car.mode_rotate,
+                    args=(duty[2], self._rotate_stop),
+                    daemon=True,
+                )
+                self._rotate_thread.start()
+        except Exception as e:
+            print(f"[ROTATE] {e}")
+
+    # ── Car task thread ───────────────────────────────────────────────────────
+
+    def _set_car_thread(self, run: bool, join_t: float = 0.3) -> None:
+        alive = self._car_thread is not None and self._car_thread.is_alive()
+        if run == alive:
+            return
+        if run:
+            self._car_running = True
+            self._car_thread  = Thread(target=self._car_loop, daemon=True)
+            self._car_thread.start()
+        else:
+            self._car_running = False
+            if self._car_thread:
+                self._car_thread.join(join_t)
+                self._car_thread = None
+
+    def _car_loop(self) -> None:
+        while self._car_running:
+            if   self._car_mode == 2: self.car.mode_light();     self._send_light()
+            elif self._car_mode == 3: self.car.mode_infrared()
+            elif self._car_mode == 4: self.car.mode_ultrasonic(); self._send_sonic()
             time.sleep(0.01)
 
+    # ── Video thread ──────────────────────────────────────────────────────────
 
-    def set_threading_video_send(self, state, close_time=0.3):
-        if self.video_thread is None:
-            buf_state = False
+    def _set_video_thread(self, run: bool, join_t: float = 0.3) -> None:
+        alive = self._video_thread is not None and self._video_thread.is_alive()
+        if run == alive:
+            return
+        if run:
+            self._video_running = True
+            self._video_thread  = Thread(target=self._video_loop, daemon=True)
+            self._video_thread.start()
         else:
-            buf_state = self.video_thread.is_alive()
-        if state != buf_state:
-            if state:
-                self.video_thread_is_running = True
-                self.video_thread = threading.Thread(target=self.threading_video_send)
-                self.video_thread.start()
-            else:
-                self.video_thread_is_running = False
-                if self.video_thread is not None:
-                    self.video_thread.join(close_time)
-                    self.video_thread = None
+            self._video_running = False
+            if self._video_thread:
+                self._video_thread.join(join_t)
+                self._video_thread = None
 
-    def threading_video_send(self):
-        while self.video_thread_is_running:
-            if self.tcp_server.is_video_server_connected():
-                self.camera.start_stream()
-                while self.tcp_server.is_video_server_connected():
-                    frame = self.camera.get_frame()
-                    lenFrame = len(frame)
-                    lengthBin = struct.pack('<I', lenFrame)
-                    try:
-                        self.tcp_server.send_data_to_video_client(lengthBin)
-                        self.tcp_server.send_data_to_video_client(frame)
-                    except:
-                        break
-                self.camera.stop_stream()
-            else:
+    def _video_loop(self) -> None:
+        while self._video_running:
+            if not self.tcp_server.is_video_server_connected():
                 time.sleep(0.1)
+                continue
+            self.camera.start_stream()
+            while self.tcp_server.is_video_server_connected():
+                frame = self.camera.get_frame()
+                if frame is None:
+                    continue
+                try:
+                    self.tcp_server.send_data_to_video_client(struct.pack('<I', len(frame)))
+                    self.tcp_server.send_data_to_video_client(frame)
+                except Exception:
+                    break
+            self.camera.stop_stream()
 
-    def set_process_led_running(self, state, close_time=0.3):
-        if self.led_process is None:
-            buf_state = False
+    # ── LED process ───────────────────────────────────────────────────────────
+
+    def _set_led_process(self, run: bool, join_t: float = 0.3) -> None:
+        alive = self._led_proc is not None and self._led_proc.is_alive()
+        if run == alive:
+            return
+        if run:
+            self._led_running = True
+            self._led_proc    = multiprocessing.Process(
+                target=_led_process_fn, args=(self._queue_led,), daemon=True)
+            self._led_proc.start()
         else:
-            buf_state = self.led_process.is_alive()
-        if state != buf_state:
-            if state:
-                self.led_process_is_running = True
-                self.led_process = multiprocessing.Process(target=self.process_led_running, args=(self.queue_led,))
-                self.led_process.start()
-            else:
-                self.led_process_is_running = False
-                if self.led_process is not None:
-                    try:
-                        self.led_process.terminate()
-                        self.led_process.join(close_time)
-                        self.led_process = None
-                    except Exception as e:
-                        print(f"Error terminating LED process: {e}")
+            self._led_running = False
+            if self._led_proc:
+                try:
+                    self._led_proc.terminate()
+                    self._led_proc.join(join_t)
+                except Exception as e:
+                    print(f"[LED] terminate error: {e}")
+                self._led_proc = None
 
-    def process_led_running(self, queue_led):
-        try:
-            while self.led_process_is_running:
-                if not queue_led.empty():
-                    queue_buf_cmd = queue_led.get()
-                    self.led_parse.clear_parameters()
-                    self.led_parse.parse(queue_buf_cmd)
-                    print("LED: {}".format(queue_buf_cmd))
+    # ── Shutdown ──────────────────────────────────────────────────────────────
 
-                    if self.led_parse.command_string == "CMD_LED" and self.led_mode == 1:
-                        try:
-                            data1 = int(self.led_parse.int_parameter[0])
-                            data2 = int(self.led_parse.int_parameter[1])
-                            data3 = int(self.led_parse.int_parameter[2])
-                            data4 = int(self.led_parse.int_parameter[3])
-                            if data1==None or data2==None or data3==None or data4==None:
-                                continue
-                            self.led.ledIndex(data1,data2,data3,data4)
-                        except:
-                            pass
-                    if self.led_parse.command_string == "CMD_LED_MOD":
-                        if self.led_parse.int_parameter[0] == 1:
-                            self.led_mode = 1
-                        elif self.led_parse.int_parameter[0] == 2:
-                            self.led_mode = 2
-                        elif self.led_parse.int_parameter[0] == 3:
-                            self.led_mode = 3
-                        elif self.led_parse.int_parameter[0] == 4:
-                            self.led_mode = 4
-                        elif self.led_parse.int_parameter[0] == 5:
-                            self.led_mode = 5
-                        else:
-                            self.led_mode = 0
-                if self.led_mode == 1:
-                    pass
-                elif self.led_mode == 2:
-                    self.led.following()
-                elif self.led_mode == 3:
-                    self.led.colorBlink(1)
-                elif self.led_mode == 4:
-                    self.led.rainbowbreathing()
-                elif self.led_mode == 5:
-                    self.led.rainbowCycle()
-                elif self.led_mode == 0:
-                    self.led.colorBlink(0)
-                        
+    def close_application(self) -> None:
+        self._auto_start = False
+        self._set_cmd_thread(False)
+        self._set_video_thread(False)
+        self._set_car_thread(False)
+        self._set_led_process(False)
 
-        except KeyboardInterrupt:
-            print("LED process interrupted, cleaning up...")
-            self.led.colorBlink(0)
+        # Stop any running rotation
+        self._rotate_stop.set()
+        if self._rotate_thread and self._rotate_thread.is_alive():
+            self._rotate_thread.join(0.4)
 
-    def close_application(self):
-        self.ui_button_state = False
-        self.set_threading_cmd_receive(False)
-        self.set_threading_video_send(False)
-        self.set_threading_car_task(False)
-        self.set_process_led_running(False)
         if self.tcp_server:
             self.tcp_server.stop_tcp_servers()
-            self.tcp_server = None
-        self.stop_car()
-        if self.cmd_thread and self.cmd_thread.is_alive():
-            self.cmd_thread.join(0.1)
-        if self.video_thread and self.video_thread.is_alive():
-            self.video_thread.join(0.1)
-        if self.car_thread and self.car_thread.is_alive():
-            self.car_thread.join(0.1)
-        if self.led_process and self.led_process.is_alive():
-            self.led_process.terminate()
-            self.led_process.join(0.1)
+        try:
+            self.led.colorBlink(0)
+            self.camera.stop_stream()
+            self.camera.close()
+            self.car.close()
+        except Exception:
+            pass
         self.app.quit()
-        sys.exit(1)
+        sys.exit(0)
 
-    def signal_handler(self, signal, frame):
-        print("Caught Ctrl+C, stopping application...")
+    def _signal_handler(self, sig, frame) -> None:
+        print("Ctrl+C — stopping.")
         self.close_application()
 
-    def check_signals(self):
+    def _check_signals(self) -> None:
         if self.app.hasPendingEvents():
             self.app.processEvents()
-        if not self.ui_button_state and not self.cmd_thread_is_running and not self.video_thread_is_running and not self.led_process_is_running and not self.action_process_is_running:
-            self.app.quit()
+
+
+# ── LED process (runs in separate process so it doesn't block the main loop) ──
+
+def _led_process_fn(queue_led: multiprocessing.Queue) -> None:
+    """
+    Runs LED animations in a dedicated process.
+    Receives CMD_LED / CMD_LED_MOD messages via queue.
+    """
+    led      = Led()
+    parser   = MessageParser()
+    led_mode = 0
+
+    try:
+        while True:
+            while not queue_led.empty():
+                parser.parse(queue_led.get())
+                if parser.command == CMD.CMD_LED and led_mode == 1:
+                    try:
+                        idx, R, G, B = parser.params[:4]
+                        led.ledIndex(idx, R, G, B)
+                    except Exception:
+                        pass
+                elif parser.command == CMD.CMD_LED_MOD:
+                    led_mode = parser.params[0] if parser.params else 0
+
+            if   led_mode == 0: led.colorBlink(0)
+            elif led_mode == 1: pass
+            elif led_mode == 2: led.following()
+            elif led_mode == 3: led.colorBlink(1)
+            elif led_mode == 4: led.rainbowbreathing()
+            elif led_mode == 5: led.rainbowCycle()
+
+    except KeyboardInterrupt:
+        led.colorBlink(0)
+
+
+# ── Entry point ───────────────────────────────────────────────────────────────
 
 if __name__ == '__main__':
-    # Parse command line arguments
     parser = argparse.ArgumentParser(description='Freenove 4WD Smart Car Server')
-    parser.add_argument('-t', '--terminal', action='store_true', help='Run in terminal mode (no GUI)')
-    parser.add_argument('-n', '--no-gui', action='store_true', help='Run in terminal mode (no GUI)')
-    
+    parser.add_argument('-t', '--terminal', action='store_true',
+                        help='Run headless (no GUI window)')
+    parser.add_argument('-n', '--no-gui',   action='store_true',
+                        help='Alias for --terminal')
     args = parser.parse_args()
-    
-    # Check if either flag is set
-    headless_mode = args.terminal or args.no_gui
-    if headless_mode:
-        # Run in headless mode - only start server functionality
-        app = QApplication(sys.argv)
-        server_window = mywindow()
-        
-        # Start the server automatically
-        if server_window.label.text() == "Server Off":
-            server_window.on_pushButton_handle()
-        
-        # Handle Ctrl+C gracefully
-        signal.signal(signal.SIGINT, server_window.signal_handler)
-        
-        # Keep the application running
+
+    window = RobotServer()
+
+    if args.terminal or args.no_gui:
+        signal.signal(signal.SIGINT, window._signal_handler)
         try:
-            sys.exit(app.exec_())
+            sys.exit(window.app.exec_())
         except KeyboardInterrupt:
-            server_window.close_application()
-            sys.exit(0)
+            window.close_application()
     else:
-        # Run with GUI (existing behavior)
-        myshow = mywindow()
-        myshow.show()
-        sys.exit(myshow.app.exec_())
+        window.show()
+        sys.exit(window.app.exec_())

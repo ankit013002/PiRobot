@@ -698,8 +698,6 @@ class ServerStepWorker:
 # ============================================================
 class ServerPetBrain:
     def __init__(self, sensors: SensorHub):
-        if not PET_SERVER_URL:
-            raise RuntimeError("PET_SERVER_URL is not set. Put it in .env or export it.")
         self.sensors = sensors
 
         self.mode: str = MODE_ROAM
@@ -1054,14 +1052,11 @@ class ServerPetBrain:
 # MAIN
 # ============================================================
 def main():
-    log.info("[BOOT] autonomous3 -> %s", PET_SERVER_URL)
+    log.info("[BOOT] autonomous3 -> %s", PET_SERVER_URL or "(local brain)")
     log.info("[BOOT] ROBOT_ID=%s anon=%s privacy=%s camera=%s",
              ROBOT_ID, PET_ANON, PET_PRIVACY_LEVEL, PET_USE_CAMERA)
     log.info("[BOOT] PET_STEP_TIMEOUT_S=%.1f STOP_WHILE_THINKING=%s",
              PET_STEP_TIMEOUT_S, str(STOP_WHILE_THINKING))
-
-    if not PET_SERVER_URL:
-        raise SystemExit("ERROR: PET_SERVER_URL not set. Put it in your .env and rerun.")
 
     car = Car()
     led = Led()
@@ -1082,7 +1077,14 @@ def main():
             log.info("[BOOT] vision tracker disabled (exception)")
 
     sensors = SensorHub(car, vision)
-    brain = ServerPetBrain(sensors)
+
+    if PET_SERVER_URL:
+        brain = ServerPetBrain(sensors)
+        log.info("[BOOT] brain=SERVER  url=%s", PET_SERVER_URL)
+    else:
+        from pet_brain_local import LocalPetBrain
+        brain = LocalPetBrain(sensors)
+        log.info("[BOOT] brain=LOCAL  (set PET_SERVER_URL to use AI server)")
 
     # short boot chirp
     chirp(buzzer, n=1)

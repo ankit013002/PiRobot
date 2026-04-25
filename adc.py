@@ -1,56 +1,50 @@
-import smbus  # Import the smbus module for I2C communication
-import time  # Import the time module for sleep functionality
-from parameter import ParameterManager  # Import the ParameterManager class from the parameter module
+import smbus
+import time
+from parameter import ParameterManager
+
 
 class ADC:
-    def __init__(self):
-        """Initialize the ADC class."""
-        self.I2C_ADDRESS = 0x48                                               # Set the I2C address of the ADC
-        self.ADS7830_COMMAND = 0x84                                           # Set the command byte for ADS7830
-        self.parameter_manager = ParameterManager()                           # Create an instance of ParameterManager
-        self.pcb_version = self.parameter_manager.get_pcb_version()           # Get the PCB version
-        self.adc_voltage_coefficient = 3.3 if self.pcb_version == 1 else 5.2  # Set the ADC voltage coefficient based on the PCB version
-        self.i2c_bus = smbus.SMBus(1)                                         # Initialize the I2C bus
+    """ADS7830 8-channel, 8-bit ADC over I2C (address 0x48)."""
 
-    def _read_stable_byte(self) -> int:
-        """Read a stable byte from the ADC."""
-        while True:
-            value1 = self.i2c_bus.read_byte(self.I2C_ADDRESS)                 # Read the first byte from the ADC
-            value2 = self.i2c_bus.read_byte(self.I2C_ADDRESS)                 # Read the second byte from the ADC
-            if value1 == value2:
-                return value1                                                 # Return the value if both reads are the same
+    _I2C_ADDR   = 0x48
+    _CMD_BASE   = 0x84  # single-ended, internal ref, ADC on
+
+    def __init__(self):
+        params = ParameterManager()
+        self.pcb_version = params.get_pcb_version()
+        # PCB v1: 3.3 V reference; PCB v2: 5.2 V reference
+        self._v_ref = 3.3 if self.pcb_version == 1 else 5.2
+        self._bus = smbus.SMBus(1)
 
     def read_adc(self, channel: int) -> float:
-        """Read the ADC value for the specified channel using ADS7830."""
-        command_set = self.ADS7830_COMMAND | ((((channel << 2) | (channel >> 1)) & 0x07) << 4)  # Calculate the command set for the specified channel
-        self.i2c_bus.write_byte(self.I2C_ADDRESS, command_set)                # Write the command set to the ADC
-        value = self._read_stable_byte()                                      # Read a stable byte from the ADC
-        voltage = value / 255.0 * self.adc_voltage_coefficient                # Convert the ADC value to voltage
-        return round(voltage, 2)                                              # Return the voltage rounded to 2 decimal places
+        """Return voltage on the given channel (0–7), rounded to 2 dp."""
+        cmd = self._CMD_BASE | (((channel << 2) | (channel >> 1)) & 0x07) << 4
+        self._bus.write_byte(self._I2C_ADDR, cmd)
+        raw = self._read_stable()
+        return round(raw / 255.0 * self._v_ref, 2)
 
-    def scan_i2c_bus(self) -> None:
-        """Scan the I2C bus for connected devices."""
-        print("Scanning I2C bus...")                                          # Print a message indicating the start of I2C bus scanning
-        for device in range(128):                                             # Iterate over possible I2C addresses (0 to 127)
-            try:
-                self.i2c_bus.read_byte_data(device, 0)                        # Try to read data from the current device address
-                print(f"Device found at address: 0x{device:02X}")            # Print the address of the found device
-            except OSError:
-                pass                                                          # Ignore any OSError exceptions
+    def _read_stable(self, max_tries: int = 20) -> int:
+        """Read two consecutive identical bytes to filter ADC noise."""
+        v1 = self._bus.read_byte(self._I2C_ADDR)
+        for _ in range(max_tries):
+            v2 = self._bus.read_byte(self._I2C_ADDR)
+            if v1 == v2:
+                return v1
+            v1 = v2
+        return v1  # best effort
 
     def close_i2c(self) -> None:
-        """Close the I2C bus."""
-        self.i2c_bus.close()                                                  # Close the I2C bus
+        self._bus.close()
+
 
 if __name__ == '__main__':
-    print('Program is starting ... ')                                        # Print a message indicating the start of the program
-    adc = ADC()                                                             # Create an instance of the ADC class
+    adc = ADC()
     try:
         while True:
-            left_idr = adc.read_adc(0)                                        # Read the left photoresistor value
-            right_idr = adc.read_adc(1)                                       # Read the right photoresistor value
-            power = adc.read_adc(2) * (3 if adc.pcb_version == 1 else 2)      # Calculate the power value based on the PCB version
-            print(f"Left IDR: {left_idr}V, Right IDR: {right_idr}V, Power: {power}V")  # Print the values of left IDR, right IDR, and power
-            time.sleep(1)                                                     # Wait for 1 second
+            l = adc.read_adc(0)
+            r = adc.read_adc(1)
+            batt = adc.read_adc(2) * (3 if adc.pcb_version == 1 else 2)
+            print(f"Light L={l:.2f}V  R={r:.2f}V  Battery={batt:.2f}V")
+            time.sleep(1)
     except KeyboardInterrupt:
-        adc.close_i2c()                                                       # Close the I2C bus when the program is interrupted
+        adc.close_i2c()

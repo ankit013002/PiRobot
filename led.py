@@ -1,190 +1,153 @@
-# -*-coding: utf-8 -*-
 import time
 from parameter import ParameterManager
 from rpi_ledpixel import Freenove_RPI_WS281X
 from spi_ledpixel import Freenove_SPI_LedPixel
 
+
 class Led:
+    """NeoPixel LED strip controller (8 pixels)."""
+
     def __init__(self):
-        """Initialize the Led class and set up LED strip based on PCB and Raspberry Pi versions."""
-        # Initialize the ParameterManager instance
-        self.param = ParameterManager()
-        # Get the Connect version from the parameter file
-        self.connect_version = self.param.get_connect_version()
-        # Get the Raspberry Pi version from the parameter file
-        self.pi_version = self.param.get_raspberry_pi_version()
+        params  = ParameterManager()
+        connect = params.get_connect_version()
+        pi      = params.get_pi_version()
 
-        # Set up the LED strip based on PCB and Raspberry Pi versions
-        if self.connect_version == 1 and self.pi_version == 1:
+        if connect == 1 and pi == 1:
             self.strip = Freenove_RPI_WS281X(8, 255, 'RGB')
-            self.is_support_led_function = True
-
-        elif self.connect_version == 2 and (self.pi_version == 1 or self.pi_version == 2):
+            self._ok   = True
+        elif connect == 2 and pi in (1, 2):
             self.strip = Freenove_SPI_LedPixel(8, 255, 'GRB')
-            self.is_support_led_function = True
-
-        elif self.connect_version == 1 and self.pi_version == 2:
-            # Print an error message and disable LED function if unsupported combination
-            print("Connect Version 1.0 is not supported on Raspberry PI 5.")
-            self.is_support_led_function = False
-                    
-        self.start = time.time()
-        self.next = 0
-        self.color_wheel_value = 100
-        self.color_chase_rainbow_index = 0
-        self.color_wipe_index = 0
-        self.rainbowbreathing_brightness = 0
-
-    def colorBlink(self, state=1, wait_ms=300):
-        """Wipe color across display a pixel at a time."""
-        if self.is_support_led_function == False:
-            return
+            self._ok   = True
         else:
-            if state == 1:
-                color = [[255, 0, 0],[0, 0, 0],[0, 255, 0],[0, 0, 0],[0, 0, 255],[0, 0, 0]]
-                self.next = time.time()
-                if (self.next - self.start) > wait_ms / 1000.0:
-                    self.start = self.next
-                    for i in range(self.strip.get_led_count()):
-                        self.strip.set_led_rgb_data(i, color[self.color_wipe_index%4])
-                        self.strip.show()
-                    self.color_wipe_index += 1
-            else:
-                self.strip.set_all_led_color(0, 0, 0)
-                self.strip.show()
+            print(f"[LED] Unsupported combination Connect={connect} Pi={pi}. LEDs disabled.")
+            self.strip = None
+            self._ok   = False
 
-    def wheel(self, pos):
-        """Generate rainbow colors across 0-255 positions."""
-        if self.is_support_led_function == False:
+        self._start = time.time()
+        self._next  = 0.0
+
+        # Animation state
+        self._wheel_val        = 100
+        self._chase_idx        = 0
+        self._wipe_idx         = 0
+        self._breathe_bright   = 0
+
+    def _guard(self) -> bool:
+        return self._ok
+
+    # ── Per-frame animations (call in a tight loop) ───────────────────────────
+
+    def colorBlink(self, state: int = 1, wait_ms: float = 300) -> None:
+        """Cycle through a simple 4-step color sequence. state=0 to clear."""
+        if not self._guard():
             return
-        else:
-            if pos < 0 or pos > 255:
-                r = g = b = 0
-            elif pos < 85:
-                r = pos * 3
-                g = 255 - pos * 3
-                b = 0
-            elif pos < 170:
-                pos -= 85
-                r = 255 - pos * 3
-                g = 0
-                b = pos * 3
-            else:
-                pos -= 170
-                r = 0
-                g = pos * 3
-                b = 255 - pos * 3
-            return (r, g, b)
-        
-    def rainbowbreathing(self, wait_ms=10):
-        """Draw rainbowbreathing that fades across all pixels at once."""
-        if self.is_support_led_function == False:
+        if not state:
+            self.strip.set_all_led_color(0, 0, 0)
+            self.strip.show()
             return
-        else:
-            self.next = time.time()
-            if (self.next - self.start) > wait_ms / 1000.0:
-                self.start = self.next
-                color1 = self.wheel((self.color_wheel_value%255) & 255)
-                if (self.rainbowbreathing_brightness%200) > 100:
-                    brightness = 200 - self.rainbowbreathing_brightness
-                else:
-                    brightness = self.rainbowbreathing_brightness
-                color2 = [int(color1[0] * brightness / 100), int(color1[1] * brightness / 100), int(color1[2] * brightness / 100)]
-                for i in range(self.strip.get_led_count()):
-                    self.strip.set_led_rgb_data(i, color2)
-                self.strip.show()
+        now = time.time()
+        if now - self._start > wait_ms / 1000.0:
+            self._start = now
+            palette = [(255, 0, 0), (0, 0, 0), (0, 255, 0), (0, 0, 0)]
+            color   = palette[self._wipe_idx % 4]
+            for i in range(self.strip.get_led_count()):
+                self.strip.set_led_rgb_data(i, color)
+            self.strip.show()
+            self._wipe_idx += 1
 
-                self.rainbowbreathing_brightness += 1  
-                if self.rainbowbreathing_brightness >= 200:
-                    self.rainbowbreathing_brightness = 0
-                    self.color_wheel_value += 32
-                    if self.color_wheel_value >= 256:
-                        self.color_wheel_value = 0
-
-
-
-    def rainbowCycle(self, wait_ms = 20):
-        """Draw rainbow that uniformly distributes itself across all pixels."""
-        if not self.is_support_led_function:
+    def following(self, wait_ms: float = 50) -> None:
+        """Single rainbow pixel chasing around the strip."""
+        if not self._guard():
             return
-        else:
-            self.next = time.time()
-            if (self.next - self.start > wait_ms / 1000.0):
-                self.start = self.next
-                for i in range(self.strip.get_led_count()):
-                    self.strip.set_led_rgb_data(i, self.wheel((int(i * 256 / self.strip.get_led_count()) + self.color_wheel_value) & 255))
-                self.strip.show()
-                self.color_wheel_value += 1
-                if self.color_wheel_value >= 256:
-                    self.color_wheel_value = 0
+        now = time.time()
+        if now - self._start > wait_ms / 1000.0:
+            self._start = now
+            for i in range(self.strip.get_led_count()):
+                self.strip.set_led_rgb_data(i, [0, 0, 0])
+            self.strip.set_led_rgb_data(self._chase_idx, self._wheel(self._wheel_val & 255))
+            self.strip.show()
+            self._chase_idx   = (self._chase_idx + 1) % self.strip.get_led_count()
+            self._wheel_val   = (self._wheel_val + 5) % 256
 
-    def following(self, wait_ms=50):
-        """Rainbow movie theater light style chaser animation."""
-        if self.is_support_led_function == False:
+    def rainbowbreathing(self, wait_ms: float = 10) -> None:
+        """Whole strip breathes through rainbow colors."""
+        if not self._guard():
             return
-        else:
-            self.next = time.time()
-            if (self.next - self.start > wait_ms / 1000.0):
-                self.start = self.next
-                for i in range(self.strip.get_led_count()):
-                    self.strip.set_led_rgb_data(i, [0, 0, 0])
-                self.strip.set_led_rgb_data(self.color_chase_rainbow_index, self.wheel((self.color_wheel_value) & 255))
-                self.strip.show()
-                self.color_chase_rainbow_index += 1
-                if self.color_chase_rainbow_index >= self.strip.get_led_count():
-                    self.color_chase_rainbow_index = 0
-                self.color_wheel_value += 5
-                if self.color_wheel_value >= 256:
-                    self.color_wheel_value = 0
-               
-                    
-    def ledIndex(self, index, R, G, B):
-        """Set the color of specific LEDs based on the index."""
-        if self.is_support_led_function == False:
+        now = time.time()
+        if now - self._start > wait_ms / 1000.0:
+            self._start = now
+            base  = self._wheel(self._wheel_val & 255)
+            phase = self._breathe_bright % 200
+            b     = phase if phase <= 100 else 200 - phase
+            color = [int(c * b / 100) for c in base]
+            for i in range(self.strip.get_led_count()):
+                self.strip.set_led_rgb_data(i, color)
+            self.strip.show()
+            self._breathe_bright += 1
+            if self._breathe_bright >= 200:
+                self._breathe_bright = 0
+                self._wheel_val = (self._wheel_val + 32) % 256
+
+    def rainbowCycle(self, wait_ms: float = 20) -> None:
+        """Rainbow distributed evenly across all pixels."""
+        if not self._guard():
             return
+        now = time.time()
+        if now - self._start > wait_ms / 1000.0:
+            self._start = now
+            n = self.strip.get_led_count()
+            for i in range(n):
+                self.strip.set_led_rgb_data(
+                    i, self._wheel((int(i * 256 / n) + self._wheel_val) & 255))
+            self.strip.show()
+            self._wheel_val = (self._wheel_val + 1) % 256
+
+    # ── Direct control ────────────────────────────────────────────────────────
+
+    def ledIndex(self, index: int, R: int, G: int, B: int) -> None:
+        """
+        Set pixels selected by a bitmask.
+        index=0xFF sets all 8 pixels to (R, G, B) in a single SPI write.
+        """
+        if not self._guard():
+            return
+        color = (R, G, B)
+        mask  = index
+        for i in range(self.strip.get_led_count()):
+            if mask & 0x01:
+                self.strip.set_led_rgb_data(i, color)
+            mask >>= 1
+        self.strip.show()  # single flush after setting all pixels
+
+    # ── Internal ──────────────────────────────────────────────────────────────
+
+    @staticmethod
+    def _wheel(pos: int) -> tuple:
+        """Map 0–255 to an (R, G, B) rainbow color."""
+        if pos < 85:
+            return (pos * 3, 255 - pos * 3, 0)
+        elif pos < 170:
+            pos -= 85
+            return (255 - pos * 3, 0, pos * 3)
         else:
-            color = (R, G, B)
-            for i in range(8):
-                if index & 0x01 == 1:
-                    self.strip.set_led_rgb_data(i, color)
-                    self.strip.show()
-                index = index >> 1
-               
-# Main program logic follows:
+            pos -= 170
+            return (0, pos * 3, 255 - pos * 3)
+
+
 if __name__ == '__main__':
-    print ('Program is starting ... ')
-    led = Led()       
+    led = Led()
+    animations = [
+        ("colorBlink",      lambda: led.colorBlink(1)),
+        ("following",       lambda: led.following(50)),
+        ("rainbowbreathing",lambda: led.rainbowbreathing(10)),
+        ("rainbowCycle",    lambda: led.rainbowCycle(20)),
+    ]
     try:
-        print ("colorBlink animation")
-        start = time.time()
-        while (time.time() - start) < 5:
-            led.colorBlink(1)
-        
-        print ("following animation")
-        start = time.time()
-        while (time.time() - start) < 5:
-            led.following(50)
-        
-        print ("rainbowbreathing animation")
-        start = time.time()
-        while (time.time() - start) < 5:
-            led.rainbowbreathing(10)
-
-        print ("rainbowCycle animation")
-        start = time.time()
-        while (time.time() - start) < 10:
-            led.rainbowCycle(20)
-
+        for name, fn in animations:
+            print(name)
+            t0 = time.time()
+            while time.time() - t0 < 5:
+                fn()
         led.colorBlink(0)
-    except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+    except KeyboardInterrupt:
         led.colorBlink(0)
-    finally:
-        print ("\nEnd of program")
-            
-        
-                    
-
-
-
-
-   
