@@ -132,8 +132,10 @@ POSE_UPDATE_DT = 0.35
 ROAM_OBS_TRIGGER_CM = 45.0
 FORWARD_HARD_STOP_CM = 18.0
 
-# IR "cliff-ish" reflex:
-# If all 3 bottom sensors read 0, that can mean "no reflection" (edge / lifted) depending on wiring/surface.
+# IR cliff reflex: disabled by default — the line sensors read 0 on most floors,
+# causing constant false triggers. Enable only if the robot runs near table edges.
+# Set PET_CLIFF_DETECT=1 to enable.
+PET_CLIFF_DETECT = os.environ.get("PET_CLIFF_DETECT", "0").strip() == "1"
 CLIFF_IR_MASK_VALUE = 0
 
 STUCK_MIN_DELTA_CM = 4.0
@@ -814,9 +816,9 @@ class ServerPetBrain:
             self._motors_stop(car)
             return True
 
-        # IR "cliff-ish" while commanding forward
+        # IR "cliff-ish" while commanding forward (disabled by default — see PET_CLIFF_DETECT)
         try:
-            if ir_bits is not None and int(ir_bits) == CLIFF_IR_MASK_VALUE and car.is_commanding_forward():
+            if PET_CLIFF_DETECT and ir_bits is not None and int(ir_bits) == CLIFF_IR_MASK_VALUE and car.is_commanding_forward():
                 log.warning("[AI][REFLEX] IR=%s while moving -> back+turn", ir_bits)
                 self.thinking = False
                 self._motors_stop(car)
