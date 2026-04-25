@@ -364,7 +364,8 @@ class Car:
             self.set_motors(600, 600, 600, 600)
 
     def scan_and_avoid_with_memory(self) -> None:
-        """Scan left/center/right and execute a memory-guided evasion."""
+        """Stop immediately, scan left/center/right, then execute a memory-guided evasion."""
+        self.set_motors(0, 0, 0, 0)  # halt before the ~0.4s scan so we don't coast closer
         angles, dists = self.scan_distances(samples=2)
         right_cm, center_cm, left_cm = dists[0], dists[1], dists[2]
         self.mem.update_from_scan(self.pose, angles, dists)

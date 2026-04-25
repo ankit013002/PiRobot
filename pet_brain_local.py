@@ -442,6 +442,18 @@ class LocalPetBrain:
             return
 
         p = self.speed_pwm
+
+        # Graduated slow-down: scale speed as obstacle approaches
+        if self.action in {"forward", "wander", "turn_left", "turn_right"}:
+            ahead = getattr(self.sensors.s, "ahead_cm", None)
+            if isinstance(ahead, (int, float)):
+                d = float(ahead)
+                _slow = 90.0   # matches ROAM_SLOWDOWN_CM in autonomous3.py
+                _stop = 30.0   # matches FORWARD_HARD_STOP_CM
+                if d < _slow:
+                    fraction = max(0.25, (d - _stop) / max(1.0, _slow - _stop))
+                    p = int(p * fraction)
+
         drive_actions = {"forward", "wander", "turn_left", "turn_right", "spin_left", "spin_right"}
 
         if self.action in drive_actions:

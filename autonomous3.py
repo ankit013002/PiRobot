@@ -134,8 +134,9 @@ LIGHT_UPDATE_DT = 0.50        # photoresistors via ADC 0/1
 IR_UPDATE_DT = 0.12           # line sensors
 POSE_UPDATE_DT = 0.35
 
-ROAM_OBS_TRIGGER_CM = 45.0
-FORWARD_HARD_STOP_CM = 18.0
+ROAM_SLOWDOWN_CM    = 90.0   # begin speed reduction at this distance
+ROAM_OBS_TRIGGER_CM = 65.0   # stop + scan + avoid at this distance
+FORWARD_HARD_STOP_CM = 30.0  # emergency halt regardless of brain state
 
 # IR cliff reflex: disabled by default — the line sensors read 0 on most floors,
 # causing constant false triggers. Enable only if the robot runs near table edges.
@@ -787,6 +788,16 @@ class ServerPetBrain:
 
         p = int(self.speed_pwm)
 
+        # Graduated slow-down: scale speed when an obstacle is in the approach zone
+        if self.action in {"forward", "wander", "turn_left", "turn_right"}:
+            ahead = self.sensors.s.ahead_cm
+            if isinstance(ahead, (int, float)):
+                d = float(ahead)
+                if d < ROAM_SLOWDOWN_CM:
+                    span = max(1.0, ROAM_SLOWDOWN_CM - FORWARD_HARD_STOP_CM)
+                    fraction = max(0.25, (d - FORWARD_HARD_STOP_CM) / span)
+                    p = int(p * fraction)
+
         # IMPORTANT: keep sonar head forward while driving
         if self.action in {"forward", "wander", "turn_left", "turn_right", "spin_left", "spin_right"}:
             try:
@@ -886,10 +897,10 @@ class ServerPetBrain:
                 car.scan_and_avoid_with_memory()
             except Exception:
                 pass
-            self._reflex_cooldown_until = now + 1.0
+            self._reflex_cooldown_until = now + 2.5
             self.mode = MODE_ROAM
             self.action = "stop"
-            self.action_until = now + 0.3
+            self.action_until = now + 1.0
             return True
 
         if d < ROAM_OBS_TRIGGER_CM:
@@ -899,10 +910,10 @@ class ServerPetBrain:
                 car.scan_and_avoid_with_memory()
             except Exception:
                 pass
-            self._reflex_cooldown_until = now + 1.0
+            self._reflex_cooldown_until = now + 2.0
             self.mode = MODE_ROAM
             self.action = "stop"
-            self.action_until = now + 0.2
+            self.action_until = now + 0.8
             return True
 
         return False
