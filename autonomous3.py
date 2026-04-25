@@ -122,6 +122,11 @@ LOOP_DT = 0.05  # ~20 Hz
 
 LOW_BATTERY_THRESHOLD = float(os.environ.get("LOW_BATTERY_THRESHOLD", "5.0"))
 
+# 2S LiPo voltage range used to compute battery percentage.
+# Override via env if your pack differs.
+BATTERY_FULL_V  = float(os.environ.get("BATTERY_FULL_V",  "8.4"))
+BATTERY_EMPTY_V = float(os.environ.get("BATTERY_EMPTY_V", "5.5"))  # slightly above shutdown
+
 BATTERY_UPDATE_DT = 0.60
 SONAR_UPDATE_DT = 0.18
 SCAN_TRIPLET_DT = 0.90        # right/center/left scan interval while stopped/thinking
@@ -470,6 +475,13 @@ class SensorHub:
         except Exception:
             self.s.battery_v = None
         return self.s.battery_v
+
+    def battery_pct(self) -> Optional[float]:
+        """Battery percentage 0.0–1.0 based on voltage range, or None if unknown."""
+        v = self.s.battery_v
+        if v is None:
+            return None
+        return max(0.0, min(1.0, (v - BATTERY_EMPTY_V) / (BATTERY_FULL_V - BATTERY_EMPTY_V)))
 
     def update_forward_sonar(self, now: float) -> Optional[float]:
         if (now - self._last_sonar_ts) < SONAR_UPDATE_DT:
@@ -1091,6 +1103,8 @@ def main():
     # short boot chirp
     chirp(buzzer, n=1)
     last_ts = time.time()
+    _last_batt_log_ts = 0.0
+    _BATT_LOG_DT = 300.0  # log battery every 5 minutes
 
     try:
         set_mode_led(led, MODE_ROAM)
@@ -1099,6 +1113,15 @@ def main():
             now = time.time()
             dt = max(0.0, now - last_ts)
             last_ts = now
+
+            if (now - _last_batt_log_ts) >= _BATT_LOG_DT:
+                _last_batt_log_ts = now
+                bv   = sensors.s.battery_v
+                bpct = sensors.battery_pct()
+                if bv is not None:
+                    log.info("[BATT] %.2fV  %.0f%%", bv, (bpct or 0) * 100)
+                else:
+                    log.info("[BATT] unknown")
 
             brain.tick(car, led, buzzer, now, dt)
 

@@ -225,9 +225,31 @@ class LocalPetBrain:
         self._last_chirp:     float          = 0.0
         self._scared_until:   float          = 0.0
         self._idle_since:     Optional[float] = None
+        self._sleep_entered_ts: float        = 0.0
 
         self._obstacle_count:  int   = 0
         self._obstacle_win_ts: float = 0.0
+
+        self._battery_pct: float = 1.0  # cached, updated each tick
+
+    # ── Battery awareness ─────────────────────────────────────────────────────
+
+    def _battery_tier(self) -> int:
+        """
+        0 = full  (> 70%)   — normal behaviour
+        1 = medium (40-70%) — reduced activity
+        2 = low   (20-40%)  — mostly resting
+        3 = critical (< 20%)— sleep almost all the time
+        """
+        p = self._battery_pct
+        if p > 0.70: return 0
+        if p > 0.40: return 1
+        if p > 0.20: return 2
+        return 3
+
+    def _min_sleep_s(self) -> float:
+        """Minimum sleep duration before the robot is allowed to wake up."""
+        return (45.0, 120.0, 300.0, 600.0)[self._battery_tier()]
 
     # ── Energy ────────────────────────────────────────────────────────────────
 
@@ -247,10 +269,18 @@ class LocalPetBrain:
     # ── Emotion state machine ─────────────────────────────────────────────────
 
     def _update_emotion(self, now: float, ahead_cm: Optional[float]):
-        # Sleep cycle has priority
+        tier = self._battery_tier()
+
+        # Sleep cycle has priority: must sleep for at least _min_sleep_s() before waking
         if self.emotion == SLEEP:
-            if self.energy >= self._ENERGY_WAKE_MIN:
+            slept = now - self._sleep_entered_ts
+            if self.energy >= self._ENERGY_WAKE_MIN and slept >= self._min_sleep_s():
                 self._enter(HAPPY, now)
+            return
+
+        # Battery-driven forced rest: at tier 3 (critical) the robot sleeps almost all the time
+        if tier == 3:
+            self._enter(SLEEP, now)
             return
 
         if self.energy < self._ENERGY_SLEEP_MAX:
@@ -268,9 +298,17 @@ class LocalPetBrain:
                 self._enter(TIRED, now)
             return
 
-        # Enough energy + play cooldown elapsed → burst of play
-        if (self.energy >= self._ENERGY_PLAY_MIN
-                and (now - self._last_play_ts) > self._PLAY_COOLDOWN_S
+        # At tier 2 (low battery): skip PLAYFUL/HAPPY, default to BORED/TIRED
+        if tier >= 2:
+            if self.emotion not in (BORED, TIRED):
+                self._enter(BORED, now)
+            return
+
+        # At tier 1 (medium): PLAYFUL suppressed, longer cooldown applied dynamically
+        play_cooldown = self._PLAY_COOLDOWN_S * (1 + tier * 2)  # 30s / 90s / never
+        if (tier == 0
+                and self.energy >= self._ENERGY_PLAY_MIN
+                and (now - self._last_play_ts) > play_cooldown
                 and not self.stuck_recent):
             self._enter(PLAYFUL, now)
             return
@@ -281,8 +319,9 @@ class LocalPetBrain:
                 self._enter(CURIOUS, now)
             return
 
-        # Long inactivity → boredom
-        if self._idle_since is not None and (now - self._idle_since) > self._BORED_AFTER_S:
+        # Boredom threshold shortens with battery tier
+        bored_after = self._BORED_AFTER_S / max(1, tier + 1)  # 20s / 10s / 6s
+        if self._idle_since is not None and (now - self._idle_since) > bored_after:
             if self.emotion != BORED:
                 self._enter(BORED, now)
             return
@@ -294,13 +333,16 @@ class LocalPetBrain:
     def _enter(self, emotion: str, now: float):
         if emotion == self.emotion:
             return
-        log.info("[PET] %s → %s  energy=%.2f", self.emotion, emotion, self.energy)
+        log.info("[PET] %s → %s  energy=%.2f  battery=%.0f%%",
+                 self.emotion, emotion, self.energy, self._battery_pct * 100)
         self.emotion = emotion
         self._last_chirp = 0.0  # chirp on next tick for new emotion
         if emotion == PLAYFUL:
             self._last_play_ts = now
         if emotion in (BORED, SLEEP):
             self._idle_since = now
+        if emotion == SLEEP:
+            self._sleep_entered_ts = now
 
     # ── Action selection ──────────────────────────────────────────────────────
 
@@ -453,7 +495,11 @@ class LocalPetBrain:
         self.sensors.update_light(now)
         self.sensors.update_pose(now)
 
-        # Low battery → force sleep regardless of emotion
+        # Cache battery percentage (used by tier logic throughout this tick)
+        pct = getattr(self.sensors, "battery_pct", lambda: None)()
+        self._battery_pct = pct if pct is not None else self._battery_pct
+
+        # Hard shutdown threshold
         if battery_v is not None and battery_v < 5.0:
             self.emotion = SLEEP
             try:
@@ -491,8 +537,18 @@ class LocalPetBrain:
         if now >= self.action_until:
             self._pick_action(car, buzzer, now, ahead_cm)
 
-        # Expressive outputs
-        _set_led(led, self.emotion)
+        # Expressive outputs — battery tier overrides LED color when resting
+        tier = self._battery_tier()
+        if self.emotion == SLEEP and tier >= 1:
+            # Dim LED: green=good, amber=low, red=critical
+            _batt_colors = {1: (0, 20, 0), 2: (30, 12, 0), 3: (40, 0, 0)}
+            r, g, b = _batt_colors[tier]
+            try:
+                led.ledIndex(0xFF, r, g, b)
+            except Exception:
+                pass
+        else:
+            _set_led(led, self.emotion)
 
         if now >= self._last_chirp + self._CHIRP_COOLDOWN_S:
             count, on, off = CHIRP_PATTERNS.get(self.emotion, (0, 0.0, 0.0))
