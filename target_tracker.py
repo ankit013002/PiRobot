@@ -27,6 +27,20 @@ class TargetTracker:
         - negative = target is left of image center
         - positive = target is right of image center
     """
+
+    def get_state(self) -> TargetState:
+        """Thread-safe snapshot of current tracking state."""
+        with self._lock:
+            s = self._state
+            return TargetState(
+                seen=bool(s.seen),
+                cx_norm=float(s.cx_norm),
+                bbox=s.bbox,
+                last_ts=float(s.last_ts),
+                method=str(s.method),
+            )
+
+
     def __init__(self, cam, prefer_tracker: bool = True, detect_every_n: int = 6):
         self.cam = cam
         self.prefer_tracker = prefer_tracker

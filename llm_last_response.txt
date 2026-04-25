@@ -1,0 +1,1 @@
+{"mode": "ROAM", "action": "stop", "duration_s": 2.5, "speed_pwm": null, "head_pan": null, "chirp": 0, "sequence": null}

@@ -1,0 +1,1589 @@
+22:03:16.482 [INFO] [BOOT] autonomous3 SERVER brain (/pet/step) + SERVER Kokoro (/pet/tts)
+22:03:16.482 [INFO] [BOOT] PET_SERVER_URL=http://192.168.1.149:3000 ROBOT_ID=sparky PET_TALK=True
+22:03:17.130 [INFO] [AI][STEP] -> request (queued_for=0.00s) snap={'id': 'sparky', 'battery_v': 8.12, 'ahead_cm': 80.7, 'stuck': False}
+22:03:23.224 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 340, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=6.0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 328, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1352, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 1374, in getresponse
+    response.begin()
+  File "/usr/lib/python3.11/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+22:03:23.261 [INFO] [AI][STEP] -> request (queued_for=0.00s) snap={'id': 'sparky', 'battery_v': 8.0, 'ahead_cm': 79.8, 'stuck': False}
+22:03:28.567 [INFO] [SHUTDOWN] Ctrl+C received
+22:03:28.606 [INFO] [SHUTDOWN] cleaned up
+22:10:40.336 [INFO] [BOOT] autonomous3 (brain-only) -> http://192.168.1.149:3000
+22:10:40.337 [INFO] [BOOT] ROBOT_ID=sparky
+22:10:40.979 [INFO] [AI][STEP] -> snap bat=8.08V ahead=80.4cm stuck=False mode=ROAM act=wander energy=0.85
+22:10:44.427 [INFO] [AI][STEP] <- plan in 3.45s src=llm server_ms=3359 mode=IDLE act=stop dur=1.50 spd=1000 head=120 chirp=0
+22:10:44.455 [INFO] [AI][STEP] -> snap bat=8.00V ahead=80.3cm stuck=False mode=ROAM act=stop energy=0.83
+22:10:44.478 [INFO] [AI][APPLY] mode=IDLE action=stop dur=1.50 speed=1000 head=120 chirp=0
+22:10:47.485 [INFO] [AI][STEP] <- plan in 3.03s src=llm server_ms=3016 mode=IDLE act=stop dur=1.50 spd=1000 head=50 chirp=0
+22:10:47.583 [INFO] [AI][STEP] -> snap bat=8.00V ahead=79.8cm stuck=False mode=IDLE act=stop energy=0.84
+22:10:47.605 [INFO] [AI][APPLY] mode=IDLE action=stop dur=1.50 speed=1000 head=50 chirp=0
+22:10:50.731 [INFO] [AI][STEP] <- plan in 3.15s src=llm server_ms=3125 mode=PLAY act=spin_left dur=1.50 spd=1000 head=120 chirp=2
+22:10:50.794 [INFO] [AI][STEP] -> snap bat=7.96V ahead=79.8cm stuck=False mode=IDLE act=stop energy=0.85
+22:10:51.037 [INFO] [AI][APPLY] mode=PLAY action=spin_left dur=1.50 speed=1000 head=120 chirp=2
+22:10:53.517 [WARNING] [AI][REFLEX] avoid zone ahead=35.4cm -> avoid
+22:10:53.794 [INFO] [AI][STEP] <- plan in 3.00s src=llm server_ms=2980 mode=IDLE act=stop dur=1.50 spd=1000 head=120 chirp=0
+22:10:54.360 [WARNING] [AI][REFLEX] avoid zone ahead=35.0cm -> avoid
+22:10:55.204 [WARNING] [AI][REFLEX] HARD_STOP ahead=2.1cm -> avoid
+22:10:56.373 [INFO] [AI][STEP] -> snap bat=8.04V ahead=73.9cm stuck=False mode=ROAM act=stop energy=0.81
+22:10:56.396 [INFO] [AI][APPLY] mode=IDLE action=stop dur=1.50 speed=1000 head=120 chirp=0
+22:10:59.424 [INFO] [AI][STEP] <- plan in 3.05s src=llm server_ms=3035 mode=ROAM act=stop dur=1.50 spd=1000 head=90 chirp=0
+22:10:59.503 [INFO] [AI][STEP] -> snap bat=8.00V ahead=64.0cm stuck=False mode=IDLE act=stop energy=0.83
+22:10:59.528 [INFO] [AI][APPLY] mode=ROAM action=stop dur=1.50 speed=1000 head=90 chirp=0
+22:11:02.262 [WARNING] [AI][REFLEX] avoid zone ahead=42.3cm -> avoid
+22:11:02.635 [INFO] [AI][STEP] <- plan in 3.13s src=llm server_ms=3112 mode=PLAY act=spin_left dur=1.50 spd=1000 head=60 chirp=0
+22:11:03.407 [WARNING] [AI][REFLEX] HARD_STOP ahead=10.3cm -> avoid
+22:11:04.576 [INFO] [AI][STEP] -> snap bat=8.04V ahead=161.0cm stuck=False mode=ROAM act=stop energy=0.80
+22:11:04.599 [INFO] [AI][APPLY] mode=PLAY action=spin_left dur=1.50 speed=1000 head=60 chirp=0
+22:11:05.511 [WARNING] [AI][REFLEX] avoid zone ahead=33.6cm -> avoid
+22:11:06.356 [WARNING] [AI][REFLEX] avoid zone ahead=35.4cm -> avoid
+22:11:07.201 [WARNING] [AI][REFLEX] avoid zone ahead=35.4cm -> avoid
+22:11:07.662 [INFO] [AI][STEP] <- plan in 3.09s src=llm server_ms=3065 mode=IDLE act=stop dur=1.50 spd=1000 head=120 chirp=0
+22:11:08.359 [INFO] [AI][STEP] -> snap bat=8.00V ahead=115.9cm stuck=False mode=ROAM act=stop energy=0.77
+22:11:08.383 [INFO] [AI][APPLY] mode=IDLE action=stop dur=1.50 speed=1000 head=120 chirp=0
+22:11:08.747 [WARNING] [AI][REFLEX] avoid zone ahead=28.9cm -> avoid
+22:11:10.774 [WARNING] [AI][REFLEX] HARD_STOP ahead=2.3cm -> avoid
+22:11:11.846 [INFO] [AI][STEP] <- plan in 3.49s src=llm server_ms=3468 mode=ROAM act=stop dur=1.50 spd=1000 head=120 chirp=1
+22:11:13.143 [WARNING] [AI][REFLEX] avoid zone ahead=26.9cm -> avoid
+22:11:14.300 [INFO] [AI][STEP] -> snap bat=8.00V ahead=80.3cm stuck=False mode=ROAM act=stop energy=0.75
+22:11:14.433 [INFO] [AI][APPLY] mode=ROAM action=stop dur=1.50 speed=1000 head=120 chirp=1
+22:11:16.342 [INFO] [SHUTDOWN] Ctrl+C received
+22:11:16.378 [INFO] [SHUTDOWN] cleaned up
+22:28:24.001 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+22:28:24.001 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=True
+22:28:24.998 [INFO] [BOOT] vision tracker OK (fps=3.0)
+22:28:25.412 [INFO] [AI][STEP] -> bat=8.04V ahead=92.5cm ir=7 light=(1.16,1.16) tgt=False@0.0
+22:28:28.760 [INFO] [AI][STEP] <- plan in 3.35s src=llm server_ms=3258 mode=ROAM act=wander dur=1.60 spd=1000 head=120 chirp=1 seq=None
+22:28:28.803 [INFO] [AI][STEP] -> bat=7.92V ahead=91.1cm ir=7 light=(1.16,1.16) tgt=False@0.0
+22:28:29.323 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.60 speed=1000 head=120 chirp=1
+22:28:31.273 [WARNING] [AI][REFLEX] avoid zone ahead=41.0cm -> avoid
+22:28:31.967 [INFO] [AI][STEP] <- plan in 3.16s src=llm server_ms=3147 mode=IDLE act=stop dur=2.50 spd=1000 head=120 chirp=1 seq=None
+22:28:32.433 [INFO] [AI][STEP] -> bat=8.00V ahead=59.0cm ir=7 light=(1.04,0.67) tgt=False@0.0
+22:28:32.953 [INFO] [AI][APPLY] mode=IDLE action=stop dur=2.50 speed=1000 head=120 chirp=1
+22:28:33.072 [WARNING] [AI][REFLEX] HARD_STOP ahead=14.7cm -> avoid
+22:28:35.588 [INFO] [AI][STEP] <- plan in 3.15s src=llm server_ms=3133 mode=ROAM act=stop dur=1.50 spd=1000 head=120 chirp=1 seq=None
+22:28:35.649 [INFO] [AI][STEP] -> bat=7.96V ahead=133.2cm ir=7 light=(1.14,1.04) tgt=False@0.0
+22:28:36.170 [INFO] [AI][APPLY] mode=ROAM action=stop dur=1.50 speed=1000 head=120 chirp=1
+22:28:38.859 [INFO] [AI][STEP] <- plan in 3.21s src=llm server_ms=3190 mode=IDLE act=stop dur=1.80 spd=1000 head=120 chirp=0 seq=None
+22:28:38.879 [INFO] [AI][STEP] -> bat=7.92V ahead=67.5cm ir=7 light=(1.12,1.26) tgt=False@0.0
+22:28:39.289 [INFO] [AI][APPLY] mode=IDLE action=stop dur=1.80 speed=1000 head=120 chirp=0
+22:28:42.141 [INFO] [AI][STEP] <- plan in 3.26s src=llm server_ms=3236 mode=ROAM act=wander dur=1.80 spd=1000 head=120 chirp=2 seq=None
+22:28:42.229 [INFO] [AI][STEP] -> bat=7.92V ahead=64.6cm ir=7 light=(1.43,1.43) tgt=False@0.0
+22:28:42.461 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.80 speed=1000 head=120 chirp=2
+22:28:44.224 [WARNING] [AI][REFLEX] avoid zone ahead=36.4cm -> avoid
+22:28:45.391 [INFO] [AI][STEP] <- plan in 3.16s src=llm server_ms=3147 mode=IDLE act=stop dur=1.80 spd=1000 head=120 chirp=0 seq=None
+22:28:45.447 [INFO] [AI][STEP] -> bat=7.78V ahead=78.5cm ir=7 light=(1.73,1.45) tgt=False@0.0
+22:28:45.858 [INFO] [AI][APPLY] mode=IDLE action=stop dur=1.80 speed=1000 head=120 chirp=0
+22:28:48.595 [INFO] [AI][STEP] <- plan in 3.15s src=llm server_ms=3131 mode=ROAM act=stop dur=1.80 spd=1000 head=120 chirp=2 seq=None
+22:28:48.849 [INFO] [AI][STEP] -> bat=7.92V ahead=54.3cm ir=7 light=(1.69,1.49) tgt=False@0.0
+22:28:49.079 [INFO] [AI][APPLY] mode=ROAM action=stop dur=1.80 speed=1000 head=120 chirp=2
+22:28:51.950 [INFO] [AI][STEP] <- plan in 3.10s src=llm server_ms=3083 mode=IDLE act=stop dur=1.80 spd=1000 head=120 chirp=0 seq=None
+22:28:52.021 [INFO] [AI][STEP] -> bat=7.92V ahead=52.2cm ir=7 light=(1.26,1.37) tgt=False@0.0
+22:28:52.432 [INFO] [AI][APPLY] mode=IDLE action=stop dur=1.80 speed=1000 head=120 chirp=0
+22:28:53.268 [INFO] [SHUTDOWN] Ctrl+C received
+22:28:53.723 [INFO] [SHUTDOWN] cleaned up
+22:39:24.288 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+22:39:24.289 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+22:39:24.945 [INFO] [AI][STEP] -> bat=8.04V ahead=80.0cm ir=7 light=(1.41,1.28) scan=(NA,NA,NA) stuck=False
+22:39:29.964 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.11/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.11/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.11/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 656, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=5.0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 632, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error timed out>
+
+22:39:29.993 [INFO] [AI][STEP] -> bat=7.78V ahead=80.1cm ir=7 light=(1.39,1.26) scan=(80,80,80) stuck=False
+22:39:30.415 [INFO] [SHUTDOWN] Ctrl+C received
+22:39:30.452 [INFO] [SHUTDOWN] cleaned up
+22:41:12.024 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+22:41:12.024 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+22:41:12.664 [INFO] [AI][STEP] -> bat=7.74V ahead=79.6cm ir=7 light=(1.45,1.33) scan=(NA,NA,NA) stuck=False
+22:41:17.690 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 656, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=5.0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 632, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1352, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 1374, in getresponse
+    response.begin()
+  File "/usr/lib/python3.11/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+22:41:17.809 [INFO] [AI][STEP] -> bat=7.78V ahead=80.0cm ir=7 light=(1.45,1.26) scan=(80,80,80) stuck=False
+22:41:22.822 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 656, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=5.0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 632, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1352, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 1374, in getresponse
+    response.begin()
+  File "/usr/lib/python3.11/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+22:41:22.865 [INFO] [AI][STEP] -> bat=7.96V ahead=79.5cm ir=7 light=(1.43,1.26) scan=(80,80,80) stuck=False
+22:41:24.531 [INFO] [SHUTDOWN] Ctrl+C received
+22:41:24.566 [INFO] [SHUTDOWN] cleaned up
+22:46:03.778 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+22:46:03.778 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+22:46:04.417 [INFO] [AI][STEP] -> bat=8.00V ahead=79.6cm ir=7 light=(1.45,1.33) scan=(NA,NA,NA) stuck=False
+22:46:04.444 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1255 head=90 chirp=0 seq=None
+22:46:04.827 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1255 head=90 chirp=0
+22:46:04.957 [INFO] [AI][STEP] -> bat=7.62V ahead=79.6cm ir=7 light=(1.41,1.31) scan=(80,80,80) stuck=False
+22:46:04.972 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1255 head=90 chirp=0 seq=None
+22:46:05.367 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1255 head=90 chirp=0
+22:46:05.504 [INFO] [AI][STEP] -> bat=7.62V ahead=78.2cm ir=7 light=(1.39,1.31) scan=(80,80,79) stuck=False
+22:46:05.531 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1253 head=90 chirp=0 seq=None
+22:46:05.573 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1253 head=90 chirp=0
+22:46:05.828 [INFO] [AI][STEP] -> bat=7.66V ahead=77.5cm ir=7 light=(1.39,1.31) scan=(80,80,79) stuck=False
+22:46:05.843 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1252 head=90 chirp=0 seq=None
+22:46:06.238 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1252 head=90 chirp=0
+22:46:06.376 [INFO] [AI][STEP] -> bat=7.88V ahead=73.5cm ir=7 light=(1.37,1.35) scan=(76,76,75) stuck=False
+22:46:06.391 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1252 head=90 chirp=0 seq=None
+22:46:06.444 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1252 head=90 chirp=0
+22:46:06.699 [INFO] [AI][STEP] -> bat=7.88V ahead=71.2cm ir=7 light=(1.37,1.35) scan=(76,76,75) stuck=False
+22:46:06.726 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1250 head=90 chirp=0 seq=None
+22:46:06.829 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1250 head=90 chirp=0
+22:46:07.087 [INFO] [AI][STEP] -> bat=6.44V ahead=65.5cm ir=7 light=(1.43,1.31) scan=(76,76,75) stuck=False
+22:46:07.101 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=2 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:07.607 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:07.728 [INFO] [AI][STEP] -> bat=7.88V ahead=59.0cm ir=7 light=(1.35,1.26) scan=(64,64,61) stuck=False
+22:46:07.751 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1250 head=90 chirp=0 seq=None
+22:46:07.805 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1250 head=90 chirp=0
+22:46:08.061 [INFO] [AI][STEP] -> bat=7.88V ahead=59.0cm ir=7 light=(1.35,1.26) scan=(64,64,61) stuck=False
+22:46:08.079 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1253 head=90 chirp=0 seq=None
+22:46:08.471 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1253 head=90 chirp=0
+22:46:08.609 [INFO] [AI][STEP] -> bat=7.70V ahead=56.0cm ir=7 light=(1.35,1.26) scan=(58,57,56) stuck=False
+22:46:08.624 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1253 head=90 chirp=0 seq=None
+22:46:08.678 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1253 head=90 chirp=0
+22:46:08.994 [INFO] [AI][STEP] -> bat=7.70V ahead=51.5cm ir=7 light=(1.35,1.26) scan=(58,57,56) stuck=False
+22:46:09.011 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1252 head=90 chirp=0 seq=None
+22:46:09.064 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1252 head=90 chirp=0
+22:46:09.374 [INFO] [AI][STEP] -> bat=7.70V ahead=45.1cm ir=7 light=(1.41,1.22) scan=(58,57,56) stuck=False
+22:46:09.388 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1251 head=90 chirp=0 seq=None
+22:46:09.785 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1251 head=90 chirp=0
+22:46:09.904 [WARNING] [AI][REFLEX] avoid zone ahead=37.8cm -> avoid
+22:46:11.062 [INFO] [AI][STEP] -> bat=7.70V ahead=184.0cm ir=7 light=(1.02,1.10) scan=(44,44,40) stuck=False
+22:46:11.075 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1250 head=90 chirp=0 seq=None
+22:46:11.472 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1250 head=90 chirp=0
+22:46:11.611 [INFO] [AI][STEP] -> bat=7.70V ahead=134.0cm ir=7 light=(0.92,1.14) scan=(184,183,134) stuck=False
+22:46:11.627 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1248 head=90 chirp=0 seq=None
+22:46:11.680 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1248 head=90 chirp=0
+22:46:11.991 [INFO] [AI][STEP] -> bat=7.66V ahead=132.7cm ir=7 light=(0.92,1.14) scan=(184,183,134) stuck=False
+22:46:12.001 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1246 head=90 chirp=0 seq=None
+22:46:12.401 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1246 head=90 chirp=0
+22:46:12.521 [WARNING] [AI][REFLEX] HARD_STOP ahead=4.7cm -> avoid
+22:46:14.907 [INFO] [AI][STEP] -> bat=7.74V ahead=77.3cm ir=7 light=(1.63,0.94) scan=(183,133,131) stuck=False
+22:46:14.924 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1245 head=90 chirp=0 seq=None
+22:46:15.317 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1245 head=90 chirp=0
+22:46:15.455 [INFO] [AI][STEP] -> bat=7.74V ahead=66.5cm ir=7 light=(1.61,0.92) scan=(76,69,68) stuck=False
+22:46:15.471 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1241 head=90 chirp=0 seq=None
+22:46:15.524 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1241 head=90 chirp=0
+22:46:15.834 [INFO] [AI][STEP] -> bat=7.66V ahead=68.1cm ir=7 light=(1.61,0.92) scan=(76,69,68) stuck=False
+22:46:15.847 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1239 head=90 chirp=0 seq=None
+22:46:16.245 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1239 head=90 chirp=0
+22:46:16.383 [INFO] [AI][STEP] -> bat=6.48V ahead=65.3cm ir=7 light=(1.61,0.82) scan=(68,67,65) stuck=False
+22:46:16.399 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:16.563 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:16.748 [INFO] [AI][STEP] -> bat=6.48V ahead=65.3cm ir=7 light=(1.61,0.82) scan=(68,67,65) stuck=False
+22:46:16.759 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:17.268 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:17.401 [INFO] [AI][STEP] -> bat=7.66V ahead=63.8cm ir=7 light=(1.53,0.75) scan=(65,65,65) stuck=False
+22:46:17.410 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1241 head=90 chirp=0 seq=None
+22:46:17.464 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1241 head=90 chirp=0
+22:46:17.775 [INFO] [AI][STEP] -> bat=7.66V ahead=64.4cm ir=7 light=(1.53,0.75) scan=(65,65,65) stuck=False
+22:46:17.786 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1244 head=90 chirp=0 seq=None
+22:46:18.186 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1244 head=90 chirp=0
+22:46:18.324 [INFO] [AI][STEP] -> bat=6.32V ahead=56.5cm ir=7 light=(1.59,0.77) scan=(63,61,57) stuck=False
+22:46:18.337 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:18.503 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:18.685 [INFO] [AI][STEP] -> bat=6.32V ahead=55.9cm ir=7 light=(1.59,0.77) scan=(63,61,57) stuck=False
+22:46:18.697 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:19.205 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:19.328 [INFO] [AI][STEP] -> bat=7.62V ahead=55.1cm ir=7 light=(1.49,0.67) scan=(56,56,56) stuck=False
+22:46:19.349 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1245 head=90 chirp=0 seq=None
+22:46:19.404 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1245 head=90 chirp=0
+22:46:19.713 [INFO] [AI][STEP] -> bat=7.62V ahead=55.3cm ir=7 light=(1.49,0.67) scan=(56,56,56) stuck=False
+22:46:19.725 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1248 head=90 chirp=0 seq=None
+22:46:20.123 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1248 head=90 chirp=0
+22:46:20.262 [INFO] [AI][STEP] -> bat=6.36V ahead=49.5cm ir=7 light=(1.55,0.75) scan=(54,52,50) stuck=False
+22:46:20.277 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:20.440 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:20.623 [INFO] [AI][STEP] -> bat=6.36V ahead=49.1cm ir=7 light=(1.55,0.75) scan=(54,52,50) stuck=False
+22:46:20.636 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:21.144 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:21.272 [INFO] [AI][STEP] -> bat=7.58V ahead=47.3cm ir=7 light=(1.49,0.63) scan=(49,49,49) stuck=False
+22:46:21.287 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1250 head=90 chirp=0 seq=None
+22:46:21.341 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1250 head=90 chirp=0
+22:46:21.656 [INFO] [AI][STEP] -> bat=7.58V ahead=48.7cm ir=7 light=(1.49,0.63) scan=(49,49,49) stuck=False
+22:46:21.671 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1253 head=90 chirp=0 seq=None
+22:46:22.065 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1253 head=90 chirp=0
+22:46:22.183 [WARNING] [AI][REFLEX] avoid zone ahead=40.3cm -> avoid
+22:46:23.328 [WARNING] [AI][REFLEX] avoid zone ahead=18.3cm -> avoid
+22:46:25.368 [INFO] [AI][STEP] -> bat=7.62V ahead=178.3cm ir=7 light=(0.94,1.02) scan=(49,44,43) stuck=False
+22:46:25.382 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1250 head=90 chirp=0 seq=None
+22:46:25.777 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1250 head=90 chirp=0
+22:46:25.914 [INFO] [AI][STEP] -> bat=7.62V ahead=144.5cm ir=7 light=(0.98,1.02) scan=(177,151,149) stuck=False
+22:46:25.926 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1246 head=90 chirp=0 seq=None
+22:46:25.983 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1246 head=90 chirp=0
+22:46:26.238 [INFO] [AI][STEP] -> bat=7.62V ahead=142.3cm ir=7 light=(0.98,1.02) scan=(177,151,149) stuck=False
+22:46:26.255 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1244 head=90 chirp=0 seq=None
+22:46:26.648 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1244 head=90 chirp=0
+22:46:26.786 [INFO] [AI][STEP] -> bat=6.60V ahead=136.6cm ir=7 light=(1.00,1.06) scan=(141,141,141) stuck=False
+22:46:26.802 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1244 head=90 chirp=0 seq=None
+22:46:26.854 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1244 head=90 chirp=0
+22:46:27.171 [INFO] [AI][STEP] -> bat=6.60V ahead=138.1cm ir=7 light=(1.00,1.06) scan=(141,141,141) stuck=False
+22:46:27.189 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1243 head=90 chirp=0 seq=None
+22:46:27.241 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1243 head=90 chirp=0
+22:46:27.553 [INFO] [AI][STEP] -> bat=7.66V ahead=131.1cm ir=7 light=(0.94,1.08) scan=(141,141,141) stuck=False
+22:46:27.564 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1242 head=90 chirp=0 seq=None
+22:46:27.963 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1242 head=90 chirp=0
+22:46:28.103 [INFO] [AI][STEP] -> bat=7.88V ahead=123.4cm ir=7 light=(1.06,1.12) scan=(129,127,126) stuck=False
+22:46:28.140 [INFO] [AI][STEP] <- plan in 0.04s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1242 head=90 chirp=0 seq=None
+22:46:28.172 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1242 head=90 chirp=0
+22:46:28.482 [INFO] [AI][STEP] -> bat=7.88V ahead=122.4cm ir=7 light=(1.06,1.12) scan=(129,127,126) stuck=False
+22:46:28.492 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1240 head=90 chirp=0 seq=None
+22:46:28.892 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1240 head=90 chirp=0
+22:46:29.023 [INFO] [AI][STEP] -> bat=7.66V ahead=114.0cm ir=7 light=(1.12,1.18) scan=(121,118,116) stuck=False
+22:46:29.043 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1240 head=90 chirp=0 seq=None
+22:46:29.101 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1240 head=90 chirp=0
+22:46:29.411 [INFO] [AI][STEP] -> bat=7.66V ahead=112.1cm ir=7 light=(1.12,1.18) scan=(121,118,116) stuck=False
+22:46:29.432 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1239 head=90 chirp=0 seq=None
+22:46:29.821 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1239 head=90 chirp=0
+22:46:29.951 [INFO] [AI][STEP] -> bat=7.70V ahead=106.5cm ir=7 light=(1.10,1.22) scan=(112,110,107) stuck=False
+22:46:29.976 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1239 head=90 chirp=0 seq=None
+22:46:30.028 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1239 head=90 chirp=0
+22:46:30.340 [INFO] [AI][STEP] -> bat=7.70V ahead=103.9cm ir=7 light=(1.10,1.22) scan=(112,110,107) stuck=False
+22:46:30.352 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1237 head=90 chirp=0 seq=None
+22:46:30.751 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1237 head=90 chirp=0
+22:46:30.883 [INFO] [AI][STEP] -> bat=7.66V ahead=98.7cm ir=7 light=(1.10,1.24) scan=(104,102,99) stuck=False
+22:46:30.907 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1237 head=90 chirp=0 seq=None
+22:46:30.961 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1237 head=90 chirp=0
+22:46:31.271 [INFO] [AI][STEP] -> bat=7.66V ahead=96.0cm ir=7 light=(1.10,1.24) scan=(104,102,99) stuck=False
+22:46:31.283 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1235 head=90 chirp=0 seq=None
+22:46:31.682 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1235 head=90 chirp=0
+22:46:31.821 [INFO] [AI][STEP] -> bat=7.70V ahead=91.5cm ir=7 light=(1.12,1.18) scan=(96,94,92) stuck=False
+22:46:31.836 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1235 head=90 chirp=0 seq=None
+22:46:31.891 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1235 head=90 chirp=0
+22:46:32.200 [INFO] [AI][STEP] -> bat=7.70V ahead=87.8cm ir=7 light=(1.12,1.18) scan=(96,94,92) stuck=False
+22:46:32.212 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1234 head=90 chirp=0 seq=None
+22:46:32.611 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1234 head=90 chirp=0
+22:46:32.749 [INFO] [AI][STEP] -> bat=7.66V ahead=81.5cm ir=7 light=(1.12,1.22) scan=(87,84,83) stuck=False
+22:46:32.769 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1234 head=90 chirp=0 seq=None
+22:46:32.818 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1234 head=90 chirp=0
+22:46:33.128 [INFO] [AI][STEP] -> bat=7.66V ahead=79.8cm ir=7 light=(1.12,1.22) scan=(87,84,83) stuck=False
+22:46:33.141 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1232 head=90 chirp=0 seq=None
+22:46:33.538 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1232 head=90 chirp=0
+22:46:33.679 [INFO] [AI][STEP] -> bat=6.28V ahead=71.6cm ir=7 light=(1.12,1.28) scan=(80,77,72) stuck=False
+22:46:33.692 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:33.857 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:34.040 [INFO] [AI][STEP] -> bat=6.28V ahead=70.2cm ir=5 light=(1.12,1.28) scan=(80,77,72) stuck=False
+22:46:34.053 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:34.560 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:34.681 [INFO] [AI][STEP] -> bat=7.74V ahead=70.4cm ir=5 light=(1.00,1.28) scan=(70,70,70) stuck=False
+22:46:34.703 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1234 head=90 chirp=0 seq=None
+22:46:34.760 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1234 head=90 chirp=0
+22:46:35.070 [INFO] [AI][STEP] -> bat=7.74V ahead=70.1cm ir=7 light=(1.00,1.28) scan=(70,70,70) stuck=False
+22:46:35.087 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1237 head=90 chirp=0 seq=None
+22:46:35.480 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1237 head=90 chirp=0
+22:46:35.616 [INFO] [AI][STEP] -> bat=7.14V ahead=65.4cm ir=7 light=(1.14,1.33) scan=(70,70,68) stuck=False
+22:46:35.631 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1236 head=90 chirp=0 seq=None
+22:46:35.685 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1236 head=90 chirp=0
+22:46:35.940 [INFO] [AI][STEP] -> bat=7.14V ahead=64.8cm ir=7 light=(1.14,1.33) scan=(70,70,68) stuck=False
+22:46:35.952 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1235 head=90 chirp=0 seq=None
+22:46:36.350 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1235 head=90 chirp=0
+22:46:36.492 [INFO] [AI][STEP] -> bat=6.32V ahead=57.6cm ir=7 light=(1.12,1.35) scan=(62,62,60) stuck=False
+22:46:36.508 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:36.665 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:36.849 [INFO] [AI][STEP] -> bat=6.32V ahead=55.9cm ir=5 light=(1.12,1.35) scan=(62,62,60) stuck=False
+22:46:36.861 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:37.369 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:37.495 [INFO] [AI][STEP] -> bat=7.62V ahead=56.0cm ir=7 light=(0.98,1.33) scan=(56,56,57) stuck=False
+22:46:37.508 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1237 head=90 chirp=0 seq=None
+22:46:37.564 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1237 head=90 chirp=0
+22:46:37.820 [INFO] [AI][STEP] -> bat=7.62V ahead=56.1cm ir=7 light=(0.98,1.33) scan=(56,56,57) stuck=False
+22:46:37.833 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1239 head=90 chirp=0 seq=None
+22:46:38.230 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1239 head=90 chirp=0
+22:46:38.366 [INFO] [AI][STEP] -> bat=7.66V ahead=55.6cm ir=7 light=(1.12,1.33) scan=(56,56,56) stuck=False
+22:46:38.383 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1239 head=90 chirp=0 seq=None
+22:46:38.435 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1239 head=90 chirp=0
+22:46:38.701 [INFO] [AI][STEP] -> bat=7.66V ahead=51.3cm ir=7 light=(1.12,1.33) scan=(56,56,56) stuck=False
+22:46:38.713 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1238 head=90 chirp=0 seq=None
+22:46:38.817 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1238 head=90 chirp=0
+22:46:39.075 [INFO] [AI][STEP] -> bat=6.48V ahead=67.6cm ir=7 light=(1.06,1.31) scan=(56,56,56) stuck=False
+22:46:39.089 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:39.595 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:39.721 [INFO] [AI][STEP] -> bat=7.84V ahead=58.8cm ir=7 light=(0.96,1.28) scan=(123,123,123) stuck=False
+22:46:39.736 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1238 head=90 chirp=0 seq=None
+22:46:39.790 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1238 head=90 chirp=0
+22:46:40.045 [INFO] [AI][STEP] -> bat=7.84V ahead=58.8cm ir=7 light=(0.96,1.28) scan=(123,123,123) stuck=False
+22:46:40.058 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1241 head=90 chirp=0 seq=None
+22:46:40.456 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1241 head=90 chirp=0
+22:46:40.594 [INFO] [AI][STEP] -> bat=7.70V ahead=118.6cm ir=7 light=(1.08,1.31) scan=(122,121,121) stuck=False
+22:46:40.609 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1241 head=90 chirp=0 seq=None
+22:46:40.662 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1241 head=90 chirp=0
+22:46:40.985 [INFO] [AI][STEP] -> bat=7.70V ahead=117.7cm ir=7 light=(1.08,1.31) scan=(122,121,121) stuck=False
+22:46:41.002 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1239 head=90 chirp=0 seq=None
+22:46:41.049 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1239 head=90 chirp=0
+22:46:41.359 [INFO] [AI][STEP] -> bat=7.66V ahead=116.6cm ir=7 light=(1.04,1.31) scan=(122,121,121) stuck=False
+22:46:41.371 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1239 head=90 chirp=0 seq=None
+22:46:41.770 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1239 head=90 chirp=0
+22:46:41.910 [INFO] [AI][STEP] -> bat=7.92V ahead=113.9cm ir=7 light=(1.04,1.28) scan=(116,116,115) stuck=False
+22:46:41.924 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1239 head=90 chirp=0 seq=None
+22:46:41.979 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1239 head=90 chirp=0
+22:46:42.289 [INFO] [AI][STEP] -> bat=7.92V ahead=112.8cm ir=7 light=(1.04,1.28) scan=(116,116,115) stuck=False
+22:46:42.302 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1237 head=90 chirp=0 seq=None
+22:46:42.699 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1237 head=90 chirp=0
+22:46:42.839 [INFO] [AI][STEP] -> bat=7.70V ahead=111.6cm ir=7 light=(1.04,1.28) scan=(113,113,113) stuck=False
+22:46:42.855 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1237 head=90 chirp=0 seq=None
+22:46:42.908 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1237 head=90 chirp=0
+22:46:43.218 [INFO] [AI][STEP] -> bat=7.70V ahead=112.2cm ir=7 light=(1.04,1.28) scan=(113,113,113) stuck=False
+22:46:43.231 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1235 head=90 chirp=0 seq=None
+22:46:43.628 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1235 head=90 chirp=0
+22:46:43.768 [INFO] [AI][STEP] -> bat=6.60V ahead=110.7cm ir=7 light=(0.98,1.26) scan=(112,112,112) stuck=False
+22:46:43.786 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1235 head=90 chirp=0 seq=None
+22:46:43.837 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1235 head=90 chirp=0
+22:46:44.147 [INFO] [AI][STEP] -> bat=6.60V ahead=109.0cm ir=7 light=(0.98,1.26) scan=(112,112,112) stuck=False
+22:46:44.156 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1234 head=90 chirp=0 seq=None
+22:46:44.557 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1234 head=90 chirp=0
+22:46:44.696 [INFO] [AI][STEP] -> bat=7.62V ahead=75.5cm ir=7 light=(1.00,1.24) scan=(109,109,109) stuck=False
+22:46:44.714 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1234 head=90 chirp=0 seq=None
+22:46:44.764 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1234 head=90 chirp=0
+22:46:45.074 [INFO] [AI][STEP] -> bat=7.62V ahead=105.2cm ir=7 light=(1.00,1.24) scan=(109,109,109) stuck=False
+22:46:45.087 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1232 head=90 chirp=0 seq=None
+22:46:45.485 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1232 head=90 chirp=0
+22:46:45.616 [INFO] [AI][STEP] -> bat=7.66V ahead=105.5cm ir=7 light=(0.98,1.22) scan=(105,106,106) stuck=False
+22:46:45.636 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1232 head=90 chirp=0 seq=None
+22:46:45.696 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1232 head=90 chirp=0
+22:46:46.007 [INFO] [AI][STEP] -> bat=7.66V ahead=103.2cm ir=7 light=(0.98,1.22) scan=(105,106,106) stuck=False
+22:46:46.022 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1230 head=90 chirp=0 seq=None
+22:46:46.417 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1230 head=90 chirp=0
+22:46:46.556 [INFO] [AI][STEP] -> bat=7.66V ahead=103.4cm ir=7 light=(0.94,1.18) scan=(103,103,103) stuck=False
+22:46:46.573 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1230 head=90 chirp=0 seq=None
+22:46:46.625 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1230 head=90 chirp=0
+22:46:46.936 [INFO] [AI][STEP] -> bat=7.66V ahead=103.8cm ir=7 light=(0.94,1.18) scan=(103,103,103) stuck=False
+22:46:46.950 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1229 head=90 chirp=0 seq=None
+22:46:47.346 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1229 head=90 chirp=0
+22:46:47.485 [INFO] [AI][STEP] -> bat=6.36V ahead=98.9cm ir=7 light=(0.94,1.10) scan=(104,104,104) stuck=False
+22:46:47.502 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:47.663 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:47.846 [INFO] [AI][STEP] -> bat=6.36V ahead=99.6cm ir=7 light=(0.94,1.10) scan=(104,104,104) stuck=False
+22:46:47.858 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=SLEEP act=stop dur=2.00 spd=1100 head=90 chirp=1 seq=None
+22:46:48.366 [INFO] [AI][APPLY] mode=SLEEP action=stop dur=2.00 speed=1100 head=90 chirp=1
+22:46:48.487 [INFO] [AI][STEP] -> bat=7.66V ahead=100.2cm ir=7 light=(0.77,1.04) scan=(100,100,100) stuck=False
+22:46:48.515 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1230 head=90 chirp=0 seq=None
+22:46:48.565 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1230 head=90 chirp=0
+22:46:48.874 [INFO] [AI][STEP] -> bat=7.66V ahead=100.5cm ir=7 light=(0.77,1.04) scan=(100,100,100) stuck=False
+22:46:48.887 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1233 head=90 chirp=0 seq=None
+22:46:49.284 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1233 head=90 chirp=0
+22:46:49.371 [INFO] [SHUTDOWN] Ctrl+C received
+22:46:49.406 [INFO] [SHUTDOWN] cleaned up
+22:55:41.415 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+22:55:41.416 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+22:55:42.081 [INFO] [AI][STEP] -> bat=7.70V ahead=118.3cm ir=7 light=(1.39,1.20) scan=(NA,NA,NA) stuck=False
+22:55:42.153 [INFO] [AI][STEP] <- plan in 0.07s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1255 head=90 chirp=0 seq=None
+22:55:42.491 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1255 head=90 chirp=0
+22:55:42.622 [INFO] [AI][STEP] -> bat=7.62V ahead=113.6cm ir=7 light=(1.24,1.16) scan=(115,114,114) stuck=False
+22:55:42.636 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1255 head=90 chirp=0 seq=None
+22:55:43.032 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1255 head=90 chirp=0
+22:55:43.170 [INFO] [AI][STEP] -> bat=7.62V ahead=112.4cm ir=7 light=(1.22,1.18) scan=(113,94,99) stuck=False
+22:55:43.189 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1253 head=90 chirp=0 seq=None
+22:55:43.239 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1253 head=90 chirp=0
+22:55:43.549 [INFO] [AI][STEP] -> bat=7.58V ahead=110.6cm ir=7 light=(1.22,1.18) scan=(113,94,99) stuck=False
+22:55:43.563 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1252 head=90 chirp=0 seq=None
+22:55:43.959 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1252 head=90 chirp=0
+22:55:44.098 [INFO] [AI][STEP] -> bat=7.78V ahead=101.5cm ir=7 light=(1.43,1.22) scan=(110,107,103) stuck=False
+22:55:44.115 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1252 head=90 chirp=0 seq=None
+22:55:44.167 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1252 head=90 chirp=0
+22:55:44.478 [INFO] [AI][STEP] -> bat=7.78V ahead=98.2cm ir=7 light=(1.43,1.22) scan=(110,107,103) stuck=False
+22:55:44.491 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1250 head=90 chirp=0 seq=None
+22:55:44.888 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1250 head=90 chirp=0
+22:55:45.027 [INFO] [AI][STEP] -> bat=6.40V ahead=91.7cm ir=7 light=(1.43,1.24) scan=(98,95,94) stuck=False
+22:55:45.042 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1250 head=90 chirp=0 seq=None
+22:55:45.096 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1250 head=90 chirp=0
+22:55:45.406 [INFO] [AI][STEP] -> bat=6.40V ahead=89.9cm ir=7 light=(1.43,1.24) scan=(98,95,94) stuck=False
+22:55:45.419 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1248 head=90 chirp=0 seq=None
+22:55:45.816 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1248 head=90 chirp=0
+22:55:45.956 [INFO] [AI][STEP] -> bat=7.58V ahead=82.2cm ir=7 light=(1.37,1.24) scan=(88,88,83) stuck=False
+22:55:45.974 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1248 head=90 chirp=0 seq=None
+22:55:46.024 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1248 head=90 chirp=0
+22:55:46.334 [INFO] [AI][STEP] -> bat=7.58V ahead=78.5cm ir=7 light=(1.37,1.24) scan=(88,88,83) stuck=False
+22:55:46.353 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1247 head=90 chirp=0 seq=None
+22:55:46.747 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1247 head=90 chirp=0
+22:55:46.882 [INFO] [AI][STEP] -> bat=7.58V ahead=73.0cm ir=7 light=(1.43,1.20) scan=(77,76,74) stuck=False
+22:55:46.906 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1247 head=90 chirp=0 seq=None
+22:55:46.958 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1247 head=90 chirp=0
+22:55:47.213 [INFO] [AI][STEP] -> bat=7.58V ahead=69.7cm ir=7 light=(1.43,1.20) scan=(77,76,74) stuck=False
+22:55:47.227 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1245 head=90 chirp=0 seq=None
+22:55:47.623 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1245 head=90 chirp=0
+22:55:47.760 [INFO] [AI][STEP] -> bat=6.52V ahead=63.2cm ir=7 light=(1.16,1.06) scan=(67,67,64) stuck=False
+22:55:47.776 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1245 head=90 chirp=0 seq=None
+22:55:47.828 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1245 head=90 chirp=0
+22:55:48.090 [INFO] [AI][STEP] -> bat=6.52V ahead=60.7cm ir=7 light=(1.16,1.06) scan=(67,67,64) stuck=False
+22:55:48.107 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1243 head=90 chirp=0 seq=None
+22:55:48.210 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1243 head=90 chirp=0
+22:55:48.467 [INFO] [AI][STEP] -> bat=7.58V ahead=53.5cm ir=7 light=(1.24,1.12) scan=(67,67,64) stuck=False
+22:55:48.477 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1243 head=90 chirp=0 seq=None
+22:55:48.877 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1243 head=90 chirp=0
+22:55:49.017 [INFO] [AI][STEP] -> bat=7.78V ahead=50.9cm ir=7 light=(1.18,1.12) scan=(52,52,51) stuck=False
+22:55:49.033 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1243 head=90 chirp=0 seq=None
+22:55:49.085 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1243 head=90 chirp=0
+22:55:49.347 [INFO] [AI][STEP] -> bat=7.78V ahead=49.0cm ir=7 light=(1.18,1.12) scan=(52,52,51) stuck=False
+22:55:49.367 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1241 head=90 chirp=0 seq=None
+22:55:49.468 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1241 head=90 chirp=0
+22:55:49.650 [WARNING] [AI][REFLEX] avoid zone ahead=42.9cm -> avoid
+22:55:50.807 [INFO] [AI][STEP] -> bat=7.78V ahead=204.9cm ir=7 light=(0.94,1.08) scan=(52,52,51) stuck=False
+22:55:50.819 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1241 head=90 chirp=0 seq=None
+22:55:51.217 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1241 head=90 chirp=0
+22:55:51.347 [INFO] [AI][STEP] -> bat=7.78V ahead=220.4cm ir=7 light=(0.82,1.10) scan=(220,220,220) stuck=False
+22:55:51.370 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1238 head=90 chirp=0 seq=None
+22:55:51.424 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1238 head=90 chirp=0
+22:55:51.541 [WARNING] [AI][REFLEX] avoid zone ahead=21.7cm -> avoid
+22:55:53.583 [INFO] [AI][STEP] -> bat=7.78V ahead=259.0cm ir=7 light=(1.59,1.18) scan=(220,220,220) stuck=False
+22:55:53.603 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1237 head=90 chirp=0 seq=None
+22:55:53.993 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1237 head=90 chirp=0
+22:55:54.130 [INFO] [AI][STEP] -> bat=7.78V ahead=117.5cm ir=7 light=(1.51,1.18) scan=(156,146,139) stuck=False
+22:55:54.146 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1233 head=90 chirp=0 seq=None
+22:55:54.198 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1233 head=90 chirp=0
+22:55:54.453 [INFO] [AI][STEP] -> bat=7.58V ahead=117.5cm ir=7 light=(1.51,1.18) scan=(156,146,139) stuck=False
+22:55:54.465 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1232 head=90 chirp=0 seq=None
+22:55:54.863 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1232 head=90 chirp=0
+22:55:54.999 [INFO] [AI][STEP] -> bat=7.74V ahead=123.0cm ir=7 light=(1.53,1.22) scan=(128,135,138) stuck=False
+22:55:55.016 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1232 head=90 chirp=0 seq=None
+22:55:55.067 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1232 head=90 chirp=0
+22:55:55.328 [INFO] [AI][STEP] -> bat=7.74V ahead=120.1cm ir=7 light=(1.53,1.22) scan=(128,135,138) stuck=False
+22:55:55.349 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1230 head=90 chirp=0 seq=None
+22:55:55.449 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1230 head=90 chirp=0
+22:55:55.706 [INFO] [AI][STEP] -> bat=6.40V ahead=120.1cm ir=7 light=(1.63,1.22) scan=(128,135,138) stuck=False
+22:55:55.718 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1230 head=90 chirp=0 seq=None
+22:55:56.116 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1230 head=90 chirp=0
+22:55:56.253 [INFO] [AI][STEP] -> bat=7.70V ahead=98.8cm ir=7 light=(1.55,1.24) scan=(119,118,114) stuck=False
+22:55:56.266 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1230 head=90 chirp=0 seq=None
+22:55:56.321 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1230 head=90 chirp=0
+22:55:56.582 [INFO] [AI][STEP] -> bat=7.70V ahead=104.6cm ir=7 light=(1.55,1.24) scan=(119,118,114) stuck=False
+22:55:56.597 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1228 head=90 chirp=0 seq=None
+22:55:56.703 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1228 head=90 chirp=0
+22:55:56.962 [INFO] [AI][STEP] -> bat=7.62V ahead=117.1cm ir=5 light=(1.63,1.24) scan=(119,118,114) stuck=False
+22:55:56.975 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1228 head=90 chirp=0 seq=None
+22:55:57.372 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1228 head=90 chirp=0
+22:55:57.515 [INFO] [AI][STEP] -> bat=7.78V ahead=109.8cm ir=7 light=(1.49,1.14) scan=(92,91,110) stuck=False
+22:55:57.529 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1227 head=90 chirp=0 seq=None
+22:55:57.583 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1227 head=90 chirp=0
+22:55:57.845 [INFO] [AI][STEP] -> bat=7.78V ahead=109.0cm ir=5 light=(1.49,1.14) scan=(92,91,110) stuck=False
+22:55:57.860 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1226 head=90 chirp=0 seq=None
+22:55:57.966 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1226 head=90 chirp=0
+22:55:58.226 [INFO] [AI][STEP] -> bat=7.58V ahead=100.3cm ir=7 light=(1.59,1.16) scan=(92,91,110) stuck=False
+22:55:58.236 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1225 head=90 chirp=0 seq=None
+22:55:58.636 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1225 head=90 chirp=0
+22:55:58.786 [INFO] [AI][STEP] -> bat=7.70V ahead=76.7cm ir=7 light=(1.53,1.14) scan=(84,80,77) stuck=False
+22:55:58.806 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1225 head=90 chirp=0 seq=None
+22:55:58.855 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1225 head=90 chirp=0
+22:55:59.117 [INFO] [AI][STEP] -> bat=7.70V ahead=74.9cm ir=7 light=(1.53,1.14) scan=(84,80,77) stuck=False
+22:55:59.132 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1224 head=90 chirp=0 seq=None
+22:55:59.238 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1224 head=90 chirp=0
+22:55:59.495 [INFO] [AI][STEP] -> bat=6.48V ahead=83.4cm ir=7 light=(1.57,1.12) scan=(84,80,77) stuck=False
+22:55:59.508 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1223 head=90 chirp=0 seq=None
+22:55:59.906 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1223 head=90 chirp=0
+22:56:00.043 [INFO] [AI][STEP] -> bat=7.70V ahead=66.8cm ir=7 light=(1.45,1.06) scan=(67,67,67) stuck=False
+22:56:00.069 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1223 head=90 chirp=0 seq=None
+22:56:00.129 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1223 head=90 chirp=0
+22:56:00.449 [INFO] [AI][STEP] -> bat=7.70V ahead=69.8cm ir=7 light=(1.45,1.06) scan=(67,67,67) stuck=False
+22:56:00.465 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1221 head=90 chirp=0 seq=None
+22:56:00.864 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1221 head=90 chirp=0
+22:56:01.002 [INFO] [AI][STEP] -> bat=7.54V ahead=60.6cm ir=7 light=(1.49,1.06) scan=(70,68,66) stuck=False
+22:56:01.019 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1221 head=90 chirp=0 seq=None
+22:56:01.070 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1221 head=90 chirp=0
+22:56:01.325 [INFO] [AI][STEP] -> bat=7.54V ahead=59.5cm ir=7 light=(1.49,1.06) scan=(70,68,66) stuck=False
+22:56:01.334 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1220 head=90 chirp=0 seq=None
+22:56:01.735 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1220 head=90 chirp=0
+22:56:01.874 [INFO] [AI][STEP] -> bat=7.54V ahead=53.2cm ir=7 light=(1.47,1.04) scan=(60,60,56) stuck=False
+22:56:01.901 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1219 head=90 chirp=0 seq=None
+22:56:01.942 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1219 head=90 chirp=0
+22:56:02.203 [INFO] [AI][STEP] -> bat=7.54V ahead=49.6cm ir=7 light=(1.47,1.04) scan=(60,60,56) stuck=False
+22:56:02.218 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1218 head=90 chirp=0 seq=None
+22:56:02.324 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1218 head=90 chirp=0
+22:56:02.582 [INFO] [AI][STEP] -> bat=6.40V ahead=53.1cm ir=7 light=(1.51,1.04) scan=(60,60,56) stuck=False
+22:56:02.595 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1217 head=90 chirp=0 seq=None
+22:56:02.992 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1217 head=90 chirp=0
+22:56:03.134 [INFO] [AI][STEP] -> bat=7.74V ahead=48.4cm ir=7 light=(1.49,1.04) scan=(53,52,50) stuck=False
+22:56:03.147 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1217 head=90 chirp=0 seq=None
+22:56:03.196 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1217 head=90 chirp=0
+22:56:03.457 [INFO] [AI][STEP] -> bat=7.74V ahead=46.2cm ir=7 light=(1.49,1.04) scan=(53,52,50) stuck=False
+22:56:03.472 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1216 head=90 chirp=0 seq=None
+22:56:03.578 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1216 head=90 chirp=0
+22:56:03.761 [WARNING] [AI][REFLEX] avoid zone ahead=42.6cm -> avoid
+22:56:04.906 [WARNING] [AI][REFLEX] avoid zone ahead=39.8cm -> avoid
+22:56:06.052 [WARNING] [AI][REFLEX] avoid zone ahead=35.5cm -> avoid
+22:56:07.197 [WARNING] [AI][REFLEX] avoid zone ahead=33.1cm -> avoid
+22:56:08.041 [WARNING] [AI][REFLEX] avoid zone ahead=32.9cm -> avoid
+22:56:08.886 [WARNING] [AI][REFLEX] avoid zone ahead=29.7cm -> avoid
+22:56:09.732 [WARNING] [AI][REFLEX] avoid zone ahead=28.6cm -> avoid
+22:56:11.773 [INFO] [AI][STEP] -> bat=7.58V ahead=147.0cm ir=5 light=(1.04,1.12) scan=(53,52,50) stuck=False
+22:56:11.785 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1204 head=90 chirp=0 seq=None
+22:56:12.183 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1204 head=90 chirp=0
+22:56:12.321 [INFO] [AI][STEP] -> bat=7.58V ahead=138.0cm ir=7 light=(0.88,1.14) scan=(144,142,140) stuck=False
+22:56:12.338 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1201 head=90 chirp=0 seq=None
+22:56:12.390 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1201 head=90 chirp=0
+22:56:12.700 [INFO] [AI][STEP] -> bat=7.62V ahead=137.7cm ir=7 light=(0.88,1.14) scan=(144,142,140) stuck=False
+22:56:12.712 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1199 head=90 chirp=0 seq=None
+22:56:13.110 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1199 head=90 chirp=0
+22:56:13.248 [INFO] [AI][STEP] -> bat=7.78V ahead=131.0cm ir=7 light=(0.96,1.16) scan=(138,136,132) stuck=False
+22:56:13.267 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1199 head=90 chirp=0 seq=None
+22:56:13.317 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1199 head=90 chirp=0
+22:56:13.627 [INFO] [AI][STEP] -> bat=7.78V ahead=129.4cm ir=7 light=(0.96,1.16) scan=(138,136,132) stuck=False
+22:56:13.638 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1198 head=90 chirp=0 seq=None
+22:56:14.037 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1198 head=90 chirp=0
+22:56:14.174 [INFO] [AI][STEP] -> bat=7.58V ahead=122.7cm ir=7 light=(0.96,1.14) scan=(129,128,123) stuck=False
+22:56:14.195 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1197 head=90 chirp=0 seq=None
+22:56:14.242 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1197 head=90 chirp=0
+22:56:14.496 [INFO] [AI][STEP] -> bat=7.58V ahead=121.2cm ir=7 light=(0.96,1.14) scan=(129,128,123) stuck=False
+22:56:14.506 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1196 head=90 chirp=0 seq=None
+22:56:14.907 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1196 head=90 chirp=0
+22:56:15.044 [INFO] [AI][STEP] -> bat=7.58V ahead=118.4cm ir=7 light=(0.98,1.16) scan=(121,120,118) stuck=False
+22:56:15.062 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1196 head=90 chirp=0 seq=None
+22:56:15.112 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1196 head=90 chirp=0
+22:56:15.373 [INFO] [AI][STEP] -> bat=7.58V ahead=117.0cm ir=7 light=(0.98,1.16) scan=(121,120,118) stuck=False
+22:56:15.394 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1194 head=90 chirp=0 seq=None
+22:56:15.494 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1194 head=90 chirp=0
+22:56:15.750 [INFO] [AI][STEP] -> bat=7.58V ahead=115.2cm ir=7 light=(1.06,1.16) scan=(121,120,118) stuck=False
+22:56:15.763 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1194 head=90 chirp=0 seq=None
+22:56:16.161 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1194 head=90 chirp=0
+22:56:16.298 [INFO] [AI][STEP] -> bat=7.78V ahead=108.1cm ir=7 light=(1.00,1.20) scan=(113,110,108) stuck=False
+22:56:16.314 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1193 head=90 chirp=0 seq=None
+22:56:16.366 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1193 head=90 chirp=0
+22:56:16.627 [INFO] [AI][STEP] -> bat=7.78V ahead=105.6cm ir=7 light=(1.00,1.20) scan=(113,110,108) stuck=False
+22:56:16.645 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1192 head=90 chirp=0 seq=None
+22:56:16.748 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1192 head=90 chirp=0
+22:56:17.005 [INFO] [AI][STEP] -> bat=7.58V ahead=102.5cm ir=7 light=(1.14,1.20) scan=(113,110,108) stuck=False
+22:56:17.017 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1191 head=90 chirp=0 seq=None
+22:56:17.415 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1191 head=90 chirp=0
+22:56:17.552 [INFO] [AI][STEP] -> bat=7.88V ahead=96.0cm ir=7 light=(1.08,1.18) scan=(100,98,97) stuck=False
+22:56:17.569 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1191 head=90 chirp=0 seq=None
+22:56:17.620 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1191 head=90 chirp=0
+22:56:17.875 [INFO] [AI][STEP] -> bat=7.88V ahead=93.7cm ir=7 light=(1.08,1.18) scan=(100,98,97) stuck=False
+22:56:17.891 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1190 head=90 chirp=0 seq=None
+22:56:18.003 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1190 head=90 chirp=0
+22:56:18.260 [INFO] [AI][STEP] -> bat=7.58V ahead=89.1cm ir=7 light=(1.16,1.20) scan=(100,98,97) stuck=False
+22:56:18.270 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1189 head=90 chirp=0 seq=None
+22:56:18.670 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1189 head=90 chirp=0
+22:56:18.799 [INFO] [AI][STEP] -> bat=6.60V ahead=85.0cm ir=7 light=(1.14,1.20) scan=(86,86,85) stuck=False
+22:56:18.823 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1189 head=90 chirp=0 seq=None
+22:56:18.875 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1189 head=90 chirp=0
+22:56:19.137 [INFO] [AI][STEP] -> bat=6.60V ahead=81.6cm ir=7 light=(1.14,1.20) scan=(86,86,85) stuck=False
+22:56:19.153 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1188 head=90 chirp=0 seq=None
+22:56:19.258 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1188 head=90 chirp=0
+22:56:19.517 [INFO] [AI][STEP] -> bat=7.62V ahead=75.0cm ir=7 light=(1.18,1.20) scan=(86,86,85) stuck=False
+22:56:19.529 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1187 head=90 chirp=0 seq=None
+22:56:19.927 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1187 head=90 chirp=0
+22:56:20.066 [INFO] [AI][STEP] -> bat=6.64V ahead=69.4cm ir=7 light=(1.14,1.22) scan=(74,74,71) stuck=False
+22:56:20.085 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1187 head=90 chirp=0 seq=None
+22:56:20.135 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1187 head=90 chirp=0
+22:56:20.453 [INFO] [AI][STEP] -> bat=6.64V ahead=67.6cm ir=7 light=(1.14,1.22) scan=(74,74,71) stuck=False
+22:56:20.485 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1185 head=90 chirp=0 seq=None
+22:56:20.523 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1185 head=90 chirp=0
+22:56:20.834 [INFO] [AI][STEP] -> bat=7.62V ahead=62.0cm ir=7 light=(1.22,1.20) scan=(74,74,71) stuck=False
+22:56:20.844 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1185 head=90 chirp=0 seq=None
+22:56:21.251 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1185 head=90 chirp=0
+22:56:21.389 [INFO] [AI][STEP] -> bat=7.78V ahead=54.1cm ir=7 light=(1.20,1.18) scan=(60,58,56) stuck=False
+22:56:21.409 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1184 head=90 chirp=0 seq=None
+22:56:21.457 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1184 head=90 chirp=0
+22:56:21.765 [INFO] [AI][STEP] -> bat=7.78V ahead=52.1cm ir=7 light=(1.20,1.18) scan=(60,58,56) stuck=False
+22:56:21.780 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1183 head=90 chirp=0 seq=None
+22:56:22.176 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1183 head=90 chirp=0
+22:56:22.313 [INFO] [AI][STEP] -> bat=7.58V ahead=48.6cm ir=7 light=(1.18,1.14) scan=(51,51,49) stuck=False
+22:56:22.329 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1183 head=90 chirp=0 seq=None
+22:56:22.381 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1183 head=90 chirp=0
+22:56:22.498 [WARNING] [AI][REFLEX] avoid zone ahead=44.6cm -> avoid
+22:56:23.643 [WARNING] [AI][REFLEX] avoid zone ahead=21.1cm -> avoid
+22:56:24.487 [WARNING] [AI][REFLEX] avoid zone ahead=21.4cm -> avoid
+22:56:26.527 [INFO] [AI][STEP] -> bat=7.54V ahead=137.1cm ir=7 light=(1.55,1.08) scan=(51,51,49) stuck=False
+22:56:26.542 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1178 head=90 chirp=0 seq=None
+22:56:26.938 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1178 head=90 chirp=0
+22:56:27.075 [INFO] [AI][STEP] -> bat=7.54V ahead=127.4cm ir=7 light=(1.47,1.08) scan=(139,139,138) stuck=False
+22:56:27.090 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1174 head=90 chirp=0 seq=None
+22:56:27.145 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1174 head=90 chirp=0
+22:56:27.455 [INFO] [AI][STEP] -> bat=7.58V ahead=126.0cm ir=7 light=(1.47,1.08) scan=(139,139,138) stuck=False
+22:56:27.468 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1173 head=90 chirp=0 seq=None
+22:56:27.865 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1173 head=90 chirp=0
+22:56:28.004 [INFO] [AI][STEP] -> bat=7.78V ahead=127.4cm ir=7 light=(1.51,1.08) scan=(127,131,129) stuck=False
+22:56:28.022 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1173 head=90 chirp=0 seq=None
+22:56:28.072 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1173 head=90 chirp=0
+22:56:28.382 [INFO] [AI][STEP] -> bat=7.78V ahead=111.0cm ir=7 light=(1.51,1.08) scan=(127,131,129) stuck=False
+22:56:28.393 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1171 head=90 chirp=0 seq=None
+22:56:28.792 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1171 head=90 chirp=0
+22:56:28.931 [INFO] [AI][STEP] -> bat=7.58V ahead=107.1cm ir=7 light=(1.47,1.06) scan=(118,121,119) stuck=False
+22:56:28.949 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1171 head=90 chirp=0 seq=None
+22:56:29.000 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1171 head=90 chirp=0
+22:56:29.312 [INFO] [AI][STEP] -> bat=7.58V ahead=101.0cm ir=7 light=(1.47,1.06) scan=(118,121,119) stuck=False
+22:56:29.324 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1169 head=90 chirp=0 seq=None
+22:56:29.722 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1169 head=90 chirp=0
+22:56:29.861 [INFO] [AI][STEP] -> bat=6.40V ahead=83.3cm ir=7 light=(1.49,1.08) scan=(100,98,95) stuck=False
+22:56:29.877 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1169 head=90 chirp=0 seq=None
+22:56:29.929 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1169 head=90 chirp=0
+22:56:30.239 [INFO] [AI][STEP] -> bat=6.40V ahead=91.8cm ir=7 light=(1.49,1.08) scan=(100,98,95) stuck=False
+22:56:30.250 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1168 head=90 chirp=0 seq=None
+22:56:30.649 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1168 head=90 chirp=0
+22:56:30.788 [INFO] [AI][STEP] -> bat=7.54V ahead=76.3cm ir=7 light=(1.45,1.04) scan=(92,91,86) stuck=False
+22:56:30.806 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1167 head=90 chirp=0 seq=None
+22:56:30.856 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1167 head=90 chirp=0
+22:56:31.167 [INFO] [AI][STEP] -> bat=7.54V ahead=73.7cm ir=7 light=(1.45,1.04) scan=(92,91,86) stuck=False
+22:56:31.181 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1166 head=90 chirp=0 seq=None
+22:56:31.577 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1166 head=90 chirp=0
+22:56:31.715 [INFO] [AI][STEP] -> bat=7.54V ahead=69.2cm ir=7 light=(1.41,1.02) scan=(73,73,72) stuck=False
+22:56:31.739 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1166 head=90 chirp=0 seq=None
+22:56:31.783 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1166 head=90 chirp=0
+22:56:32.093 [INFO] [AI][STEP] -> bat=7.54V ahead=65.6cm ir=7 light=(1.41,1.02) scan=(73,73,72) stuck=False
+22:56:32.106 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1164 head=90 chirp=0 seq=None
+22:56:32.503 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1164 head=90 chirp=0
+22:56:32.641 [INFO] [AI][STEP] -> bat=7.58V ahead=59.1cm ir=7 light=(1.41,1.00) scan=(64,64,61) stuck=False
+22:56:32.658 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1164 head=90 chirp=0 seq=None
+22:56:32.709 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1164 head=90 chirp=0
+22:56:33.019 [INFO] [AI][STEP] -> bat=7.58V ahead=56.7cm ir=7 light=(1.41,1.00) scan=(64,64,61) stuck=False
+22:56:33.030 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1163 head=90 chirp=0 seq=None
+22:56:33.429 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1163 head=90 chirp=0
+22:56:33.567 [INFO] [AI][STEP] -> bat=7.54V ahead=62.7cm ir=7 light=(1.37,0.98) scan=(57,57,57) stuck=False
+22:56:33.584 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1162 head=90 chirp=0 seq=None
+22:56:33.635 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1162 head=90 chirp=0
+22:56:33.946 [INFO] [AI][STEP] -> bat=7.54V ahead=48.9cm ir=7 light=(1.37,0.98) scan=(57,57,57) stuck=False
+22:56:33.958 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1161 head=90 chirp=0 seq=None
+22:56:34.356 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1161 head=90 chirp=0
+22:56:34.490 [INFO] [AI][STEP] -> bat=7.54V ahead=45.0cm ir=7 light=(1.39,0.96) scan=(49,49,45) stuck=False
+22:56:34.513 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1161 head=90 chirp=0 seq=None
+22:56:34.563 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1161 head=90 chirp=0
+22:56:34.680 [WARNING] [AI][REFLEX] avoid zone ahead=42.3cm -> avoid
+22:56:35.837 [INFO] [AI][STEP] -> bat=7.58V ahead=47.1cm ir=7 light=(1.59,0.94) scan=(49,49,45) stuck=False
+22:56:35.849 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1159 head=90 chirp=0 seq=None
+22:56:36.247 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1159 head=90 chirp=0
+22:56:36.364 [WARNING] [AI][REFLEX] avoid zone ahead=42.8cm -> avoid
+22:56:37.510 [WARNING] [AI][REFLEX] avoid zone ahead=37.0cm -> avoid
+22:56:38.659 [WARNING] [AI][REFLEX] HARD_STOP ahead=12.8cm -> avoid
+22:56:41.043 [INFO] [AI][STEP] -> bat=7.54V ahead=49.2cm ir=5 light=(1.06,1.22) scan=(44,44,43) stuck=False
+22:56:41.056 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1152 head=90 chirp=0 seq=None
+22:56:41.453 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1152 head=90 chirp=0
+22:56:41.591 [INFO] [AI][STEP] -> bat=7.54V ahead=62.2cm ir=7 light=(1.04,1.28) scan=(56,62,63) stuck=False
+22:56:41.608 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1148 head=90 chirp=0 seq=None
+22:56:41.660 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1148 head=90 chirp=0
+22:56:41.778 [WARNING] [AI][REFLEX] avoid zone ahead=42.0cm -> avoid
+22:56:42.936 [INFO] [AI][STEP] -> bat=7.78V ahead=56.0cm ir=7 light=(1.39,1.10) scan=(56,62,63) stuck=False
+22:56:42.949 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1147 head=90 chirp=0 seq=None
+22:56:43.346 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1147 head=90 chirp=0
+22:56:43.483 [INFO] [AI][STEP] -> bat=7.78V ahead=55.5cm ir=7 light=(1.28,1.35) scan=(56,57,57) stuck=False
+22:56:43.501 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1145 head=90 chirp=0 seq=None
+22:56:43.552 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1145 head=90 chirp=0
+22:56:43.862 [INFO] [AI][STEP] -> bat=7.58V ahead=49.1cm ir=7 light=(1.28,1.35) scan=(56,57,57) stuck=False
+22:56:43.873 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1143 head=90 chirp=0 seq=None
+22:56:44.272 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1143 head=90 chirp=0
+22:56:44.410 [INFO] [AI][STEP] -> bat=7.78V ahead=49.7cm ir=7 light=(1.31,1.39) scan=(82,116,49) stuck=False
+22:56:44.425 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1143 head=90 chirp=0 seq=None
+22:56:44.478 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1143 head=90 chirp=0
+22:56:44.788 [INFO] [AI][STEP] -> bat=7.78V ahead=48.8cm ir=7 light=(1.31,1.39) scan=(82,116,49) stuck=False
+22:56:44.800 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1141 head=90 chirp=0 seq=None
+22:56:45.198 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1141 head=90 chirp=0
+22:56:45.328 [INFO] [AI][STEP] -> bat=7.58V ahead=49.1cm ir=7 light=(1.28,1.39) scan=(49,49,49) stuck=False
+22:56:45.354 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1141 head=90 chirp=0 seq=None
+22:56:45.405 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1141 head=90 chirp=0
+22:56:45.715 [INFO] [AI][STEP] -> bat=7.58V ahead=49.4cm ir=7 light=(1.28,1.39) scan=(49,49,49) stuck=False
+22:56:45.731 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1140 head=90 chirp=0 seq=None
+22:56:46.125 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1140 head=90 chirp=0
+22:56:46.264 [INFO] [AI][STEP] -> bat=7.58V ahead=49.4cm ir=7 light=(1.24,1.37) scan=(49,49,49) stuck=False
+22:56:46.282 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1140 head=90 chirp=0 seq=None
+22:56:46.333 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1140 head=90 chirp=0
+22:56:46.643 [INFO] [AI][STEP] -> bat=7.58V ahead=47.7cm ir=7 light=(1.24,1.37) scan=(49,49,49) stuck=False
+22:56:46.656 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1138 head=90 chirp=0 seq=None
+22:56:47.053 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1138 head=90 chirp=0
+22:56:47.192 [INFO] [AI][STEP] -> bat=7.58V ahead=48.8cm ir=7 light=(1.24,1.41) scan=(49,49,49) stuck=False
+22:56:47.210 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1138 head=90 chirp=0 seq=None
+22:56:47.260 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1138 head=90 chirp=0
+22:56:47.570 [INFO] [AI][STEP] -> bat=7.58V ahead=60.6cm ir=7 light=(1.24,1.41) scan=(49,49,49) stuck=False
+22:56:47.579 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1136 head=90 chirp=0 seq=None
+22:56:47.980 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1136 head=90 chirp=0
+22:56:48.119 [INFO] [AI][STEP] -> bat=6.32V ahead=115.2cm ir=7 light=(1.26,1.43) scan=(115,115,115) stuck=False
+22:56:48.143 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1136 head=90 chirp=0 seq=None
+22:56:48.187 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1136 head=90 chirp=0
+22:56:48.497 [INFO] [AI][STEP] -> bat=6.32V ahead=48.5cm ir=7 light=(1.26,1.43) scan=(115,115,115) stuck=False
+22:56:48.510 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1135 head=90 chirp=0 seq=None
+22:56:48.907 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1135 head=90 chirp=0
+22:56:49.044 [INFO] [AI][STEP] -> bat=7.06V ahead=55.7cm ir=7 light=(1.26,1.41) scan=(47,47,47) stuck=False
+22:56:49.062 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1135 head=90 chirp=0 seq=None
+22:56:49.113 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1135 head=90 chirp=0
+22:56:49.422 [INFO] [AI][STEP] -> bat=7.06V ahead=48.7cm ir=7 light=(1.26,1.41) scan=(47,47,47) stuck=False
+22:56:49.436 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1133 head=90 chirp=0 seq=None
+22:56:49.833 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1133 head=90 chirp=0
+22:56:49.971 [INFO] [AI][STEP] -> bat=7.58V ahead=48.7cm ir=7 light=(1.28,1.39) scan=(49,49,49) stuck=False
+22:56:49.988 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1133 head=90 chirp=0 seq=None
+22:56:50.039 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1133 head=90 chirp=0
+22:56:50.349 [INFO] [AI][STEP] -> bat=7.58V ahead=48.1cm ir=7 light=(1.28,1.39) scan=(49,49,49) stuck=False
+22:56:50.360 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1131 head=90 chirp=0 seq=None
+22:56:50.759 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1131 head=90 chirp=0
+22:56:50.897 [INFO] [AI][STEP] -> bat=7.58V ahead=47.8cm ir=7 light=(1.22,1.39) scan=(48,48,48) stuck=False
+22:56:50.914 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1131 head=90 chirp=0 seq=None
+22:56:50.965 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1131 head=90 chirp=0
+22:56:51.276 [INFO] [AI][STEP] -> bat=7.58V ahead=47.1cm ir=7 light=(1.22,1.39) scan=(48,48,48) stuck=False
+22:56:51.287 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1130 head=90 chirp=0 seq=None
+22:56:51.686 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1130 head=90 chirp=0
+22:56:51.816 [INFO] [AI][STEP] -> bat=7.58V ahead=48.5cm ir=7 light=(1.22,1.41) scan=(48,48,48) stuck=False
+22:56:51.836 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1130 head=90 chirp=0 seq=None
+22:56:51.893 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1130 head=90 chirp=0
+22:56:52.203 [INFO] [AI][STEP] -> bat=7.58V ahead=46.3cm ir=7 light=(1.22,1.41) scan=(48,48,48) stuck=False
+22:56:52.216 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1128 head=90 chirp=0 seq=None
+22:56:52.614 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1128 head=90 chirp=0
+22:56:52.752 [INFO] [AI][STEP] -> bat=7.62V ahead=55.7cm ir=7 light=(1.28,1.43) scan=(48,48,48) stuck=False
+22:56:52.770 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1128 head=90 chirp=0 seq=None
+22:56:52.820 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1128 head=90 chirp=0
+22:56:53.130 [INFO] [AI][STEP] -> bat=7.62V ahead=49.0cm ir=7 light=(1.28,1.43) scan=(48,48,48) stuck=False
+22:56:53.142 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1126 head=90 chirp=0 seq=None
+22:56:53.540 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1126 head=90 chirp=0
+22:56:53.678 [INFO] [AI][STEP] -> bat=7.58V ahead=55.6cm ir=7 light=(1.26,1.41) scan=(49,49,49) stuck=False
+22:56:53.697 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1126 head=90 chirp=0 seq=None
+22:56:53.746 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1126 head=90 chirp=0
+22:56:54.056 [INFO] [AI][STEP] -> bat=7.58V ahead=114.5cm ir=7 light=(1.26,1.41) scan=(49,49,49) stuck=False
+22:56:54.067 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1125 head=90 chirp=0 seq=None
+22:56:54.466 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1125 head=90 chirp=0
+22:56:54.604 [INFO] [AI][STEP] -> bat=6.68V ahead=83.5cm ir=7 light=(1.18,1.41) scan=(114,114,114) stuck=False
+22:56:54.622 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1125 head=90 chirp=0 seq=None
+22:56:54.673 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1125 head=90 chirp=0
+22:56:54.981 [INFO] [AI][STEP] -> bat=6.68V ahead=45.3cm ir=7 light=(1.18,1.41) scan=(114,114,114) stuck=False
+22:56:54.995 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1123 head=90 chirp=0 seq=None
+22:56:55.393 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1123 head=90 chirp=0
+22:56:55.512 [WARNING] [AI][REFLEX] avoid zone ahead=44.3cm -> avoid
+22:56:56.658 [WARNING] [AI][REFLEX] avoid zone ahead=36.1cm -> avoid
+22:56:57.816 [INFO] [AI][STEP] -> bat=7.54V ahead=88.6cm ir=7 light=(1.33,1.39) scan=(45,45,44) stuck=False
+22:56:57.837 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1120 head=90 chirp=0 seq=None
+22:56:58.227 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1120 head=90 chirp=0
+22:56:58.364 [INFO] [AI][STEP] -> bat=7.54V ahead=88.6cm ir=7 light=(1.10,1.41) scan=(89,89,89) stuck=False
+22:56:58.382 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1118 head=90 chirp=0 seq=None
+22:56:58.433 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1118 head=90 chirp=0
+22:56:58.686 [INFO] [AI][STEP] -> bat=7.58V ahead=55.7cm ir=7 light=(1.10,1.41) scan=(89,89,89) stuck=False
+22:56:58.700 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1116 head=90 chirp=0 seq=None
+22:56:59.098 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1116 head=90 chirp=0
+22:56:59.235 [INFO] [AI][STEP] -> bat=7.74V ahead=90.6cm ir=7 light=(1.06,1.41) scan=(42,42,56) stuck=False
+22:56:59.252 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1116 head=90 chirp=0 seq=None
+22:56:59.303 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1116 head=90 chirp=0
+22:56:59.556 [INFO] [AI][STEP] -> bat=7.74V ahead=300.0cm ir=7 light=(1.06,1.41) scan=(42,42,56) stuck=False
+22:56:59.581 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1115 head=90 chirp=0 seq=None
+22:56:59.685 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1115 head=90 chirp=0
+22:56:59.947 [INFO] [AI][STEP] -> bat=6.24V ahead=300.0cm ir=7 light=(1.08,1.41) scan=(42,42,56) stuck=False
+22:56:59.958 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1114 head=90 chirp=0 seq=None
+22:57:00.357 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1114 head=90 chirp=0
+22:57:00.486 [INFO] [AI][STEP] -> bat=7.70V ahead=88.7cm ir=7 light=(1.06,1.41) scan=(300,300,300) stuck=False
+22:57:00.502 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1114 head=90 chirp=0 seq=None
+22:57:00.562 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1114 head=90 chirp=0
+22:57:00.823 [INFO] [AI][STEP] -> bat=7.70V ahead=88.7cm ir=7 light=(1.06,1.41) scan=(300,300,300) stuck=False
+22:57:00.841 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1112 head=90 chirp=0 seq=None
+22:57:00.944 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1112 head=90 chirp=0
+22:57:01.201 [INFO] [AI][STEP] -> bat=6.60V ahead=300.0cm ir=7 light=(1.08,1.41) scan=(300,300,300) stuck=False
+22:57:01.218 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1112 head=90 chirp=0 seq=None
+22:57:01.611 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1112 head=90 chirp=0
+22:57:01.748 [INFO] [AI][STEP] -> bat=7.70V ahead=300.0cm ir=7 light=(1.06,1.43) scan=(300,300,300) stuck=False
+22:57:01.767 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1112 head=90 chirp=0 seq=None
+22:57:01.816 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1112 head=90 chirp=0
+22:57:02.083 [INFO] [AI][STEP] -> bat=7.70V ahead=300.0cm ir=7 light=(1.06,1.43) scan=(300,300,300) stuck=False
+22:57:02.112 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1110 head=90 chirp=0 seq=None
+22:57:02.206 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1110 head=90 chirp=0
+22:57:02.462 [INFO] [AI][STEP] -> bat=7.58V ahead=300.0cm ir=7 light=(1.08,1.43) scan=(300,300,300) stuck=False
+22:57:02.476 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1110 head=90 chirp=0 seq=None
+22:57:02.872 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1110 head=90 chirp=0
+22:57:03.010 [INFO] [AI][STEP] -> bat=7.74V ahead=85.2cm ir=7 light=(1.02,1.41) scan=(300,300,300) stuck=False
+22:57:03.028 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1109 head=90 chirp=0 seq=None
+22:57:03.079 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1109 head=90 chirp=0
+22:57:03.387 [INFO] [AI][STEP] -> bat=7.74V ahead=85.2cm ir=7 light=(1.02,1.41) scan=(300,300,300) stuck=False
+22:57:03.411 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1108 head=90 chirp=0 seq=None
+22:57:03.466 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1108 head=90 chirp=0
+22:57:03.776 [INFO] [AI][STEP] -> bat=7.54V ahead=300.0cm ir=7 light=(1.10,1.43) scan=(300,300,300) stuck=False
+22:57:03.788 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1107 head=90 chirp=0 seq=None
+22:57:04.186 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1107 head=90 chirp=0
+22:57:04.315 [INFO] [AI][STEP] -> bat=7.74V ahead=96.3cm ir=7 light=(1.02,1.41) scan=(300,300,300) stuck=False
+22:57:04.340 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1107 head=90 chirp=0 seq=None
+22:57:04.391 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1107 head=90 chirp=0
+22:57:04.646 [INFO] [AI][STEP] -> bat=7.74V ahead=55.9cm ir=7 light=(1.02,1.41) scan=(300,300,300) stuck=False
+22:57:04.657 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1106 head=90 chirp=0 seq=None
+22:57:05.056 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1106 head=90 chirp=0
+22:57:05.193 [INFO] [AI][STEP] -> bat=7.58V ahead=95.4cm ir=7 light=(1.02,1.41) scan=(96,96,96) stuck=False
+22:57:05.210 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1105 head=90 chirp=0 seq=None
+22:57:05.262 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1105 head=90 chirp=0
+22:57:05.572 [INFO] [AI][STEP] -> bat=7.58V ahead=87.7cm ir=7 light=(1.02,1.41) scan=(96,96,96) stuck=False
+22:57:05.589 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1104 head=90 chirp=0 seq=None
+22:57:05.649 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1104 head=90 chirp=0
+22:57:05.946 [WARNING] [AI][REFLEX] avoid zone ahead=39.4cm -> avoid
+22:57:07.091 [WARNING] [AI][REFLEX] avoid zone ahead=37.2cm -> avoid
+22:57:08.247 [INFO] [AI][STEP] -> bat=7.58V ahead=88.1cm ir=7 light=(1.33,1.39) scan=(96,96,96) stuck=False
+22:57:08.263 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1101 head=90 chirp=0 seq=None
+22:57:08.657 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1101 head=90 chirp=0
+22:57:08.788 [INFO] [AI][STEP] -> bat=7.58V ahead=87.9cm ir=7 light=(1.08,1.41) scan=(88,88,88) stuck=False
+22:57:08.814 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1099 head=90 chirp=0 seq=None
+22:57:08.863 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1099 head=90 chirp=0
+22:57:09.173 [INFO] [AI][STEP] -> bat=7.58V ahead=112.3cm ir=7 light=(1.08,1.41) scan=(88,88,88) stuck=False
+22:57:09.185 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1098 head=90 chirp=0 seq=None
+22:57:09.583 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1098 head=90 chirp=0
+22:57:09.720 [INFO] [AI][STEP] -> bat=7.74V ahead=66.3cm ir=7 light=(1.06,1.41) scan=(56,56,56) stuck=False
+22:57:09.737 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1097 head=90 chirp=0 seq=None
+22:57:09.789 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1097 head=90 chirp=0
+22:57:10.099 [INFO] [AI][STEP] -> bat=7.74V ahead=118.3cm ir=7 light=(1.06,1.41) scan=(56,56,56) stuck=False
+22:57:10.108 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1096 head=90 chirp=0 seq=None
+22:57:10.509 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1096 head=90 chirp=0
+22:57:10.648 [INFO] [AI][STEP] -> bat=6.64V ahead=77.5cm ir=7 light=(1.02,1.39) scan=(118,118,118) stuck=False
+22:57:10.673 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1096 head=90 chirp=0 seq=None
+22:57:10.717 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1096 head=90 chirp=0
+22:57:11.032 [INFO] [AI][STEP] -> bat=6.64V ahead=117.9cm ir=7 light=(1.02,1.39) scan=(118,118,118) stuck=False
+22:57:11.047 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1094 head=90 chirp=0 seq=None
+22:57:11.442 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1094 head=90 chirp=0
+22:57:11.579 [INFO] [AI][STEP] -> bat=7.54V ahead=105.4cm ir=7 light=(1.00,1.41) scan=(118,118,118) stuck=False
+22:57:11.594 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1094 head=90 chirp=0 seq=None
+22:57:11.647 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1094 head=90 chirp=0
+22:57:11.903 [INFO] [AI][STEP] -> bat=7.54V ahead=105.4cm ir=7 light=(1.00,1.41) scan=(118,118,118) stuck=False
+22:57:11.914 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1093 head=90 chirp=0 seq=None
+22:57:12.312 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1093 head=90 chirp=0
+22:57:12.449 [INFO] [AI][STEP] -> bat=7.58V ahead=81.9cm ir=7 light=(0.98,1.39) scan=(118,118,118) stuck=False
+22:57:12.465 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1092 head=90 chirp=0 seq=None
+22:57:12.517 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1092 head=90 chirp=0
+22:57:12.832 [INFO] [AI][STEP] -> bat=7.58V ahead=117.6cm ir=7 light=(0.98,1.39) scan=(118,118,118) stuck=False
+22:57:12.852 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1091 head=90 chirp=0 seq=None
+22:57:12.902 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1091 head=90 chirp=0
+22:57:13.209 [INFO] [AI][STEP] -> bat=7.54V ahead=117.9cm ir=7 light=(0.98,1.35) scan=(118,118,118) stuck=False
+22:57:13.222 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1090 head=90 chirp=0 seq=None
+22:57:13.619 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1090 head=90 chirp=0
+22:57:13.756 [INFO] [AI][STEP] -> bat=7.74V ahead=107.5cm ir=7 light=(1.06,1.20) scan=(118,118,108) stuck=False
+22:57:13.773 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1090 head=90 chirp=0 seq=None
+22:57:13.824 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1090 head=90 chirp=0
+22:57:14.079 [INFO] [AI][STEP] -> bat=7.74V ahead=107.2cm ir=7 light=(1.06,1.20) scan=(118,118,108) stuck=False
+22:57:14.088 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1089 head=90 chirp=0 seq=None
+22:57:14.489 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1089 head=90 chirp=0
+22:57:14.626 [INFO] [AI][STEP] -> bat=7.58V ahead=104.2cm ir=7 light=(1.10,1.20) scan=(107,107,106) stuck=False
+22:57:14.644 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1088 head=90 chirp=0 seq=None
+22:57:14.694 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1088 head=90 chirp=0
+22:57:14.955 [INFO] [AI][STEP] -> bat=7.58V ahead=103.9cm ir=7 light=(1.10,1.20) scan=(107,107,106) stuck=False
+22:57:14.978 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1087 head=90 chirp=0 seq=None
+22:57:15.075 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1087 head=90 chirp=0
+22:57:15.332 [INFO] [AI][STEP] -> bat=7.62V ahead=101.3cm ir=7 light=(1.33,1.28) scan=(107,107,106) stuck=False
+22:57:15.343 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1086 head=90 chirp=0 seq=None
+22:57:15.742 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1086 head=90 chirp=0
+22:57:15.879 [INFO] [AI][STEP] -> bat=7.62V ahead=96.1cm ir=7 light=(1.26,1.31) scan=(100,99,98) stuck=False
+22:57:15.898 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1086 head=90 chirp=0 seq=None
+22:57:15.947 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1086 head=90 chirp=0
+22:57:16.259 [INFO] [AI][STEP] -> bat=7.62V ahead=92.5cm ir=7 light=(1.26,1.31) scan=(100,99,98) stuck=False
+22:57:16.277 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1085 head=90 chirp=0 seq=None
+22:57:16.337 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1085 head=90 chirp=0
+22:57:16.647 [INFO] [AI][STEP] -> bat=7.54V ahead=86.6cm ir=7 light=(1.28,1.31) scan=(100,99,98) stuck=False
+22:57:16.660 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1084 head=90 chirp=0 seq=None
+22:57:17.057 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1084 head=90 chirp=0
+22:57:17.188 [INFO] [AI][STEP] -> bat=7.78V ahead=82.6cm ir=7 light=(1.22,1.24) scan=(86,86,85) stuck=False
+22:57:17.206 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1084 head=90 chirp=0 seq=None
+22:57:17.265 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1084 head=90 chirp=0
+22:57:17.573 [INFO] [AI][STEP] -> bat=7.78V ahead=80.6cm ir=7 light=(1.22,1.24) scan=(86,86,85) stuck=False
+22:57:17.586 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1082 head=90 chirp=0 seq=None
+22:57:17.984 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1082 head=90 chirp=0
+22:57:18.122 [INFO] [AI][STEP] -> bat=7.58V ahead=78.8cm ir=7 light=(1.28,1.12) scan=(81,81,80) stuck=False
+22:57:18.139 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1082 head=90 chirp=0 seq=None
+22:57:18.191 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1082 head=90 chirp=0
+22:57:18.501 [INFO] [AI][STEP] -> bat=7.58V ahead=77.9cm ir=7 light=(1.28,1.12) scan=(81,81,80) stuck=False
+22:57:18.512 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1081 head=90 chirp=0 seq=None
+22:57:18.911 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1081 head=90 chirp=0
+22:57:19.049 [INFO] [AI][STEP] -> bat=7.54V ahead=74.9cm ir=7 light=(1.39,1.16) scan=(77,75,75) stuck=False
+22:57:19.065 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1081 head=90 chirp=0 seq=None
+22:57:19.117 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1081 head=90 chirp=0
+22:57:19.427 [INFO] [AI][STEP] -> bat=7.54V ahead=70.9cm ir=7 light=(1.39,1.16) scan=(77,75,75) stuck=False
+22:57:19.439 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1079 head=90 chirp=0 seq=None
+22:57:19.838 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1079 head=90 chirp=0
+22:57:19.976 [INFO] [AI][STEP] -> bat=7.58V ahead=67.8cm ir=7 light=(1.33,1.22) scan=(70,70,69) stuck=False
+22:57:19.993 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1079 head=90 chirp=0 seq=None
+22:57:20.044 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1079 head=90 chirp=0
+22:57:20.354 [INFO] [AI][STEP] -> bat=7.58V ahead=64.9cm ir=7 light=(1.33,1.22) scan=(70,70,69) stuck=False
+22:57:20.368 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1077 head=90 chirp=0 seq=None
+22:57:20.764 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1077 head=90 chirp=0
+22:57:20.901 [INFO] [AI][STEP] -> bat=7.58V ahead=61.2cm ir=7 light=(1.22,1.22) scan=(65,65,62) stuck=False
+22:57:20.920 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1077 head=90 chirp=0 seq=None
+22:57:20.970 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1077 head=90 chirp=0
+22:57:21.280 [INFO] [AI][STEP] -> bat=7.58V ahead=58.6cm ir=7 light=(1.22,1.22) scan=(65,65,62) stuck=False
+22:57:21.291 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1076 head=90 chirp=0 seq=None
+22:57:21.690 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1076 head=90 chirp=0
+22:57:21.828 [INFO] [AI][STEP] -> bat=6.78V ahead=55.7cm ir=7 light=(1.22,1.22) scan=(58,57,56) stuck=False
+22:57:21.845 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1076 head=90 chirp=0 seq=None
+22:57:21.897 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1076 head=90 chirp=0
+22:57:22.206 [INFO] [AI][STEP] -> bat=6.78V ahead=50.3cm ir=7 light=(1.22,1.22) scan=(58,57,56) stuck=False
+22:57:22.226 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1074 head=90 chirp=0 seq=None
+22:57:22.616 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1074 head=90 chirp=0
+22:57:22.754 [INFO] [AI][STEP] -> bat=6.98V ahead=45.1cm ir=7 light=(1.20,1.24) scan=(50,49,48) stuck=False
+22:57:22.771 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1074 head=90 chirp=0 seq=None
+22:57:22.822 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1074 head=90 chirp=0
+22:57:22.939 [WARNING] [AI][REFLEX] avoid zone ahead=44.9cm -> avoid
+22:57:24.097 [INFO] [AI][STEP] -> bat=7.62V ahead=171.0cm ir=7 light=(1.12,1.12) scan=(50,49,48) stuck=False
+22:57:24.110 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1073 head=90 chirp=0 seq=None
+22:57:24.507 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1073 head=90 chirp=0
+22:57:24.645 [INFO] [AI][STEP] -> bat=7.62V ahead=170.1cm ir=7 light=(1.00,1.16) scan=(171,171,161) stuck=False
+22:57:24.667 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1071 head=90 chirp=0 seq=None
+22:57:24.715 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1071 head=90 chirp=0
+22:57:25.025 [INFO] [AI][STEP] -> bat=7.58V ahead=300.0cm ir=7 light=(1.00,1.16) scan=(171,171,161) stuck=False
+22:57:25.046 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1069 head=90 chirp=0 seq=None
+22:57:25.435 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1069 head=90 chirp=0
+22:57:25.565 [INFO] [AI][STEP] -> bat=7.78V ahead=300.0cm ir=7 light=(1.02,1.16) scan=(300,300,300) stuck=False
+22:57:25.584 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1069 head=90 chirp=0 seq=None
+22:57:25.642 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1069 head=90 chirp=0
+22:57:25.951 [INFO] [AI][STEP] -> bat=7.78V ahead=164.9cm ir=7 light=(1.02,1.16) scan=(300,300,300) stuck=False
+22:57:25.963 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1067 head=90 chirp=0 seq=None
+22:57:26.362 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1067 head=90 chirp=0
+22:57:26.500 [INFO] [AI][STEP] -> bat=7.58V ahead=146.6cm ir=7 light=(1.02,1.18) scan=(153,149,149) stuck=False
+22:57:26.515 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1067 head=90 chirp=0 seq=None
+22:57:26.568 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1067 head=90 chirp=0
+22:57:26.878 [INFO] [AI][STEP] -> bat=7.58V ahead=144.2cm ir=7 light=(1.02,1.18) scan=(153,149,149) stuck=False
+22:57:26.890 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1066 head=90 chirp=0 seq=None
+22:57:27.288 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1066 head=90 chirp=0
+22:57:27.419 [INFO] [AI][STEP] -> bat=7.58V ahead=144.4cm ir=7 light=(1.10,1.18) scan=(144,144,144) stuck=False
+22:57:27.437 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1066 head=90 chirp=0 seq=None
+22:57:27.495 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1066 head=90 chirp=0
+22:57:27.806 [INFO] [AI][STEP] -> bat=7.58V ahead=190.8cm ir=7 light=(1.10,1.18) scan=(144,144,144) stuck=False
+22:57:27.818 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1064 head=90 chirp=0 seq=None
+22:57:28.216 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1064 head=90 chirp=0
+22:57:28.355 [INFO] [AI][STEP] -> bat=7.54V ahead=156.5cm ir=7 light=(1.20,1.18) scan=(186,184,185) stuck=False
+22:57:28.372 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1064 head=90 chirp=0 seq=None
+22:57:28.423 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1064 head=90 chirp=0
+22:57:28.732 [INFO] [AI][STEP] -> bat=7.54V ahead=184.2cm ir=7 light=(1.20,1.18) scan=(186,184,185) stuck=False
+22:57:28.747 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1062 head=90 chirp=0 seq=None
+22:57:29.143 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1062 head=90 chirp=0
+22:57:29.282 [INFO] [AI][STEP] -> bat=7.58V ahead=126.2cm ir=7 light=(1.24,1.16) scan=(185,184,184) stuck=False
+22:57:29.300 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1062 head=90 chirp=0 seq=None
+22:57:29.351 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1062 head=90 chirp=0
+22:57:29.660 [INFO] [AI][STEP] -> bat=7.58V ahead=126.2cm ir=7 light=(1.24,1.16) scan=(185,184,184) stuck=False
+22:57:29.671 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1061 head=90 chirp=0 seq=None
+22:57:30.070 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1061 head=90 chirp=0
+22:57:30.208 [INFO] [AI][STEP] -> bat=7.58V ahead=183.7cm ir=7 light=(1.20,1.18) scan=(155,155,184) stuck=False
+22:57:30.228 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1061 head=90 chirp=0 seq=None
+22:57:30.277 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1061 head=90 chirp=0
+22:57:30.585 [INFO] [AI][STEP] -> bat=7.58V ahead=183.6cm ir=7 light=(1.20,1.18) scan=(155,155,184) stuck=False
+22:57:30.600 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1059 head=90 chirp=0 seq=None
+22:57:30.998 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1059 head=90 chirp=0
+22:57:31.132 [INFO] [AI][STEP] -> bat=7.58V ahead=154.3cm ir=7 light=(1.20,1.16) scan=(184,184,184) stuck=False
+22:57:31.156 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1059 head=90 chirp=0 seq=None
+22:57:31.206 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1059 head=90 chirp=0
+22:57:31.516 [INFO] [AI][STEP] -> bat=7.58V ahead=155.5cm ir=7 light=(1.20,1.16) scan=(184,184,184) stuck=False
+22:57:31.530 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1057 head=90 chirp=0 seq=None
+22:57:31.926 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1057 head=90 chirp=0
+22:57:32.064 [INFO] [AI][STEP] -> bat=7.58V ahead=127.0cm ir=7 light=(1.20,1.16) scan=(183,183,183) stuck=False
+22:57:32.082 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1057 head=90 chirp=0 seq=None
+22:57:32.132 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1057 head=90 chirp=0
+22:57:32.442 [INFO] [AI][STEP] -> bat=7.58V ahead=154.2cm ir=7 light=(1.20,1.16) scan=(183,183,183) stuck=False
+22:57:32.457 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1056 head=90 chirp=0 seq=None
+22:57:32.852 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1056 head=90 chirp=0
+22:57:32.982 [INFO] [AI][STEP] -> bat=6.40V ahead=183.8cm ir=7 light=(1.22,1.18) scan=(184,184,184) stuck=False
+22:57:33.003 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1056 head=90 chirp=0 seq=None
+22:57:33.059 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1056 head=90 chirp=0
+22:57:33.369 [INFO] [AI][STEP] -> bat=6.40V ahead=182.5cm ir=7 light=(1.22,1.18) scan=(184,184,184) stuck=False
+22:57:33.399 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1054 head=90 chirp=0 seq=None
+22:57:33.779 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1054 head=90 chirp=0
+22:57:33.917 [INFO] [AI][STEP] -> bat=7.58V ahead=176.8cm ir=7 light=(1.22,1.18) scan=(182,182,182) stuck=False
+22:57:33.934 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1054 head=90 chirp=0 seq=None
+22:57:33.986 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1054 head=90 chirp=0
+22:57:34.295 [INFO] [AI][STEP] -> bat=7.58V ahead=176.8cm ir=7 light=(1.22,1.18) scan=(182,182,182) stuck=False
+22:57:34.307 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1052 head=90 chirp=0 seq=None
+22:57:34.706 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1052 head=90 chirp=0
+22:57:34.844 [INFO] [AI][STEP] -> bat=7.58V ahead=155.4cm ir=7 light=(1.22,1.16) scan=(234,234,182) stuck=False
+22:57:34.863 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1052 head=90 chirp=0 seq=None
+22:57:34.914 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1052 head=90 chirp=0
+22:57:35.224 [INFO] [AI][STEP] -> bat=7.58V ahead=155.4cm ir=7 light=(1.22,1.16) scan=(234,234,182) stuck=False
+22:57:35.235 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1051 head=90 chirp=0 seq=None
+22:57:35.636 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1051 head=90 chirp=0
+22:57:35.780 [INFO] [AI][STEP] -> bat=7.54V ahead=182.5cm ir=7 light=(1.24,1.18) scan=(176,176,176) stuck=False
+22:57:35.793 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1051 head=90 chirp=0 seq=None
+22:57:35.843 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1051 head=90 chirp=0
+22:57:36.097 [INFO] [AI][STEP] -> bat=7.54V ahead=300.0cm ir=7 light=(1.24,1.18) scan=(176,176,176) stuck=False
+22:57:36.109 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1049 head=90 chirp=0 seq=None
+22:57:36.507 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1049 head=90 chirp=0
+22:57:36.644 [INFO] [AI][STEP] -> bat=7.58V ahead=300.0cm ir=7 light=(1.22,1.18) scan=(300,300,300) stuck=False
+22:57:36.662 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1049 head=90 chirp=0 seq=None
+22:57:36.712 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1049 head=90 chirp=0
+22:57:36.974 [INFO] [AI][STEP] -> bat=7.58V ahead=300.0cm ir=7 light=(1.22,1.18) scan=(300,300,300) stuck=False
+22:57:36.992 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1047 head=90 chirp=0 seq=None
+22:57:37.095 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1047 head=90 chirp=0
+22:57:37.352 [INFO] [AI][STEP] -> bat=6.32V ahead=300.0cm ir=7 light=(1.28,1.20) scan=(300,300,300) stuck=False
+22:57:37.363 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1047 head=90 chirp=0 seq=None
+22:57:37.762 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1047 head=90 chirp=0
+22:57:37.904 [INFO] [AI][STEP] -> bat=7.70V ahead=123.1cm ir=7 light=(1.24,1.20) scan=(300,300,300) stuck=False
+22:57:37.917 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1047 head=90 chirp=0 seq=None
+22:57:37.967 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1047 head=90 chirp=0
+22:57:38.228 [INFO] [AI][STEP] -> bat=7.70V ahead=123.1cm ir=7 light=(1.24,1.20) scan=(300,300,300) stuck=False
+22:57:38.251 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1045 head=90 chirp=0 seq=None
+22:57:38.349 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1045 head=90 chirp=0
+22:57:38.606 [INFO] [AI][STEP] -> bat=7.58V ahead=183.0cm ir=7 light=(1.33,1.20) scan=(300,300,300) stuck=False
+22:57:38.617 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1045 head=90 chirp=0 seq=None
+22:57:39.016 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1045 head=90 chirp=0
+22:57:39.159 [INFO] [AI][STEP] -> bat=7.74V ahead=222.8cm ir=7 light=(1.26,1.20) scan=(300,300,223) stuck=False
+22:57:39.170 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1044 head=90 chirp=0 seq=None
+22:57:39.222 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1044 head=90 chirp=0
+22:57:39.483 [INFO] [AI][STEP] -> bat=7.74V ahead=123.5cm ir=7 light=(1.26,1.20) scan=(300,300,223) stuck=False
+22:57:39.506 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1043 head=90 chirp=0 seq=None
+22:57:39.604 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1043 head=90 chirp=0
+22:57:39.859 [INFO] [AI][STEP] -> bat=7.58V ahead=185.3cm ir=7 light=(1.33,1.20) scan=(300,300,223) stuck=False
+22:57:39.872 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1042 head=90 chirp=0 seq=None
+22:57:40.270 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1042 head=90 chirp=0
+22:57:40.407 [INFO] [AI][STEP] -> bat=7.74V ahead=124.7cm ir=7 light=(1.31,1.20) scan=(184,184,184) stuck=False
+22:57:40.423 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1042 head=90 chirp=0 seq=None
+22:57:40.475 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1042 head=90 chirp=0
+22:57:40.737 [INFO] [AI][STEP] -> bat=7.74V ahead=124.7cm ir=7 light=(1.31,1.20) scan=(184,184,184) stuck=False
+22:57:40.754 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1041 head=90 chirp=0 seq=None
+22:57:40.858 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1041 head=90 chirp=0
+22:57:41.117 [INFO] [AI][STEP] -> bat=7.58V ahead=300.0cm ir=7 light=(1.33,1.20) scan=(184,184,184) stuck=False
+22:57:41.125 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1040 head=90 chirp=0 seq=None
+22:57:41.527 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1040 head=90 chirp=0
+22:57:41.665 [INFO] [AI][STEP] -> bat=7.78V ahead=60.2cm ir=7 light=(1.28,1.20) scan=(300,188,60) stuck=False
+22:57:41.685 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1040 head=90 chirp=0 seq=None
+22:57:41.734 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1040 head=90 chirp=0
+22:57:42.050 [INFO] [AI][STEP] -> bat=7.78V ahead=125.2cm ir=7 light=(1.28,1.20) scan=(300,188,60) stuck=False
+22:57:42.068 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1038 head=90 chirp=0 seq=None
+22:57:42.120 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1038 head=90 chirp=0
+22:57:42.429 [INFO] [AI][STEP] -> bat=7.58V ahead=300.0cm ir=7 light=(1.33,1.20) scan=(300,188,60) stuck=False
+22:57:42.442 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1038 head=90 chirp=0 seq=None
+22:57:42.841 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1038 head=90 chirp=0
+22:57:42.978 [INFO] [AI][STEP] -> bat=7.78V ahead=123.7cm ir=7 light=(1.26,1.20) scan=(300,300,300) stuck=False
+22:57:43.002 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1038 head=90 chirp=0 seq=None
+22:57:43.047 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1038 head=90 chirp=0
+22:57:43.357 [INFO] [AI][STEP] -> bat=7.78V ahead=123.7cm ir=7 light=(1.26,1.20) scan=(300,300,300) stuck=False
+22:57:43.368 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1036 head=90 chirp=0 seq=None
+22:57:43.767 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1036 head=90 chirp=0
+22:57:43.905 [INFO] [AI][STEP] -> bat=7.58V ahead=121.9cm ir=7 light=(1.28,1.18) scan=(181,152,123) stuck=False
+22:57:43.924 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1036 head=90 chirp=0 seq=None
+22:57:43.974 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1036 head=90 chirp=0
+22:57:44.091 [WARNING] [AI][REFLEX] HARD_STOP ahead=5.3cm -> avoid
+22:57:46.476 [INFO] [AI][STEP] -> bat=7.58V ahead=137.3cm ir=7 light=(1.61,1.14) scan=(181,152,123) stuck=False
+22:57:46.489 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1035 head=90 chirp=0 seq=None
+22:57:46.886 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1035 head=90 chirp=0
+22:57:47.016 [INFO] [AI][STEP] -> bat=7.58V ahead=107.6cm ir=7 light=(1.59,1.14) scan=(130,128,127) stuck=False
+22:57:47.034 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1030 head=90 chirp=0 seq=None
+22:57:47.093 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1030 head=90 chirp=0
+22:57:47.403 [INFO] [AI][STEP] -> bat=7.58V ahead=104.7cm ir=7 light=(1.59,1.14) scan=(130,128,127) stuck=False
+22:57:47.416 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1029 head=90 chirp=0 seq=None
+22:57:47.813 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1029 head=90 chirp=0
+22:57:47.951 [INFO] [AI][STEP] -> bat=7.78V ahead=101.1cm ir=7 light=(1.57,1.14) scan=(105,105,104) stuck=False
+22:57:47.970 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1029 head=90 chirp=0 seq=None
+22:57:48.019 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1029 head=90 chirp=0
+22:57:48.328 [INFO] [AI][STEP] -> bat=7.78V ahead=97.1cm ir=7 light=(1.57,1.14) scan=(105,105,104) stuck=False
+22:57:48.343 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1027 head=90 chirp=0 seq=None
+22:57:48.739 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1027 head=90 chirp=0
+22:57:48.877 [INFO] [AI][STEP] -> bat=7.58V ahead=91.1cm ir=7 light=(1.59,1.14) scan=(97,97,95) stuck=False
+22:57:48.894 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1027 head=90 chirp=0 seq=None
+22:57:48.945 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1027 head=90 chirp=0
+22:57:49.254 [INFO] [AI][STEP] -> bat=7.58V ahead=93.2cm ir=7 light=(1.59,1.14) scan=(97,97,95) stuck=False
+22:57:49.268 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1025 head=90 chirp=0 seq=None
+22:57:49.665 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1025 head=90 chirp=0
+22:57:49.803 [INFO] [AI][STEP] -> bat=7.58V ahead=93.8cm ir=7 light=(1.57,1.12) scan=(105,106,106) stuck=False
+22:57:49.827 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1025 head=90 chirp=0 seq=None
+22:57:49.872 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1025 head=90 chirp=0
+22:57:50.185 [INFO] [AI][STEP] -> bat=7.58V ahead=102.9cm ir=7 light=(1.57,1.12) scan=(105,106,106) stuck=False
+22:57:50.197 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1024 head=90 chirp=0 seq=None
+22:57:50.596 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1024 head=90 chirp=0
+22:57:50.736 [INFO] [AI][STEP] -> bat=7.54V ahead=99.4cm ir=7 light=(1.57,1.08) scan=(103,103,101) stuck=False
+22:57:50.753 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1024 head=90 chirp=0 seq=None
+22:57:50.807 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1024 head=90 chirp=0
+22:57:51.121 [INFO] [AI][STEP] -> bat=7.54V ahead=96.4cm ir=7 light=(1.57,1.08) scan=(103,103,101) stuck=False
+22:57:51.129 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1022 head=90 chirp=0 seq=None
+22:57:51.531 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1022 head=90 chirp=0
+22:57:51.661 [INFO] [AI][STEP] -> bat=7.50V ahead=76.3cm ir=7 light=(1.41,0.98) scan=(96,96,94) stuck=False
+22:57:51.687 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1022 head=90 chirp=0 seq=None
+22:57:51.739 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1022 head=90 chirp=0
+22:57:52.053 [INFO] [AI][STEP] -> bat=7.50V ahead=77.5cm ir=7 light=(1.41,0.98) scan=(96,96,94) stuck=False
+22:57:52.060 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1020 head=90 chirp=0 seq=None
+22:57:52.464 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1020 head=90 chirp=0
+22:57:52.602 [INFO] [AI][STEP] -> bat=7.50V ahead=71.8cm ir=5 light=(1.37,0.92) scan=(91,91,91) stuck=False
+22:57:52.619 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1020 head=90 chirp=0 seq=None
+22:57:52.671 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1020 head=90 chirp=0
+22:57:52.926 [INFO] [AI][STEP] -> bat=7.50V ahead=71.3cm ir=7 light=(1.37,0.92) scan=(91,91,91) stuck=False
+22:57:52.939 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1019 head=90 chirp=0 seq=None
+22:57:53.337 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1019 head=90 chirp=0
+22:57:53.483 [INFO] [AI][STEP] -> bat=7.50V ahead=74.0cm ir=7 light=(1.33,0.86) scan=(79,80,80) stuck=False
+22:57:53.493 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1019 head=90 chirp=0 seq=None
+22:57:53.546 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1019 head=90 chirp=0
+22:57:53.809 [INFO] [AI][STEP] -> bat=7.50V ahead=74.0cm ir=7 light=(1.33,0.86) scan=(79,80,80) stuck=False
+22:57:53.827 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1017 head=90 chirp=0 seq=None
+22:57:53.931 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1017 head=90 chirp=0
+22:57:54.191 [INFO] [AI][STEP] -> bat=7.46V ahead=70.3cm ir=7 light=(1.33,0.84) scan=(79,80,80) stuck=False
+22:57:54.206 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1016 head=90 chirp=0 seq=None
+22:57:54.603 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1016 head=90 chirp=0
+22:57:54.739 [INFO] [AI][STEP] -> bat=7.74V ahead=64.6cm ir=7 light=(1.22,0.75) scan=(69,69,67) stuck=False
+22:57:54.755 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1016 head=90 chirp=0 seq=None
+22:57:54.807 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1016 head=90 chirp=0
+22:57:55.073 [INFO] [AI][STEP] -> bat=7.74V ahead=64.6cm ir=7 light=(1.22,0.75) scan=(69,69,67) stuck=False
+22:57:55.086 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1015 head=90 chirp=0 seq=None
+22:57:55.189 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1015 head=90 chirp=0
+22:57:55.446 [INFO] [AI][STEP] -> bat=7.74V ahead=61.7cm ir=7 light=(1.18,0.69) scan=(69,69,67) stuck=False
+22:57:55.456 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1014 head=90 chirp=0 seq=None
+22:57:55.856 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1014 head=90 chirp=0
+22:57:55.994 [INFO] [AI][STEP] -> bat=7.78V ahead=49.8cm ir=7 light=(1.10,0.69) scan=(59,58,56) stuck=False
+22:57:56.010 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1014 head=90 chirp=0 seq=None
+22:57:56.063 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1014 head=90 chirp=0
+22:57:56.380 [INFO] [AI][STEP] -> bat=7.78V ahead=55.7cm ir=7 light=(1.10,0.69) scan=(59,58,56) stuck=False
+22:57:56.405 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1013 head=90 chirp=0 seq=None
+22:57:56.450 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1013 head=90 chirp=0
+22:57:56.759 [INFO] [AI][STEP] -> bat=7.50V ahead=53.0cm ir=7 light=(1.12,0.65) scan=(59,58,56) stuck=False
+22:57:56.770 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1012 head=90 chirp=0 seq=None
+22:57:57.170 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1012 head=90 chirp=0
+22:57:57.289 [WARNING] [AI][REFLEX] avoid zone ahead=44.5cm -> avoid
+22:57:58.436 [WARNING] [AI][REFLEX] avoid zone ahead=26.6cm -> avoid
+22:57:59.281 [WARNING] [AI][REFLEX] avoid zone ahead=29.5cm -> avoid
+22:58:00.127 [WARNING] [AI][REFLEX] avoid zone ahead=38.9cm -> avoid
+22:58:01.274 [WARNING] [AI][REFLEX] avoid zone ahead=35.8cm -> avoid
+22:58:02.432 [INFO] [AI][STEP] -> bat=7.54V ahead=117.4cm ir=7 light=(1.12,0.61) scan=(52,48,45) stuck=False
+22:58:02.454 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1004 head=90 chirp=0 seq=None
+22:58:02.842 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1004 head=90 chirp=0
+22:58:02.961 [WARNING] [AI][REFLEX] avoid zone ahead=37.5cm -> avoid
+22:58:04.109 [WARNING] [AI][REFLEX] avoid zone ahead=35.2cm -> avoid
+22:58:05.267 [INFO] [AI][STEP] -> bat=7.58V ahead=118.2cm ir=7 light=(1.22,0.53) scan=(118,118,93) stuck=False
+22:58:05.279 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:05.677 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:05.796 [WARNING] [AI][REFLEX] avoid zone ahead=36.3cm -> avoid
+22:58:06.955 [INFO] [AI][STEP] -> bat=7.50V ahead=112.5cm ir=7 light=(1.31,0.55) scan=(118,118,74) stuck=False
+22:58:06.968 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:07.365 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:07.502 [INFO] [AI][STEP] -> bat=7.50V ahead=64.4cm ir=7 light=(1.31,0.41) scan=(112,112,67) stuck=False
+22:58:07.521 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:07.571 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:07.883 [INFO] [AI][STEP] -> bat=7.38V ahead=63.7cm ir=7 light=(1.31,0.41) scan=(112,112,67) stuck=False
+22:58:07.894 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:08.293 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:08.430 [INFO] [AI][STEP] -> bat=7.62V ahead=63.7cm ir=7 light=(1.31,0.43) scan=(64,64,64) stuck=False
+22:58:08.447 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:08.498 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:08.752 [INFO] [AI][STEP] -> bat=7.62V ahead=63.2cm ir=7 light=(1.31,0.43) scan=(64,64,64) stuck=False
+22:58:08.763 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:09.162 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:09.298 [INFO] [AI][STEP] -> bat=7.38V ahead=63.6cm ir=7 light=(1.28,0.49) scan=(63,63,63) stuck=False
+22:58:09.316 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:09.367 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:09.628 [INFO] [AI][STEP] -> bat=7.38V ahead=62.8cm ir=7 light=(1.28,0.49) scan=(63,63,63) stuck=False
+22:58:09.645 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:09.748 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:10.004 [INFO] [AI][STEP] -> bat=7.42V ahead=62.1cm ir=7 light=(1.26,0.59) scan=(63,63,63) stuck=False
+22:58:10.014 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:10.415 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:10.552 [INFO] [AI][STEP] -> bat=7.66V ahead=62.0cm ir=7 light=(1.24,0.57) scan=(62,62,62) stuck=False
+22:58:10.570 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:10.620 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:10.881 [INFO] [AI][STEP] -> bat=7.66V ahead=61.9cm ir=7 light=(1.24,0.57) scan=(62,62,62) stuck=False
+22:58:10.905 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:11.002 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:11.257 [INFO] [AI][STEP] -> bat=7.34V ahead=60.9cm ir=7 light=(1.22,0.65) scan=(62,62,62) stuck=False
+22:58:11.270 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:11.668 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:11.810 [INFO] [AI][STEP] -> bat=7.62V ahead=59.4cm ir=7 light=(1.18,0.65) scan=(61,60,60) stuck=False
+22:58:11.823 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:11.873 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:12.134 [INFO] [AI][STEP] -> bat=7.62V ahead=58.5cm ir=7 light=(1.18,0.65) scan=(61,60,60) stuck=False
+22:58:12.148 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:12.255 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:12.512 [INFO] [AI][STEP] -> bat=7.50V ahead=57.5cm ir=7 light=(1.18,0.71) scan=(61,60,60) stuck=False
+22:58:12.521 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:12.922 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:13.066 [INFO] [AI][STEP] -> bat=6.68V ahead=54.5cm ir=7 light=(1.20,0.75) scan=(57,56,55) stuck=False
+22:58:13.077 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:13.129 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:13.437 [INFO] [AI][STEP] -> bat=6.68V ahead=52.3cm ir=7 light=(1.20,0.75) scan=(57,56,55) stuck=False
+22:58:13.461 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:13.515 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:13.825 [INFO] [AI][STEP] -> bat=7.54V ahead=51.1cm ir=7 light=(1.18,0.75) scan=(57,56,55) stuck=False
+22:58:13.835 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:14.235 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:14.373 [INFO] [AI][STEP] -> bat=6.52V ahead=47.7cm ir=7 light=(1.24,0.77) scan=(50,49,48) stuck=False
+22:58:14.396 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:14.441 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:14.751 [INFO] [AI][STEP] -> bat=6.52V ahead=46.7cm ir=7 light=(1.24,0.77) scan=(50,49,48) stuck=False
+22:58:14.762 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:15.161 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:15.280 [WARNING] [AI][REFLEX] avoid zone ahead=43.5cm -> avoid
+22:58:16.438 [INFO] [AI][STEP] -> bat=7.54V ahead=136.0cm ir=7 light=(0.98,0.86) scan=(47,46,44) stuck=False
+22:58:16.451 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:16.849 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:16.987 [INFO] [AI][STEP] -> bat=7.54V ahead=74.1cm ir=7 light=(0.88,0.88) scan=(136,135,135) stuck=False
+22:58:17.005 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:17.056 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:17.365 [INFO] [AI][STEP] -> bat=7.54V ahead=70.6cm ir=7 light=(0.88,0.88) scan=(136,135,135) stuck=False
+22:58:17.376 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:17.776 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:17.906 [INFO] [AI][STEP] -> bat=7.70V ahead=69.1cm ir=7 light=(0.86,0.86) scan=(70,70,69) stuck=False
+22:58:17.934 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:17.983 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:18.293 [INFO] [AI][STEP] -> bat=7.70V ahead=69.4cm ir=7 light=(0.86,0.86) scan=(70,70,69) stuck=False
+22:58:18.306 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:18.704 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:18.842 [INFO] [AI][STEP] -> bat=7.54V ahead=66.1cm ir=7 light=(0.80,0.84) scan=(69,68,66) stuck=False
+22:58:18.858 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:18.911 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:19.220 [INFO] [AI][STEP] -> bat=7.54V ahead=65.1cm ir=7 light=(0.80,0.84) scan=(69,68,66) stuck=False
+22:58:19.230 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:19.630 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:19.768 [INFO] [AI][STEP] -> bat=7.22V ahead=55.7cm ir=7 light=(0.80,0.84) scan=(63,58,56) stuck=False
+22:58:19.792 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:19.837 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:20.146 [INFO] [AI][STEP] -> bat=7.22V ahead=55.5cm ir=7 light=(0.80,0.84) scan=(63,58,56) stuck=False
+22:58:20.158 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:20.557 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:20.695 [INFO] [AI][STEP] -> bat=6.94V ahead=53.2cm ir=7 light=(0.75,0.88) scan=(56,55,53) stuck=False
+22:58:20.711 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:20.763 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:21.072 [INFO] [AI][STEP] -> bat=6.94V ahead=52.2cm ir=7 light=(0.75,0.88) scan=(56,55,53) stuck=False
+22:58:21.085 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:21.482 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:21.620 [INFO] [AI][STEP] -> bat=7.50V ahead=48.7cm ir=7 light=(0.75,0.88) scan=(52,51,49) stuck=False
+22:58:21.638 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:21.688 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:21.997 [INFO] [AI][STEP] -> bat=7.50V ahead=47.9cm ir=7 light=(0.75,0.88) scan=(52,51,49) stuck=False
+22:58:22.008 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:22.407 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:22.546 [INFO] [AI][STEP] -> bat=7.54V ahead=45.1cm ir=7 light=(0.73,0.86) scan=(47,46,45) stuck=False
+22:58:22.563 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:22.614 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:22.731 [WARNING] [AI][REFLEX] avoid zone ahead=42.4cm -> avoid
+22:58:23.878 [WARNING] [AI][REFLEX] avoid zone ahead=40.1cm -> avoid
+22:58:26.020 [INFO] [AI][STEP] -> bat=7.46V ahead=55.5cm ir=7 light=(1.26,0.88) scan=(47,46,45) stuck=False
+22:58:26.031 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:26.430 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:26.567 [INFO] [AI][STEP] -> bat=7.46V ahead=63.1cm ir=7 light=(1.26,0.90) scan=(63,67,67) stuck=False
+22:58:26.584 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:26.635 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:26.890 [INFO] [AI][STEP] -> bat=7.54V ahead=62.9cm ir=7 light=(1.26,0.90) scan=(63,67,67) stuck=False
+22:58:26.902 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:27.300 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:27.437 [INFO] [AI][STEP] -> bat=7.74V ahead=60.1cm ir=7 light=(1.22,0.88) scan=(62,63,63) stuck=False
+22:58:27.454 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:27.505 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:27.766 [INFO] [AI][STEP] -> bat=7.74V ahead=60.1cm ir=7 light=(1.22,0.88) scan=(62,63,63) stuck=False
+22:58:27.785 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:27.887 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:28.142 [INFO] [AI][STEP] -> bat=6.48V ahead=64.8cm ir=7 light=(1.28,0.90) scan=(62,63,63) stuck=False
+22:58:28.156 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:28.553 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:28.690 [INFO] [AI][STEP] -> bat=7.70V ahead=60.6cm ir=7 light=(1.24,0.90) scan=(65,65,62) stuck=False
+22:58:28.710 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:28.758 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:29.020 [INFO] [AI][STEP] -> bat=7.70V ahead=55.7cm ir=7 light=(1.24,0.90) scan=(65,65,62) stuck=False
+22:58:29.037 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:29.140 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:29.397 [INFO] [AI][STEP] -> bat=7.54V ahead=61.4cm ir=7 light=(1.31,0.90) scan=(65,65,62) stuck=False
+22:58:29.407 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:29.807 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:29.950 [INFO] [AI][STEP] -> bat=7.74V ahead=69.3cm ir=7 light=(1.22,0.90) scan=(74,74,74) stuck=False
+22:58:29.963 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:30.013 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:30.328 [INFO] [AI][STEP] -> bat=7.74V ahead=59.4cm ir=7 light=(1.22,0.90) scan=(74,74,74) stuck=False
+22:58:30.346 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:30.398 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:30.708 [INFO] [AI][STEP] -> bat=7.54V ahead=57.1cm ir=7 light=(1.31,0.90) scan=(74,74,74) stuck=False
+22:58:30.717 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:31.118 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:31.248 [INFO] [AI][STEP] -> bat=7.70V ahead=59.4cm ir=7 light=(1.20,0.90) scan=(57,59,59) stuck=False
+22:58:31.266 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:31.324 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:31.579 [INFO] [AI][STEP] -> bat=7.70V ahead=58.9cm ir=7 light=(1.20,0.90) scan=(57,59,59) stuck=False
+22:58:31.589 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:31.989 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:32.118 [INFO] [AI][STEP] -> bat=7.54V ahead=56.2cm ir=7 light=(1.24,0.90) scan=(59,66,72) stuck=False
+22:58:32.132 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:32.194 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:32.448 [INFO] [AI][STEP] -> bat=7.54V ahead=56.3cm ir=7 light=(1.24,0.90) scan=(59,66,72) stuck=False
+22:58:32.471 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:32.576 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:32.833 [INFO] [AI][STEP] -> bat=7.54V ahead=68.6cm ir=7 light=(1.31,0.90) scan=(59,66,72) stuck=False
+22:58:32.843 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:33.243 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:33.379 [INFO] [AI][STEP] -> bat=7.74V ahead=76.5cm ir=7 light=(1.22,0.88) scan=(69,70,69) stuck=False
+22:58:33.397 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:33.447 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:33.703 [INFO] [AI][STEP] -> bat=7.74V ahead=77.4cm ir=7 light=(1.22,0.88) scan=(69,70,69) stuck=False
+22:58:33.724 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:33.830 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:34.085 [INFO] [AI][STEP] -> bat=7.54V ahead=78.2cm ir=7 light=(1.31,0.88) scan=(69,70,69) stuck=False
+22:58:34.107 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:34.496 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:34.633 [INFO] [AI][STEP] -> bat=7.70V ahead=60.3cm ir=7 light=(1.45,0.98) scan=(75,75,72) stuck=False
+22:58:34.651 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:34.701 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:34.963 [INFO] [AI][STEP] -> bat=7.70V ahead=60.3cm ir=7 light=(1.45,0.98) scan=(75,75,72) stuck=False
+22:58:34.980 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:35.083 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:35.340 [INFO] [AI][STEP] -> bat=7.50V ahead=69.1cm ir=7 light=(1.49,1.02) scan=(75,75,72) stuck=False
+22:58:35.350 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1000 head=90 chirp=0 seq=None
+22:58:35.750 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1000 head=90 chirp=0
+22:58:35.893 [INFO] [AI][STEP] -> bat=6.56V ahead=67.0cm ir=7 light=(1.43,1.00) scan=(69,69,70) stuck=False
+22:58:35.903 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:35.956 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:36.273 [INFO] [AI][STEP] -> bat=6.56V ahead=63.0cm ir=7 light=(1.43,1.00) scan=(69,69,70) stuck=False
+22:58:36.290 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:36.342 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:36.652 [INFO] [AI][STEP] -> bat=7.58V ahead=61.6cm ir=7 light=(1.39,0.92) scan=(69,69,70) stuck=False
+22:58:36.663 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:37.062 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:37.200 [INFO] [AI][STEP] -> bat=6.56V ahead=55.5cm ir=7 light=(1.18,0.84) scan=(61,61,57) stuck=False
+22:58:37.217 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:37.268 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:37.577 [INFO] [AI][STEP] -> bat=6.56V ahead=55.4cm ir=7 light=(1.18,0.84) scan=(61,61,57) stuck=False
+22:58:37.587 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:37.988 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:38.125 [INFO] [AI][STEP] -> bat=6.44V ahead=55.5cm ir=7 light=(1.18,0.86) scan=(55,56,59) stuck=False
+22:58:38.144 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:38.194 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:38.503 [INFO] [AI][STEP] -> bat=6.44V ahead=53.9cm ir=7 light=(1.18,0.86) scan=(55,56,59) stuck=False
+22:58:38.516 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:38.913 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:39.051 [INFO] [AI][STEP] -> bat=7.50V ahead=58.1cm ir=7 light=(1.16,0.82) scan=(56,56,56) stuck=False
+22:58:39.067 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1000 head=90 chirp=0 seq=None
+22:58:39.119 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1000 head=90 chirp=0
+22:58:39.417 [WARNING] [AI][REFLEX] avoid zone ahead=44.3cm -> avoid
+22:58:40.566 [WARNING] [AI][REFLEX] HARD_STOP ahead=15.3cm -> avoid
+22:58:41.404 [INFO] [SHUTDOWN] Ctrl+C received
+22:58:41.440 [INFO] [SHUTDOWN] cleaned up
+23:02:10.518 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+23:02:10.518 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+23:02:10.519 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=True
+23:02:11.541 [INFO] [AI][STEP] -> bat=7.58V ahead=116.2cm ir=7 light=(1.31,1.24) scan=(NA,NA,NA) stuck=False
+23:02:11.597 [INFO] [AI][STEP] <- plan in 0.06s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1254 head=90 chirp=0 seq=None
+23:02:11.951 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1254 head=90 chirp=0
+23:02:12.351 [INFO] [AI][STEP] -> bat=7.74V ahead=109.2cm ir=7 light=(1.37,1.26) scan=(115,114,111) stuck=False
+23:02:12.379 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1252 head=90 chirp=0 seq=None
+23:02:12.427 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1252 head=90 chirp=0
+23:02:13.481 [INFO] [AI][STEP] -> bat=7.22V ahead=70.1cm ir=7 light=(1.51,1.26) scan=(115,114,111) stuck=False
+23:02:13.493 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1250 head=90 chirp=0 seq=None
+23:02:13.891 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1250 head=90 chirp=0
+23:02:14.275 [INFO] [AI][STEP] -> bat=7.78V ahead=53.7cm ir=7 light=(1.49,1.16) scan=(65,61,60) stuck=False
+23:02:14.295 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1249 head=90 chirp=0 seq=None
+23:02:14.344 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1249 head=90 chirp=0
+23:02:14.934 [WARNING] [AI][REFLEX] avoid zone ahead=44.5cm -> avoid
+23:02:16.092 [INFO] [AI][STEP] -> bat=7.74V ahead=300.0cm ir=7 light=(0.69,0.90) scan=(65,61,60) stuck=False
+23:02:16.111 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1247 head=90 chirp=0 seq=None
+23:02:16.502 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1247 head=90 chirp=0
+23:02:17.110 [INFO] [AI][STEP] -> bat=7.54V ahead=300.0cm ir=7 light=(0.61,0.92) scan=(300,300,300) stuck=False
+23:02:17.121 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1244 head=90 chirp=0 seq=None
+23:02:17.520 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1244 head=90 chirp=0
+23:02:18.127 [INFO] [AI][STEP] -> bat=7.66V ahead=300.0cm ir=7 light=(0.59,0.94) scan=(300,300,300) stuck=False
+23:02:18.140 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1242 head=90 chirp=0 seq=None
+23:02:18.537 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1242 head=90 chirp=0
+23:02:18.574 [WARNING] [AI][STUCK] detected -> escape
+23:02:20.885 [INFO] [AI][STEP] -> bat=7.54V ahead=162.6cm ir=7 light=(1.47,1.10) scan=(300,300,300) stuck=True
+23:02:20.921 [INFO] [AI][STEP] <- plan in 0.04s src=heuristic server_ms=0 mode=ROAM act=spin_right dur=0.90 spd=1250 head=90 chirp=0 seq=None
+23:02:21.295 [INFO] [AI][APPLY] mode=ROAM action=spin_right dur=0.90 speed=1250 head=90 chirp=0
+23:02:21.674 [INFO] [AI][STEP] -> bat=7.54V ahead=55.5cm ir=7 light=(1.49,1.10) scan=(159,159,159) stuck=False
+23:02:21.703 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1235 head=90 chirp=0 seq=None
+23:02:21.751 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1235 head=90 chirp=0
+23:02:22.346 [WARNING] [AI][REFLEX] avoid zone ahead=41.9cm -> avoid
+23:02:23.493 [WARNING] [AI][REFLEX] HARD_STOP ahead=2.1cm -> avoid
+23:02:24.649 [WARNING] [AI][REFLEX] avoid zone ahead=29.1cm -> avoid
+23:02:25.808 [INFO] [AI][STEP] -> bat=7.54V ahead=98.3cm ir=7 light=(1.35,1.02) scan=(159,159,159) stuck=False
+23:02:25.820 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1230 head=90 chirp=0 seq=None
+23:02:26.221 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1230 head=90 chirp=0
+23:02:26.824 [INFO] [AI][STEP] -> bat=7.50V ahead=119.1cm ir=7 light=(1.08,1.02) scan=(100,101,126) stuck=False
+23:02:26.836 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1226 head=90 chirp=0 seq=None
+23:02:27.233 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1226 head=90 chirp=0
+23:02:27.621 [INFO] [AI][STEP] -> bat=6.52V ahead=100.5cm ir=7 light=(1.08,1.16) scan=(117,112,108) stuck=False
+23:02:27.638 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1225 head=90 chirp=0 seq=None
+23:02:27.689 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1225 head=90 chirp=0
+23:02:28.742 [INFO] [AI][STEP] -> bat=7.50V ahead=74.8cm ir=7 light=(1.04,1.35) scan=(117,112,108) stuck=False
+23:02:28.762 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1223 head=90 chirp=0 seq=None
+23:02:29.152 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1223 head=90 chirp=0
+23:02:29.754 [INFO] [AI][STEP] -> bat=7.50V ahead=53.2cm ir=7 light=(1.06,1.37) scan=(73,72,73) stuck=False
+23:02:29.766 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1221 head=90 chirp=0 seq=None
+23:02:30.164 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1221 head=90 chirp=0
+23:02:30.766 [INFO] [AI][STEP] -> bat=7.70V ahead=111.6cm ir=7 light=(1.02,1.28) scan=(53,53,77) stuck=False
+23:02:30.779 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1219 head=90 chirp=0 seq=None
+23:02:31.176 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1219 head=90 chirp=0
+23:02:31.782 [INFO] [AI][STEP] -> bat=7.58V ahead=99.0cm ir=7 light=(1.02,1.20) scan=(112,112,106) stuck=False
+23:02:31.794 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1217 head=90 chirp=0 seq=None
+23:02:32.192 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1217 head=90 chirp=0
+23:02:32.798 [INFO] [AI][STEP] -> bat=7.54V ahead=89.4cm ir=7 light=(0.94,0.88) scan=(97,97,94) stuck=False
+23:02:32.810 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1215 head=90 chirp=0 seq=None
+23:02:33.208 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1215 head=90 chirp=0
+23:02:33.588 [INFO] [AI][STEP] -> bat=7.50V ahead=87.3cm ir=7 light=(0.86,0.82) scan=(88,88,88) stuck=False
+23:02:33.616 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1214 head=90 chirp=0 seq=None
+23:02:33.666 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1214 head=90 chirp=0
+23:02:34.500 [INFO] [AI][STEP] -> bat=7.50V ahead=81.3cm ir=7 light=(0.88,0.77) scan=(88,88,88) stuck=False
+23:02:34.512 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1212 head=90 chirp=0 seq=None
+23:02:34.910 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1212 head=90 chirp=0
+23:02:35.298 [INFO] [AI][STEP] -> bat=7.50V ahead=81.4cm ir=7 light=(0.86,0.77) scan=(81,81,82) stuck=False
+23:02:35.315 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1211 head=90 chirp=0 seq=None
+23:02:35.366 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1211 head=90 chirp=0
+23:02:36.426 [INFO] [AI][STEP] -> bat=7.50V ahead=80.9cm ir=7 light=(0.88,0.77) scan=(81,81,82) stuck=False
+23:02:36.439 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1209 head=90 chirp=0 seq=None
+23:02:36.837 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1209 head=90 chirp=0
+23:02:37.015 [WARNING] [AI][STUCK] detected -> escape
+23:02:39.326 [INFO] [AI][STEP] -> bat=7.50V ahead=65.5cm ir=7 light=(1.71,0.65) scan=(81,81,81) stuck=True
+23:02:39.338 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=spin_right dur=0.90 spd=1250 head=90 chirp=0 seq=None
+23:02:39.736 [INFO] [AI][APPLY] mode=ROAM action=spin_right dur=0.90 speed=1250 head=90 chirp=0
+23:02:40.123 [INFO] [AI][STEP] -> bat=7.46V ahead=60.6cm ir=7 light=(1.71,0.65) scan=(63,63,62) stuck=False
+23:02:40.139 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1202 head=90 chirp=0 seq=None
+23:02:40.191 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1202 head=90 chirp=0
+23:02:41.239 [WARNING] [AI][REFLEX] avoid zone ahead=37.4cm -> avoid
+23:02:42.311 [WARNING] [AI][REFLEX] HARD_STOP ahead=4.5cm -> avoid
+23:02:44.694 [INFO] [AI][STEP] -> bat=7.50V ahead=88.2cm ir=3 light=(1.12,1.14) scan=(63,63,62) stuck=False
+23:02:44.708 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1198 head=90 chirp=0 seq=None
+23:02:45.104 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1198 head=90 chirp=0
+23:02:45.488 [INFO] [AI][STEP] -> bat=7.54V ahead=71.1cm ir=7 light=(1.14,1.18) scan=(87,90,89) stuck=False
+23:02:45.513 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1193 head=90 chirp=0 seq=None
+23:02:45.556 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1193 head=90 chirp=0
+23:02:46.612 [INFO] [AI][STEP] -> bat=7.50V ahead=48.9cm ir=7 light=(1.02,1.20) scan=(87,90,89) stuck=False
+23:02:46.624 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1191 head=90 chirp=0 seq=None
+23:02:47.022 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1191 head=90 chirp=0
+23:02:47.163 [WARNING] [AI][REFLEX] avoid zone ahead=41.0cm -> avoid
+23:02:48.320 [INFO] [AI][STEP] -> bat=7.54V ahead=100.9cm ir=7 light=(1.20,1.18) scan=(49,42,40) stuck=False
+23:02:48.330 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1189 head=90 chirp=0 seq=None
+23:02:48.730 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1189 head=90 chirp=0
+23:02:48.871 [WARNING] [AI][REFLEX] avoid zone ahead=28.9cm -> avoid
+23:02:49.716 [WARNING] [AI][REFLEX] avoid zone ahead=26.6cm -> avoid
+23:02:50.562 [WARNING] [AI][REFLEX] avoid zone ahead=28.1cm -> avoid
+23:02:52.327 [INFO] [AI][STEP] -> bat=7.50V ahead=51.6cm ir=7 light=(1.59,1.37) scan=(100,100,62) stuck=False
+23:02:52.339 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1180 head=90 chirp=0 seq=None
+23:02:52.737 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1180 head=90 chirp=0
+23:02:53.342 [INFO] [AI][STEP] -> bat=6.36V ahead=51.7cm ir=7 light=(1.55,1.41) scan=(52,52,52) stuck=False
+23:02:53.361 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1178 head=90 chirp=0 seq=None
+23:02:53.752 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1178 head=90 chirp=0
+23:02:53.790 [WARNING] [AI][STUCK] detected -> escape
+23:02:56.101 [INFO] [AI][STEP] -> bat=7.54V ahead=110.1cm ir=7 light=(1.31,1.26) scan=(52,52,52) stuck=True
+23:02:56.111 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=spin_right dur=0.90 spd=1250 head=90 chirp=0 seq=None
+23:02:56.511 [INFO] [AI][APPLY] mode=ROAM action=spin_right dur=0.90 speed=1250 head=90 chirp=0
+23:02:56.898 [INFO] [AI][STEP] -> bat=6.98V ahead=106.5cm ir=7 light=(1.24,1.24) scan=(300,300,300) stuck=False
+23:02:56.931 [INFO] [AI][STEP] <- plan in 0.03s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1172 head=90 chirp=0 seq=None
+23:02:56.967 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1172 head=90 chirp=0
+23:02:57.334 [WARNING] [AI][REFLEX] avoid zone ahead=24.8cm -> avoid
+23:02:59.375 [INFO] [AI][STEP] -> bat=7.54V ahead=51.4cm ir=7 light=(1.16,1.10) scan=(300,300,300) stuck=False
+23:02:59.390 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1171 head=90 chirp=0 seq=None
+23:02:59.785 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1171 head=90 chirp=0
+23:03:00.172 [INFO] [AI][STEP] -> bat=7.70V ahead=49.7cm ir=7 light=(1.06,1.08) scan=(51,51,51) stuck=False
+23:03:00.190 [INFO] [AI][STEP] <- plan in 0.02s src=heuristic server_ms=0 mode=ROAM act=wander dur=1.10 spd=1166 head=90 chirp=0 seq=None
+23:03:00.244 [INFO] [AI][APPLY] mode=ROAM action=wander dur=1.10 speed=1166 head=90 chirp=0
+23:03:00.615 [WARNING] [AI][REFLEX] avoid zone ahead=44.5cm -> avoid
+23:03:01.771 [INFO] [AI][STEP] -> bat=7.50V ahead=96.7cm ir=7 light=(1.18,1.18) scan=(51,51,51) stuck=False
+23:03:01.783 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1165 head=90 chirp=0 seq=None
+23:03:02.181 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1165 head=90 chirp=0
+23:03:02.322 [WARNING] [AI][REFLEX] avoid zone ahead=28.1cm -> avoid
+23:03:04.079 [INFO] [AI][STEP] -> bat=7.50V ahead=53.5cm ir=7 light=(1.37,1.35) scan=(96,96,90) stuck=False
+23:03:04.086 [INFO] [AI][STEP] <- plan in 0.01s src=heuristic server_ms=0 mode=ROAM act=forward dur=0.90 spd=1159 head=90 chirp=0 seq=None
+23:03:04.489 [INFO] [AI][APPLY] mode=ROAM action=forward dur=0.90 speed=1159 head=90 chirp=0
+23:03:04.578 [INFO] [SHUTDOWN] Ctrl+C received
+23:03:04.612 [INFO] [SHUTDOWN] cleaned up

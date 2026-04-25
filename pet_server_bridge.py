@@ -6,6 +6,10 @@ class PetServerBridge:
         self.base = os.environ.get("PET_SERVER_URL", "").rstrip("/")
         self.key = os.environ.get("PI_API_KEY", "")
         self.enabled = bool(self.base)
+
+        # Ephemeral per-boot id (anonymous)
+        self.robot_id = os.environ.get("PET_ROBOT_ID", "").strip() or uuid.uuid4().hex[:10]
+
         self.last_ok = 0.0
         self.tts_path = os.environ.get("PET_TTS_PATH", "/pet/tts")
         self.aplay_device = os.environ.get("PET_APLAY_DEVICE", "") or os.environ.get("ASSIST_APLAY_DEVICE", "")
@@ -14,13 +18,15 @@ class PetServerBridge:
         h = {"Content-Type": "application/json"}
         if self.key:
             h["X-API-Key"] = self.key
+        # anonymous session id (does NOT persist across boots unless you set PET_ROBOT_ID)
+        h["X-Robot-Session"] = self.robot_id
         return h
 
     def step(self, snapshot: dict, timeout=0.65):
         if not self.enabled:
             return None
         snapshot = dict(snapshot)
-        snapshot["id"] = snapshot.get("id") or uuid.uuid4().hex[:10]
+        snapshot["id"] = self.robot_id
         snapshot["ts"] = snapshot.get("ts") or time.time()
 
         try:
@@ -71,3 +77,8 @@ class PetServerBridge:
             subprocess.run(args, input=wav_bytes, check=False)
         except Exception:
             pass
+
+    # Optional helper for vision offload payloads
+    @staticmethod
+    def jpg_to_b64(jpg_bytes: bytes) -> str:
+        return base64.b64encode(jpg_bytes).decode("ascii")
