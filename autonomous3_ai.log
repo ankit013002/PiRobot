@@ -1,0 +1,289 @@
+15:45:42.649 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+15:45:42.649 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+15:45:42.649 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=False
+15:45:42.690 [INFO] [BOOT] brain=SERVER  url=http://192.168.1.149:3000
+15:45:42.801 [INFO] [BATT] unknown
+15:45:43.692 [INFO] [AI][STEP] -> bat=7.89V ahead=263.2cm ir=0 light=(4.10,3.75) scan=(NA,NA,NA) stuck=False
+15:45:46.787 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.11/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.11/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.11/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 695, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 671, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 113] No route to host>
+
+15:45:46.859 [INFO] [AI][STEP] -> bat=7.84V ahead=131.0cm ir=0 light=(3.92,4.00) scan=(NA,NA,NA) stuck=False
+15:45:49.451 [WARNING] [AI][STUCK] detected -> escape
+15:45:49.918 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.11/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.11/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.11/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 695, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 671, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 113] No route to host>
+
+15:45:51.581 [INFO] [AI][STEP] -> bat=7.83V ahead=134.9cm ir=0 light=(3.77,3.47) scan=(NA,NA,NA) stuck=True
+15:45:54.654 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.11/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.11/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.11/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 695, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 671, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 113] No route to host>
+
+15:45:54.729 [INFO] [AI][STEP] -> bat=7.79V ahead=75.3cm ir=0 light=(4.18,3.89) scan=(138,138,138) stuck=False
+15:45:55.525 [WARNING] [AI][REFLEX] avoid zone ahead=57.6cm -> avoid
+15:45:56.558 [WARNING] [AI][REFLEX] avoid zone ahead=60.6cm -> avoid
+15:45:57.591 [WARNING] [AI][REFLEX] avoid zone ahead=55.5cm -> avoid
+15:45:57.790 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.11/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.11/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.11/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 695, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 671, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 113] No route to host>
+
+15:45:58.624 [WARNING] [AI][REFLEX] avoid zone ahead=56.2cm -> avoid
+15:45:59.657 [WARNING] [AI][REFLEX] avoid zone ahead=47.7cm -> avoid
+15:46:00.690 [WARNING] [AI][REFLEX] avoid zone ahead=44.3cm -> avoid
+15:46:01.724 [WARNING] [AI][REFLEX] avoid zone ahead=39.3cm -> avoid
+15:46:03.726 [INFO] [AI][STEP] -> bat=7.93V ahead=224.4cm ir=0 light=(3.22,3.61) scan=(138,138,138) stuck=False
+15:46:06.099 [WARNING] [AI][STUCK] detected -> escape
+15:46:06.782 [ERROR] [AI][STEP] request exception
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.11/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.11/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.11/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.11/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 851, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.11/socket.py", line 836, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 695, in _run
+    data = self._http_post_json(step_url, snap, timeout_s=PET_STEP_TIMEOUT_S)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ankit013002/Desktop/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server/autonomous3.py", line 671, in _http_post_json
+    with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 113] No route to host>
+
+15:46:08.227 [WARNING] [AI] server unreachable (5 consecutive failures) — switching to local brain
+15:46:08.493 [INFO] [PET] CURIOUS → PLAYFUL  energy=0.70  battery=84%
+15:46:08.832 [INFO] [PET] PLAYFUL → CURIOUS  energy=0.69  battery=78%
+15:46:10.444 [WARNING] [AI][STUCK] detected -> escape
+15:46:14.335 [WARNING] [PET][REFLEX] avoid zone ahead=62.9 cm -> avoid
+15:46:15.462 [WARNING] [PET][REFLEX] avoid zone ahead=56.4 cm -> avoid
+15:46:20.474 [WARNING] [PET][REFLEX] avoid zone ahead=62.2 cm -> avoid
+15:46:21.517 [WARNING] [PET][REFLEX] HARD_STOP ahead=1.6 cm -> avoid
+15:46:27.565 [WARNING] [AI][STUCK] detected -> escape
+15:46:32.374 [WARNING] [PET][REFLEX] avoid zone ahead=56.1 cm -> avoid
+15:46:35.180 [WARNING] [PET][REFLEX] avoid zone ahead=62.6 cm -> avoid
+15:46:36.307 [WARNING] [PET][REFLEX] avoid zone ahead=46.7 cm -> avoid
+15:46:37.435 [WARNING] [PET][REFLEX] avoid zone ahead=52.6 cm -> avoid
+15:46:37.830 [INFO] [SHUTDOWN] Ctrl+C received
+15:46:37.871 [INFO] [SHUTDOWN] cleaned up
