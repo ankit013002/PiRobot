@@ -78,7 +78,7 @@ Schema (all keys required):
 }
 
 Constraints:
-- NEVER use forward/wander if ahead_cm < 65.
+- NEVER use forward/wander if ahead_cm < 50.
 - Use stop or spin if ahead_cm < 30.
 - Prefer wander most of the time.
 - Respect the robot's current emotion — e.g. SCARED → reverse/spin, BORED → stop/slow.
@@ -141,10 +141,11 @@ class _LLMWorker:
             f"stuck={s.get('stuck', False)}",
             f"action_prev={s.get('action', 'wander')}",
         ]
-        if s.get("scan_right_cm") is not None:
-            lines.append(
-                f"scan_right={s['scan_right_cm']:.0f} center={s.get('scan_center_cm', '?'):.0f} left={s.get('scan_left_cm', '?'):.0f}"
-            )
+        rc = s.get("scan_right_cm")
+        cc = s.get("scan_center_cm")
+        lc = s.get("scan_left_cm")
+        if isinstance(rc, (int, float)) and isinstance(cc, (int, float)) and isinstance(lc, (int, float)):
+            lines.append(f"scan_right={rc:.0f} center={cc:.0f} left={lc:.0f}")
         if s.get("scene_caption"):
             lines.append(f"scene=\"{s['scene_caption']}\"")
         return "Robot state:\n" + "\n".join(lines) + "\n\nDecide the next action."
@@ -390,13 +391,14 @@ class OllamaBrain(LocalPetBrain):
         dur      = max(0.3, min(3.0, float(decision["duration"])))
         speed    = max(800, min(1400, int(decision["speed"])))
 
-        # Obstacle safety gate — LLM may not know the latest sonar reading
+        # Obstacle safety gate — LLM may not know the latest sonar reading.
+        # Thresholds match FORWARD_HARD_STOP_CM (30) and ROAM_OBS_TRIGGER_CM (50).
         if isinstance(ahead_cm, (int, float)):
             d = float(ahead_cm)
             if d < 30.0:
                 action = random.choice(["spin_left", "spin_right", "reverse"])
                 dur    = 0.4
-            elif d < 65.0 and action in {"forward", "wander"}:
+            elif d < 50.0 and action in {"forward", "wander"}:
                 action = random.choice(["turn_left", "turn_right", "stop"])
                 dur    = 0.5
 
