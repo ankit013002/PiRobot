@@ -521,18 +521,54 @@ class LocalPetBrain:
             _set_led(led, SLEEP)
             return
 
-        # Track repeated close obstacles to trigger fear
-        if ahead_cm is not None and float(ahead_cm) < self._SCARED_CM:
-            if (now - self._obstacle_win_ts) > 6.0:
-                self._obstacle_count = 0
-                self._obstacle_win_ts = now
-            self._obstacle_count += 1
-            if self._obstacle_count >= 3:
-                self._scared_until = now + self._SCARED_DURATION_S
-                log.info(
-                    "[PET] fear triggered — obstacle count=%d, ahead=%.1f cm",
-                    self._obstacle_count, float(ahead_cm),
-                )
+        # Track repeated close obstacles to trigger fear.
+        # Reset counter when the path is clearly open again.
+        if ahead_cm is not None:
+            _d = float(ahead_cm)
+            if _d > self._SCARED_CM * 2:
+                # Path open — clear lingering fear counter
+                if self._obstacle_count > 0:
+                    self._obstacle_count = 0
+                    self._obstacle_win_ts = 0.0
+            elif _d < self._SCARED_CM:
+                if (now - self._obstacle_win_ts) > 6.0:
+                    self._obstacle_count = 0
+                    self._obstacle_win_ts = now
+                if self._obstacle_count < 3:
+                    self._obstacle_count += 1
+                if self._obstacle_count == 3:
+                    # Trigger fear exactly once per window — no spam beyond count=3
+                    self._scared_until = now + self._SCARED_DURATION_S
+                    log.info(
+                        "[PET] fear triggered — obstacle count=%d, ahead=%.1f cm",
+                        self._obstacle_count, _d,
+                    )
+
+        # ── Ultrasonic reflex (mirrors autonomous3.py safety layer) ──────────────
+        # These thresholds must match FORWARD_HARD_STOP_CM / ROAM_OBS_TRIGGER_CM.
+        if ahead_cm is not None and self.emotion != SLEEP:
+            _rd = float(ahead_cm)
+            _moving_fwd = self.action in {"forward", "wander", "turn_left", "turn_right"}
+            if _rd < 30.0:
+                log.warning("[PET][REFLEX] HARD_STOP ahead=%.1f cm -> avoid", _rd)
+                try:
+                    car.set_motors(0, 0, 0, 0)
+                except Exception:
+                    pass
+                try:
+                    car.scan_and_avoid_with_memory()
+                except Exception:
+                    pass
+                self.action = "stop"
+                self.action_until = now + 1.0
+            elif _rd < 65.0 and _moving_fwd:
+                log.warning("[PET][REFLEX] avoid zone ahead=%.1f cm -> avoid", _rd)
+                try:
+                    car.scan_and_avoid_with_memory()
+                except Exception:
+                    pass
+                self.action = "stop"
+                self.action_until = now + 0.8
 
         # Idle tracking (for boredom)
         if self.action == "stop":

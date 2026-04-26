@@ -99,6 +99,7 @@ def log_exc(prefix: str):
 # ENV / SERVER CONFIG
 # ============================================================
 PET_SERVER_URL = os.environ.get("PET_SERVER_URL", "").strip().rstrip("/")
+OLLAMA_URL     = os.environ.get("OLLAMA_URL",     "").strip().rstrip("/")
 PI_API_KEY = os.environ.get("PI_API_KEY", "").strip()
 ROBOT_ID = os.environ.get("PET_ROBOT_ID", "sparky").strip()[:32]
 
@@ -455,6 +456,9 @@ class SensorHub:
         self._last_ir_ts = 0.0
         self._last_pose_ts = 0.0
 
+        # EMA state for battery voltage (alpha=0.15 → ~6-sample lag, kills ADC spikes)
+        self._batt_ema: Optional[float] = None
+
     def update_battery(self, now: float) -> Optional[float]:
         if (now - self._last_batt_ts) < BATTERY_UPDATE_DT:
             return self.s.battery_v
@@ -471,7 +475,13 @@ class SensorHub:
             return None
 
         try:
-            self.s.battery_v = float(power_raw) * (3 if self.car.adc.pcb_version == 1 else 2)
+            raw_v = float(power_raw) * (3 if self.car.adc.pcb_version == 1 else 2)
+            # EMA smoothing: damp noisy ADC readings (6.1 V → 7.3 V spikes in logs)
+            if self._batt_ema is None:
+                self._batt_ema = raw_v
+            else:
+                self._batt_ema = 0.15 * raw_v + 0.85 * self._batt_ema
+            self.s.battery_v = self._batt_ema
             self.s.battery_ts = now
         except Exception:
             self.s.battery_v = None
@@ -1125,7 +1135,8 @@ class ServerPetBrain:
 # MAIN
 # ============================================================
 def main():
-    log.info("[BOOT] autonomous3 -> %s", PET_SERVER_URL or "(local brain)")
+    log.info("[BOOT] autonomous3 -> %s",
+             PET_SERVER_URL or (f"ollama:{OLLAMA_URL}" if OLLAMA_URL else "(local brain)"))
     log.info("[BOOT] ROBOT_ID=%s anon=%s privacy=%s camera=%s",
              ROBOT_ID, PET_ANON, PET_PRIVACY_LEVEL, PET_USE_CAMERA)
     log.info("[BOOT] PET_STEP_TIMEOUT_S=%.1f STOP_WHILE_THINKING=%s",
@@ -1154,10 +1165,14 @@ def main():
     if PET_SERVER_URL:
         brain = ServerPetBrain(sensors)
         log.info("[BOOT] brain=SERVER  url=%s", PET_SERVER_URL)
+    elif OLLAMA_URL:
+        from ollama_brain import OllamaBrain
+        brain = OllamaBrain(sensors, ollama_url=OLLAMA_URL)
+        log.info("[BOOT] brain=OLLAMA  url=%s", OLLAMA_URL)
     else:
         from pet_brain_local import LocalPetBrain
         brain = LocalPetBrain(sensors)
-        log.info("[BOOT] brain=LOCAL  (set PET_SERVER_URL to use AI server)")
+        log.info("[BOOT] brain=LOCAL  (set PET_SERVER_URL or OLLAMA_URL to use AI)")
 
     # short boot chirp
     chirp(buzzer, n=1)
