@@ -230,6 +230,8 @@ class LocalPetBrain:
         self._obstacle_count:  int   = 0
         self._obstacle_win_ts: float = 0.0
 
+        self._reflex_cooldown_until: float = 0.0  # don't re-fire avoid while in cooldown
+
         self._battery_pct: float = 1.0  # cached, updated each tick
 
     # ── Battery awareness ─────────────────────────────────────────────────────
@@ -313,9 +315,11 @@ class LocalPetBrain:
             self._enter(PLAYFUL, now)
             return
 
-        # Something nearby → heightened curiosity
+        # Something nearby → heightened curiosity.
+        # PLAYFUL and HAPPY are exempt: the reflex layer handles safety and we
+        # don't want a nearby wall to abort a play sequence mid-execution.
         if ahead_cm is not None and float(ahead_cm) < self._ALERT_CM:
-            if self.emotion not in (CURIOUS, SCARED):
+            if self.emotion not in (CURIOUS, SCARED, PLAYFUL, HAPPY):
                 self._enter(CURIOUS, now)
             return
 
@@ -546,7 +550,9 @@ class LocalPetBrain:
 
         # ── Ultrasonic reflex (mirrors autonomous3.py safety layer) ──────────────
         # These thresholds must match FORWARD_HARD_STOP_CM / ROAM_OBS_TRIGGER_CM.
-        if ahead_cm is not None and self.emotion != SLEEP:
+        # Gate on cooldown: without it scan_and_avoid fires every tick and the
+        # robot spins in place endlessly without ever clearing the obstacle.
+        if ahead_cm is not None and self.emotion != SLEEP and now >= self._reflex_cooldown_until:
             _rd = float(ahead_cm)
             _moving_fwd = self.action in {"forward", "wander", "turn_left", "turn_right"}
             if _rd < 30.0:
@@ -559,6 +565,7 @@ class LocalPetBrain:
                     car.scan_and_avoid_with_memory()
                 except Exception:
                     pass
+                self._reflex_cooldown_until = now + 2.5
                 self.action = "stop"
                 self.action_until = now + 1.0
             elif _rd < 65.0 and _moving_fwd:
@@ -567,6 +574,7 @@ class LocalPetBrain:
                     car.scan_and_avoid_with_memory()
                 except Exception:
                     pass
+                self._reflex_cooldown_until = now + 2.0
                 self.action = "stop"
                 self.action_until = now + 0.8
 

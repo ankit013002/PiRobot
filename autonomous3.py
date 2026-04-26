@@ -850,7 +850,7 @@ class ServerPetBrain:
             pass
 
     def _reflex_layer(self, car: Car, now: float, battery_v: Optional[float], ahead_cm: Optional[float], ir_bits: Optional[int]) -> bool:
-        # Low battery
+        # Low battery — always fires regardless of cooldown
         if battery_v is not None and battery_v < LOW_BATTERY_THRESHOLD:
             log.warning("[AI][REFLEX] low battery %.2fV -> stop/sleep", battery_v)
             self.mode = MODE_SLEEP
@@ -859,6 +859,12 @@ class ServerPetBrain:
             self.thinking = False
             self._motors_stop(car)
             return True
+
+        # All remaining reflexes respect the post-avoid cooldown.
+        # Without this check, scan_and_avoid_with_memory() fires every loop tick
+        # (every 0.05 s) — the robot spins in place for seconds and never escapes.
+        if now < self._reflex_cooldown_until:
+            return False
 
         # IR "cliff-ish" while commanding forward (disabled by default — see PET_CLIFF_DETECT)
         try:
