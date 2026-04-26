@@ -182,7 +182,7 @@ class MemoryNavigator:
         c = 180.0 if center_cm is None else float(center_cm)
         r = 180.0 if right_cm  is None else float(right_cm)
 
-        if c < 25 and l < 28 and r < 28:
+        if c < 35 and l < 45 and r < 45:
             return "U"
 
         if self.oscillating() or self.stuck_in_same_area():
@@ -372,15 +372,18 @@ class Car:
 
         act = self.nav.choose_action(left_cm, center_cm, right_cm)
 
-        TURN_R = ( 1500,  1500, -1500, -1500)
-        TURN_L = (-1500, -1500,  1500,  1500)
-        NUDGE  = 850
-        NUDGE_T = 0.28
-        CLEAR  = 35.0
+        TURN_R  = ( 1500,  1500, -1500, -1500)
+        TURN_L  = (-1500, -1500,  1500,  1500)
+        NUDGE   = 900
+        # TURN_T: 0.40 s ≈ 88° at 220 °/s (was 0.28 s ≈ 62° — too shallow to clear walls)
+        # NUDGE_T: 0.55 s ≈ 19 cm at ~35 cm/s (was 0.28 s ≈ 10 cm — not enough to escape zone)
+        TURN_T  = 0.40
+        NUDGE_T = 0.55
+        CLEAR   = 35.0
 
         if act == "L":
             self.nav._record("L")
-            self.set_motors(*TURN_L); time.sleep(0.28)
+            self.set_motors(*TURN_L); time.sleep(TURN_T)
             self.set_motors(0, 0, 0, 0); time.sleep(0.03)
             if left_cm is None or float(left_cm) > CLEAR:
                 self.set_motors(NUDGE, NUDGE, NUDGE, NUDGE); time.sleep(NUDGE_T)
@@ -388,7 +391,7 @@ class Car:
 
         elif act == "R":
             self.nav._record("R")
-            self.set_motors(*TURN_R); time.sleep(0.28)
+            self.set_motors(*TURN_R); time.sleep(TURN_T)
             self.set_motors(0, 0, 0, 0); time.sleep(0.03)
             if right_cm is None or float(right_cm) > CLEAR:
                 self.set_motors(NUDGE, NUDGE, NUDGE, NUDGE); time.sleep(NUDGE_T)
@@ -399,14 +402,15 @@ class Car:
             ls  = 180 if left_cm  is None else float(left_cm)
             rs  = 180 if right_cm is None else float(right_cm)
             cmd = TURN_L if ls >= rs else TURN_R
-            if center_cm is not None and float(center_cm) < 18:
+            # Back up first if very close, then do a full ~200° spin to escape
+            if center_cm is not None and float(center_cm) < 25:
                 self.park_head_for_reverse()
-                self.set_motors(-1200, -1200, -1200, -1200); time.sleep(0.25)
+                self.set_motors(-1200, -1200, -1200, -1200); time.sleep(0.30)
                 self.set_motors(0, 0, 0, 0); time.sleep(0.03)
             self.park_head_for_drive()
-            self.set_motors(*cmd); time.sleep(0.90)
+            self.set_motors(*cmd); time.sleep(1.00)   # ~220° spin
             self.set_motors(0, 0, 0, 0); time.sleep(0.05)
-            self.set_motors(850, 850, 850, 850); time.sleep(0.50)
+            self.set_motors(NUDGE, NUDGE, NUDGE, NUDGE); time.sleep(0.60)
             self.set_motors(0, 0, 0, 0)
 
         elif act == "B":

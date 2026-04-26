@@ -136,7 +136,9 @@ IR_UPDATE_DT = 0.12           # line sensors
 POSE_UPDATE_DT = 0.35
 
 ROAM_SLOWDOWN_CM    = 90.0   # begin speed reduction at this distance
-ROAM_OBS_TRIGGER_CM = 65.0   # stop + scan + avoid at this distance
+ROAM_OBS_TRIGGER_CM = 50.0   # stop + scan + avoid at this distance
+                              # (was 65 — too wide for small rooms; caused constant
+                              #  reflex-spam every 2 s when walls were at 30-60 cm)
 FORWARD_HARD_STOP_CM = 30.0  # emergency halt regardless of brain state
 
 # IR cliff reflex: disabled by default — the line sensors read 0 on most floors,
@@ -952,10 +954,10 @@ class ServerPetBrain:
                 car.scan_and_avoid_with_memory()
             except Exception:
                 pass
-            self._reflex_cooldown_until = now + 2.5
+            self._reflex_cooldown_until = now + 3.0
             self.mode = MODE_ROAM
             self.action = "stop"
-            self.action_until = now + 1.0
+            self.action_until = now + 1.5
             return True
 
         if d < ROAM_OBS_TRIGGER_CM:
@@ -965,10 +967,10 @@ class ServerPetBrain:
                 car.scan_and_avoid_with_memory()
             except Exception:
                 pass
-            self._reflex_cooldown_until = now + 2.0
+            self._reflex_cooldown_until = now + 2.5
             self.mode = MODE_ROAM
             self.action = "stop"
-            self.action_until = now + 0.8
+            self.action_until = now + 1.5
             return True
 
         return False

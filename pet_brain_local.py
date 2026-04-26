@@ -186,7 +186,8 @@ class LocalPetBrain:
 
     # Energy thresholds
     _ENERGY_PLAY_MIN  = 0.65
-    _ENERGY_TIRED_MAX = 0.38
+    _ENERGY_TIRED_MAX = 0.38   # enter TIRED below this
+    _ENERGY_TIRED_EXIT = 0.43  # must recover to HERE before leaving TIRED (hysteresis)
     _ENERGY_SLEEP_MAX = 0.12
     _ENERGY_WAKE_MIN  = 0.55
 
@@ -294,10 +295,14 @@ class LocalPetBrain:
             self.emotion = SCARED
             return
 
-        # Energy floor → tired
-        if self.energy < self._ENERGY_TIRED_MAX:
-            if self.emotion != TIRED:
-                self._enter(TIRED, now)
+        # Energy floor → tired (with hysteresis to prevent TIRED↔CURIOUS oscillation).
+        # Enter TIRED below 0.38; don't leave until energy recovers to 0.43.
+        # Without this, energy stuck at exactly 0.38 causes a flip every 0.05 s.
+        if self.emotion == TIRED:
+            if self.energy < self._ENERGY_TIRED_EXIT:
+                return  # stay tired until recovered enough
+        elif self.energy < self._ENERGY_TIRED_MAX:
+            self._enter(TIRED, now)
             return
 
         # At tier 2 (low battery): skip PLAYFUL/HAPPY, default to BORED/TIRED
@@ -578,16 +583,18 @@ class LocalPetBrain:
                     self._obstacle_win_ts = now
                 if self._obstacle_count < 3:
                     self._obstacle_count += 1
-                if self._obstacle_count == 3:
-                    # Trigger fear exactly once per window — no spam beyond count=3
-                    self._scared_until = now + self._SCARED_DURATION_S
-                    log.info(
-                        "[PET] fear triggered — obstacle count=%d, ahead=%.1f cm",
-                        self._obstacle_count, _d,
-                    )
+                    if self._obstacle_count == 3:
+                        # Trigger fear exactly once — when count first reaches 3.
+                        # Moving the log+trigger inside the increment block prevents
+                        # it from firing on every subsequent tick while count stays at 3.
+                        self._scared_until = now + self._SCARED_DURATION_S
+                        log.info(
+                            "[PET] fear triggered — obstacle count=%d, ahead=%.1f cm",
+                            self._obstacle_count, _d,
+                        )
 
         # ── Ultrasonic reflex (mirrors autonomous3.py safety layer) ──────────────
-        # These thresholds must match FORWARD_HARD_STOP_CM / ROAM_OBS_TRIGGER_CM.
+        # Thresholds must match FORWARD_HARD_STOP_CM / ROAM_OBS_TRIGGER_CM (50 cm).
         # Gate on cooldown: without it scan_and_avoid fires every tick and the
         # robot spins in place endlessly without ever clearing the obstacle.
         if ahead_cm is not None and self.emotion != SLEEP and now >= self._reflex_cooldown_until:
@@ -603,18 +610,18 @@ class LocalPetBrain:
                     car.scan_and_avoid_with_memory()
                 except Exception:
                     pass
-                self._reflex_cooldown_until = now + 2.5
+                self._reflex_cooldown_until = now + 3.0
                 self.action = "stop"
-                self.action_until = now + 1.0
-            elif _rd < 65.0 and _moving_fwd:
+                self.action_until = now + 1.5
+            elif _rd < 50.0 and _moving_fwd:
                 log.warning("[PET][REFLEX] avoid zone ahead=%.1f cm -> avoid", _rd)
                 try:
                     car.scan_and_avoid_with_memory()
                 except Exception:
                     pass
-                self._reflex_cooldown_until = now + 2.0
+                self._reflex_cooldown_until = now + 2.5
                 self.action = "stop"
-                self.action_until = now + 0.8
+                self.action_until = now + 1.5
 
         # Idle tracking (for boredom)
         if self.action == "stop":
