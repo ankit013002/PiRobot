@@ -433,6 +433,44 @@ class LocalPetBrain:
         except Exception:
             pass
 
+    # ── Memory-guided wander ──────────────────────────────────────────────────
+
+    def _memory_wander_bias(self, car) -> int:
+        """
+        Use the occupancy map to pick a wander direction.
+        Returns: -1 = bias left, 0 = straight, +1 = bias right.
+
+        MemoryNavigator.score_direction(offset_deg, clearance_cm) scores a
+        point 35 cm ahead in the given heading offset:
+            +visit_penalty  (up to −108 for heavily visited cells)
+            +occupancy_penalty (−80 for known obstacle cells)
+            +exploration_bonus (+22 for uncertain / unexplored cells)
+
+        We add a forward-momentum bonus (+25) so the robot doesn't spin
+        unless a side is meaningfully better — threshold is 15 pts above
+        the boosted forward score.
+        """
+        try:
+            nav = getattr(car, "nav", None)
+            if nav is None:
+                return random.choice([-1, 0, 0, 1])
+
+            ahead = getattr(self.sensors.s, "ahead_cm", None)
+            fwd_clear = min(float(ahead) if isinstance(ahead, (int, float)) else 160.0, 160.0)
+
+            score_l = nav.score_direction(+60.0, 160.0)
+            score_f = nav.score_direction(  0.0, fwd_clear) + 25.0  # forward momentum
+            score_r = nav.score_direction(-60.0, 160.0)
+
+            best = max(score_l, score_f, score_r)
+            if best == score_f or (best - score_f) < 15.0:
+                return 0     # go straight
+            if score_l >= score_r:
+                return -1    # explore left
+            return 1         # explore right
+        except Exception:
+            return random.choice([-1, 0, 0, 1])
+
     # ── Apply action ──────────────────────────────────────────────────────────
 
     def _apply(self, car, now: float):
@@ -487,8 +525,8 @@ class LocalPetBrain:
                 car.set_motors(p, p, -p, -p)
             elif self.action == "wander":
                 if now >= self._wander_drift_ts:
-                    self._wander_drift_ts = now + random.uniform(0.3, 0.9)
-                    self._wander_bias = random.choice([-1, 0, 0, 1])
+                    self._wander_drift_ts = now + random.uniform(0.5, 1.2)
+                    self._wander_bias = self._memory_wander_bias(car)
                 b = self._wander_bias
                 if b < 0:
                     car.set_motors(p - _TURN_BIAS, p - _TURN_BIAS, p, p)

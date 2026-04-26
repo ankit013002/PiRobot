@@ -501,6 +501,17 @@ class SensorHub:
         try:
             self.s.ahead_cm = self.car.get_forward_distance()
             self.s.ahead_ts = now
+            # Continuously feed forward readings into the occupancy map as a
+            # single forward ray (angle 90 = straight ahead).  Without this,
+            # walls are only added during full avoidance scans, so every
+            # straight-ahead approach is a fresh surprise until the reflex fires.
+            if self.s.ahead_cm is not None:
+                try:
+                    self.car.mem.update_from_scan(
+                        self.car.pose, [90], [self.s.ahead_cm]
+                    )
+                except Exception:
+                    pass
         except Exception:
             self.s.ahead_cm = None
         return self.s.ahead_cm
@@ -789,6 +800,34 @@ class ServerPetBrain:
         except Exception:
             pass
 
+    def _memory_wander_bias(self, car: Car) -> int:
+        """
+        Pick a wander drift direction using the occupancy map.
+        Returns -1 (left), 0 (straight), +1 (right).
+        Prefers less-visited, less-occupied, more-unexplored directions.
+        Falls back to random if map is unavailable.
+        """
+        try:
+            nav = getattr(car, "nav", None)
+            if nav is None:
+                return random.choice([-1, 0, 0, 1])
+
+            ahead = self.sensors.s.ahead_cm
+            fwd_clear = min(float(ahead) if isinstance(ahead, (int, float)) else 160.0, 160.0)
+
+            score_l = nav.score_direction(+60.0, 160.0)
+            score_f = nav.score_direction(  0.0, fwd_clear) + 25.0  # forward momentum
+            score_r = nav.score_direction(-60.0, 160.0)
+
+            best = max(score_l, score_f, score_r)
+            if best == score_f or (best - score_f) < 15.0:
+                return 0
+            if score_l >= score_r:
+                return -1
+            return 1
+        except Exception:
+            return random.choice([-1, 0, 0, 1])
+
     def _apply_action_tick(self, car: Car, now: float):
         if self.action == "sequence":
             self.runner.tick(car, now)
@@ -836,8 +875,8 @@ class ServerPetBrain:
                 car.set_motors(p, p, -p, -p)
             elif self.action == "wander":
                 if now >= self._wander_next_drift:
-                    self._wander_next_drift = now + random.uniform(0.25, 0.85)
-                    self._wander_bias = random.choice([-1, 0, 0, 1])
+                    self._wander_next_drift = now + random.uniform(0.5, 1.2)
+                    self._wander_bias = self._memory_wander_bias(car)
                 if self._wander_bias < 0:
                     car.set_motors(p - DEFAULT_TURN_BIAS, p - DEFAULT_TURN_BIAS, p, p)
                 elif self._wander_bias > 0:
@@ -1202,6 +1241,13 @@ def main():
                     log.info("[BATT] %.2fV  %.0f%%", bv, (bpct or 0) * 100)
                 else:
                     log.info("[BATT] unknown")
+                # Map health snapshot — lets us see the map growing over a run
+                try:
+                    log.info("[MAP] obstacle_cells=%d  visited_cells=%d  %s",
+                             len(car.mem.logodds), len(car.mem.visited),
+                             car.pose_string())
+                except Exception:
+                    pass
 
             brain.tick(car, led, buzzer, now, dt)
 
