@@ -1226,6 +1226,7 @@ def main():
     last_ts = time.time()
     _last_batt_log_ts = 0.0
     _BATT_LOG_DT = 300.0  # log battery every 5 minutes
+    _stuck_cooldown_until = 0.0  # don't re-trigger stuck escape until this time
 
     try:
         set_mode_led(led, MODE_ROAM)
@@ -1263,6 +1264,8 @@ def main():
                     min_delta=STUCK_MIN_DELTA_CM,
                     timeout=STUCK_TIMEOUT_S,
                 )
+                # Gate: don't fire again until cooldown has elapsed
+                stuck = stuck and (now >= _stuck_cooldown_until)
                 brain.stuck_recent = bool(stuck)
 
                 if stuck:
@@ -1291,6 +1294,8 @@ def main():
                             car.set_motors(0, 0, 0, 0)
                         except Exception:
                             pass
+                    # Don't re-trigger stuck for 4 s — give the escape room to work
+                    _stuck_cooldown_until = now + 4.0
             except Exception:
                 pass
 

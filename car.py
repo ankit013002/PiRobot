@@ -467,13 +467,13 @@ class Car:
         rs = 180 if dists[0] is None else dists[0]
 
         self.park_head_for_reverse()
-        self.set_motors(-1300, -1300, -1300, -1300); time.sleep(0.40)
+        self.set_motors(-1300, -1300, -1300, -1300); time.sleep(0.55)  # ~14cm back
         self.set_motors(0, 0, 0, 0); time.sleep(0.03)
         self.park_head_for_drive()
 
         cmd = (-1500, -1500, 1500, 1500) if ls >= rs else (1500, 1500, -1500, -1500)
-        self.set_motors(*cmd); time.sleep(0.75)
-        self.set_motors(800, 800, 800, 800); time.sleep(0.45)
+        self.set_motors(*cmd); time.sleep(0.90)  # ~200° turn
+        self.set_motors(800, 800, 800, 800); time.sleep(0.50)  # ~13cm nudge
         self.set_motors(0, 0, 0, 0)
 
     # ── Autonomous sub-modes (used by main.py remote control server) ──────────
