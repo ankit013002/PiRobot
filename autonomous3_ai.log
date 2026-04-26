@@ -1,10 +1,11 @@
-15:45:42.649 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
-15:45:42.649 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
-15:45:42.649 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=False
-15:45:42.690 [INFO] [BOOT] brain=SERVER  url=http://192.168.1.149:3000
-15:45:42.801 [INFO] [BATT] unknown
-15:45:43.692 [INFO] [AI][STEP] -> bat=7.89V ahead=263.2cm ir=0 light=(4.10,3.75) scan=(NA,NA,NA) stuck=False
-15:45:46.787 [ERROR] [AI][STEP] request exception
+16:34:30.321 [INFO] [BOOT] autonomous3 -> http://192.168.1.149:3000
+16:34:30.321 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+16:34:30.321 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=False
+16:34:30.346 [INFO] [BOOT] brain=SERVER  url=http://192.168.1.149:3000
+16:34:30.457 [INFO] [BATT] unknown
+16:34:31.309 [INFO] [AI][STEP] -> bat=7.45V ahead=85.0cm ir=0 light=(1.73,1.43) scan=(NA,NA,NA) stuck=False
+16:34:32.846 [WARNING] [AI][REFLEX] avoid zone ahead=60.2cm -> avoid
+16:34:34.399 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -55,9 +56,19 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-15:45:46.859 [INFO] [AI][STEP] -> bat=7.84V ahead=131.0cm ir=0 light=(3.92,4.00) scan=(NA,NA,NA) stuck=False
-15:45:49.451 [WARNING] [AI][STUCK] detected -> escape
-15:45:49.918 [ERROR] [AI][STEP] request exception
+16:34:34.839 [WARNING] [AI][REFLEX] avoid zone ahead=44.1cm -> avoid
+16:34:36.973 [WARNING] [AI][REFLEX] avoid zone ahead=42.7cm -> avoid
+16:34:38.970 [WARNING] [AI][REFLEX] avoid zone ahead=37.0cm -> avoid
+16:34:41.104 [WARNING] [AI][REFLEX] avoid zone ahead=37.5cm -> avoid
+16:34:43.101 [WARNING] [AI][REFLEX] avoid zone ahead=31.3cm -> avoid
+16:34:45.190 [WARNING] [AI][REFLEX] avoid zone ahead=32.3cm -> avoid
+16:34:47.280 [WARNING] [AI][REFLEX] avoid zone ahead=31.0cm -> avoid
+16:34:49.371 [WARNING] [AI][REFLEX] avoid zone ahead=32.6cm -> avoid
+16:34:51.460 [WARNING] [AI][REFLEX] avoid zone ahead=31.0cm -> avoid
+16:34:54.359 [INFO] [AI][STEP] -> bat=7.49V ahead=72.2cm ir=0 light=(2.02,1.47) scan=(31,31,31) stuck=False
+16:34:54.578 [WARNING] [AI][REFLEX] avoid zone ahead=62.4cm -> avoid
+16:34:56.575 [WARNING] [AI][REFLEX] avoid zone ahead=48.7cm -> avoid
+16:34:57.438 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -108,8 +119,20 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-15:45:51.581 [INFO] [AI][STEP] -> bat=7.83V ahead=134.9cm ir=0 light=(3.77,3.47) scan=(NA,NA,NA) stuck=True
-15:45:54.654 [ERROR] [AI][STEP] request exception
+16:34:58.710 [WARNING] [AI][REFLEX] avoid zone ahead=52.0cm -> avoid
+16:35:00.707 [WARNING] [AI][REFLEX] avoid zone ahead=42.7cm -> avoid
+16:35:02.842 [WARNING] [AI][REFLEX] avoid zone ahead=47.5cm -> avoid
+16:35:04.839 [WARNING] [AI][REFLEX] avoid zone ahead=35.4cm -> avoid
+16:35:06.973 [WARNING] [AI][REFLEX] avoid zone ahead=39.6cm -> avoid
+16:35:08.970 [WARNING] [AI][REFLEX] avoid zone ahead=32.3cm -> avoid
+16:35:11.060 [WARNING] [AI][REFLEX] avoid zone ahead=39.6cm -> avoid
+16:35:13.159 [WARNING] [AI][REFLEX] avoid zone ahead=61.2cm -> avoid
+16:35:15.293 [WARNING] [AI][REFLEX] avoid zone ahead=55.4cm -> avoid
+16:35:17.290 [WARNING] [AI][REFLEX] avoid zone ahead=48.7cm -> avoid
+16:35:19.426 [WARNING] [AI][REFLEX] avoid zone ahead=47.7cm -> avoid
+16:35:21.426 [INFO] [AI][STEP] -> bat=7.49V ahead=300.0cm ir=0 light=(2.06,2.16) scan=(38,40,40) stuck=False
+16:35:22.475 [WARNING] [AI][STUCK] detected -> escape
+16:35:24.478 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -160,11 +183,9 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-15:45:54.729 [INFO] [AI][STEP] -> bat=7.79V ahead=75.3cm ir=0 light=(4.18,3.89) scan=(138,138,138) stuck=False
-15:45:55.525 [WARNING] [AI][REFLEX] avoid zone ahead=57.6cm -> avoid
-15:45:56.558 [WARNING] [AI][REFLEX] avoid zone ahead=60.6cm -> avoid
-15:45:57.591 [WARNING] [AI][REFLEX] avoid zone ahead=55.5cm -> avoid
-15:45:57.790 [ERROR] [AI][STEP] request exception
+16:35:24.605 [INFO] [AI][STEP] -> bat=7.42V ahead=104.3cm ir=0 light=(2.65,2.39) scan=(38,40,40) stuck=True
+16:35:26.815 [WARNING] [AI][STUCK] detected -> escape
+16:35:27.678 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -215,13 +236,9 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-15:45:58.624 [WARNING] [AI][REFLEX] avoid zone ahead=56.2cm -> avoid
-15:45:59.657 [WARNING] [AI][REFLEX] avoid zone ahead=47.7cm -> avoid
-15:46:00.690 [WARNING] [AI][REFLEX] avoid zone ahead=44.3cm -> avoid
-15:46:01.724 [WARNING] [AI][REFLEX] avoid zone ahead=39.3cm -> avoid
-15:46:03.726 [INFO] [AI][STEP] -> bat=7.93V ahead=224.4cm ir=0 light=(3.22,3.61) scan=(138,138,138) stuck=False
-15:46:06.099 [WARNING] [AI][STUCK] detected -> escape
-15:46:06.782 [ERROR] [AI][STEP] request exception
+16:35:28.945 [INFO] [AI][STEP] -> bat=7.46V ahead=75.7cm ir=0 light=(2.94,2.18) scan=(104,105,105) stuck=True
+16:35:30.240 [WARNING] [AI][REFLEX] avoid zone ahead=63.1cm -> avoid
+16:35:31.998 [ERROR] [AI][STEP] request exception
 Traceback (most recent call last):
   File "/usr/lib/python3.11/urllib/request.py", line 1348, in do_open
     h.request(req.get_method(), req.selector, req.data, headers,
@@ -272,18 +289,552 @@ Traceback (most recent call last):
     raise URLError(err)
 urllib.error.URLError: <urlopen error [Errno 113] No route to host>
 
-15:46:08.227 [WARNING] [AI] server unreachable (5 consecutive failures) — switching to local brain
-15:46:08.493 [INFO] [PET] CURIOUS → PLAYFUL  energy=0.70  battery=84%
-15:46:08.832 [INFO] [PET] PLAYFUL → CURIOUS  energy=0.69  battery=78%
-15:46:10.444 [WARNING] [AI][STUCK] detected -> escape
-15:46:14.335 [WARNING] [PET][REFLEX] avoid zone ahead=62.9 cm -> avoid
-15:46:15.462 [WARNING] [PET][REFLEX] avoid zone ahead=56.4 cm -> avoid
-15:46:20.474 [WARNING] [PET][REFLEX] avoid zone ahead=62.2 cm -> avoid
-15:46:21.517 [WARNING] [PET][REFLEX] HARD_STOP ahead=1.6 cm -> avoid
-15:46:27.565 [WARNING] [AI][STUCK] detected -> escape
-15:46:32.374 [WARNING] [PET][REFLEX] avoid zone ahead=56.1 cm -> avoid
-15:46:35.180 [WARNING] [PET][REFLEX] avoid zone ahead=62.6 cm -> avoid
-15:46:36.307 [WARNING] [PET][REFLEX] avoid zone ahead=46.7 cm -> avoid
-15:46:37.435 [WARNING] [PET][REFLEX] avoid zone ahead=52.6 cm -> avoid
-15:46:37.830 [INFO] [SHUTDOWN] Ctrl+C received
-15:46:37.871 [INFO] [SHUTDOWN] cleaned up
+16:35:32.018 [WARNING] [AI] server unreachable (5 consecutive failures) — switching to local brain
+16:35:32.940 [WARNING] [PET][REFLEX] avoid zone ahead=61.4 cm -> avoid
+16:35:34.947 [WARNING] [PET][REFLEX] avoid zone ahead=46.5 cm -> avoid
+16:35:36.954 [WARNING] [PET][REFLEX] avoid zone ahead=44.7 cm -> avoid
+16:35:40.013 [WARNING] [AI][STUCK] detected -> escape
+16:35:42.141 [WARNING] [PET][REFLEX] HARD_STOP ahead=29.0 cm -> avoid
+16:35:45.036 [WARNING] [PET][REFLEX] avoid zone ahead=59.1 cm -> avoid
+16:35:48.063 [WARNING] [PET][REFLEX] HARD_STOP ahead=4.8 cm -> avoid
+16:35:52.128 [WARNING] [AI][STUCK] detected -> escape
+16:35:54.256 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:35:56.491 [WARNING] [AI][STUCK] detected -> escape
+16:35:58.618 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:35:59.181 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:35:59.617 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:35:59.876 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:36:00.313 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:36:00.571 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:36:00.905 [WARNING] [AI][STUCK] detected -> escape
+16:36:03.033 [WARNING] [PET][REFLEX] avoid zone ahead=61.5 cm -> avoid
+16:36:03.960 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=65%
+16:36:04.416 [INFO] [PET] fear triggered — obstacle count=3, ahead=7.1 cm
+16:36:04.501 [INFO] [PET] fear triggered — obstacle count=3, ahead=7.1 cm
+16:36:04.638 [INFO] [PET] fear triggered — obstacle count=3, ahead=7.1 cm
+16:36:04.724 [INFO] [PET] fear triggered — obstacle count=3, ahead=7.1 cm
+16:36:04.861 [INFO] [PET] fear triggered — obstacle count=3, ahead=7.2 cm
+16:36:04.945 [INFO] [PET] fear triggered — obstacle count=3, ahead=7.2 cm
+16:36:05.082 [INFO] [PET] fear triggered — obstacle count=3, ahead=8.0 cm
+16:36:05.082 [WARNING] [PET][REFLEX] HARD_STOP ahead=8.0 cm -> avoid
+16:36:08.577 [INFO] [PET] SCARED → TIRED  energy=0.34  battery=66%
+16:36:12.798 [WARNING] [AI][STUCK] detected -> escape
+16:36:14.925 [WARNING] [PET][REFLEX] avoid zone ahead=62.2 cm -> avoid
+16:36:16.933 [WARNING] [PET][REFLEX] avoid zone ahead=54.1 cm -> avoid
+16:36:19.076 [WARNING] [PET][REFLEX] avoid zone ahead=49.4 cm -> avoid
+16:36:21.083 [WARNING] [PET][REFLEX] avoid zone ahead=45.3 cm -> avoid
+16:36:22.597 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:36:22.833 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:36:23.247 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:36:23.483 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:36:23.897 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:36:24.133 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:36:24.547 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:36:24.806 [WARNING] [PET][REFLEX] avoid zone ahead=44.7 cm -> avoid
+16:36:25.733 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:36:26.149 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:36:26.711 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:36:27.125 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:36:27.361 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:36:27.775 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:36:28.011 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:36:28.425 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:36:28.661 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:36:29.075 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:36:29.372 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:36:29.786 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:36:30.022 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:36:30.436 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:36:30.694 [WARNING] [PET][REFLEX] avoid zone ahead=37.0 cm -> avoid
+16:36:31.622 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:36:32.038 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:36:32.736 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:36:33.174 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:36:33.432 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:36:33.870 [WARNING] [PET][REFLEX] HARD_STOP ahead=4.8 cm -> avoid
+16:36:36.024 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:36:36.260 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=65%
+16:36:38.495 [WARNING] [AI][STUCK] detected -> escape
+16:36:40.622 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:36:41.099 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:36:41.538 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=60%
+16:36:41.794 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=60%
+16:36:42.233 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=61%
+16:36:42.489 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=61%
+16:36:42.823 [WARNING] [AI][STUCK] detected -> escape
+16:36:44.951 [WARNING] [PET][REFLEX] avoid zone ahead=30.0 cm -> avoid
+16:36:45.578 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=61%
+16:36:46.475 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:36:46.913 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:36:47.170 [WARNING] [PET][REFLEX] avoid zone ahead=57.1 cm -> avoid
+16:36:48.097 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:36:48.513 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:36:48.854 [INFO] [PET] fear triggered — obstacle count=3, ahead=22.0 cm
+16:36:52.416 [INFO] [PET] SCARED → TIRED  energy=0.35  battery=59%
+16:36:54.916 [WARNING] [PET][REFLEX] avoid zone ahead=48.5 cm -> avoid
+16:36:56.924 [WARNING] [PET][REFLEX] avoid zone ahead=44.3 cm -> avoid
+16:36:58.931 [WARNING] [PET][REFLEX] avoid zone ahead=42.9 cm -> avoid
+16:37:00.938 [WARNING] [PET][REFLEX] avoid zone ahead=42.1 cm -> avoid
+16:37:02.942 [WARNING] [PET][REFLEX] avoid zone ahead=35.6 cm -> avoid
+16:37:03.985 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:37:04.326 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:37:04.764 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:05.021 [WARNING] [PET][REFLEX] avoid zone ahead=35.2 cm -> avoid
+16:37:05.948 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:06.364 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:07.063 [WARNING] [PET][REFLEX] HARD_STOP ahead=29.7 cm -> avoid
+16:37:07.700 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:08.116 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:08.678 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:09.114 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:09.373 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:09.810 [WARNING] [PET][REFLEX] avoid zone ahead=34.4 cm -> avoid
+16:37:10.437 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:10.673 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:11.772 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:12.029 [WARNING] [PET][REFLEX] avoid zone ahead=30.0 cm -> avoid
+16:37:13.939 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:14.355 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=67%
+16:37:15.578 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:37:16.016 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:37:16.273 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:37:16.607 [WARNING] [AI][STUCK] detected -> escape
+16:37:18.735 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=65%
+16:37:20.094 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:37:20.532 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:37:20.790 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:37:21.124 [WARNING] [AI][STUCK] detected -> escape
+16:37:23.251 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=66%
+16:37:24.610 [WARNING] [PET][REFLEX] avoid zone ahead=62.7 cm -> avoid
+16:37:25.655 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:37:27.279 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:37:27.535 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:37:27.869 [WARNING] [AI][STUCK] detected -> escape
+16:37:29.997 [WARNING] [PET][REFLEX] avoid zone ahead=57.4 cm -> avoid
+16:37:30.925 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=64%
+16:37:31.381 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:37:31.820 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:37:32.077 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:37:32.516 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:37:32.773 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:37:33.212 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:33.468 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:33.884 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:34.118 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:34.534 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:34.768 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:35.184 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:37:35.418 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:37:35.834 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:37:36.091 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:37:36.530 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:37:36.786 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:37:37.225 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:37:37.482 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:37:37.920 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:37:38.177 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:37:38.616 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:38.873 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:39.311 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:37:39.568 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:37:40.007 [WARNING] [PET][REFLEX] avoid zone ahead=59.9 cm -> avoid
+16:37:40.934 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:37:41.171 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:37:42.709 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:37:42.967 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:37:43.301 [WARNING] [AI][STUCK] detected -> escape
+16:37:45.429 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=68%
+16:37:45.583 [WARNING] [AI][STUCK] detected -> escape
+16:37:47.710 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=69%
+16:37:49.427 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:49.662 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:37:50.078 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:50.335 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=70%
+16:37:50.773 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=70%
+16:37:51.030 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:37:51.468 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:51.726 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:37:52.164 [WARNING] [PET][REFLEX] avoid zone ahead=62.1 cm -> avoid
+16:37:53.091 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:53.327 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=70%
+16:37:55.158 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:55.393 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:37:55.808 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:56.066 [WARNING] [PET][REFLEX] avoid zone ahead=58.0 cm -> avoid
+16:37:56.993 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:37:57.409 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:57.971 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:37:58.408 [WARNING] [PET][REFLEX] avoid zone ahead=46.7 cm -> avoid
+16:37:59.336 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:37:59.572 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:38:00.450 [WARNING] [PET][REFLEX] avoid zone ahead=52.8 cm -> avoid
+16:38:01.493 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=70%
+16:38:01.750 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=70%
+16:38:02.188 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=70%
+16:38:02.445 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=70%
+16:38:02.884 [WARNING] [PET][REFLEX] avoid zone ahead=40.5 cm -> avoid
+16:38:03.811 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=70%
+16:38:04.047 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:38:05.671 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:38:05.928 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:38:06.366 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:38:06.623 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:38:07.039 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:38:07.273 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:38:07.689 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:38:07.923 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:38:08.362 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:38:08.619 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:38:09.057 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:38:09.314 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:38:09.753 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:38:09.907 [WARNING] [AI][STUCK] detected -> escape
+16:38:12.034 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=68%
+16:38:15.643 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:38:15.901 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:38:16.338 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:38:16.596 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:38:16.930 [WARNING] [AI][STUCK] detected -> escape
+16:38:19.058 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=69%
+16:38:20.281 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:38:20.719 [WARNING] [PET][REFLEX] HARD_STOP ahead=3.9 cm -> avoid
+16:38:22.874 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:38:23.110 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=68%
+16:38:26.448 [WARNING] [AI][STUCK] detected -> escape
+16:38:28.575 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=67%
+16:38:29.715 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:38:30.152 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:38:30.410 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:38:30.744 [WARNING] [AI][STUCK] detected -> escape
+16:38:32.872 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=68%
+16:38:34.314 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:38:34.753 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:38:34.907 [WARNING] [AI][STUCK] detected -> escape
+16:38:37.034 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=65%
+16:38:37.471 [WARNING] [PET][REFLEX] avoid zone ahead=61.4 cm -> avoid
+16:38:40.583 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:38:40.737 [WARNING] [AI][STUCK] detected -> escape
+16:38:42.864 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=65%
+16:38:44.962 [WARNING] [AI][STUCK] detected -> escape
+16:38:47.090 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=69%
+16:38:47.430 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=69%
+16:38:47.868 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:38:48.125 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:38:48.564 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:38:48.821 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:38:49.260 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:38:49.516 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:38:49.955 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:38:50.212 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:38:50.628 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:38:50.862 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:38:51.278 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:38:51.512 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:38:51.928 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:38:52.185 [WARNING] [PET][REFLEX] avoid zone ahead=49.7 cm -> avoid
+16:38:53.113 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:38:53.529 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:38:54.311 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:38:54.749 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:38:55.006 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:38:55.445 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:38:55.599 [WARNING] [AI][STUCK] detected -> escape
+16:38:57.726 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=66%
+16:39:00.623 [WARNING] [AI][STUCK] detected -> escape
+16:39:02.751 [WARNING] [PET][REFLEX] avoid zone ahead=63.9 cm -> avoid
+16:39:03.678 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:39:03.915 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:39:04.391 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:39:04.626 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:39:05.041 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:39:05.276 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:39:05.714 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:39:05.971 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:06.409 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:06.667 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:07.105 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:07.258 [WARNING] [AI][STUCK] detected -> escape
+16:39:09.386 [WARNING] [PET][REFLEX] avoid zone ahead=59.5 cm -> avoid
+16:39:10.314 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:39:12.229 [WARNING] [PET][REFLEX] avoid zone ahead=53.4 cm -> avoid
+16:39:13.273 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:39:13.529 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:39:13.968 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:39:14.225 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:39:14.663 [WARNING] [PET][REFLEX] avoid zone ahead=55.4 cm -> avoid
+16:39:15.591 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:39:15.827 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:16.485 [INFO] [PET] fear triggered — obstacle count=3, ahead=19.2 cm
+16:39:16.569 [INFO] [PET] fear triggered — obstacle count=3, ahead=19.2 cm
+16:39:16.706 [INFO] [PET] fear triggered — obstacle count=3, ahead=19.2 cm
+16:39:16.706 [WARNING] [PET][REFLEX] HARD_STOP ahead=19.2 cm -> avoid
+16:39:20.213 [INFO] [PET] SCARED → TIRED  energy=0.34  battery=68%
+16:39:22.889 [WARNING] [AI][STUCK] detected -> escape
+16:39:25.017 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.9 cm -> avoid
+16:39:30.594 [WARNING] [AI][STUCK] detected -> escape
+16:39:32.667 [INFO] [BATT] 7.43V  66%
+16:39:32.722 [WARNING] [PET][REFLEX] HARD_STOP ahead=9.6 cm -> avoid
+16:39:34.992 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:39:35.910 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:36.348 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:36.605 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:37.044 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:37.300 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:37.739 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:37.996 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:38.434 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:38.691 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:39.130 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:39.284 [WARNING] [AI][STUCK] detected -> escape
+16:39:41.411 [WARNING] [PET][REFLEX] avoid zone ahead=39.3 cm -> avoid
+16:39:42.339 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:39:44.900 [WARNING] [PET][REFLEX] avoid zone ahead=36.6 cm -> avoid
+16:39:45.828 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:46.064 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:39:47.956 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:48.191 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:48.605 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:48.864 [WARNING] [PET][REFLEX] avoid zone ahead=53.4 cm -> avoid
+16:39:49.792 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:50.208 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:50.906 [WARNING] [PET][REFLEX] avoid zone ahead=35.2 cm -> avoid
+16:39:51.833 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:39:52.249 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:39:52.948 [WARNING] [PET][REFLEX] avoid zone ahead=54.2 cm -> avoid
+16:39:53.992 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=66%
+16:39:54.954 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.9 cm -> avoid
+16:39:55.708 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:55.942 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:56.358 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:56.615 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:39:57.053 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:39:57.310 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:39:57.749 [WARNING] [PET][REFLEX] avoid zone ahead=55.8 cm -> avoid
+16:39:58.678 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:39:58.914 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:39:59.435 [INFO] [PET] fear triggered — obstacle count=3, ahead=26.7 cm
+16:39:59.572 [INFO] [PET] fear triggered — obstacle count=3, ahead=26.7 cm
+16:39:59.656 [INFO] [PET] fear triggered — obstacle count=3, ahead=26.7 cm
+16:39:59.793 [INFO] [PET] fear triggered — obstacle count=3, ahead=27.5 cm
+16:39:59.793 [WARNING] [PET][REFLEX] HARD_STOP ahead=27.5 cm -> avoid
+16:40:03.358 [INFO] [PET] SCARED → TIRED  energy=0.34  battery=67%
+16:40:04.246 [WARNING] [PET][REFLEX] avoid zone ahead=60.0 cm -> avoid
+16:40:11.224 [WARNING] [AI][STUCK] detected -> escape
+16:40:13.352 [WARNING] [PET][REFLEX] avoid zone ahead=56.7 cm -> avoid
+16:40:16.309 [WARNING] [PET][REFLEX] avoid zone ahead=55.4 cm -> avoid
+16:40:17.823 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:18.059 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:18.473 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:18.709 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:19.123 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:19.359 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:19.796 [WARNING] [PET][REFLEX] avoid zone ahead=55.8 cm -> avoid
+16:40:20.724 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:20.960 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:40:22.813 [WARNING] [PET][REFLEX] avoid zone ahead=55.1 cm -> avoid
+16:40:23.741 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:23.977 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:40:25.595 [WARNING] [PET][REFLEX] avoid zone ahead=55.6 cm -> avoid
+16:40:26.638 [INFO] [PET] TIRED → BORED  energy=0.38  battery=67%
+16:40:27.219 [INFO] [PET] BORED → CURIOUS  energy=0.38  battery=67%
+16:40:27.454 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:27.869 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:28.104 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:28.520 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:28.777 [WARNING] [PET][REFLEX] avoid zone ahead=55.1 cm -> avoid
+16:40:29.704 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:30.120 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:30.818 [WARNING] [PET][REFLEX] avoid zone ahead=54.9 cm -> avoid
+16:40:31.861 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=65%
+16:40:33.579 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:33.814 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:40:34.229 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:34.464 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:40:34.879 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:35.114 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:40:35.529 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:35.764 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:40:36.202 [WARNING] [PET][REFLEX] avoid zone ahead=54.4 cm -> avoid
+16:40:37.129 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:37.365 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=66%
+16:40:38.244 [WARNING] [PET][REFLEX] avoid zone ahead=54.7 cm -> avoid
+16:40:40.270 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:40.746 [WARNING] [PET][REFLEX] avoid zone ahead=58.8 cm -> avoid
+16:40:41.791 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:42.752 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.4 cm -> avoid
+16:40:43.506 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:43.740 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:44.156 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:44.413 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:44.852 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:45.108 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:45.547 [WARNING] [PET][REFLEX] avoid zone ahead=55.7 cm -> avoid
+16:40:46.475 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:40:46.711 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:40:48.191 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:48.427 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:40:48.841 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:49.077 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:40:49.514 [WARNING] [PET][REFLEX] avoid zone ahead=62.4 cm -> avoid
+16:40:50.443 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:40:50.679 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:40:51.557 [WARNING] [PET][REFLEX] avoid zone ahead=40.1 cm -> avoid
+16:40:52.601 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:52.858 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:53.296 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:53.553 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:53.969 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:54.203 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:54.619 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:54.853 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:55.269 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:55.503 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:55.919 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:56.153 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:56.570 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:56.804 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:57.220 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:57.454 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:57.870 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:58.127 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:58.565 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:58.822 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:59.261 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=68%
+16:40:59.517 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:40:59.851 [WARNING] [AI][STUCK] detected -> escape
+16:41:01.979 [WARNING] [PET][REFLEX] avoid zone ahead=57.4 cm -> avoid
+16:41:02.907 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=68%
+16:41:03.363 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=68%
+16:41:03.801 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:41:04.058 [WARNING] [PET][REFLEX] avoid zone ahead=53.5 cm -> avoid
+16:41:05.103 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=64%
+16:41:06.065 [WARNING] [PET][REFLEX] avoid zone ahead=52.3 cm -> avoid
+16:41:07.108 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:41:07.365 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:41:07.803 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:41:08.060 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:41:08.499 [WARNING] [PET][REFLEX] avoid zone ahead=51.8 cm -> avoid
+16:41:09.426 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=58%
+16:41:09.663 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=59%
+16:41:11.319 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=61%
+16:41:11.553 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=61%
+16:41:11.969 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=62%
+16:41:12.203 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=62%
+16:41:12.642 [WARNING] [PET][REFLEX] avoid zone ahead=52.0 cm -> avoid
+16:41:13.570 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=62%
+16:41:13.805 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=63%
+16:41:14.684 [WARNING] [PET][REFLEX] avoid zone ahead=52.7 cm -> avoid
+16:41:15.728 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:41:15.984 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:41:16.423 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:41:16.680 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:41:17.118 [WARNING] [PET][REFLEX] avoid zone ahead=50.3 cm -> avoid
+16:41:18.046 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:41:18.282 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=65%
+16:41:19.160 [WARNING] [PET][REFLEX] avoid zone ahead=51.6 cm -> avoid
+16:41:21.186 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:41:21.884 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:22.322 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:22.663 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:23.101 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:23.358 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:23.796 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:24.053 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:24.491 [WARNING] [PET][REFLEX] avoid zone ahead=58.6 cm -> avoid
+16:41:25.419 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:25.655 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=67%
+16:41:27.475 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:41:27.710 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:41:28.125 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:41:28.360 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:41:28.775 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:41:29.033 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=67%
+16:41:29.471 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=67%
+16:41:29.728 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=62%
+16:41:30.166 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=62%
+16:41:30.423 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:41:30.861 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:41:31.118 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:41:31.556 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:41:31.814 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:41:32.252 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:41:32.509 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:41:32.947 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:41:33.205 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=61%
+16:41:33.643 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=61%
+16:41:33.900 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=62%
+16:41:34.338 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=62%
+16:41:34.595 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=62%
+16:41:35.033 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=62%
+16:41:35.291 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:41:35.729 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:41:35.986 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:41:36.424 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:41:36.578 [WARNING] [AI][STUCK] detected -> escape
+16:41:38.705 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=63%
+16:41:39.039 [WARNING] [AI][STUCK] detected -> escape
+16:41:41.200 [WARNING] [AI][STUCK] detected -> escape
+16:41:43.328 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:41:43.482 [WARNING] [AI][STUCK] detected -> escape
+16:41:45.610 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=65%
+16:41:48.332 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:48.588 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:49.027 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:49.283 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:49.617 [WARNING] [AI][STUCK] detected -> escape
+16:41:51.745 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=66%
+16:41:52.221 [WARNING] [PET][REFLEX] avoid zone ahead=64.9 cm -> avoid
+16:41:53.264 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:53.701 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:53.960 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:41:54.396 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:41:54.655 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=60%
+16:41:55.092 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=60%
+16:41:55.350 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=61%
+16:41:55.684 [WARNING] [AI][STUCK] detected -> escape
+16:41:57.812 [WARNING] [PET][REFLEX] HARD_STOP ahead=7.8 cm -> avoid
+16:41:59.965 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=62%
+16:42:00.201 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=62%
+16:42:02.094 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:02.329 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:42:02.743 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:03.002 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=65%
+16:42:03.438 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=65%
+16:42:03.697 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=61%
+16:42:04.134 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=61%
+16:42:04.392 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=62%
+16:42:04.726 [WARNING] [AI][STUCK] detected -> escape
+16:42:06.855 [INFO] [PET] TIRED → CURIOUS  energy=0.39  battery=63%
+16:42:07.009 [WARNING] [AI][STUCK] detected -> escape
+16:42:09.137 [WARNING] [PET][REFLEX] HARD_STOP ahead=2.7 cm -> avoid
+16:42:11.291 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:42:11.707 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:12.269 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:42:12.705 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:12.964 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=62%
+16:42:13.378 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=62%
+16:42:13.614 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:42:14.028 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:42:14.264 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:42:14.678 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:42:14.914 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:42:15.351 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:15.609 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:42:16.046 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:16.388 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=64%
+16:42:16.826 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:16.980 [WARNING] [AI][STUCK] detected -> escape
+16:42:19.108 [WARNING] [PET][REFLEX] avoid zone ahead=58.4 cm -> avoid
+16:42:20.036 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=64%
+16:42:22.811 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=66%
+16:42:23.045 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=66%
+16:42:23.484 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:42:23.740 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:42:24.179 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=63%
+16:42:24.436 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=63%
+16:42:24.874 [INFO] [PET] TIRED → CURIOUS  energy=0.38  battery=64%
+16:42:25.028 [WARNING] [AI][STUCK] detected -> escape
+16:42:27.156 [WARNING] [PET][REFLEX] HARD_STOP ahead=23.5 cm -> avoid
+16:42:28.977 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=64%
+16:42:29.661 [INFO] [SHUTDOWN] Ctrl+C received
+16:42:29.697 [INFO] [SHUTDOWN] cleaned up
