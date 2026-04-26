@@ -24,3 +24,1367 @@
 17:27:05.084 [WARNING] [OLLAMA] LLM error: <urlopen error timed out>
 17:27:06.560 [INFO] [SHUTDOWN] Ctrl+C received
 17:27:06.600 [INFO] [SHUTDOWN] cleaned up
+17:29:48.699 [INFO] [BOOT] autonomous3 -> ollama:http://192.168.1.68:11435
+17:29:48.699 [INFO] [BOOT] ROBOT_ID=sparky anon=True privacy=normal camera=False
+17:29:48.699 [INFO] [BOOT] PET_STEP_TIMEOUT_S=6.0 STOP_WHILE_THINKING=False
+17:29:48.750 [INFO] [OLLAMA] LLM worker started (llama3.2:1b)
+17:29:48.750 [INFO] [BOOT] brain=OLLAMA  url=http://192.168.1.68:11435
+17:29:48.863 [INFO] [BATT] unknown
+17:29:48.864 [INFO] [MAP] obstacle_cells=0  visited_cells=0  x=0 y=0 th=0°
+17:29:55.194 [WARNING] [AI][STUCK] detected -> escape
+17:29:56.695 [WARNING] [OLLAMA] no JSON in response (7.82s): Based on the robot's current state, I recommend:
+
+`action`: `wander`
+
+Reasoning:
+17:29:59.508 [WARNING] [AI][STUCK] detected -> escape
+17:29:59.949 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.2s spd=1100  "Curious"
+17:30:04.708 [INFO] [OLLAMA] decision in 2.77s: action=wander dur=1.0s spd=1100  "CURIOUS"
+17:30:05.972 [WARNING] [PET][REFLEX] avoid zone ahead=49.1 cm -> avoid
+17:30:06.980 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "scared"
+17:30:09.645 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=2.5s spd=1100  "HAPPY"
+17:30:12.213 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "Respect robot's current emotion (CURIOUS)"
+17:30:13.936 [WARNING] [PET][REFLEX] avoid zone ahead=47.7 cm -> avoid
+17:30:14.798 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.5s spd=1100  "WANDER MOST OF THE TIME TO KEEP EMOTION HAPPY"
+17:30:16.458 [WARNING] [PET][REFLEX] avoid zone ahead=41.6 cm -> avoid
+17:30:17.612 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.4s spd=1100  "wander"
+17:30:19.661 [WARNING] [AI][STUCK] detected -> escape
+17:30:20.136 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.3s spd=1100  "Curious"
+17:30:22.139 [WARNING] [PET][REFLEX] HARD_STOP ahead=21.0 cm -> avoid
+17:30:24.349 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "SCARED"
+17:30:26.906 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "wander to explore"
+17:30:29.534 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:30:29.662 [WARNING] [AI][STUCK] detected -> escape
+17:30:32.142 [WARNING] [PET][REFLEX] avoid zone ahead=35.3 cm -> avoid
+17:30:34.369 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "scared"
+17:30:34.669 [WARNING] [PET][REFLEX] avoid zone ahead=44.6 cm -> avoid
+17:30:37.004 [INFO] [OLLAMA] decision in 2.39s: action=wander dur=1.2s spd=1100  "Respect the robot's current emotion — e.g. SCARED → reverse/spin, BORED → stop/slow."
+17:30:37.173 [WARNING] [PET][REFLEX] HARD_STOP ahead=29.1 cm -> avoid
+17:30:39.483 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=2.5s spd=1100  "Wandering to explore"
+17:30:42.074 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.5s spd=1100  "Respect the robot's current emotion and prioritize curiosity"
+17:30:44.604 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "wander because emotion is curious"
+17:30:47.127 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:30:49.661 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "SCARED"
+17:30:52.725 [INFO] [OLLAMA] decision in 2.76s: action=wander dur=1.0s spd=1100  "CURIOUS"
+17:30:53.004 [WARNING] [AI][STUCK] detected -> escape
+17:30:55.345 [WARNING] [OLLAMA] no JSON in response (2.51s): Based on the robot's current state, I recommend:
+
+`action`: wander
+
+Reason: The 
+17:30:57.707 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "SCARED"
+17:31:00.299 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "wander"
+17:31:01.626 [WARNING] [AI][STUCK] detected -> escape
+17:31:02.846 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=2.5s spd=1100  "Curious"
+17:31:06.462 [WARNING] [OLLAMA] LLM error: Expecting property name enclosed in double quotes: line 3 column 20 (char 43)
+17:31:09.364 [WARNING] [OLLAMA] no JSON in response (2.75s): Based on the current robot state, I recommend:
+
+`action`: wander
+
+The reason is 
+17:31:11.301 [WARNING] [PET][REFLEX] avoid zone ahead=48.8 cm -> avoid
+17:31:11.776 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "CURIOUS"
+17:31:14.739 [WARNING] [AI][STUCK] detected -> escape
+17:31:14.951 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "wander"
+17:31:18.800 [WARNING] [AI][STUCK] detected -> escape
+17:31:19.454 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=0.5s spd=1100  "Curious"
+17:31:22.942 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=59%
+17:31:23.548 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.2s spd=1100  "Respect robot's current emotion: CURIOUS"
+17:31:23.952 [WARNING] [AI][STUCK] detected -> escape
+17:31:26.072 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "TIRED"
+17:31:26.432 [WARNING] [PET][REFLEX] avoid zone ahead=45.6 cm -> avoid
+17:31:28.732 [WARNING] [OLLAMA] LLM error: Expecting property name enclosed in double quotes: line 4 column 18 (char 58)
+17:31:29.873 [WARNING] [AI][STUCK] detected -> escape
+17:31:31.160 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:31:34.943 [WARNING] [OLLAMA] no JSON in response (2.64s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:31:35.613 [WARNING] [AI][STUCK] detected -> escape
+17:31:37.277 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:31:39.820 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=59%
+17:31:40.327 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:31:42.936 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "Respect robot's current emotion"
+17:31:44.944 [WARNING] [AI][STUCK] detected -> escape
+17:31:45.459 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "curious"
+17:31:49.439 [WARNING] [AI][STUCK] detected -> escape
+17:31:50.036 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:31:51.917 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=59%
+17:31:54.618 [INFO] [OLLAMA] decision in 2.75s: action=wander dur=1.5s spd=1100  "Curious"
+17:31:55.532 [WARNING] [AI][STUCK] detected -> escape
+17:31:57.497 [WARNING] [OLLAMA] no JSON in response (2.79s): Based on the robot's current state, I recommend the following actions:
+
+1. **Wan
+17:32:00.232 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:32:00.262 [WARNING] [AI][STUCK] detected -> escape
+17:32:04.963 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:32:07.591 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:32:10.142 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:32:11.897 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=60%
+17:32:12.774 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:32:15.435 [INFO] [OLLAMA] decision in 2.40s: action=wander dur=1.5s spd=1100  "Respect the robot's current emotion — e.g. SCARED → reverse/spin, BORED → stop/slow."
+17:32:18.010 [WARNING] [AI][STUCK] detected -> escape
+17:32:18.308 [WARNING] [OLLAMA] no JSON in response (2.68s): Based on the current robot state, I recommend:
+
+`action`: wander
+
+Reason: The ro
+17:32:22.033 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=59%
+17:32:23.139 [WARNING] [PET][REFLEX] avoid zone ahead=49.6 cm -> avoid
+17:32:23.188 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:32:26.789 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:32:29.354 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:32:31.877 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:32:34.793 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.0s spd=1100  "TIRED"
+17:32:37.360 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.5s spd=1100  "SCARED"
+17:32:38.844 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=58%
+17:32:39.872 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:32:42.491 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.8s spd=1100  "Respecting robot's current emotion and prioritizing curiosity"
+17:32:43.620 [WARNING] [AI][STUCK] detected -> escape
+17:32:45.067 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "resuming curiosity"
+17:32:46.542 [WARNING] [PET][REFLEX] avoid zone ahead=48.9 cm -> avoid
+17:32:48.653 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:32:48.923 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=58%
+17:32:51.266 [WARNING] [OLLAMA] no JSON in response (2.56s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:32:53.521 [WARNING] [AI][STUCK] detected -> escape
+17:32:53.597 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.0s spd=1100  "TIRED"
+17:32:57.801 [WARNING] [AI][STUCK] detected -> escape
+17:32:58.219 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+17:33:02.496 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:33:05.071 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.0s spd=1100  "TIRED"
+17:33:05.823 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=57%
+17:33:07.643 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:33:10.216 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "wander because robot is curious"
+17:33:12.772 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.0s spd=1100  "CURIOUS"
+17:33:13.331 [WARNING] [AI][STUCK] detected -> escape
+17:33:15.330 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "RESPECT robot's current emotion"
+17:33:15.892 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=55%
+17:33:18.070 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "Curious"
+17:33:20.556 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:33:23.070 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:33:25.645 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:33:28.191 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "respite"
+17:33:30.797 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:33:32.653 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=58%
+17:33:33.343 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "TIRED"
+17:33:35.910 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "SCARED"
+17:33:38.515 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "wander"
+17:33:39.363 [WARNING] [AI][STUCK] detected -> escape
+17:33:41.057 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "Respect robot's current emotion"
+17:33:42.733 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=59%
+17:33:44.068 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "CURIOUS"
+17:33:45.864 [WARNING] [AI][STUCK] detected -> escape
+17:33:46.618 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+17:33:48.347 [WARNING] [PET][REFLEX] avoid zone ahead=47.1 cm -> avoid
+17:33:50.601 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "respite from tiredness"
+17:33:53.145 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "TIRED"
+17:33:55.652 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:33:58.296 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:33:59.390 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=59%
+17:34:00.828 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:34:03.463 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "Respect the robot's current emotion"
+17:34:05.372 [WARNING] [AI][STUCK] detected -> escape
+17:34:06.014 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "Curious"
+17:34:09.476 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=59%
+17:34:09.810 [WARNING] [AI][STUCK] detected -> escape
+17:34:10.053 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "SCARED"
+17:34:14.585 [WARNING] [OLLAMA] LLM error: Expecting property name enclosed in double quotes: line 3 column 20 (char 43)
+17:34:15.252 [WARNING] [AI][STUCK] detected -> escape
+17:34:17.095 [INFO] [OLLAMA] decision in 2.23s: action=stop dur=1.5s spd=1100  "TIRED"
+17:34:19.980 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1000  "TIRED"
+17:34:22.560 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=2.5s spd=1100  "TIRED"
+17:34:25.071 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+17:34:26.346 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=55%
+17:34:27.585 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:34:30.151 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Curious"
+17:34:31.343 [WARNING] [AI][STUCK] detected -> escape
+17:34:32.793 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "CURIOUS"
+17:34:36.469 [WARNING] [PET][REFLEX] avoid zone ahead=49.1 cm -> avoid
+17:34:36.515 [INFO] [OLLAMA] decision in 2.74s: action=wander dur=1.5s spd=1100  "Curious"
+17:34:37.790 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=58%
+17:34:40.455 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=2.0s spd=1100  "TIRED"
+17:34:41.310 [WARNING] [PET][REFLEX] avoid zone ahead=39.9 cm -> avoid
+17:34:43.005 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:34:45.522 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+17:34:48.063 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=0.6s spd=1100  "Wandering to find a place to rest"
+17:34:48.918 [WARNING] [AI][STUCK] detected -> escape
+17:34:50.555 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+17:34:51.343 [INFO] [BATT] 7.16V  57%
+17:34:51.344 [INFO] [MAP] obstacle_cells=1334  visited_cells=303  x=-149 y=369 th=54°
+17:34:53.002 [WARNING] [PET][REFLEX] HARD_STOP ahead=21.9 cm -> avoid
+17:34:53.607 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:34:55.524 [INFO] [PET] TIRED → CURIOUS  energy=0.44  battery=57%
+17:34:57.754 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:35:00.249 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:35:02.491 [WARNING] [AI][STUCK] detected -> escape
+17:35:02.821 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=0.3s spd=1100  "SCARED"
+17:35:06.936 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=54%
+17:35:07.270 [WARNING] [AI][STUCK] detected -> escape
+17:35:07.667 [WARNING] [OLLAMA] no JSON in response (2.75s): Based on the current robot state, I recommend the following actions:
+
+1. **seque
+17:35:11.964 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:35:14.586 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "respite"
+17:35:17.141 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:35:19.682 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=0.5s spd=1100  "TIRED"
+17:35:22.293 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:35:23.697 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=58%
+17:35:24.856 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=0.6s spd=1100  "TIRED"
+17:35:27.459 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=2.5s spd=1100  "CURIOUS"
+17:35:27.743 [WARNING] [AI][STUCK] detected -> escape
+17:35:29.927 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "Curious"
+17:35:32.469 [WARNING] [AI][STUCK] detected -> escape
+17:35:32.927 [INFO] [OLLAMA] decision in 2.75s: action=wander dur=1.0s spd=1100  "Curious"
+17:35:34.949 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=58%
+17:35:37.053 [WARNING] [AI][STUCK] detected -> escape
+17:35:37.186 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "resuming curious state"
+17:35:41.110 [WARNING] [AI][STUCK] detected -> escape
+17:35:41.857 [INFO] [OLLAMA] decision in 2.38s: action=stop dur=1.5s spd=1100  "exhausted due to prolonged movement and low energy."
+17:35:43.588 [WARNING] [PET][REFLEX] avoid zone ahead=49.7 cm -> avoid
+17:35:46.283 [WARNING] [OLLAMA] no JSON in response (2.75s): Based on the current robot state, I recommend the following actions:
+
+1. **Stop*
+17:35:47.056 [WARNING] [PET][REFLEX] avoid zone ahead=43.2 cm -> avoid
+17:35:48.644 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "respite from tiredness"
+17:35:49.578 [WARNING] [PET][REFLEX] avoid zone ahead=36.7 cm -> avoid
+17:35:51.116 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:35:52.056 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.3 cm -> avoid
+17:35:53.678 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1000  "TIRED"
+17:35:54.194 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=57%
+17:35:56.448 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "due to tiredness"
+17:35:58.921 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Curious"
+17:36:01.986 [WARNING] [OLLAMA] no JSON in response (2.76s): Based on the robot's current state, I recommend the following actions:
+
+* `reaso
+17:36:04.016 [WARNING] [PET][REFLEX] avoid zone ahead=49.2 cm -> avoid
+17:36:04.402 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "rescue the nearby object"
+17:36:05.454 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=46%
+17:36:07.534 [WARNING] [AI][STUCK] detected -> escape
+17:36:07.686 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "wondering around"
+17:36:12.244 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:36:14.869 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:36:17.446 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "TIRED"
+17:36:18.861 [WARNING] [AI][STUCK] detected -> escape
+17:36:20.435 [INFO] [OLLAMA] decision in 2.77s: action=stop dur=1.5s spd=1100  "TIRED"
+17:36:23.557 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:36:23.620 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=56%
+17:36:26.130 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "wander"
+17:36:28.745 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Curious"
+17:36:31.284 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "Curious"
+17:36:31.694 [WARNING] [PET][REFLEX] avoid zone ahead=48.3 cm -> avoid
+17:36:33.663 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=54%
+17:36:34.162 [WARNING] [PET][REFLEX] avoid zone ahead=48.6 cm -> avoid
+17:36:34.300 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:36:37.814 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:36:40.355 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:36:42.976 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=2.5s spd=1100  "TIRED"
+17:36:43.519 [WARNING] [AI][STUCK] detected -> escape
+17:36:45.483 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "TIRED"
+17:36:48.256 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.5s spd=1100  "TIRED"
+17:36:50.587 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=51%
+17:36:50.778 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "TIRED"
+17:36:52.435 [WARNING] [AI][STUCK] detected -> escape
+17:36:53.441 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Curious"
+17:36:56.494 [WARNING] [AI][STUCK] detected -> escape
+17:36:57.205 [INFO] [OLLAMA] decision in 2.34s: action=stop dur=1.5s spd=1100  "Curious robot is stuck and needs to stop."
+17:37:00.671 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=48%
+17:37:01.208 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "SCARED"
+17:37:03.771 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:37:04.148 [WARNING] [AI][STUCK] detected -> escape
+17:37:06.379 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:37:08.964 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "wander"
+17:37:09.600 [WARNING] [AI][STUCK] detected -> escape
+17:37:11.488 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+17:37:14.296 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:37:16.838 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:37:17.386 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=50%
+17:37:19.430 [INFO] [OLLAMA] decision in 2.27s: action=turn_left dur=1.5s spd=1100  "TIRED"
+17:37:20.545 [WARNING] [AI][STUCK] detected -> escape
+17:37:21.975 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:37:24.826 [WARNING] [AI][STUCK] detected -> escape
+17:37:25.260 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=2.0s spd=1100  "SCARED"
+17:37:27.426 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=44%
+17:37:29.542 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Wandering to explore and gather more information"
+17:37:31.048 [WARNING] [AI][STUCK] detected -> escape
+17:37:32.038 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:37:35.763 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:37:38.312 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:37:40.786 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.5s spd=1100  "TIRED"
+17:37:41.750 [WARNING] [AI][STUCK] detected -> escape
+17:37:43.415 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+17:37:44.230 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=49%
+17:37:46.441 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:37:46.958 [WARNING] [AI][STUCK] detected -> escape
+17:37:49.407 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:37:51.825 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.3s spd=1100  "Wandering to explore and have some fun"
+17:37:52.404 [WARNING] [AI][STUCK] detected -> escape
+17:37:54.284 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "curious"
+17:37:54.882 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=50%
+17:37:55.296 [WARNING] [PET][REFLEX] HARD_STOP ahead=15.2 cm -> avoid
+17:37:57.102 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.8s spd=1100  "SCARED"
+17:38:00.051 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "wander"
+17:38:02.547 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:38:05.085 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.2s spd=1100  "TIRED"
+17:38:07.693 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:38:10.309 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=2.0s spd=1100  "TIRED"
+17:38:12.646 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=48%
+17:38:13.262 [INFO] [OLLAMA] decision in 2.75s: action=stop dur=0.8s spd=1100  "TIRED"
+17:38:15.582 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "Curious"
+17:38:18.219 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=0.8s spd=1100  "The robot is curious about its surroundings and wants to explore."
+17:38:18.280 [WARNING] [AI][STUCK] detected -> escape
+17:38:22.557 [WARNING] [AI][STUCK] detected -> escape
+17:38:23.473 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:38:25.035 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=50%
+17:38:27.141 [WARNING] [AI][STUCK] detected -> escape
+17:38:27.266 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.0s spd=1100  "stuck"
+17:38:31.423 [WARNING] [AI][STUCK] detected -> escape
+17:38:31.832 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:38:33.903 [WARNING] [PET][REFLEX] HARD_STOP ahead=3.6 cm -> avoid
+17:38:36.133 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+17:38:38.683 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "respite from tiredness"
+17:38:41.195 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:38:43.740 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "respite"
+17:38:45.645 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=52%
+17:38:46.303 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:38:48.946 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:38:51.525 [WARNING] [AI][STUCK] detected -> escape
+17:38:51.546 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "Respect robot's emotion and curiosity"
+17:38:55.635 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=48%
+17:38:55.969 [WARNING] [AI][STUCK] detected -> escape
+17:38:56.240 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "resuming curiosity"
+17:39:00.244 [WARNING] [AI][STUCK] detected -> escape
+17:39:00.676 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+17:39:02.723 [WARNING] [PET][REFLEX] HARD_STOP ahead=4.2 cm -> avoid
+17:39:05.429 [WARNING] [OLLAMA] no JSON in response (2.76s): Based on the current robot state, I recommend the following actions:
+
+1. **Stop*
+17:39:07.849 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "respite"
+17:39:10.417 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "wander due to tired state"
+17:39:12.401 [WARNING] [AI][STUCK] detected -> escape
+17:39:12.967 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "TIRED"
+17:39:14.880 [INFO] [PET] TIRED → CURIOUS  energy=0.44  battery=53%
+17:39:17.102 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:39:19.728 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "Curious"
+17:39:22.431 [INFO] [OLLAMA] decision in 2.40s: action=wander dur=1.5s spd=1100  "Respect the robot's current emotion — e.g. SCARED → reverse/spin, BORED → stop/slow."
+17:39:23.213 [WARNING] [AI][STUCK] detected -> escape
+17:39:24.889 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "CURIOUS"
+17:39:26.398 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=51%
+17:39:27.948 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1100  "emotion SCARED"
+17:39:30.461 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "TIRED"
+17:39:33.010 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:39:33.454 [WARNING] [AI][STUCK] detected -> escape
+17:39:35.555 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+17:39:38.162 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+17:39:40.682 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.0s spd=1100  "TIRED"
+17:39:40.941 [WARNING] [AI][STUCK] detected -> escape
+17:39:43.181 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:39:43.421 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=51%
+17:39:45.880 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "respite"
+17:39:46.621 [WARNING] [AI][STUCK] detected -> escape
+17:39:48.526 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:39:50.690 [WARNING] [AI][STUCK] detected -> escape
+17:39:51.709 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:39:53.115 [INFO] [BATT] 6.96V  50%
+17:39:53.115 [INFO] [MAP] obstacle_cells=2172  visited_cells=510  x=23 y=-176 th=-14°
+17:39:53.734 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=51%
+17:39:54.954 [WARNING] [AI][STUCK] detected -> escape
+17:39:55.382 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "SCARED"
+17:39:59.672 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "TIRED"
+17:40:02.233 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1000  "wander to find a better path"
+17:40:03.310 [WARNING] [AI][STUCK] detected -> escape
+17:40:04.741 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:40:08.013 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:40:10.574 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "wander because tired"
+17:40:10.597 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=53%
+17:40:12.858 [WARNING] [AI][STUCK] detected -> escape
+17:40:13.190 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "wander to explore and gather more information"
+17:40:15.338 [WARNING] [PET][REFLEX] HARD_STOP ahead=1.2 cm -> avoid
+17:40:17.585 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.2s spd=1100  "stuck due to high ahead_cm"
+17:40:20.097 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.3s spd=1100  "wander"
+17:40:20.661 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=50%
+17:40:20.995 [WARNING] [AI][STUCK] detected -> escape
+17:40:22.729 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.0s spd=1100  "CURIOUS"
+17:40:25.695 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+17:40:28.219 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "respite"
+17:40:30.791 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "WANDER MOST OF THE TIME"
+17:40:33.358 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "Wandering to find a source of energy"
+17:40:35.915 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:40:37.474 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=44%
+17:40:38.439 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "TIRED"
+17:40:40.967 [INFO] [OLLAMA] decision in 2.25s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:40:43.944 [INFO] [OLLAMA] decision in 2.65s: action=wander dur=0.5s spd=1100  "Curious"
+17:40:46.356 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "CURIOUS"
+17:40:47.135 [WARNING] [AI][STUCK] detected -> escape
+17:40:49.300 [INFO] [OLLAMA] decision in 2.70s: action=wander dur=2.0s spd=1100  "stuck"
+17:40:49.618 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=46%
+17:40:51.721 [WARNING] [AI][STUCK] detected -> escape
+17:40:51.847 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "SCARED"
+17:40:56.501 [INFO] [OLLAMA] decision in 2.35s: action=stop dur=1.0s spd=1100  "TIRED"
+17:40:58.938 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+17:40:59.953 [WARNING] [AI][STUCK] detected -> escape
+17:41:01.523 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:41:02.433 [WARNING] [PET][REFLEX] avoid zone ahead=36.3 cm -> avoid
+17:41:04.661 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1000  "TIRED"
+17:41:07.236 [INFO] [OLLAMA] decision in 2.31s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:41:09.779 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:41:09.986 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=49%
+17:41:12.461 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "Curious"
+17:41:13.486 [WARNING] [AI][STUCK] detected -> escape
+17:41:15.085 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "SCARED"
+17:41:15.966 [WARNING] [PET][REFLEX] avoid zone ahead=38.3 cm -> avoid
+17:41:18.239 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.8s spd=1100  "wander because robot is curious and needs to explore its environment"
+17:41:20.295 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=46%
+17:41:20.630 [WARNING] [AI][STUCK] detected -> escape
+17:41:21.092 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:41:23.108 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.6 cm -> avoid
+17:41:25.324 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:41:27.892 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:41:30.455 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:41:33.041 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:41:35.625 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=0.5s spd=1100  "TIRED"
+17:41:37.222 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=47%
+17:41:38.151 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=2.4s spd=1100  "TIRED"
+17:41:41.165 [WARNING] [OLLAMA] no JSON in response (2.73s): Based on the current robot state, I recommend the following actions:
+
+- **Reason
+17:41:43.337 [WARNING] [AI][STUCK] detected -> escape
+17:41:43.469 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "wander to explore"
+17:41:45.824 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.8 cm -> avoid
+17:41:47.964 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=46%
+17:41:48.033 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=0.0s spd=1100  "SCARED"
+17:41:48.937 [WARNING] [PET][REFLEX] avoid zone ahead=49.5 cm -> avoid
+17:41:50.605 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:41:52.225 [WARNING] [AI][STUCK] detected -> escape
+17:41:53.227 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:41:54.706 [WARNING] [PET][REFLEX] avoid zone ahead=49.1 cm -> avoid
+17:41:56.349 [INFO] [PET] fear triggered — obstacle count=3, ahead=8.1 cm
+17:41:56.916 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:41:57.277 [WARNING] [PET][REFLEX] HARD_STOP ahead=18.2 cm -> avoid
+17:41:59.612 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:42:00.235 [INFO] [PET] SCARED → TIRED  energy=0.36  battery=48%
+17:42:02.031 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.8s spd=1100  "SCARED"
+17:42:04.635 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:42:07.151 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=0.5s spd=1100  "TIRED"
+17:42:09.543 [WARNING] [AI][STUCK] detected -> escape
+17:42:09.702 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=2.5s spd=1100  "TIRED"
+17:42:14.248 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:42:16.809 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:42:17.857 [WARNING] [AI][STUCK] detected -> escape
+17:42:19.386 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:42:22.558 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:42:22.688 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=42%
+17:42:25.636 [INFO] [OLLAMA] decision in 2.74s: action=wander dur=1.0s spd=1100  "resumed curiosity"
+17:42:28.044 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.8s spd=1100  "Wander most of the time when CURIOUS"
+17:42:29.663 [WARNING] [AI][STUCK] detected -> escape
+17:42:30.541 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=0.6s spd=1100  "respecting robot's current emotion"
+17:42:32.142 [WARNING] [PET][REFLEX] avoid zone ahead=42.1 cm -> avoid
+17:42:33.576 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=47%
+17:42:34.862 [INFO] [OLLAMA] decision in 2.77s: action=wander dur=1.0s spd=1100  "CURIOUS"
+17:42:35.661 [WARNING] [AI][STUCK] detected -> escape
+17:42:37.268 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.5s spd=1100  "TIRED"
+17:42:40.340 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+17:42:42.871 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.4s spd=1100  "TIRED"
+17:42:44.278 [WARNING] [AI][STUCK] detected -> escape
+17:42:45.533 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.0s spd=1100  "TIRED"
+17:42:48.986 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:42:51.542 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:42:51.718 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=48%
+17:42:54.180 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "SCARED"
+17:42:56.734 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.8s spd=1100  "wander"
+17:42:57.296 [WARNING] [AI][STUCK] detected -> escape
+17:42:59.292 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "Respect the robot's current emotion"
+17:43:01.574 [WARNING] [AI][STUCK] detected -> escape
+17:43:02.025 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=0.5s spd=1100  "SCARED"
+17:43:04.053 [WARNING] [PET][REFLEX] avoid zone ahead=37.7 cm -> avoid
+17:43:06.070 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=46%
+17:43:06.300 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1100  "scared"
+17:43:08.870 [INFO] [OLLAMA] decision in 2.31s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:43:11.426 [INFO] [OLLAMA] decision in 2.32s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:43:13.943 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:43:16.729 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+17:43:19.307 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:43:21.887 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:43:22.946 [WARNING] [AI][STUCK] detected -> escape
+17:43:24.418 [INFO] [OLLAMA] decision in 2.22s: action=stop dur=0.5s spd=1100  "low energy"
+17:43:25.425 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=47%
+17:43:27.659 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=0.3s spd=1100  "TIRED"
+17:43:28.093 [INFO] [PET] CURIOUS → BORED  energy=0.42  battery=37%
+17:43:30.221 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "SCARED"
+17:43:30.463 [INFO] [PET] BORED → CURIOUS  energy=0.41  battery=41%
+17:43:32.726 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "respite"
+17:43:34.616 [WARNING] [AI][STUCK] detected -> escape
+17:43:35.286 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "wander due to curious state"
+17:43:37.098 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=45%
+17:43:39.304 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "SCARED"
+17:43:41.884 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:43:44.437 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "wander to find a new path"
+17:43:45.219 [WARNING] [AI][STUCK] detected -> escape
+17:43:46.951 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:43:49.927 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:43:52.478 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:43:54.125 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=48%
+17:43:55.048 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "respite"
+17:43:57.618 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "Curious"
+17:43:59.055 [WARNING] [AI][STUCK] detected -> escape
+17:44:00.634 [WARNING] [OLLAMA] no JSON in response (2.77s): Based on the robot's current state, I recommend the following actions:
+
+- Since 
+17:44:03.741 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "SCARED"
+17:44:04.147 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=45%
+17:44:06.289 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.5s spd=1100  "SCARED"
+17:44:08.827 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "TIRED"
+17:44:11.398 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1000  "TIRED"
+17:44:13.934 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=2.5s spd=1100  "TIRED"
+17:44:16.828 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=2.5s spd=1100  "Wandering to find a place to rest"
+17:44:18.816 [WARNING] [AI][STUCK] detected -> escape
+17:44:19.363 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=0.8s spd=1100  "TIRED"
+17:44:21.296 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=48%
+17:44:23.514 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=2.5s spd=1100  "TIRED"
+17:44:26.061 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "wander"
+17:44:27.063 [INFO] [PET] CURIOUS → BORED  energy=0.40  battery=38%
+17:44:28.607 [INFO] [PET] BORED → CURIOUS  energy=0.40  battery=40%
+17:44:28.693 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "Wandering to explore and gather information"
+17:44:30.524 [WARNING] [AI][STUCK] detected -> escape
+17:44:31.190 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "SCARED"
+17:44:33.005 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=43%
+17:44:35.215 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "SCARED"
+17:44:37.802 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:44:40.366 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:44:42.997 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:44:45.647 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=0.5s spd=1100  "TIRED"
+17:44:46.701 [WARNING] [AI][STUCK] detected -> escape
+17:44:48.262 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:44:51.078 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=46%
+17:44:51.387 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:44:53.158 [INFO] [BATT] 6.84V  46%
+17:44:53.158 [INFO] [MAP] obstacle_cells=2993  visited_cells=706  x=-188 y=-443 th=-8°
+17:44:53.983 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "Wander to explore and gather more information"
+17:44:56.534 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "Curious"
+17:44:56.778 [WARNING] [AI][STUCK] detected -> escape
+17:45:01.052 [WARNING] [AI][STUCK] detected -> escape
+17:45:01.944 [WARNING] [OLLAMA] no JSON in response (2.74s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:45:03.534 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=46%
+17:45:05.647 [WARNING] [AI][STUCK] detected -> escape
+17:45:05.737 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "SCARED"
+17:45:10.337 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:45:12.940 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:45:15.484 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "Wandering to find a way out"
+17:45:17.966 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:45:20.525 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:45:23.120 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:45:24.191 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=47%
+17:45:25.722 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:45:27.111 [INFO] [PET] CURIOUS → BORED  energy=0.42  battery=40%
+17:45:28.225 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Curious"
+17:45:30.342 [INFO] [PET] BORED → CURIOUS  energy=0.41  battery=40%
+17:45:30.792 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "Respite from boredom"
+17:45:31.162 [WARNING] [AI][STUCK] detected -> escape
+17:45:33.852 [INFO] [OLLAMA] decision in 2.72s: action=wander dur=1.2s spd=1100  "rescue"
+17:45:34.306 [INFO] [PET] CURIOUS → BORED  energy=0.39  battery=36%
+17:45:35.453 [WARNING] [AI][STUCK] detected -> escape
+17:45:36.546 [INFO] [OLLAMA] decision in 2.60s: action=wander dur=1.2s spd=1100  "resumed curiosity"
+17:45:37.933 [WARNING] [PET][REFLEX] avoid zone ahead=42.6 cm -> avoid
+17:45:39.252 [INFO] [PET] BORED → TIRED  energy=0.38  battery=39%
+17:45:40.147 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "BORED"
+17:45:42.711 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=2.0s spd=1100  "due to tiredness"
+17:45:45.229 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:45:45.549 [WARNING] [AI][STUCK] detected -> escape
+17:45:47.724 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:45:48.028 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.9 cm -> avoid
+17:45:50.275 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1100  "TIRED"
+17:45:52.825 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.8s spd=1100  "wander due to tired state"
+17:45:53.672 [WARNING] [AI][STUCK] detected -> escape
+17:45:55.332 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1000  "TIRED"
+17:45:56.153 [WARNING] [PET][REFLEX] HARD_STOP ahead=22.9 cm -> avoid
+17:45:58.359 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:45:58.560 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=44%
+17:46:01.056 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "wander to explore"
+17:46:01.767 [WARNING] [AI][STUCK] detected -> escape
+17:46:03.642 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "SCARED"
+17:46:06.153 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=46%
+17:46:06.927 [WARNING] [OLLAMA] no JSON in response (2.73s): Based on the current robot state, I recommend:
+
+`action`: wander
+
+Reasoning:
+
+* 
+17:46:09.238 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "respite"
+17:46:10.746 [WARNING] [AI][STUCK] detected -> escape
+17:46:11.723 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:46:15.444 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:46:18.481 [INFO] [OLLAMA] decision in 2.70s: action=spin_left dur=1.2s spd=1100  "TIRED (low energy)"
+17:46:18.908 [WARNING] [AI][STUCK] detected -> escape
+17:46:20.779 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:46:23.011 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=46%
+17:46:23.591 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=0.8s spd=1100  "TIRED"
+17:46:25.355 [INFO] [PET] CURIOUS → BORED  energy=0.42  battery=40%
+17:46:26.020 [INFO] [PET] BORED → CURIOUS  energy=0.42  battery=41%
+17:46:26.179 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "responsible for maintaining curiosity"
+17:46:28.707 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "wander"
+17:46:29.629 [WARNING] [AI][STUCK] detected -> escape
+17:46:31.266 [INFO] [OLLAMA] decision in 2.25s: action=wander dur=1.2s spd=1100  "Curious exploration of surroundings"
+17:46:33.297 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=45%
+17:46:33.852 [WARNING] [AI][STUCK] detected -> escape
+17:46:34.346 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "wander because robot is curious"
+17:46:38.131 [WARNING] [AI][STUCK] detected -> escape
+17:46:38.502 [INFO] [OLLAMA] decision in 2.22s: action=wander dur=2.5s spd=1100  "TIRED"
+17:46:40.619 [WARNING] [PET][REFLEX] avoid zone ahead=48.1 cm -> avoid
+17:46:42.843 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:46:45.343 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:46:47.966 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:46:50.550 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:46:51.770 [INFO] [PET] TIRED → CURIOUS  energy=0.44  battery=40%
+17:46:53.130 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "Wandering to find food and water"
+17:46:55.215 [WARNING] [AI][STUCK] detected -> escape
+17:46:55.667 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Respect robot's emotion"
+17:46:59.908 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:47:00.569 [WARNING] [PET][REFLEX] avoid zone ahead=49.5 cm -> avoid
+17:47:02.499 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "wander"
+17:47:02.904 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=46%
+17:47:05.045 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:47:07.565 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "respite"
+17:47:08.196 [WARNING] [AI][STUCK] detected -> escape
+17:47:10.063 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "TIRED"
+17:47:12.887 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:47:15.550 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:47:18.090 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.8s spd=1100  "TIRED"
+17:47:20.704 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=2.5s spd=1100  "TIRED"
+17:47:20.782 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=41%
+17:47:22.818 [INFO] [PET] CURIOUS → BORED  energy=0.42  battery=37%
+17:47:23.695 [INFO] [OLLAMA] decision in 2.73s: action=wander dur=1.5s spd=1100  "curious"
+17:47:26.072 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:47:28.619 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "BORED"
+17:47:29.998 [INFO] [PET] BORED → CURIOUS  energy=0.40  battery=41%
+17:47:31.170 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "BORED"
+17:47:31.187 [WARNING] [AI][STUCK] detected -> escape
+17:47:34.411 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=43%
+17:47:35.886 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Curious"
+17:47:36.661 [WARNING] [PET][REFLEX] avoid zone ahead=49.2 cm -> avoid
+17:47:38.447 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "respite"
+17:47:40.972 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:47:43.467 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "TIRED"
+17:47:45.948 [INFO] [OLLAMA] decision in 2.22s: action=stop dur=1.5s spd=1100  "TIRED"
+17:47:46.883 [WARNING] [AI][STUCK] detected -> escape
+17:47:48.533 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+17:47:51.169 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=54%
+17:47:51.587 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:47:54.199 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=2.1s spd=1100  "wander"
+17:47:55.055 [WARNING] [AI][STUCK] detected -> escape
+17:47:56.751 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "wander due to curious emotion and low energy"
+17:47:59.776 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Curious"
+17:48:01.169 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=51%
+17:48:02.328 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "SCARED"
+17:48:04.878 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:48:07.466 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.5s spd=1100  "TIRED"
+17:48:09.948 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:48:12.515 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.0s spd=1100  "TIRED"
+17:48:15.068 [INFO] [OLLAMA] decision in 2.31s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:48:17.680 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "TIRED"
+17:48:17.987 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=51%
+17:48:20.208 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:48:22.368 [INFO] [PET] CURIOUS → BORED  energy=0.41  battery=39%
+17:48:22.759 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "Wander to explore"
+17:48:23.258 [INFO] [PET] BORED → CURIOUS  energy=0.41  battery=41%
+17:48:25.481 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "respite"
+17:48:27.327 [WARNING] [AI][STUCK] detected -> escape
+17:48:28.121 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.0s spd=1100  "SCARED"
+17:48:29.810 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=47%
+17:48:32.486 [WARNING] [AI][STUCK] detected -> escape
+17:48:32.507 [WARNING] [OLLAMA] no JSON in response (2.75s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:48:37.211 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:48:39.730 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:48:42.507 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:48:45.120 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:48:47.666 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:48:48.839 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=50%
+17:48:50.190 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.5s spd=1000  "TIRED"
+17:48:52.711 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "respecting robot's emotion"
+17:48:53.851 [WARNING] [AI][STUCK] detected -> escape
+17:48:55.640 [INFO] [OLLAMA] decision in 2.62s: action=wander dur=0.5s spd=1100  "CURIOUS"
+17:48:59.015 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:48:59.102 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=40%
+17:49:01.322 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.8s spd=1100  "Curious"
+17:49:03.898 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:49:05.054 [WARNING] [AI][STUCK] detected -> escape
+17:49:06.486 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:49:07.535 [WARNING] [PET][REFLEX] avoid zone ahead=40.9 cm -> avoid
+17:49:09.741 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:49:12.313 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:49:14.794 [INFO] [OLLAMA] decision in 2.24s: action=stop dur=1.5s spd=1100  "TIRED"
+17:49:16.142 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=44%
+17:49:17.363 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:49:19.653 [INFO] [PET] CURIOUS → BORED  energy=0.41  battery=39%
+17:49:19.936 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "SCARED"
+17:49:22.479 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.2s spd=1100  "BORED"
+17:49:22.627 [INFO] [PET] BORED → CURIOUS  energy=0.40  battery=41%
+17:49:24.573 [INFO] [PET] CURIOUS → BORED  energy=0.39  battery=38%
+17:49:25.102 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "SCARED"
+17:49:25.944 [INFO] [PET] BORED → CURIOUS  energy=0.39  battery=40%
+17:49:27.677 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "Respect robot's current emotion - BORED"
+17:49:28.027 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=44%
+17:49:29.402 [WARNING] [AI][STUCK] detected -> escape
+17:49:30.152 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "Curious"
+17:49:34.119 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.0s spd=1100  "TIRED"
+17:49:36.663 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "WANDER TO FIND MORE ENERGY"
+17:49:36.907 [WARNING] [AI][STUCK] detected -> escape
+17:49:39.133 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:49:42.010 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:49:44.629 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "TIRED"
+17:49:44.792 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=43%
+17:49:47.649 [INFO] [OLLAMA] decision in 2.67s: action=wander dur=1.5s spd=1100  "RESPECT ROBOT'S EMOTION"
+17:49:49.925 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "Curious"
+17:49:50.917 [WARNING] [AI][STUCK] detected -> escape
+17:49:52.436 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "wander"
+17:49:53.341 [INFO] [BATT] 6.86V  47%
+17:49:53.342 [INFO] [MAP] obstacle_cells=3583  visited_cells=895  x=-34 y=-436 th=-168°
+17:49:55.070 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=48%
+17:49:56.077 [WARNING] [OLLAMA] no JSON in response (2.73s): Based on the robot's current state, I recommend the following actions:
+
+1. **seq
+17:49:58.390 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:50:01.002 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:50:03.578 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:50:06.082 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:50:08.686 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.2s spd=1100  "Wandering to find a new path to conserve energy"
+17:50:11.211 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "TIRED"
+17:50:12.078 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=47%
+17:50:13.566 [WARNING] [AI][STUCK] detected -> escape
+17:50:13.763 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:50:18.272 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "wander to explore"
+17:50:19.860 [WARNING] [PET][REFLEX] avoid zone ahead=48.8 cm -> avoid
+17:50:20.830 [INFO] [OLLAMA] decision in 2.21s: action=stop dur=1.0s spd=1100  "SCARED"
+17:50:22.074 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=49%
+17:50:23.513 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "wander"
+17:50:26.071 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:50:28.714 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:50:31.266 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:50:31.370 [WARNING] [PET][REFLEX] avoid zone ahead=40.5 cm -> avoid
+17:50:33.304 [INFO] [PET] fear triggered — obstacle count=3, ahead=18.2 cm
+17:50:33.887 [WARNING] [PET][REFLEX] HARD_STOP ahead=18.8 cm -> avoid
+17:50:35.001 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "TIRED"
+17:50:36.881 [INFO] [PET] SCARED → TIRED  energy=0.38  battery=47%
+17:50:38.632 [INFO] [OLLAMA] decision in 2.27s: action=reverse dur=1.5s spd=1100  "SCARED"
+17:50:41.194 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:50:43.737 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "TIRED"
+17:50:46.340 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:50:48.849 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:50:51.459 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "respite"
+17:50:53.911 [WARNING] [AI][STUCK] detected -> escape
+17:50:53.969 [INFO] [OLLAMA] decision in 2.31s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:50:56.391 [WARNING] [PET][REFLEX] avoid zone ahead=48.7 cm -> avoid
+17:50:57.710 [INFO] [PET] TIRED → CURIOUS  energy=0.44  battery=48%
+17:50:58.592 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "TIRED"
+17:51:01.292 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "wander due to low energy and high ahead_cm"
+17:51:04.324 [INFO] [OLLAMA] decision in 2.74s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:51:04.625 [WARNING] [AI][STUCK] detected -> escape
+17:51:06.733 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "Curious"
+17:51:07.130 [WARNING] [PET][REFLEX] avoid zone ahead=35.3 cm -> avoid
+17:51:09.376 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=47%
+17:51:09.804 [INFO] [OLLAMA] decision in 2.73s: action=wander dur=0.8s spd=1100  "Respect the robot's curiosity and wander mode"
+17:51:11.486 [WARNING] [AI][STUCK] detected -> escape
+17:51:12.160 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:51:13.965 [WARNING] [PET][REFLEX] avoid zone ahead=38.1 cm -> avoid
+17:51:16.180 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:51:18.741 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:51:21.241 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:51:23.718 [INFO] [OLLAMA] decision in 2.22s: action=stop dur=1.2s spd=1100  "TIRED"
+17:51:26.350 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:51:28.763 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=50%
+17:51:28.825 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:51:31.420 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "Curious"
+17:51:32.868 [WARNING] [AI][STUCK] detected -> escape
+17:51:34.451 [WARNING] [OLLAMA] no JSON in response (2.78s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:51:36.892 [WARNING] [PET][REFLEX] HARD_STOP ahead=7.5 cm -> avoid
+17:51:37.510 [INFO] [OLLAMA] decision in 2.21s: action=stop dur=1.0s spd=1100  "SCARED"
+17:51:39.416 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=45%
+17:51:41.633 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "wander to explore"
+17:51:44.201 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:51:46.805 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:51:47.674 [WARNING] [AI][STUCK] detected -> escape
+17:51:49.360 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1100  "TIRED"
+17:51:52.409 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.2s spd=1100  "TIRED"
+17:51:54.917 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "respite"
+17:51:56.024 [WARNING] [AI][STUCK] detected -> escape
+17:51:57.485 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:51:58.508 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=49%
+17:52:00.727 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:52:03.309 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:52:04.193 [WARNING] [AI][STUCK] detected -> escape
+17:52:05.833 [INFO] [OLLAMA] decision in 2.25s: action=wander dur=1.2s spd=1100  "CURIOUS"
+17:52:09.298 [WARNING] [OLLAMA] no JSON in response (2.67s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:52:09.456 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=50%
+17:52:11.592 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:52:12.140 [WARNING] [AI][STUCK] detected -> escape
+17:52:14.559 [INFO] [OLLAMA] decision in 2.72s: action=stop dur=0.5s spd=1100  "TIRED"
+17:52:17.330 [WARNING] [OLLAMA] no JSON in response (2.76s): Based on the robot's current state, I recommend the following actions:
+
+1. **Tur
+17:52:19.712 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "Wander to find food or shelter"
+17:52:21.674 [WARNING] [AI][STUCK] detected -> escape
+17:52:22.255 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:52:26.226 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=40%
+17:52:26.340 [INFO] [OLLAMA] decision in 2.24s: action=stop dur=1.2s spd=1100  "TIRED"
+17:52:28.888 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "resumed curiosity"
+17:52:29.454 [WARNING] [AI][STUCK] detected -> escape
+17:52:31.468 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.8s spd=1100  "respecting robot's current emotion"
+17:52:33.738 [WARNING] [AI][STUCK] detected -> escape
+17:52:34.158 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "wander"
+17:52:36.302 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=42%
+17:52:38.922 [INFO] [OLLAMA] decision in 2.76s: action=wander dur=1.2s spd=1100  "Curious"
+17:52:40.911 [WARNING] [AI][STUCK] detected -> escape
+17:52:41.236 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:52:45.717 [INFO] [OLLAMA] decision in 2.36s: action=stop dur=1.2s spd=1100  "TIRED"
+17:52:47.380 [WARNING] [AI][STUCK] detected -> escape
+17:52:48.196 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.8s spd=1100  "TIRED"
+17:52:51.181 [WARNING] [PET][REFLEX] avoid zone ahead=49.0 cm -> avoid
+17:52:52.071 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:52:53.091 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=46%
+17:52:54.857 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Wandering to find a more comfortable position"
+17:52:57.384 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:52:58.967 [WARNING] [AI][STUCK] detected -> escape
+17:53:00.438 [WARNING] [OLLAMA] no JSON in response (2.76s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:53:03.077 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=48%
+17:53:03.411 [WARNING] [AI][STUCK] detected -> escape
+17:53:03.655 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "SCARED"
+17:53:08.143 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1100  "TIRED"
+17:53:10.675 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:53:13.271 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:53:15.827 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:53:18.464 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:53:19.904 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=47%
+17:53:21.012 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:53:23.546 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "Curious"
+17:53:25.063 [WARNING] [PET][REFLEX] avoid zone ahead=42.2 cm -> avoid
+17:53:26.086 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Curious"
+17:53:27.587 [WARNING] [PET][REFLEX] avoid zone ahead=49.2 cm -> avoid
+17:53:29.188 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:53:30.226 [WARNING] [PET][REFLEX] avoid zone ahead=35.8 cm -> avoid
+17:53:31.550 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=47%
+17:53:31.568 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:53:32.715 [WARNING] [PET][REFLEX] avoid zone ahead=41.8 cm -> avoid
+17:53:34.181 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:53:36.762 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:53:37.322 [WARNING] [AI][STUCK] detected -> escape
+17:53:39.299 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:53:42.013 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+17:53:44.586 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "TIRED"
+17:53:45.646 [WARNING] [AI][STUCK] detected -> escape
+17:53:47.188 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:53:48.125 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=48%
+17:53:50.322 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:53:52.846 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "SCARED"
+17:53:55.493 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "SCARED"
+17:53:58.046 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "resumed wandering due to curious state"
+17:53:58.737 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=42%
+17:54:00.664 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "CURIOUS"
+17:54:03.213 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.5s spd=1100  "Respite from tiredness"
+17:54:04.813 [WARNING] [AI][STUCK] detected -> escape
+17:54:05.668 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "TIRED"
+17:54:09.557 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=2.6s spd=1100  "Respect robot's tired state"
+17:54:12.064 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=2.5s spd=1100  "TIRED"
+17:54:14.615 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:54:15.706 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=52%
+17:54:17.174 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "wander"
+17:54:18.665 [WARNING] [AI][STUCK] detected -> escape
+17:54:19.673 [INFO] [OLLAMA] decision in 2.21s: action=stop dur=1.5s spd=1100  "SCARED"
+17:54:23.827 [WARNING] [OLLAMA] no JSON in response (2.73s): Based on the robot's current state, I recommend the following actions:
+
+1. **Sto
+17:54:25.722 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=50%
+17:54:26.708 [INFO] [OLLAMA] decision in 2.75s: action=wander dur=0.5s spd=1100  "Curious"
+17:54:29.100 [WARNING] [OLLAMA] LLM error: Expecting property name enclosed in double quotes: line 3 column 20 (char 41)
+17:54:31.626 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:54:34.130 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:54:36.634 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:54:39.273 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:54:41.763 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:54:42.524 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=48%
+17:54:44.340 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:54:46.916 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=0.8s spd=1100  "stuck"
+17:54:49.458 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "wander"
+17:54:49.710 [WARNING] [AI][STUCK] detected -> escape
+17:54:52.627 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=47%
+17:54:53.370 [INFO] [BATT] 6.87V  47%
+17:54:53.370 [INFO] [MAP] obstacle_cells=4263  visited_cells=1083  x=-156 y=-714 th=-100°
+17:54:54.395 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "Curious"
+17:54:57.025 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:54:59.635 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:55:01.350 [WARNING] [AI][STUCK] detected -> escape
+17:55:02.224 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=2.5s spd=1100  "TIRED"
+17:55:06.526 [WARNING] [OLLAMA] no JSON in response (2.75s): Based on the robot's current state, I recommend the following actions:
+
+1. **Sto
+17:55:08.053 [WARNING] [AI][STUCK] detected -> escape
+17:55:08.774 [INFO] [OLLAMA] decision in 2.23s: action=stop dur=1.0s spd=1100  "TIRED"
+17:55:10.532 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=45%
+17:55:12.750 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+17:55:13.209 [WARNING] [AI][STUCK] detected -> escape
+17:55:15.320 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "Curious"
+17:55:17.490 [WARNING] [AI][STUCK] detected -> escape
+17:55:18.392 [WARNING] [OLLAMA] no JSON in response (2.75s): Based on the current robot state, I recommend the following actions:
+
+1. Check i
+17:55:21.277 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=44%
+17:55:22.237 [WARNING] [OLLAMA] LLM error: Expecting property name enclosed in double quotes: line 3 column 20 (char 41)
+17:55:24.753 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.0s spd=1100  "TIRED"
+17:55:27.256 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:55:29.822 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:55:32.417 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.5s spd=1100  "TIRED"
+17:55:33.594 [WARNING] [AI][STUCK] detected -> escape
+17:55:34.899 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=2.0s spd=1100  "TIRED"
+17:55:38.160 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=51%
+17:55:38.337 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.5s spd=1100  "TIRED"
+17:55:41.306 [INFO] [OLLAMA] decision in 2.71s: action=wander dur=1.0s spd=1100  "CURIOUS"
+17:55:43.689 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "SCARED"
+17:55:46.702 [WARNING] [OLLAMA] no JSON in response (2.74s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:55:47.664 [WARNING] [AI][STUCK] detected -> escape
+17:55:49.112 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "wander due to curious emotion"
+17:55:50.144 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=48%
+17:55:52.423 [WARNING] [OLLAMA] LLM error: Expecting property name enclosed in double quotes: line 4 column 18 (char 58)
+17:55:54.982 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "wander because tired"
+17:55:56.613 [WARNING] [AI][STUCK] detected -> escape
+17:55:57.466 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:56:01.339 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.2s spd=1100  "TIRED"
+17:56:03.836 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:56:06.499 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.2s spd=1100  "TIRED"
+17:56:09.000 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:56:10.147 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=46%
+17:56:11.601 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "TIRED"
+17:56:14.091 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=2.5s spd=1100  "CURIOUS"
+17:56:15.833 [INFO] [PET] CURIOUS → BORED  energy=0.40  battery=37%
+17:56:16.650 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "resumed curious state"
+17:56:19.152 [INFO] [PET] BORED → CURIOUS  energy=0.39  battery=40%
+17:56:19.208 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "BORED"
+17:56:21.523 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=43%
+17:56:22.082 [WARNING] [AI][STUCK] detected -> escape
+17:56:22.132 [INFO] [OLLAMA] decision in 2.66s: action=wander dur=1.2s spd=1100  "Respect the robot's curiosity and wander mode"
+17:56:26.773 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.5s spd=1100  "TIRED"
+17:56:29.059 [WARNING] [AI][STUCK] detected -> escape
+17:56:29.370 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:56:33.747 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:56:36.276 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:56:38.397 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=44%
+17:56:38.885 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "TIRED"
+17:56:40.542 [WARNING] [AI][STUCK] detected -> escape
+17:56:41.443 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.5s spd=1100  "maintaining curiosity"
+17:56:44.818 [WARNING] [AI][STUCK] detected -> escape
+17:56:45.254 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "Curious"
+17:56:48.482 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=45%
+17:56:49.038 [WARNING] [AI][STUCK] detected -> escape
+17:56:49.521 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "curious"
+17:56:51.525 [WARNING] [PET][REFLEX] avoid zone ahead=30.4 cm -> avoid
+17:56:53.757 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:56:56.319 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:56:58.837 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:57:01.400 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:57:03.899 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=0.0s spd=1100  "TIRED"
+17:57:04.908 [WARNING] [AI][STUCK] detected -> escape
+17:57:06.462 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:57:07.388 [WARNING] [PET][REFLEX] avoid zone ahead=41.4 cm -> avoid
+17:57:09.475 [INFO] [PET] TIRED → CURIOUS  energy=0.44  battery=40%
+17:57:09.569 [INFO] [OLLAMA] decision in 2.23s: action=stop dur=1.0s spd=1100  "TIRED"
+17:57:12.231 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.2s spd=1100  "Respect emotion, wander when curious"
+17:57:14.301 [WARNING] [PET][REFLEX] HARD_STOP ahead=7.7 cm -> avoid
+17:57:14.772 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "resumed wandering due to curious state"
+17:57:18.627 [WARNING] [AI][STUCK] detected -> escape
+17:57:19.036 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.5s spd=1100  "wander"
+17:57:22.023 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=44%
+17:57:23.021 [WARNING] [AI][STUCK] detected -> escape
+17:57:23.284 [INFO] [OLLAMA] decision in 2.23s: action=stop dur=1.0s spd=1100  "curious"
+17:57:27.778 [INFO] [OLLAMA] decision in 2.33s: action=stop dur=1.5s spd=1100  "TIRED"
+17:57:28.221 [WARNING] [AI][STUCK] detected -> escape
+17:57:30.359 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.5s spd=1100  "TIRED"
+17:57:32.907 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+17:57:35.501 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:57:38.019 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+17:57:38.757 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=46%
+17:57:40.555 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:57:43.067 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.0s spd=1100  "CURIOUS"
+17:57:45.147 [WARNING] [AI][STUCK] detected -> escape
+17:57:45.582 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "resumed curiosity"
+17:57:48.812 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=42%
+17:57:49.864 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.7s spd=1100  "CURIOUS"
+17:57:52.398 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Wandering to find a comfortable spot"
+17:57:52.410 [WARNING] [AI][STUCK] detected -> escape
+17:57:56.473 [WARNING] [AI][STUCK] detected -> escape
+17:57:57.096 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:58:01.171 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:58:03.801 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:58:05.674 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=45%
+17:58:06.361 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:58:07.374 [INFO] [PET] CURIOUS → BORED  energy=0.42  battery=39%
+17:58:08.856 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "SCARED"
+17:58:11.421 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "respite"
+17:58:11.424 [INFO] [PET] BORED → CURIOUS  energy=0.41  battery=41%
+17:58:13.681 [WARNING] [AI][STUCK] detected -> escape
+17:58:13.995 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "wander"
+17:58:16.163 [WARNING] [PET][REFLEX] HARD_STOP ahead=4.7 cm -> avoid
+17:58:18.412 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "Respect robot's current emotion"
+17:58:18.691 [INFO] [PET] CURIOUS → TIRED  energy=0.37  battery=44%
+17:58:20.795 [WARNING] [AI][STUCK] detected -> escape
+17:58:21.377 [WARNING] [OLLAMA] no JSON in response (2.74s): Based on the robot's current state, I recommend the following actions:
+
+1. **seq
+17:58:26.092 [INFO] [OLLAMA] decision in 2.87s: action=stop dur=1.5s spd=1100  "TIRED"
+17:58:28.451 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "TIRED"
+17:58:31.299 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.5s spd=1100  "TIRED"
+17:58:33.910 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+17:58:36.475 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.8s spd=1100  "Wandering to find a comfortable spot"
+17:58:37.651 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=46%
+17:58:39.005 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:58:41.479 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Maintaining curiosity and exploring environment"
+17:58:43.727 [WARNING] [AI][STUCK] detected -> escape
+17:58:44.488 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+17:58:47.754 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=46%
+17:58:48.193 [WARNING] [PET][REFLEX] avoid zone ahead=45.8 cm -> avoid
+17:58:48.435 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.4s spd=1100  "curious"
+17:58:51.872 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+17:58:54.364 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:58:56.937 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "TIRED"
+17:58:59.385 [WARNING] [AI][STUCK] detected -> escape
+17:58:59.480 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+17:59:01.866 [WARNING] [PET][REFLEX] HARD_STOP ahead=14.6 cm -> avoid
+17:59:04.061 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+17:59:04.449 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=45%
+17:59:07.109 [WARNING] [OLLAMA] no JSON in response (2.77s): Based on the current robot state, I recommend the following actions:
+
+1. **Wande
+17:59:09.399 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "HAPPY"
+17:59:10.966 [WARNING] [AI][STUCK] detected -> escape
+17:59:12.439 [WARNING] [OLLAMA] no JSON in response (2.74s): Based on the robot's current state, I recommend the following actions:
+
+1. **Sto
+17:59:14.552 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=44%
+17:59:16.129 [INFO] [OLLAMA] decision in 2.73s: action=sequence_wiggle dur=1.0s spd=1000  "play"
+17:59:18.537 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=0.6s spd=1100  "TIRED"
+17:59:19.982 [WARNING] [PET][REFLEX] avoid zone ahead=49.8 cm -> avoid
+17:59:21.118 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+17:59:23.657 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "wander"
+17:59:26.193 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "respite"
+17:59:28.836 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+17:59:31.290 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=47%
+17:59:31.379 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+17:59:33.925 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "wander"
+17:59:36.437 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Curious"
+17:59:38.903 [WARNING] [AI][STUCK] detected -> escape
+17:59:39.008 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "curious"
+17:59:41.639 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=42%
+17:59:42.079 [WARNING] [PET][REFLEX] avoid zone ahead=49.7 cm -> avoid
+17:59:43.610 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "SCARED"
+17:59:44.603 [WARNING] [PET][REFLEX] avoid zone ahead=48.3 cm -> avoid
+17:59:46.145 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.0s spd=1100  "TIRED"
+17:59:48.255 [WARNING] [PET][REFLEX] avoid zone ahead=43.0 cm -> avoid
+17:59:48.678 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.2s spd=1100  "respite"
+17:59:51.934 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "Respect robot's tired state"
+17:59:52.145 [WARNING] [PET][REFLEX] avoid zone ahead=43.4 cm -> avoid
+17:59:53.526 [INFO] [BATT] 6.76V  44%
+17:59:53.527 [INFO] [MAP] obstacle_cells=5497  visited_cells=1330  x=-45 y=-844 th=129°
+17:59:54.441 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.2s spd=1100  "TIRED"
+17:59:54.728 [WARNING] [PET][REFLEX] avoid zone ahead=35.4 cm -> avoid
+17:59:56.937 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+17:59:58.719 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=43%
+17:59:59.153 [WARNING] [PET][REFLEX] avoid zone ahead=33.8 cm -> avoid
+17:59:59.503 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.2s spd=1100  "Wandering to conserve energy"
+18:00:01.944 [INFO] [PET] CURIOUS → BORED  energy=0.41  battery=40%
+18:00:03.080 [INFO] [PET] BORED → CURIOUS  energy=0.41  battery=40%
+18:00:03.974 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:00:06.385 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "WANDER due to high curiosity and energy"
+18:00:08.654 [WARNING] [PET][REFLEX] avoid zone ahead=49.2 cm -> avoid
+18:00:08.870 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "Curious"
+18:00:10.090 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=41%
+18:00:12.310 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "Curious"
+18:00:13.868 [WARNING] [AI][STUCK] detected -> escape
+18:00:14.869 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+18:00:18.584 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+18:00:21.221 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.2s spd=1100  "TIRED"
+18:00:23.736 [INFO] [OLLAMA] decision in 2.25s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:00:26.264 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+18:00:28.321 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=40%
+18:00:28.676 [INFO] [PET] CURIOUS → BORED  energy=0.43  battery=40%
+18:00:28.850 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "TIRED"
+18:00:30.024 [INFO] [PET] BORED → CURIOUS  energy=0.42  battery=40%
+18:00:31.356 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "respite"
+18:00:32.044 [INFO] [PET] CURIOUS → BORED  energy=0.41  battery=40%
+18:00:33.150 [WARNING] [PET][REFLEX] avoid zone ahead=47.4 cm -> avoid
+18:00:34.016 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.5s spd=1100  "Wandering to explore and gather more information"
+18:00:34.597 [INFO] [PET] BORED → CURIOUS  energy=0.41  battery=40%
+18:00:34.917 [INFO] [PET] fear triggered — obstacle count=3, ahead=12.7 cm
+18:00:35.613 [WARNING] [PET][REFLEX] HARD_STOP ahead=13.0 cm -> avoid
+18:00:36.873 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.2s spd=1100  "respite"
+18:00:38.451 [INFO] [PET] SCARED → TIRED  energy=0.37  battery=40%
+18:00:39.007 [WARNING] [AI][STUCK] detected -> escape
+18:00:39.406 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:00:43.283 [WARNING] [AI][STUCK] detected -> escape
+18:00:43.693 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+18:00:48.018 [INFO] [OLLAMA] decision in 2.31s: action=stop dur=1.5s spd=1100  "TIRED"
+18:00:50.566 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.2s spd=1100  "Wander to find a comfortable position"
+18:00:52.813 [WARNING] [AI][STUCK] detected -> escape
+18:00:53.163 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:00:55.291 [WARNING] [PET][REFLEX] HARD_STOP ahead=5.7 cm -> avoid
+18:00:57.959 [INFO] [OLLAMA] decision in 2.72s: action=stop dur=0.5s spd=1100  "TIRED"
+18:00:59.092 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=40%
+18:01:00.259 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=0.5s spd=1100  "TIRED"
+18:01:00.998 [INFO] [PET] CURIOUS → BORED  energy=0.42  battery=40%
+18:01:02.588 [INFO] [PET] BORED → CURIOUS  energy=0.42  battery=40%
+18:01:02.818 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "CURIOUS"
+18:01:03.935 [WARNING] [PET][REFLEX] avoid zone ahead=44.8 cm -> avoid
+18:01:05.386 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.5s spd=1100  "Curious"
+18:01:07.123 [WARNING] [PET][REFLEX] avoid zone ahead=48.5 cm -> avoid
+18:01:07.945 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=2.4s spd=1100  "Respect robot's current emotion"
+18:01:08.755 [INFO] [PET] fear triggered — obstacle count=3, ahead=20.5 cm
+18:01:09.865 [WARNING] [PET][REFLEX] HARD_STOP ahead=20.0 cm -> avoid
+18:01:10.834 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.2s spd=1100  "Wander to explore and gather more information"
+18:01:12.422 [INFO] [PET] SCARED → TIRED  energy=0.35  battery=41%
+18:01:12.944 [WARNING] [PET][REFLEX] avoid zone ahead=48.3 cm -> avoid
+18:01:14.640 [INFO] [OLLAMA] decision in 2.27s: action=reverse dur=1.5s spd=1100  "SCARED"
+18:01:17.212 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+18:01:19.784 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+18:01:22.345 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:01:24.423 [WARNING] [PET][REFLEX] HARD_STOP ahead=4.2 cm -> avoid
+18:01:25.130 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "Respect robot's tired state"
+18:01:28.956 [WARNING] [AI][STUCK] detected -> escape
+18:01:29.162 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:01:31.436 [WARNING] [PET][REFLEX] HARD_STOP ahead=1.5 cm -> avoid
+18:01:33.995 [INFO] [OLLAMA] decision in 2.61s: action=stop dur=1.0s spd=1100  "TIRED"
+18:01:35.746 [WARNING] [PET][REFLEX] HARD_STOP ahead=26.7 cm -> avoid
+18:01:37.020 [INFO] [OLLAMA] decision in 2.67s: action=stop dur=1.0s spd=1100  "TIRED and low energy"
+18:01:40.087 [INFO] [OLLAMA] decision in 2.25s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:01:42.706 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:01:45.307 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "respite"
+18:01:46.941 [WARNING] [PET][REFLEX] avoid zone ahead=40.3 cm -> avoid
+18:01:47.780 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:01:50.637 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "Respect robot's tired state and try to get it moving again."
+18:01:51.715 [WARNING] [AI][STUCK] detected -> escape
+18:01:53.217 [INFO] [OLLAMA] decision in 2.34s: action=stop dur=1.5s spd=1100  "TIRED (low energy)"
+18:01:56.402 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.2s spd=1100  "TIRED"
+18:01:58.963 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:02:00.223 [WARNING] [PET][REFLEX] HARD_STOP ahead=26.3 cm -> avoid
+18:02:01.542 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=2.5s spd=1100  "Wandering to find a place to rest"
+18:02:04.551 [WARNING] [AI][STUCK] detected -> escape
+18:02:04.593 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:02:07.032 [WARNING] [PET][REFLEX] avoid zone ahead=35.1 cm -> avoid
+18:02:08.676 [INFO] [PET] fear triggered — obstacle count=3, ahead=3.9 cm
+18:02:09.229 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+18:02:09.496 [WARNING] [PET][REFLEX] HARD_STOP ahead=14.7 cm -> avoid
+18:02:11.906 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:02:13.691 [INFO] [PET] SCARED → CURIOUS  energy=0.47  battery=40%
+18:02:14.298 [INFO] [OLLAMA] decision in 2.29s: action=reverse dur=1.5s spd=1100  "SCARED"
+18:02:14.631 [WARNING] [PET][REFLEX] avoid zone ahead=40.9 cm -> avoid
+18:02:16.769 [INFO] [PET] CURIOUS → BORED  energy=0.45  battery=40%
+18:02:16.832 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=0.5s spd=1100  "scared"
+18:02:19.367 [INFO] [OLLAMA] decision in 2.26s: action=stop dur=1.5s spd=1100  "BORED"
+18:02:21.937 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "Respect robot's current emotion"
+18:02:24.429 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "Wandering to find a new path or environment"
+18:02:27.011 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.5s spd=1100  "wander to find more food"
+18:02:27.132 [WARNING] [AI][STUCK] detected -> escape
+18:02:29.614 [WARNING] [PET][REFLEX] HARD_STOP ahead=3.1 cm -> avoid
+18:02:31.810 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "BORED"
+18:02:34.388 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=2.5s spd=1100  "respite from boredom"
+18:02:36.292 [WARNING] [AI][STUCK] detected -> escape
+18:02:36.927 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "BORED"
+18:02:38.771 [WARNING] [PET][REFLEX] HARD_STOP ahead=2.4 cm -> avoid
+18:02:41.003 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "BORED"
+18:02:41.295 [INFO] [PET] BORED → TIRED  energy=0.38  battery=40%
+18:02:43.492 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:02:44.215 [WARNING] [AI][STUCK] detected -> escape
+18:02:46.111 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=2.5s spd=1100  "TIRED"
+18:02:46.693 [WARNING] [PET][REFLEX] HARD_STOP ahead=3.3 cm -> avoid
+18:02:48.928 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+18:02:51.427 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "TIRED"
+18:02:52.368 [WARNING] [AI][STUCK] detected -> escape
+18:02:54.042 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+18:02:54.848 [WARNING] [PET][REFLEX] HARD_STOP ahead=1.8 cm -> avoid
+18:02:57.075 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+18:02:58.150 [INFO] [PET] TIRED → CURIOUS  energy=0.43  battery=40%
+18:03:00.059 [WARNING] [AI][STUCK] detected -> escape
+18:03:00.095 [WARNING] [OLLAMA] no JSON in response (2.77s): Based on the current robot state, I recommend the following actions:
+
+- **action
+18:03:02.540 [WARNING] [PET][REFLEX] HARD_STOP ahead=1.5 cm -> avoid
+18:03:05.259 [INFO] [OLLAMA] decision in 2.77s: action=wander dur=1.5s spd=1100  "rescue"
+18:03:06.397 [INFO] [PET] CURIOUS → BORED  energy=0.39  battery=38%
+18:03:07.107 [WARNING] [AI][STUCK] detected -> escape
+18:03:07.645 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "SCARED"
+18:03:09.588 [WARNING] [PET][REFLEX] HARD_STOP ahead=2.7 cm -> avoid
+18:03:11.810 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "BORED"
+18:03:11.994 [INFO] [PET] BORED → TIRED  energy=0.38  battery=39%
+18:03:14.775 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:03:17.167 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:03:17.814 [WARNING] [AI][STUCK] detected -> escape
+18:03:19.687 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+18:03:20.293 [WARNING] [PET][REFLEX] HARD_STOP ahead=3.6 cm -> avoid
+18:03:22.541 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.2s spd=1100  "TIRED"
+18:03:25.361 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:03:26.087 [WARNING] [AI][STUCK] detected -> escape
+18:03:27.975 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=2.5s spd=1100  "TIRED"
+18:03:28.568 [WARNING] [PET][REFLEX] HARD_STOP ahead=2.1 cm -> avoid
+18:03:30.797 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+18:03:30.974 [INFO] [PET] TIRED → CURIOUS  energy=0.44  battery=40%
+18:03:31.222 [INFO] [PET] CURIOUS → BORED  energy=0.42  battery=40%
+18:03:33.289 [INFO] [PET] BORED → CURIOUS  energy=0.42  battery=40%
+18:03:33.459 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:03:35.961 [INFO] [OLLAMA] decision in 2.25s: action=wander dur=1.2s spd=1100  "wander"
+18:03:36.013 [WARNING] [AI][STUCK] detected -> escape
+18:03:38.503 [WARNING] [PET][REFLEX] HARD_STOP ahead=3.9 cm -> avoid
+18:03:41.029 [INFO] [PET] CURIOUS → TIRED  energy=0.38  battery=40%
+18:03:41.199 [INFO] [OLLAMA] decision in 2.75s: action=wander dur=1.2s spd=1100  "curious"
+18:03:43.296 [WARNING] [AI][STUCK] detected -> escape
+18:03:43.713 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=1.5s spd=1100  "TIRED"
+18:03:45.775 [WARNING] [PET][REFLEX] HARD_STOP ahead=4.8 cm -> avoid
+18:03:47.970 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+18:03:50.527 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:03:52.987 [WARNING] [PET][REFLEX] HARD_STOP ahead=24.8 cm -> avoid
+18:03:53.088 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:03:57.727 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:04:00.326 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.0s spd=1100  "TIRED"
+18:04:03.156 [INFO] [OLLAMA] decision in 2.60s: action=stop dur=1.2s spd=1100  "TIRED"
+18:04:03.496 [WARNING] [AI][STUCK] detected -> escape
+18:04:05.466 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:04:05.976 [WARNING] [PET][REFLEX] avoid zone ahead=48.1 cm -> avoid
+18:04:08.194 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.5s spd=1100  "TIRED"
+18:04:10.699 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.5s spd=1100  "TIRED"
+18:04:13.356 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+18:04:15.905 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:04:16.515 [WARNING] [AI][STUCK] detected -> escape
+18:04:18.411 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+18:04:21.197 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "TIRED"
+18:04:22.919 [INFO] [PET] TIRED → CURIOUS  energy=0.50  battery=40%
+18:04:23.631 [INFO] [PET] CURIOUS → BORED  energy=0.50  battery=40%
+18:04:23.855 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.8s spd=1100  "respite from tiredness"
+18:04:24.297 [INFO] [PET] BORED → CURIOUS  energy=0.50  battery=40%
+18:04:24.868 [INFO] [PET] CURIOUS → BORED  energy=0.50  battery=40%
+18:04:25.535 [INFO] [PET] BORED → CURIOUS  energy=0.49  battery=40%
+18:04:26.240 [INFO] [PET] CURIOUS → BORED  energy=0.49  battery=34%
+18:04:26.498 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.8s spd=1100  "BORED"
+18:04:26.589 [WARNING] [AI][STUCK] detected -> escape
+18:04:31.306 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "BORED"
+18:04:33.882 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.5s spd=1100  "BORED"
+18:04:36.422 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "Respect robot's current emotion"
+18:04:37.355 [WARNING] [PET][REFLEX] avoid zone ahead=39.8 cm -> avoid
+18:04:38.989 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "Respect robot's current emotion"
+18:04:41.515 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "wander because robot is BORED"
+18:04:42.138 [WARNING] [PET][REFLEX] avoid zone ahead=36.7 cm -> avoid
+18:04:44.074 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.0s spd=1100  "due to BORED state"
+18:04:46.660 [WARNING] [OLLAMA] LLM error: Expecting property name enclosed in double quotes: line 3 column 20 (char 43)
+18:04:49.102 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:04:51.936 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "BORED"
+18:04:53.560 [INFO] [BATT] 6.60V  38%
+18:04:53.560 [INFO] [MAP] obstacle_cells=5692  visited_cells=1453  x=-163 y=-771 th=140°
+18:04:54.459 [INFO] [OLLAMA] decision in 2.26s: action=wander dur=1.2s spd=1100  "wander"
+18:04:56.981 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.5s spd=1100  "BORED"
+18:04:59.500 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "wander"
+18:05:02.045 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "BORED"
+18:05:03.077 [INFO] [PET] BORED → TIRED  energy=0.38  battery=39%
+18:05:04.659 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "respite from boredom"
+18:05:05.878 [WARNING] [AI][STUCK] detected -> escape
+18:05:07.244 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+18:05:10.600 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "TIRED"
+18:05:13.200 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+18:05:15.785 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:05:18.349 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:05:20.603 [WARNING] [AI][STUCK] detected -> escape
+18:05:20.876 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:05:23.081 [WARNING] [PET][REFLEX] avoid zone ahead=39.1 cm -> avoid
+18:05:25.021 [INFO] [PET] fear triggered — obstacle count=3, ahead=8.0 cm
+18:05:25.327 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1100  "TIRED"
+18:05:25.623 [WARNING] [PET][REFLEX] HARD_STOP ahead=7.5 cm -> avoid
+18:05:27.844 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "SCARED"
+18:05:28.621 [INFO] [PET] SCARED → BORED  energy=0.41  battery=38%
+18:05:30.349 [INFO] [OLLAMA] decision in 2.25s: action=reverse dur=1.2s spd=1100  "SCARED"
+18:05:32.953 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.0s spd=1100  "BORED"
+18:05:35.618 [INFO] [OLLAMA] decision in 2.35s: action=wander dur=1.5s spd=1100  "Respect robot's current emotion and try to induce boredom"
+18:05:38.183 [INFO] [OLLAMA] decision in 2.32s: action=wander dur=1.2s spd=1100  "wander"
+18:05:38.661 [INFO] [PET] BORED → TIRED  energy=0.38  battery=36%
+18:05:40.184 [WARNING] [PET][REFLEX] avoid zone ahead=45.9 cm -> avoid
+18:05:40.877 [INFO] [OLLAMA] decision in 2.39s: action=wander dur=1.5s spd=1100  "Respect the robot's current emotion — e.g. SCARED → reverse/spin, BORED → stop/slow."
+18:05:43.366 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.7 cm -> avoid
+18:05:43.867 [INFO] [OLLAMA] decision in 2.30s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:05:46.829 [WARNING] [PET][REFLEX] avoid zone ahead=37.5 cm -> avoid
+18:05:47.713 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:05:51.177 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:05:53.743 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=2.5s spd=1100  "TIRED"
+18:05:56.372 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "respite"
+18:05:58.907 [INFO] [OLLAMA] decision in 2.32s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:06:01.010 [WARNING] [PET][REFLEX] HARD_STOP ahead=23.1 cm -> avoid
+18:06:01.688 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+18:06:04.907 [WARNING] [PET][REFLEX] avoid zone ahead=38.9 cm -> avoid
+18:06:05.748 [INFO] [OLLAMA] decision in 2.27s: action=wander dur=2.5s spd=1100  "wandering to find food"
+18:06:07.387 [WARNING] [PET][REFLEX] avoid zone ahead=35.6 cm -> avoid
+18:06:08.577 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.2s spd=1100  "Wandering to find a place to rest"
+18:06:09.537 [INFO] [PET] fear triggered — obstacle count=3, ahead=24.5 cm
+18:06:09.980 [WARNING] [PET][REFLEX] HARD_STOP ahead=26.3 cm -> avoid
+18:06:11.191 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:06:13.048 [INFO] [PET] SCARED → BORED  energy=0.44  battery=33%
+18:06:14.363 [INFO] [OLLAMA] decision in 2.29s: action=reverse dur=1.2s spd=1100  "SCARED"
+18:06:16.857 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:06:19.430 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.2s spd=1100  "wander because robot is BORED"
+18:06:22.028 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "BORED"
+18:06:24.524 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "BORED"
+18:06:27.092 [INFO] [OLLAMA] decision in 2.28s: action=wander dur=1.5s spd=1100  "respite"
+18:06:27.327 [WARNING] [PET][REFLEX] HARD_STOP ahead=29.9 cm -> avoid
+18:06:31.772 [INFO] [OLLAMA] decision in 2.35s: action=wander dur=1.5s spd=1100  "wander because it's a boring day"
+18:06:32.130 [INFO] [PET] BORED → TIRED  energy=0.38  battery=33%
+18:06:33.577 [WARNING] [AI][STUCK] detected -> escape
+18:06:34.289 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=0.5s spd=1100  "respected robot's current emotion"
+18:06:36.055 [WARNING] [PET][REFLEX] HARD_STOP ahead=9.2 cm -> avoid
+18:06:38.299 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.0s spd=1100  "TIRED"
+18:06:40.797 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:06:43.385 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=2.0s spd=1100  "wandering to find food or water"
+18:06:44.874 [WARNING] [PET][REFLEX] avoid zone ahead=30.9 cm -> avoid
+18:06:45.892 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.0s spd=1100  "TIRED"
+18:06:49.229 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:06:52.161 [WARNING] [OLLAMA] LLM error: Expecting value: line 2 column 13 (char 14)
+18:06:54.463 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "Tired"
+18:06:57.084 [INFO] [OLLAMA] decision in 2.36s: action=wander dur=1.5s spd=1100  "Wandering to find a new path due to tiredness"
+18:06:59.578 [INFO] [OLLAMA] decision in 2.30s: action=stop dur=1.5s spd=1100  "TIRED"
+18:07:02.172 [INFO] [OLLAMA] decision in 2.33s: action=wander dur=1.2s spd=1100  "Respecting the robot's current emotion"
+18:07:05.059 [INFO] [OLLAMA] decision in 2.72s: action=spin_left dur=1.0s spd=1100  "TIRED"
+18:07:06.711 [WARNING] [PET][REFLEX] avoid zone ahead=36.6 cm -> avoid
+18:07:07.403 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.5s spd=1100  "TIRED"
+18:07:11.064 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:07:13.712 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.0s spd=1100  "TIRED"
+18:07:16.276 [INFO] [OLLAMA] decision in 2.34s: action=wander dur=1.2s spd=1100  "Respect robot's current emotion: TIRED"
+18:07:17.691 [WARNING] [AI][STUCK] detected -> escape
+18:07:18.829 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.2s spd=1100  "TIRED"
+18:07:20.171 [WARNING] [PET][REFLEX] HARD_STOP ahead=20.4 cm -> avoid
+18:07:22.400 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=2.0s spd=1100  "TIRED"
+18:07:24.790 [WARNING] [PET][REFLEX] avoid zone ahead=49.2 cm -> avoid
+18:07:24.920 [INFO] [OLLAMA] decision in 2.27s: action=spin_left dur=1.5s spd=1100  "TIRED"
+18:07:28.471 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=1.8s spd=1100  "TIRED"
+18:07:31.068 [INFO] [OLLAMA] decision in 2.34s: action=wander dur=1.2s spd=1100  "wander to find a better position"
+18:07:31.394 [WARNING] [PET][REFLEX] avoid zone ahead=48.2 cm -> avoid
+18:07:33.507 [INFO] [OLLAMA] decision in 2.25s: action=stop dur=1.2s spd=1100  "TIRED"
+18:07:33.917 [WARNING] [PET][REFLEX] avoid zone ahead=39.5 cm -> avoid
+18:07:36.071 [INFO] [OLLAMA] decision in 2.29s: action=stop dur=1.2s spd=1100  "TIRED"
+18:07:36.419 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.9 cm -> avoid
+18:07:38.646 [INFO] [OLLAMA] decision in 2.28s: action=spin_left dur=1.0s spd=1100  "TIRED"
+18:07:41.227 [INFO] [OLLAMA] decision in 2.31s: action=wander dur=1.2s spd=1100  "Wandering to find energy"
+18:07:41.273 [WARNING] [PET][REFLEX] avoid zone ahead=38.8 cm -> avoid
+18:07:44.488 [WARNING] [AI][STUCK] detected -> escape
+18:07:44.956 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.5s spd=1100  "respite"
+18:07:49.188 [INFO] [OLLAMA] decision in 2.27s: action=stop dur=1.2s spd=1100  "TIRED"
+18:07:51.772 [WARNING] [PET][REFLEX] HARD_STOP ahead=28.6 cm -> avoid
+18:07:51.815 [INFO] [OLLAMA] decision in 2.29s: action=wander dur=1.5s spd=1100  "wander to find a better position"
+18:07:56.118 [INFO] [OLLAMA] decision in 2.26s: action=spin_left dur=1.2s spd=1100  "TIRED"
+18:07:56.591 [WARNING] [AI][STUCK] detected -> escape
+18:07:58.718 [INFO] [OLLAMA] decision in 2.30s: action=wander dur=1.2s spd=1100  "TIRED"
+18:07:59.071 [WARNING] [PET][REFLEX] avoid zone ahead=41.1 cm -> avoid
+18:08:01.303 [INFO] [OLLAMA] decision in 2.28s: action=stop dur=1.5s spd=1100  "TIRED"
+18:08:01.571 [WARNING] [PET][REFLEX] HARD_STOP ahead=29.2 cm -> avoid
+18:08:03.809 [INFO] [OLLAMA] decision in 2.29s: action=spin_left dur=2.5s spd=1100  "TIRED"
+18:08:03.988 [INFO] [SHUTDOWN] Ctrl+C received
+18:08:04.029 [INFO] [SHUTDOWN] cleaned up
